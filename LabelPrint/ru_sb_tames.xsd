@@ -516,7 +516,7 @@ where "logDate" = ?
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>
-                      select "t_labels"."orderNo",  "t_labels"."partNo", "t_orderList"."partDesc", "t_labels"."logDate", Substr("t_labels"."logTime",1,2)  || ' -' || to_char(Substr("t_labels"."logTime",1,2):: Int + 1,'00') as ora, Count("t_labels".*) as nr, Max("t_labels"."logTime")
+                      select "t_labels"."orderNo",  "t_labels"."partNo", "t_orderList"."partDesc", "t_labels"."logDate", Substr("t_labels"."logTime",1,2)  || ' -' || to_char(Substr("t_labels"."logTime",1,2):: Int + 1,'00') as ora, Count("t_labels".*) as nr
                       from "t_labels", "t_orderList"
                       where to_number("t_labels"."orderNo",'999999') = "t_orderList"."orderNo"
                       and "t_labels"."logDate" &gt;= to_date(?,'dd.MM.yyyy')
@@ -540,7 +540,7 @@ order by "t_labels"."logDate", Substr("t_labels"."logTime",1,2)</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>
-                      select "t_labels"."orderNo", "t_labels"."partNo", "t_orderList"."partDesc", "t_labels"."logDate", Substr("t_labels"."logTime",1,2)  || ' -' || to_char(Substr("t_labels"."logTime",1,2):: Int + 1,'00') as ora, Count("t_labels".*) as nr, Max("t_labels"."logTime")
+                      select "t_labels"."orderNo", "t_labels"."partNo", "t_orderList"."partDesc", "t_labels"."logDate", Substr("t_labels"."logTime",1,2)  || ' -' || to_char(Substr("t_labels"."logTime",1,2):: Int + 1,'00') as ora, Count("t_labels".*) as nr
                       from "t_labels", "t_orderList"
                       where to_number("t_labels"."orderNo",'999999') = "t_orderList"."orderNo"
                       and "t_labels"."logDate" &gt;= to_date(?,'dd.MM.yyyy')

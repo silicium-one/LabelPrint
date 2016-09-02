@@ -3191,8 +3191,8 @@ retry:
                         End If
                     End If
 
-                    Dim seconds = Date.Parse(.Rows(r).Item("max")).TimeOfDay.TotalSeconds
-                    .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") / seconds * 3600)
+                    Dim hours = Integer.Parse(.Rows(r).Item("ora").ToString().Substring(0, 2))
+                    .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") / hours)
                 Next
 
                 If tbLeitzahl.Text <> vbNullString Then
@@ -3204,7 +3204,6 @@ retry:
                     Next
                 End If
                 .AcceptChanges()
-                .Columns.Remove("max")
             End With
 
             dgvProd.DataSource = Ru_sb_tames1.t_productivity   'BindingSourceProductivity 
@@ -3252,8 +3251,6 @@ retry:
 
             With Ru_sb_tames1.t_productivity
                 For r = 0 To .Rows.Count - 1
-                    Dim seconds As Double = .Rows(r).Item("pcs_total") / .Rows(r).Item("productivity") * 3600 ' что бы обойтись без столбца max приходится идти на хитрости
-
                     If r = 0 Then
                         .Rows(r).Item("pcs_total") = .Rows(r).Item("nr")
                     Else
@@ -3264,7 +3261,8 @@ retry:
                         End If
                     End If
 
-                    .Rows(r).Item("productivity") = Int(.Rows(r).Item("pcs_total") / seconds * 3600)
+                    Dim hours = Integer.Parse(.Rows(r).Item("ora").ToString().Substring(0, 2))
+                    .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") / hours)
                 Next
             End With
         Catch ex As Exception

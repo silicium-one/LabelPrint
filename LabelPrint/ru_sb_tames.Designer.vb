@@ -6488,34 +6488,32 @@ Namespace ru_sb_tamesTableAdapters
             Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      select ""t_labels"".""orderNo"",  ""t_labels"".""partNo"", ""t_ord"& _ 
-                "erList"".""partDesc"", ""t_labels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)  || '"& _ 
-                " -' || to_char(Substr(""t_labels"".""logTime"",1,2):: Int + 1,'00') as ora, Count(""t"& _ 
-                "_labels"".*) as nr, Max(""t_labels"".""logTime"")"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      from ""t_labe"& _ 
-                "ls"", ""t_orderList"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      where to_number(""t_labels"".""orderNo"",'"& _ 
-                "999999') = ""t_orderList"".""orderNo"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      and ""t_labels"".""logDat"& _ 
-                "e"" >= to_date(?,'dd.MM.yyyy')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"and ""t_labels"".""logDate"" <= to_date(?,'dd.MM.yyyy"& _ 
-                "')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"and ""t_labels"".""BoxNo"" <> 0"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"and ""t_orderList"".""c1"" =?"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"group by ""t_labels""."& _ 
-                """orderNo"", ""t_labels"".""partNo"", ""t_orderList"".""partDesc"", ""t_labels"".""logDate"", "& _ 
-                "Substr(""t_labels"".""logTime"",1,2)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by ""t_labels"".""logDate"", Substr(""t_label"& _ 
-                "s"".""logTime"",1,2)"
+            Me._commandCollection(0).CommandText = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      select ""t_labels"".""orderNo"",  ""t_labels"".""partNo"", ""t_ord" & _
+                "erList"".""partDesc"", ""t_labels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)  || '" & _
+                " -' || to_char(Substr(""t_labels"".""logTime"",1,2):: Int + 1,'00') as ora, Count(""t" & _
+                "_labels"".*) as nr" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      from ""t_labels"", ""t_orderList""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       " & _
+                "               where to_number(""t_labels"".""orderNo"",'999999') = ""t_orderList"".""o" & _
+                "rderNo""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      and ""t_labels"".""logDate"" >= to_date(?,'dd.MM.yyyy" & _
+                "')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_labels"".""logDate"" <= to_date(?,'dd.MM.yyyy')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_labels"".""BoxNo"" " & _
+                "<> 0" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_orderList"".""c1"" =?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "group by ""t_labels"".""orderNo"", ""t_labels"".""part" & _
+                "No"", ""t_orderList"".""partDesc"", ""t_labels"".""logDate"", Substr(""t_labels"".""logTime""" & _
+                ",1,2)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "order by ""t_labels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("logDate", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "logDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("logDate1", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "logDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("line", Global.System.Data.Odbc.OdbcType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("logDate", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "logDate", Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("logDate1", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "logDate", Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("line", Global.System.Data.Odbc.OdbcType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), Nothing, Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      select ""t_labels"".""orderNo"", ""t_labels"".""partNo"", ""t_orde"& _ 
-                "rList"".""partDesc"", ""t_labels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)  || ' "& _ 
-                "-' || to_char(Substr(""t_labels"".""logTime"",1,2):: Int + 1,'00') as ora, Count(""t_"& _ 
-                "labels"".*) as nr, Max(""t_labels"".""logTime"")"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      from ""t_label"& _ 
-                "s"", ""t_orderList"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      where to_number(""t_labels"".""orderNo"",'9"& _ 
-                "99999') = ""t_orderList"".""orderNo"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                      and ""t_labels"".""logDate"& _ 
-                """ >= to_date(?,'dd.MM.yyyy')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"and ""t_labels"".""logDate"" <= to_date(?,'dd.MM.yyyy'"& _ 
-                ")"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"and ""t_labels"".""val3"" is null"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"and ""t_orderList"".""c1"" =?"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"group by ""t_labels"""& _ 
-                ".""orderNo"", ""t_labels"".""partNo"", ""t_orderList"".""partDesc"", ""t_labels"".""logDate"","& _ 
-                " Substr(""t_labels"".""logTime"",1,2)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"order by ""t_labels"".""logDate"", Substr(""t_labe"& _ 
-                "ls"".""logTime"",1,2)"
+            Me._commandCollection(1).CommandText = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      select ""t_labels"".""orderNo"", ""t_labels"".""partNo"", ""t_orde" & _
+                "rList"".""partDesc"", ""t_labels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)  || ' " & _
+                "-' || to_char(Substr(""t_labels"".""logTime"",1,2):: Int + 1,'00') as ora, Count(""t_" & _
+                "labels"".*) as nr" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      from ""t_labels"", ""t_orderList""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "        " & _
+                "              where to_number(""t_labels"".""orderNo"",'999999') = ""t_orderList"".""or" & _
+                "derNo""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      and ""t_labels"".""logDate"" >= to_date(?,'dd.MM.yyyy'" & _
+                ")" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_labels"".""logDate"" <= to_date(?,'dd.MM.yyyy')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_labels"".""val3"" is" & _
+                " null" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_orderList"".""c1"" =?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "group by ""t_labels"".""orderNo"", ""t_labels"".""par" & _
+                "tNo"", ""t_orderList"".""partDesc"", ""t_labels"".""logDate"", Substr(""t_labels"".""logTime" & _
+                """,1,2)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "order by ""t_labels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("logDate", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "logDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("logDate1", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "logDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
