@@ -515,10 +515,11 @@ where "logDate" = ?
               <DbSource ConnectionRef="ru_sb_tames (MySettings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>select "t_labels"."orderNo",  "t_labels"."partNo", "t_orderList"."partDesc", "t_labels"."logDate", Substr("t_labels"."logTime",1,2)  || ' -' || to_char(Substr("t_labels"."logTime",1,2):: Int + 1,'00') as ora, Count("t_labels".*) as nr
-from "t_labels", "t_orderList"
-where to_number("t_labels"."orderNo",'999999') = "t_orderList"."orderNo"
-and "t_labels"."logDate" &gt;= to_date(?,'dd.MM.yyyy')
+                    <CommandText>
+                      select "t_labels"."orderNo",  "t_labels"."partNo", "t_orderList"."partDesc", "t_labels"."logDate", Substr("t_labels"."logTime",1,2)  || ' -' || to_char(Substr("t_labels"."logTime",1,2):: Int + 1,'00') as ora, Count("t_labels".*) as nr, Max("t_labels"."logTime")
+                      from "t_labels", "t_orderList"
+                      where to_number("t_labels"."orderNo",'999999') = "t_orderList"."orderNo"
+                      and "t_labels"."logDate" &gt;= to_date(?,'dd.MM.yyyy')
 and "t_labels"."logDate" &lt;= to_date(?,'dd.MM.yyyy')
 and "t_labels"."BoxNo" &lt;&gt; 0
 and "t_orderList"."c1" =?
@@ -538,10 +539,11 @@ order by "t_labels"."logDate", Substr("t_labels"."logTime",1,2)</CommandText>
               <DbSource ConnectionRef="ru_sb_tames (MySettings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>select "t_labels"."orderNo", "t_labels"."partNo", "t_orderList"."partDesc", "t_labels"."logDate", Substr("t_labels"."logTime",1,2)  || ' -' || to_char(Substr("t_labels"."logTime",1,2):: Int + 1,'00') as ora, Count("t_labels".*) as nr
-from "t_labels", "t_orderList"
-where to_number("t_labels"."orderNo",'999999') = "t_orderList"."orderNo"
-and "t_labels"."logDate" &gt;= to_date(?,'dd.MM.yyyy')
+                    <CommandText>
+                      select "t_labels"."orderNo", "t_labels"."partNo", "t_orderList"."partDesc", "t_labels"."logDate", Substr("t_labels"."logTime",1,2)  || ' -' || to_char(Substr("t_labels"."logTime",1,2):: Int + 1,'00') as ora, Count("t_labels".*) as nr, Max("t_labels"."logTime")
+                      from "t_labels", "t_orderList"
+                      where to_number("t_labels"."orderNo",'999999') = "t_orderList"."orderNo"
+                      and "t_labels"."logDate" &gt;= to_date(?,'dd.MM.yyyy')
 and "t_labels"."logDate" &lt;= to_date(?,'dd.MM.yyyy')
 and "t_labels"."val3" is null
 and "t_orderList"."c1" =?
