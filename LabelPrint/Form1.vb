@@ -100,7 +100,7 @@ Public Class Form1
 
             'modify connection string
             Dim uConnStr As String = _objini.GetKeyValue("TPRULabelPrint", "connString")
-
+            uConnStr = "Driver={PostgreSQL Unicode};database=sb_tames;server=localhost;port=5433;sslmode=prefer;uid=postgres;pwd=qwerty;readonly=0;protocol=6.4;fakeoidindex=0;showoidcolumn=0;rowversioning=0;showsystemtables=0;fetch=100;socket=8192;unknownsizes=0;maxvarcharsize=254;maxlongvarcharsize=8190;debug=0;commlog=0;optimizer=1;ksqo=1;usedeclarefetch=0;textaslongvarchar=1;unknownsaslongvarchar=0;boolsaschar=1;parse=0;cancelasfreestmt=0;extrasystableprefixes=dd_;lfconversion=1;updatablecursors=0;disallowpremature=0;trueisminus1=0;bi=0;byteaaslongvarbinary=0;useserversideprepare=0;lowercaseidentifier=0"
             If uConnStr <> vbNullString Then
                 writelog("Changing ConnStr: " & My.Settings.Item("ru_sb_tames"))
                 My.Settings.Item("ru_sb_tames") = uConnStr
@@ -3179,6 +3179,7 @@ retry:
 
             With Ru_sb_tames1.t_productivity
                 .Columns.Add("pcs_total")
+                .Columns.Add("productivity")
                 For r = 0 To .Rows.Count - 1
                     If r = 0 Then
                         .Rows(r).Item("pcs_total") = .Rows(r).Item("nr")
@@ -3189,6 +3190,9 @@ retry:
                             .Rows(r).Item("pcs_total") = .Rows(r).Item("nr")
                         End If
                     End If
+
+                    Dim hours = Integer.Parse(.Rows(r).Item("ora").ToString().Substring(0, 2))
+                    .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") / hours)
                 Next
 
                 If tbLeitzahl.Text <> vbNullString Then
@@ -3214,6 +3218,7 @@ retry:
                 .Columns(4).HeaderText = "Hour"
                 .Columns(5).HeaderText = "Pcs"
                 .Columns(6).HeaderText = "Pcs Total"
+                .Columns(7).HeaderText = "Productivity"
                 .Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             End With
 
@@ -3255,6 +3260,9 @@ retry:
                             .Rows(r).Item("pcs_total") = .Rows(r).Item("nr")
                         End If
                     End If
+
+                    Dim hours = Integer.Parse(.Rows(r).Item("ora").ToString().Substring(0, 2))
+                    .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") / hours)
                 Next
             End With
         Catch ex As Exception
