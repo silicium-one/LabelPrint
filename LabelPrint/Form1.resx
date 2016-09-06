@@ -289,7 +289,7 @@
     <value>105, 0</value>
   </data>
   <data name="DataGridViewProductivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>855, 92</value>
+    <value>941, 92</value>
   </data>
   <data name="DataGridViewProductivity.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -338,36 +338,6 @@
   </data>
   <data name="&gt;&gt;Label30.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="ButtonRefresh.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="ButtonRefresh.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 12pt, style=Bold</value>
-  </data>
-  <data name="ButtonRefresh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>960, 0</value>
-  </data>
-  <data name="ButtonRefresh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 92</value>
-  </data>
-  <data name="ButtonRefresh.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ButtonRefresh.Text" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
-  <data name="&gt;&gt;ButtonRefresh.Name" xml:space="preserve">
-    <value>ButtonRefresh</value>
-  </data>
-  <data name="&gt;&gt;ButtonRefresh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonRefresh.Parent" xml:space="preserve">
-    <value>PanelProductivity</value>
-  </data>
-  <data name="&gt;&gt;ButtonRefresh.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="PanelProductivity.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -4196,6 +4166,27 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;GroupBox15.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="dtpEndOfWorkTimeFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 42</value>
+  </data>
+  <data name="dtpEndOfWorkTimeFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 20</value>
+  </data>
+  <data name="dtpEndOfWorkTimeFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;dtpEndOfWorkTimeFilter.Name" xml:space="preserve">
+    <value>dtpEndOfWorkTimeFilter</value>
+  </data>
+  <data name="&gt;&gt;dtpEndOfWorkTimeFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpEndOfWorkTimeFilter.Parent" xml:space="preserve">
+    <value>GroupBox16</value>
+  </data>
+  <data name="&gt;&gt;dtpEndOfWorkTimeFilter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tbLeitzahl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -4224,7 +4215,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>GroupBox16</value>
   </data>
   <data name="&gt;&gt;tbLeitzahl.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="GroupBox16.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -4252,6 +4243,27 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;GroupBox16.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="dtpBeginOfWorkTimeFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="dtpBeginOfWorkTimeFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 20</value>
+  </data>
+  <data name="dtpBeginOfWorkTimeFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;dtpBeginOfWorkTimeFilter.Name" xml:space="preserve">
+    <value>dtpBeginOfWorkTimeFilter</value>
+  </data>
+  <data name="&gt;&gt;dtpBeginOfWorkTimeFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpBeginOfWorkTimeFilter.Parent" xml:space="preserve">
+    <value>GroupBox14</value>
+  </data>
+  <data name="&gt;&gt;dtpBeginOfWorkTimeFilter.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tbProdLine.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4281,7 +4293,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>GroupBox14</value>
   </data>
   <data name="&gt;&gt;tbProdLine.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="GroupBox14.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -4384,6 +4396,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label31.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label31.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 16</value>
