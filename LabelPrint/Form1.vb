@@ -3002,127 +3002,6 @@ retry:
         End Try
     End Sub
 
-    Private Sub FillProductivityTable(data1 As String, data2 As String, line As String)
-        Try
-            BackgroundWorkerProductivity.RunWorkerAsync(New Object() {data1, data2, line})
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-
-    End Sub
-
-    Private Sub BackgroundWorkerProductivity_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundWorkerProductivity.DoWork
-        Try
-            Dim param = DirectCast(e.Argument, Object)
-
-            If InStr(param(2), "H") > 0 Then
-                T_productivityTableAdapter1.Fill(Ru_sb_tames1.t_productivity, param(0), param(1), param(2))
-            Else
-                T_productivityTableAdapter1.FillBy(Ru_sb_tames1.t_productivity, param(0), param(1), param(2))
-            End If
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-
-        End Try
-    End Sub
-
-    Private Sub BackgroundWorkerProductivity_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorkerProductivity.RunWorkerCompleted
-        Try
-            With Ru_sb_tames1.t_productivity
-
-                If .Rows.Count > 0 Then
-
-                    'clear datagrid 
-                    DataGridViewProductivity.Columns.Clear()
-
-                    'daca numarul de randuri este mai mare de 12 atunci lasa doar ultimele 12 inregistrari
-
-                    If .Rows.Count > 12 Then
-
-                        'sterge inregistrari din tabel si lasa doar ultimele 12
-                        For i = .Rows.Count - 13 To 0 Step -1
-                            .Rows.RemoveAt(i)
-                        Next
-
-                    End If
-
-                    'adauga coloana order
-
-                    DataGridViewProductivity.Columns.Add("C_Order", "Order")
-                    DataGridViewProductivity.Columns.Add("C_Partno", "Part")
-
-                    'trece prin fiecare rand si populeaza datagridul
-
-                    Dim dtc As New DataGridViewColumn
-
-                    For Each r As DataRow In .Rows
-
-                        dtc.Name = "C_" & r.Item("ora").ToString
-
-                        If DataGridViewProductivity.Columns.IndexOf(dtc) < 0 Then
-                            DataGridViewProductivity.Columns.Add("C_" & r.Item("ora"), r.Item("ora"))
-                        End If
-
-                        'add orders to firs column in dgv
-                        If DataGridViewProductivity.RowCount > 0 Then
-                            Dim exista = False
-
-                            For Each rr As DataGridViewRow In DataGridViewProductivity.Rows
-
-                                If rr.Cells(0).Value = r.Item("orderNo") Then               'r.item(0) = ordinul
-
-                                    rr.Cells(DataGridViewProductivity.Columns.Count - 1).Value = r.Item("nr")
-
-                                    exista = True
-
-                                End If
-
-                            Next
-
-                            If exista = False Then
-
-                                DataGridViewProductivity.Rows.Add(New String() {r.Item("orderNo"), r.Item("partNo")})
-                                DataGridViewProductivity.Rows(DataGridViewProductivity.Rows.Count - 1).Cells(DataGridViewProductivity.Columns.Count - 1).Value = r.Item("nr")
-
-                            End If
-
-                        Else
-                            DataGridViewProductivity.Rows.Add(New String() {r.Item("orderNo"), r.Item("partNo")})
-                            DataGridViewProductivity.Rows(DataGridViewProductivity.Rows.Count - 1).Cells(DataGridViewProductivity.Columns.Count - 1).Value = r.Item("nr")
-                        End If
-                    Next
-                End If
-            End With
-            With DataGridViewProductivity
-                If .Columns.Count > 2 Then
-                    .Columns(.Columns.Count - 1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                End If
-            End With
-            ButtonRefresh.Enabled = True
-            ButtonRefresh.BackColor = Color.Transparent
-        Catch ex As Exception
-            ButtonRefresh.Enabled = True
-            ButtonRefresh.BackColor = Color.Transparent
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
-
-    Private Sub ButtonRefresh_Click(sender As Object, e As EventArgs) Handles ButtonRefresh.Click
-        Try
-            ButtonRefresh.BackColor = Color.Salmon
-            ButtonRefresh.Enabled = False
-            Application.DoEvents()
-
-            Dim line As String = _objini.GetKeyValue("LineInfo", "LineName")
-            fillProductivityTable(Now.AddDays(-1).ToString("dd.MM.yyyy"), Now.ToString("dd.MM.yyyy"), line)
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-
-    End Sub
-
     Private Sub btnProdFind_Click(sender As Object, e As EventArgs) Handles btnProdFind.Click
         Try
             dgvProd.DataSource = Nothing
@@ -3135,7 +3014,9 @@ retry:
 
                 BackgroundWorkerProductivity1.RunWorkerAsync(New Object() {dtpProdStart.Value.ToString("dd.MM.yyyy"),
                                                                                   dtpProdEnd.Value.ToString("dd.MM.yyyy"),
-                                                                                  tbProdLine.Text})
+                                                                                  tbProdLine.Text,
+                                                                                  dtpBeginOfWorkTimeFilter.Value.ToString("HH:mm"),
+                                                                                  dtpEndOfWorkTimeFilter.Value.ToString("HH:mm")})
 
             Else
                 MsgBox("Invalid Line Name")
@@ -3155,9 +3036,9 @@ retry:
             Ru_sb_tames1.t_productivity.Columns.Clear()
 
             If InStr(param(2), "H") > 0 Then
-                T_productivityTableAdapter1.Fill(Ru_sb_tames1.t_productivity, param(0), param(1), param(2))
+                T_productivityTableAdapter1.Fill(Ru_sb_tames1.t_productivity, param(0), param(1), param(2), param(3), param(4))
             Else
-                T_productivityTableAdapter1.FillBy(Ru_sb_tames1.t_productivity, param(0), param(1), param(2))
+                T_productivityTableAdapter1.FillBy(Ru_sb_tames1.t_productivity, param(0), param(1), param(2), param(3), param(4))
             End If
 
         Catch ex As Exception
@@ -3269,4 +3150,6 @@ retry:
             MsgBox(ex.ToString)
         End Try
     End Sub
+
+
 End Class

@@ -6488,20 +6488,24 @@ Namespace ru_sb_tamesTableAdapters
             Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      select ""t_labels"".""orderNo"",  ""t_labels"".""partNo"", ""t_ord" & _
-                "erList"".""partDesc"", ""t_labels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)  || '" & _
-                " -' || to_char(Substr(""t_labels"".""logTime"",1,2):: Int + 1,'00') as ora, Count(""t" & _
-                "_labels"".*) as nr" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      from ""t_labels"", ""t_orderList""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       " & _
-                "               where to_number(""t_labels"".""orderNo"",'999999') = ""t_orderList"".""o" & _
-                "rderNo""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      and ""t_labels"".""logDate"" >= to_date(?,'dd.MM.yyyy" & _
-                "')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_labels"".""logDate"" <= to_date(?,'dd.MM.yyyy')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_labels"".""BoxNo"" " & _
-                "<> 0" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_orderList"".""c1"" =?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "group by ""t_labels"".""orderNo"", ""t_labels"".""part" & _
-                "No"", ""t_orderList"".""partDesc"", ""t_labels"".""logDate"", Substr(""t_labels"".""logTime""" & _
-                ",1,2)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "order by ""t_labels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)"
+            Me._commandCollection(0).CommandText = "select ""t_labels"".""orderNo"",  ""t_labels"".""partNo"", ""t_orderList"".""partDesc"", ""t_l" & _
+                "abels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)  || ' -' || to_char(Substr(""t" & _
+                "_labels"".""logTime"",1,2):: Int + 1,'00') as ora, Count(""t_labels"".*) as nr" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "     " & _
+                "                 from ""t_labels"", ""t_orderList""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "where to_number(""t_labels"".""o" & _
+                "rderNo"",'999999') = ""t_orderList"".""orderNo""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      and ""t_labels" & _
+                """.""logDate"" >= to_date(?,'dd.MM.yyyy')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_labels"".""logDate"" <= to_date(?,'d" & _
+                "d.MM.yyyy')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_labels"".""BoxNo"" <> 0" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_orderList"".""c1"" =?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and to_time" & _
+                "stamp(""t_labels"".""logTime"",'HH24:MI:SS') >= to_timestamp(?,'HH24:MI')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and to_ti" & _
+                "mestamp(""t_labels"".""logTime"",'HH24:MI:SS') <= to_timestamp(?,'HH24:MI')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "group b" & _
+                "y ""t_labels"".""orderNo"", ""t_labels"".""partNo"", ""t_orderList"".""partDesc"", ""t_labels" & _
+                """.""logDate"", Substr(""t_labels"".""logTime"",1,2)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "order by ""t_labels"".""logDate"", Su" & _
+                "bstr(""t_labels"".""logTime"",1,2)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("logDate", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "logDate", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("logDate1", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "logDate", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("line", Global.System.Data.Odbc.OdbcType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), Nothing, Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("timeFrom", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "logTime", Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("timeTo", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "logTime", Global.System.Data.DataRowVersion.Current, False, Nothing))
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      select ""t_labels"".""orderNo"", ""t_labels"".""partNo"", ""t_orde" & _
@@ -6511,20 +6515,24 @@ Namespace ru_sb_tamesTableAdapters
                 "              where to_number(""t_labels"".""orderNo"",'999999') = ""t_orderList"".""or" & _
                 "derNo""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      and ""t_labels"".""logDate"" >= to_date(?,'dd.MM.yyyy'" & _
                 ")" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_labels"".""logDate"" <= to_date(?,'dd.MM.yyyy')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_labels"".""val3"" is" & _
-                " null" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_orderList"".""c1"" =?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "group by ""t_labels"".""orderNo"", ""t_labels"".""par" & _
-                "tNo"", ""t_orderList"".""partDesc"", ""t_labels"".""logDate"", Substr(""t_labels"".""logTime" & _
-                """,1,2)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "order by ""t_labels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)"
+                " null" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and ""t_orderList"".""c1"" =?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and to_timestamp(""t_labels"".""logTime"",'HH24:MI" & _
+                ":SS') >= to_timestamp(?,'HH24:MI')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and to_timestamp(""t_labels"".""logTime"",'HH24:" & _
+                "MI:SS') <= to_timestamp(?,'HH24:MI')" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "group by ""t_labels"".""orderNo"", ""t_labels""." & _
+                """partNo"", ""t_orderList"".""partDesc"", ""t_labels"".""logDate"", Substr(""t_labels"".""log" & _
+                "Time"",1,2)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "order by ""t_labels"".""logDate"", Substr(""t_labels"".""logTime"",1,2)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("logDate", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "logDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("logDate1", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "logDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("line", Global.System.Data.Odbc.OdbcType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("timeFrom", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "logTime", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("timeTo", Global.System.Data.Odbc.OdbcType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "logTime", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As ru_sb_tames.t_productivityDataTable, ByVal logDate As String, ByVal logDate1 As String, ByVal line As String) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As ru_sb_tames.t_productivityDataTable, ByVal logDate As String, ByVal logDate1 As String, ByVal line As String, ByVal timeFrom As String, ByVal timeTo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (logDate Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("logDate")
@@ -6540,6 +6548,16 @@ Namespace ru_sb_tamesTableAdapters
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(line,String)
+            End If
+            If (timeFrom Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("timeFrom")
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(timeFrom,String)
+            End If
+            If (timeTo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("timeTo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(timeTo,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -6552,7 +6570,7 @@ Namespace ru_sb_tamesTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal logDate As String, ByVal logDate1 As String, ByVal line As String) As ru_sb_tames.t_productivityDataTable
+        Public Overloads Overridable Function GetData(ByVal logDate As String, ByVal logDate1 As String, ByVal line As String, ByVal timeFrom As String, ByVal timeTo As String) As ru_sb_tames.t_productivityDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (logDate Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("logDate")
@@ -6569,6 +6587,16 @@ Namespace ru_sb_tamesTableAdapters
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(line,String)
             End If
+            If (timeFrom Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("timeFrom")
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(timeFrom,String)
+            End If
+            If (timeTo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("timeTo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(timeTo,String)
+            End If
             Dim dataTable As ru_sb_tames.t_productivityDataTable = New ru_sb_tames.t_productivityDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -6578,7 +6606,7 @@ Namespace ru_sb_tamesTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBy(ByVal dataTable As ru_sb_tames.t_productivityDataTable, ByVal logDate As String, ByVal logDate1 As String, ByVal line As String) As Integer
+        Public Overloads Overridable Function FillBy(ByVal dataTable As ru_sb_tames.t_productivityDataTable, ByVal logDate As String, ByVal logDate1 As String, ByVal line As String, ByVal timeFrom As String, ByVal timeTo As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (logDate Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("logDate")
@@ -6594,6 +6622,16 @@ Namespace ru_sb_tamesTableAdapters
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(line,String)
+            End If
+            If (timeFrom Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("timeFrom")
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(timeFrom,String)
+            End If
+            If (timeTo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("timeTo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(timeTo,String)
             End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -6606,7 +6644,7 @@ Namespace ru_sb_tamesTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy(ByVal logDate As String, ByVal logDate1 As String, ByVal line As String) As ru_sb_tames.t_productivityDataTable
+        Public Overloads Overridable Function GetDataBy(ByVal logDate As String, ByVal logDate1 As String, ByVal line As String, ByVal timeFrom As String, ByVal timeTo As String) As ru_sb_tames.t_productivityDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (logDate Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("logDate")
@@ -6622,6 +6660,16 @@ Namespace ru_sb_tamesTableAdapters
                 Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(line,String)
+            End If
+            If (timeFrom Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("timeFrom")
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(timeFrom,String)
+            End If
+            If (timeTo Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("timeTo")
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(timeTo,String)
             End If
             Dim dataTable As ru_sb_tames.t_productivityDataTable = New ru_sb_tames.t_productivityDataTable()
             Me.Adapter.Fill(dataTable)

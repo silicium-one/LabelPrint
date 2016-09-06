@@ -42,7 +42,6 @@ Partial Class Form1
         Me.PanelProductivity = New System.Windows.Forms.Panel()
         Me.DataGridViewProductivity = New System.Windows.Forms.DataGridView()
         Me.Label30 = New System.Windows.Forms.Label()
-        Me.ButtonRefresh = New System.Windows.Forms.Button()
         Me.PanelScanMaster = New System.Windows.Forms.Panel()
         Me.LabelScanMaster = New System.Windows.Forms.Label()
         Me.ButtonCancelMaster = New System.Windows.Forms.Button()
@@ -230,8 +229,10 @@ Partial Class Form1
         Me.rbGroupByOrder = New System.Windows.Forms.RadioButton()
         Me.rbGroupByDate = New System.Windows.Forms.RadioButton()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
+        Me.dtpEndOfWorkTimeFilter = New System.Windows.Forms.DateTimePicker()
         Me.tbLeitzahl = New System.Windows.Forms.TextBox()
         Me.GroupBox14 = New System.Windows.Forms.GroupBox()
+        Me.dtpBeginOfWorkTimeFilter = New System.Windows.Forms.DateTimePicker()
         Me.tbProdLine = New System.Windows.Forms.TextBox()
         Me.GroupBox17 = New System.Windows.Forms.GroupBox()
         Me.Label32 = New System.Windows.Forms.Label()
@@ -268,7 +269,6 @@ Partial Class Form1
         Me.TableAdapterManager = New LabelPrint.ru_sb_tamesTableAdapters.TableAdapterManager()
         Me.BackgroundWorkerLoadCustLabel = New System.ComponentModel.BackgroundWorker()
         Me.T_productivityTableAdapter1 = New LabelPrint.ru_sb_tamesTableAdapters.t_productivityTableAdapter()
-        Me.BackgroundWorkerProductivity = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundWorkerProductivity1 = New System.ComponentModel.BackgroundWorker()
         Me.T_HLabelTableAdapter2 = New LabelPrint.ru_sb_tamesTableAdapters.t_HLabelTableAdapter()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -405,7 +405,6 @@ Partial Class Form1
         '
         Me.PanelProductivity.Controls.Add(Me.DataGridViewProductivity)
         Me.PanelProductivity.Controls.Add(Me.Label30)
-        Me.PanelProductivity.Controls.Add(Me.ButtonRefresh)
         resources.ApplyResources(Me.PanelProductivity, "PanelProductivity")
         Me.PanelProductivity.Name = "PanelProductivity"
         '
@@ -443,12 +442,6 @@ Partial Class Form1
         Me.Label30.BackColor = System.Drawing.Color.LightGray
         resources.ApplyResources(Me.Label30, "Label30")
         Me.Label30.Name = "Label30"
-        '
-        'ButtonRefresh
-        '
-        resources.ApplyResources(Me.ButtonRefresh, "ButtonRefresh")
-        Me.ButtonRefresh.Name = "ButtonRefresh"
-        Me.ButtonRefresh.UseVisualStyleBackColor = True
         '
         'PanelScanMaster
         '
@@ -1748,11 +1741,20 @@ Partial Class Form1
         '
         'GroupBox16
         '
+        Me.GroupBox16.Controls.Add(Me.dtpEndOfWorkTimeFilter)
         Me.GroupBox16.Controls.Add(Me.tbLeitzahl)
         resources.ApplyResources(Me.GroupBox16, "GroupBox16")
         Me.GroupBox16.ForeColor = System.Drawing.Color.Black
         Me.GroupBox16.Name = "GroupBox16"
         Me.GroupBox16.TabStop = False
+        '
+        'dtpEndOfWorkTimeFilter
+        '
+        Me.dtpEndOfWorkTimeFilter.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpEndOfWorkTimeFilter, "dtpEndOfWorkTimeFilter")
+        Me.dtpEndOfWorkTimeFilter.Name = "dtpEndOfWorkTimeFilter"
+        Me.dtpEndOfWorkTimeFilter.ShowUpDown = True
+        Me.dtpEndOfWorkTimeFilter.Value = New Date(2016, 9, 6, 23, 59, 0, 0)
         '
         'tbLeitzahl
         '
@@ -1761,11 +1763,20 @@ Partial Class Form1
         '
         'GroupBox14
         '
+        Me.GroupBox14.Controls.Add(Me.dtpBeginOfWorkTimeFilter)
         Me.GroupBox14.Controls.Add(Me.tbProdLine)
         resources.ApplyResources(Me.GroupBox14, "GroupBox14")
         Me.GroupBox14.ForeColor = System.Drawing.Color.Black
         Me.GroupBox14.Name = "GroupBox14"
         Me.GroupBox14.TabStop = False
+        '
+        'dtpBeginOfWorkTimeFilter
+        '
+        Me.dtpBeginOfWorkTimeFilter.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpBeginOfWorkTimeFilter, "dtpBeginOfWorkTimeFilter")
+        Me.dtpBeginOfWorkTimeFilter.Name = "dtpBeginOfWorkTimeFilter"
+        Me.dtpBeginOfWorkTimeFilter.ShowUpDown = True
+        Me.dtpBeginOfWorkTimeFilter.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
         '
         'tbProdLine
         '
@@ -1957,10 +1968,6 @@ Partial Class Form1
         'T_productivityTableAdapter1
         '
         Me.T_productivityTableAdapter1.ClearBeforeFill = True
-        '
-        'BackgroundWorkerProductivity
-        '
-        Me.BackgroundWorkerProductivity.WorkerSupportsCancellation = True
         '
         'BackgroundWorkerProductivity1
         '
@@ -2242,9 +2249,7 @@ Partial Class Form1
     Friend WithEvents PanelProductivity As System.Windows.Forms.Panel
     Friend WithEvents DataGridViewProductivity As System.Windows.Forms.DataGridView
     Friend WithEvents Label30 As System.Windows.Forms.Label
-    Friend WithEvents ButtonRefresh As System.Windows.Forms.Button
     Friend WithEvents T_productivityTableAdapter1 As LabelPrint.ru_sb_tamesTableAdapters.t_productivityTableAdapter
-    Friend WithEvents BackgroundWorkerProductivity As System.ComponentModel.BackgroundWorker
     Friend WithEvents TabPageProductivity As System.Windows.Forms.TabPage
     Friend WithEvents GroupBox13 As System.Windows.Forms.GroupBox
     Friend WithEvents dtpProdEnd As System.Windows.Forms.DateTimePicker
@@ -2294,4 +2299,6 @@ Partial Class Form1
     Friend WithEvents p_c3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents suppliercode As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents T_HLabelTableAdapter2 As LabelPrint.ru_sb_tamesTableAdapters.t_HLabelTableAdapter
+    Friend WithEvents dtpEndOfWorkTimeFilter As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpBeginOfWorkTimeFilter As System.Windows.Forms.DateTimePicker
 End Class
