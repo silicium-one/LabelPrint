@@ -229,10 +229,10 @@ Partial Class Form1
         Me.rbGroupByOrder = New System.Windows.Forms.RadioButton()
         Me.rbGroupByDate = New System.Windows.Forms.RadioButton()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
-        Me.dtpEndOfWorkTimeFilter = New System.Windows.Forms.DateTimePicker()
+        Me.dtpEndOfTimeFilter = New System.Windows.Forms.DateTimePicker()
         Me.tbLeitzahl = New System.Windows.Forms.TextBox()
         Me.GroupBox14 = New System.Windows.Forms.GroupBox()
-        Me.dtpBeginOfWorkTimeFilter = New System.Windows.Forms.DateTimePicker()
+        Me.dtpBeginOfTimeFilter = New System.Windows.Forms.DateTimePicker()
         Me.tbProdLine = New System.Windows.Forms.TextBox()
         Me.GroupBox17 = New System.Windows.Forms.GroupBox()
         Me.Label32 = New System.Windows.Forms.Label()
@@ -1741,7 +1741,7 @@ Partial Class Form1
         '
         'GroupBox16
         '
-        Me.GroupBox16.Controls.Add(Me.dtpEndOfWorkTimeFilter)
+        Me.GroupBox16.Controls.Add(Me.dtpEndOfTimeFilter)
         Me.GroupBox16.Controls.Add(Me.tbLeitzahl)
         resources.ApplyResources(Me.GroupBox16, "GroupBox16")
         Me.GroupBox16.ForeColor = System.Drawing.Color.Black
@@ -1750,11 +1750,11 @@ Partial Class Form1
         '
         'dtpEndOfWorkTimeFilter
         '
-        Me.dtpEndOfWorkTimeFilter.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        resources.ApplyResources(Me.dtpEndOfWorkTimeFilter, "dtpEndOfWorkTimeFilter")
-        Me.dtpEndOfWorkTimeFilter.Name = "dtpEndOfWorkTimeFilter"
-        Me.dtpEndOfWorkTimeFilter.ShowUpDown = True
-        Me.dtpEndOfWorkTimeFilter.Value = New Date(2016, 9, 6, 23, 59, 0, 0)
+        Me.dtpEndOfTimeFilter.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpEndOfTimeFilter, "dtpEndOfWorkTimeFilter")
+        Me.dtpEndOfTimeFilter.Name = "dtpEndOfWorkTimeFilter"
+        Me.dtpEndOfTimeFilter.ShowUpDown = True
+        Me.dtpEndOfTimeFilter.Value = New Date(2016, 9, 6, 23, 59, 0, 0)
         '
         'tbLeitzahl
         '
@@ -1763,7 +1763,7 @@ Partial Class Form1
         '
         'GroupBox14
         '
-        Me.GroupBox14.Controls.Add(Me.dtpBeginOfWorkTimeFilter)
+        Me.GroupBox14.Controls.Add(Me.dtpBeginOfTimeFilter)
         Me.GroupBox14.Controls.Add(Me.tbProdLine)
         resources.ApplyResources(Me.GroupBox14, "GroupBox14")
         Me.GroupBox14.ForeColor = System.Drawing.Color.Black
@@ -1772,11 +1772,11 @@ Partial Class Form1
         '
         'dtpBeginOfWorkTimeFilter
         '
-        Me.dtpBeginOfWorkTimeFilter.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        resources.ApplyResources(Me.dtpBeginOfWorkTimeFilter, "dtpBeginOfWorkTimeFilter")
-        Me.dtpBeginOfWorkTimeFilter.Name = "dtpBeginOfWorkTimeFilter"
-        Me.dtpBeginOfWorkTimeFilter.ShowUpDown = True
-        Me.dtpBeginOfWorkTimeFilter.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
+        Me.dtpBeginOfTimeFilter.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpBeginOfTimeFilter, "dtpBeginOfWorkTimeFilter")
+        Me.dtpBeginOfTimeFilter.Name = "dtpBeginOfWorkTimeFilter"
+        Me.dtpBeginOfTimeFilter.ShowUpDown = True
+        Me.dtpBeginOfTimeFilter.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
         '
         'tbProdLine
         '
@@ -2299,6 +2299,6 @@ Partial Class Form1
     Friend WithEvents p_c3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents suppliercode As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents T_HLabelTableAdapter2 As LabelPrint.ru_sb_tamesTableAdapters.t_HLabelTableAdapter
-    Friend WithEvents dtpEndOfWorkTimeFilter As System.Windows.Forms.DateTimePicker
-    Friend WithEvents dtpBeginOfWorkTimeFilter As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpEndOfTimeFilter As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpBeginOfTimeFilter As System.Windows.Forms.DateTimePicker
 End Class
