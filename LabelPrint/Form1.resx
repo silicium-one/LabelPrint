@@ -4823,9 +4823,6 @@ Subassy - Print Subassy BoxLabel</value>
   <metadata name="T_productivityTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1107, 91</value>
   </metadata>
-  <metadata name="BackgroundWorkerProductivity.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1286, 91</value>
-  </metadata>
   <metadata name="BackgroundWorkerProductivity1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 169</value>
   </metadata>
@@ -8214,12 +8211,6 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;T_productivityTableAdapter1.Type" xml:space="preserve">
     <value>LabelPrint.ru_sb_tamesTableAdapters.t_productivityTableAdapter, ru_sb_tames.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;BackgroundWorkerProductivity.Name" xml:space="preserve">
-    <value>BackgroundWorkerProductivity</value>
-  </data>
-  <data name="&gt;&gt;BackgroundWorkerProductivity.Type" xml:space="preserve">
-    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;BackgroundWorkerProductivity1.Name" xml:space="preserve">
     <value>BackgroundWorkerProductivity1</value>

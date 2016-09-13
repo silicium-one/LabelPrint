@@ -4,6 +4,7 @@ Imports LabelPrint.IniFile
 Imports System.IO.Ports
 Imports System.IO
 Imports System.Threading
+Imports LabelPrint.ru_sb_tamesTableAdapters
 
 
 Public Class Form1
@@ -37,6 +38,9 @@ Public Class Form1
     Public Keyspressed As String
 
     Public OrderPn As String
+
+    'время на работу за вычетом времени на запланированные перерывы, для каждого часа суток (до 7 утра обычно 0, потом начинает расти)
+    Private ReadOnly plannedWorkTimeInMinuts(0 To 23) As UInt32
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -3015,8 +3019,8 @@ retry:
                 BackgroundWorkerProductivity1.RunWorkerAsync(New Object() {dtpProdStart.Value.ToString("dd.MM.yyyy"),
                                                                                   dtpProdEnd.Value.ToString("dd.MM.yyyy"),
                                                                                   tbProdLine.Text,
-                                                                                  dtpBeginOfWorkTimeFilter.Value.ToString("HH:mm"),
-                                                                                  dtpEndOfWorkTimeFilter.Value.ToString("HH:mm")})
+                                                                                  dtpBeginOfTimeFilter.Value,
+                                                                                  dtpEndOfTimeFilter.Value})
 
             Else
                 MsgBox("Invalid Line Name")
@@ -3035,16 +3039,80 @@ retry:
 
             Ru_sb_tames1.t_productivity.Columns.Clear()
 
+            'param(3) - filterTimeFrom
+            'param(4) - filterTimeTo
+            'For i = 0 To breaks.Length - 1
+            '    If i < CType(param(3), Date).Hour Then
+            '        Continue For
+            '    ElseIf i = CType(param(3), Date).Hour And i = CType(param(4), Date).Hour Then
+            '        breaks(i) = sumOfBreaksInMinuts(param(2).ToString(), CType(param(3), Date).ToString("HH:mm"), CType(param(4), Date).ToString("HH:mm"))
+            '    ElseIf i = CType(param(3), Date).Hour And i <> CType(param(4), Date).Hour Then
+            '        breaks(i) = sumOfBreaksInMinuts(param(2).ToString(), CType(param(3), Date).ToString("HH:mm"), TimeSpan.FromHours(i + 1).ToString("hh\:mm"))
+            '    ElseIf i > CType(param(3), Date).Hour And i + 1 <= CType(param(4), Date).Hour Then ' можно просто было вынести в Else, но так некрасиво
+            '        breaks(i) = sumOfBreaksInMinuts(param(2).ToString(), TimeSpan.FromHours(i).ToString("hh\:mm"), TimeSpan.FromHours(i + 1).ToString("hh\:mm"))
+            '    ElseIf i = CType(param(4), Date).Hour Then
+            '        breaks(i) = sumOfBreaksInMinuts(param(2).ToString(), TimeSpan.FromHours(i).ToString("hh\:mm"), CType(param(4), Date).ToString("HH:mm"))
+            '    ElseIf i > CType(param(4), Date).Hour Then
+            '        Exit For
+            '    End If
+            'Next
+            For i = 0 To plannedWorkTimeInMinuts.Length - 1
+                If i < CType(param(4), Date).Hour Then
+                    plannedWorkTimeInMinuts(i) = (i + 1) * 60 - sumOfBreaksInMinuts(param(2).ToString(), "00:00", TimeSpan.FromHours(i + 1).ToString("hh\:mm"))
+                ElseIf i = CType(param(4), Date).Hour Then
+                    plannedWorkTimeInMinuts(i) = i * 60 + CType(param(4), Date).Minute - sumOfBreaksInMinuts(param(2).ToString(), "00:00", CType(param(4), Date).ToString("HH:mm"))
+                Else
+                    Exit For
+                End If
+            Next
+
             If InStr(param(2), "H") > 0 Then
-                T_productivityTableAdapter1.Fill(Ru_sb_tames1.t_productivity, param(0), param(1), param(2), param(3), param(4))
+                T_productivityTableAdapter1.Fill(Ru_sb_tames1.t_productivity, param(0), param(1), param(2), CType(param(3), Date).ToString("HH:mm"), CType(param(4), Date).ToString("HH:mm"))
             Else
-                T_productivityTableAdapter1.FillBy(Ru_sb_tames1.t_productivity, param(0), param(1), param(2), param(3), param(4))
+                T_productivityTableAdapter1.FillBy(Ru_sb_tames1.t_productivity, param(0), param(1), param(2), CType(param(3), Date).ToString("HH:mm"), CType(param(4), Date).ToString("HH:mm"))
             End If
 
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
+
+    Private Function sumOfBreaksInMinuts(lineID As String, timeFrom As String, timeTo As String) As UInt32
+        Dim odbcConnector As New Global.System.Data.Odbc.OdbcCommand()
+        odbcConnector.Connection = New Global.System.Data.Odbc.OdbcConnection(Global.LabelPrint.My.MySettings.Default.ru_sb_tames)
+        odbcConnector.CommandText = "SELECT sum(least(to_timestamp(""endBreakTime""::varchar,'HH24:MI:SS'),to_timestamp(" & _
+               "'" & timeTo & "', 'HH24:MI'))-greatest(to_timestamp(""beginBreakTime""::varchar,'HH24:MI:SS" & _
+               "'),to_timestamp('" & timeFrom & "', 'HH24:MI'))) FROM ""t_linesBreaks"" where to_timestamp(""e" & _
+               "ndBreakTime""::varchar,'HH24:MI:SS')>=to_timestamp('" & timeFrom & "', 'HH24:MI') and to_tim" & _
+               "estamp(""beginBreakTime""::varchar,'HH24:MI:SS')<=to_timestamp('" & timeTo & "', 'HH24:MI')" & _
+               " and ""lineID"" = '" & lineID & "';"
+        odbcConnector.CommandType = Global.System.Data.CommandType.Text
+
+        Dim previousConnectionState As Global.System.Data.ConnectionState = odbcConnector.Connection.State
+        If ((odbcConnector.Connection.State And Global.System.Data.ConnectionState.Open) _
+                    <> Global.System.Data.ConnectionState.Open) Then
+            odbcConnector.Connection.Open()
+        End If
+
+        Dim queryReturnValue As Object
+
+        Try
+            queryReturnValue = odbcConnector.ExecuteScalar
+        Finally
+            If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                odbcConnector.Connection.Close()
+            End If
+        End Try
+
+        If ((queryReturnValue Is Nothing) _
+                    OrElse (queryReturnValue.GetType Is GetType(Global.System.DBNull))) Then Return 0
+
+        Dim sumTimeOfBreaks As Date
+        If Not DateTime.TryParse(CType(queryReturnValue, String), sumTimeOfBreaks) Then Return 0
+
+        Return sumTimeOfBreaks.TimeOfDay.TotalMinutes
+
+    End Function
 
     Private Sub BackgroundWorkerProductivity1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorkerProductivity1.RunWorkerCompleted
         Try
@@ -3073,7 +3141,12 @@ retry:
                     End If
 
                     Dim hours = Integer.Parse(.Rows(r).Item("ora").ToString().Substring(0, 2))
-                    .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") / hours)
+                    Dim workedMinuts = plannedWorkTimeInMinuts(hours)
+                    If (workedMinuts > 0) Then
+                        .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") * 60 / workedMinuts)
+                    Else
+                        .Rows(r).Item("productivity") = 0
+                    End If
                 Next
 
                 If tbLeitzahl.Text <> vbNullString Then
@@ -3143,7 +3216,12 @@ retry:
                     End If
 
                     Dim hours = Integer.Parse(.Rows(r).Item("ora").ToString().Substring(0, 2))
-                    .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") / hours)
+                    Dim workedMinuts = plannedWorkTimeInMinuts(hours)
+                    If (workedMinuts > 0) Then
+                        .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") * 60 / workedMinuts)
+                    Else
+                        .Rows(r).Item("productivity") = 0
+                    End If
                 Next
             End With
         Catch ex As Exception
