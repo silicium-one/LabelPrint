@@ -42,9 +42,14 @@ Public Class Form1
     'время на работу за вычетом времени на запланированные перерывы, для каждого часа суток (до 7 утра обычно 0, потом начинает расти)
     Private ReadOnly plannedWorkTimeInMinuts(0 To 23) As UInt32
 
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Text += " " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
+#If VERSION_TYPE = "a" Then
+        Text += " a"
+#ElseIf VERSION_TYPE = "b" Then
+        Text += " b"
+#End If
+        'MessageBox.Show(System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString())
         Try
 
             Me.Enabled = False
@@ -59,16 +64,16 @@ Public Class Form1
                 AddHandler c.KeyDown, AddressOf Form1_KeyDown
             Next
 
-            writelog("Application Started")
+            Writelog("Application Started")
 
             'check the existance of LabelPrint.ini in current app path
             If Not File.Exists(_iniPath) Then
                 MessageBox.Show("LabelPrint.ini is missing!!!" & vbNewLine & "Program cannot start without this file", "File not found", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                writelog("LabelPrint.ini not found. Application Close")
+                Writelog("LabelPrint.ini not found. Application Close")
                 Me.Close()
             End If
 
-            loadSettings()
+            LoadSettings()
 
             'load order if it is opened
             _curentInfoIni.Load(_curentIniPath)
