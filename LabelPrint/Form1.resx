@@ -4166,25 +4166,25 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;GroupBox15.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="dtpEndOfWorkTimeFilter.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="dtpEndOfTimeFilter.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 42</value>
   </data>
-  <data name="dtpEndOfWorkTimeFilter.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="dtpEndOfTimeFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 20</value>
   </data>
-  <data name="dtpEndOfWorkTimeFilter.TabIndex" type="System.Int32, mscorlib">
+  <data name="dtpEndOfTimeFilter.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;dtpEndOfWorkTimeFilter.Name" xml:space="preserve">
-    <value>dtpEndOfWorkTimeFilter</value>
+  <data name="&gt;&gt;dtpEndOfTimeFilter.Name" xml:space="preserve">
+    <value>dtpEndOfTimeFilter</value>
   </data>
-  <data name="&gt;&gt;dtpEndOfWorkTimeFilter.Type" xml:space="preserve">
+  <data name="&gt;&gt;dtpEndOfTimeFilter.Type" xml:space="preserve">
     <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dtpEndOfWorkTimeFilter.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dtpEndOfTimeFilter.Parent" xml:space="preserve">
     <value>GroupBox16</value>
   </data>
-  <data name="&gt;&gt;dtpEndOfWorkTimeFilter.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;dtpEndOfTimeFilter.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="tbLeitzahl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -4244,25 +4244,25 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;GroupBox16.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="dtpBeginOfWorkTimeFilter.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="dtpBeginOfTimeFilter.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 42</value>
   </data>
-  <data name="dtpBeginOfWorkTimeFilter.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="dtpBeginOfTimeFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 20</value>
   </data>
-  <data name="dtpBeginOfWorkTimeFilter.TabIndex" type="System.Int32, mscorlib">
+  <data name="dtpBeginOfTimeFilter.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;dtpBeginOfWorkTimeFilter.Name" xml:space="preserve">
-    <value>dtpBeginOfWorkTimeFilter</value>
+  <data name="&gt;&gt;dtpBeginOfTimeFilter.Name" xml:space="preserve">
+    <value>dtpBeginOfTimeFilter</value>
   </data>
-  <data name="&gt;&gt;dtpBeginOfWorkTimeFilter.Type" xml:space="preserve">
+  <data name="&gt;&gt;dtpBeginOfTimeFilter.Type" xml:space="preserve">
     <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dtpBeginOfWorkTimeFilter.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dtpBeginOfTimeFilter.Parent" xml:space="preserve">
     <value>GroupBox14</value>
   </data>
-  <data name="&gt;&gt;dtpBeginOfWorkTimeFilter.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;dtpBeginOfTimeFilter.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="tbProdLine.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
