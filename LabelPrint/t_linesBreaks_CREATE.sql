@@ -4,7 +4,7 @@
 
 CREATE TABLE "t_linesBreaks"
 (
-  "ID" integer NOT NULL, -- Первичный ключ
+  "ID" serial NOT NULL, -- Первичный ключ
   "lineID" character varying, -- Идентификатор линии,...
   "beginBreakTime" time without time zone, -- начало перерыва
   "endBreakTime" time without time zone, -- конец перерыва
