@@ -239,6 +239,23 @@ Partial Class Form1
         Me.dtpProdEnd = New System.Windows.Forms.DateTimePicker()
         Me.dtpProdStart = New System.Windows.Forms.DateTimePicker()
         Me.Label31 = New System.Windows.Forms.Label()
+        Me.TabPageBreaks = New System.Windows.Forms.TabPage()
+        Me.gbNewBreak = New System.Windows.Forms.GroupBox()
+        Me.btnAddBreak = New System.Windows.Forms.Button()
+        Me.tbComment = New System.Windows.Forms.TextBox()
+        Me.labelComment = New System.Windows.Forms.Label()
+        Me.labelBreakTo = New System.Windows.Forms.Label()
+        Me.tbLineID = New System.Windows.Forms.TextBox()
+        Me.labelBreakFrom = New System.Windows.Forms.Label()
+        Me.labelLineID = New System.Windows.Forms.Label()
+        Me.dgvBreaks = New System.Windows.Forms.DataGridView()
+        Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LineIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BeginBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EndBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CommentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TlinesBreaksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Sb_tamesDataSet = New LabelPrint.sb_tamesDataSet()
         Me.TabPageSettings = New System.Windows.Forms.TabPage()
         Me.T_SettingsDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumnvarName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -271,6 +288,9 @@ Partial Class Form1
         Me.T_productivityTableAdapter1 = New LabelPrint.ru_sb_tamesTableAdapters.t_productivityTableAdapter()
         Me.BackgroundWorkerProductivity1 = New System.ComponentModel.BackgroundWorker()
         Me.T_HLabelTableAdapter2 = New LabelPrint.ru_sb_tamesTableAdapters.t_HLabelTableAdapter()
+        Me.T_linesBreaksTableAdapter = New LabelPrint.sb_tamesDataSetTableAdapters.t_linesBreaksTableAdapter()
+        Me.dtpEndBreak = New System.Windows.Forms.DateTimePicker()
+        Me.dtpBeginBreak = New System.Windows.Forms.DateTimePicker()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -317,6 +337,11 @@ Partial Class Form1
         Me.GroupBox16.SuspendLayout()
         Me.GroupBox14.SuspendLayout()
         Me.GroupBox17.SuspendLayout()
+        Me.TabPageBreaks.SuspendLayout()
+        Me.gbNewBreak.SuspendLayout()
+        CType(Me.dgvBreaks, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TlinesBreaksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Sb_tamesDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageSettings.SuspendLayout()
         CType(Me.T_SettingsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.T_SettingsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -708,6 +733,7 @@ Partial Class Form1
         Me.TabControl1.Controls.Add(Me.TabPageHLabel)
         Me.TabControl1.Controls.Add(Me.TabPageTraceability)
         Me.TabControl1.Controls.Add(Me.TabPageProductivity)
+        Me.TabControl1.Controls.Add(Me.TabPageBreaks)
         Me.TabControl1.Controls.Add(Me.TabPageSettings)
         resources.ApplyResources(Me.TabControl1, "TabControl1")
         Me.TabControl1.Name = "TabControl1"
@@ -1813,6 +1839,117 @@ Partial Class Form1
         resources.ApplyResources(Me.Label31, "Label31")
         Me.Label31.Name = "Label31"
         '
+        'TabPageBreaks
+        '
+        Me.TabPageBreaks.Controls.Add(Me.gbNewBreak)
+        Me.TabPageBreaks.Controls.Add(Me.dgvBreaks)
+        resources.ApplyResources(Me.TabPageBreaks, "TabPageBreaks")
+        Me.TabPageBreaks.Name = "TabPageBreaks"
+        Me.TabPageBreaks.UseVisualStyleBackColor = True
+        '
+        'gbNewBreak
+        '
+        Me.gbNewBreak.Controls.Add(Me.dtpBeginBreak)
+        Me.gbNewBreak.Controls.Add(Me.dtpEndBreak)
+        Me.gbNewBreak.Controls.Add(Me.btnAddBreak)
+        Me.gbNewBreak.Controls.Add(Me.tbComment)
+        Me.gbNewBreak.Controls.Add(Me.labelComment)
+        Me.gbNewBreak.Controls.Add(Me.labelBreakTo)
+        Me.gbNewBreak.Controls.Add(Me.tbLineID)
+        Me.gbNewBreak.Controls.Add(Me.labelBreakFrom)
+        Me.gbNewBreak.Controls.Add(Me.labelLineID)
+        resources.ApplyResources(Me.gbNewBreak, "gbNewBreak")
+        Me.gbNewBreak.ForeColor = System.Drawing.Color.Black
+        Me.gbNewBreak.Name = "gbNewBreak"
+        Me.gbNewBreak.TabStop = False
+        '
+        'btnAddBreak
+        '
+        resources.ApplyResources(Me.btnAddBreak, "btnAddBreak")
+        Me.btnAddBreak.Name = "btnAddBreak"
+        Me.btnAddBreak.UseVisualStyleBackColor = True
+        '
+        'tbComment
+        '
+        resources.ApplyResources(Me.tbComment, "tbComment")
+        Me.tbComment.Name = "tbComment"
+        '
+        'labelComment
+        '
+        resources.ApplyResources(Me.labelComment, "labelComment")
+        Me.labelComment.Name = "labelComment"
+        '
+        'labelBreakTo
+        '
+        resources.ApplyResources(Me.labelBreakTo, "labelBreakTo")
+        Me.labelBreakTo.Name = "labelBreakTo"
+        '
+        'tbLineID
+        '
+        resources.ApplyResources(Me.tbLineID, "tbLineID")
+        Me.tbLineID.Name = "tbLineID"
+        Me.ToolTip1.SetToolTip(Me.tbLineID, resources.GetString("tbLineID.ToolTip"))
+        '
+        'labelBreakFrom
+        '
+        resources.ApplyResources(Me.labelBreakFrom, "labelBreakFrom")
+        Me.labelBreakFrom.Name = "labelBreakFrom"
+        '
+        'labelLineID
+        '
+        resources.ApplyResources(Me.labelLineID, "labelLineID")
+        Me.labelLineID.Name = "labelLineID"
+        '
+        'dgvBreaks
+        '
+        Me.dgvBreaks.AllowUserToAddRows = False
+        resources.ApplyResources(Me.dgvBreaks, "dgvBreaks")
+        Me.dgvBreaks.AutoGenerateColumns = False
+        Me.dgvBreaks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvBreaks.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.LineIDDataGridViewTextBoxColumn, Me.BeginBreakTimeDataGridViewTextBoxColumn, Me.EndBreakTimeDataGridViewTextBoxColumn, Me.CommentDataGridViewTextBoxColumn})
+        Me.dgvBreaks.DataSource = Me.TlinesBreaksBindingSource
+        Me.dgvBreaks.Name = "dgvBreaks"
+        '
+        'IDDataGridViewTextBoxColumn
+        '
+        Me.IDDataGridViewTextBoxColumn.DataPropertyName = "ID"
+        resources.ApplyResources(Me.IDDataGridViewTextBoxColumn, "IDDataGridViewTextBoxColumn")
+        Me.IDDataGridViewTextBoxColumn.Name = "IDDataGridViewTextBoxColumn"
+        '
+        'LineIDDataGridViewTextBoxColumn
+        '
+        Me.LineIDDataGridViewTextBoxColumn.DataPropertyName = "lineID"
+        resources.ApplyResources(Me.LineIDDataGridViewTextBoxColumn, "LineIDDataGridViewTextBoxColumn")
+        Me.LineIDDataGridViewTextBoxColumn.Name = "LineIDDataGridViewTextBoxColumn"
+        '
+        'BeginBreakTimeDataGridViewTextBoxColumn
+        '
+        Me.BeginBreakTimeDataGridViewTextBoxColumn.DataPropertyName = "beginBreakTime"
+        resources.ApplyResources(Me.BeginBreakTimeDataGridViewTextBoxColumn, "BeginBreakTimeDataGridViewTextBoxColumn")
+        Me.BeginBreakTimeDataGridViewTextBoxColumn.Name = "BeginBreakTimeDataGridViewTextBoxColumn"
+        '
+        'EndBreakTimeDataGridViewTextBoxColumn
+        '
+        Me.EndBreakTimeDataGridViewTextBoxColumn.DataPropertyName = "endBreakTime"
+        resources.ApplyResources(Me.EndBreakTimeDataGridViewTextBoxColumn, "EndBreakTimeDataGridViewTextBoxColumn")
+        Me.EndBreakTimeDataGridViewTextBoxColumn.Name = "EndBreakTimeDataGridViewTextBoxColumn"
+        '
+        'CommentDataGridViewTextBoxColumn
+        '
+        Me.CommentDataGridViewTextBoxColumn.DataPropertyName = "comment"
+        resources.ApplyResources(Me.CommentDataGridViewTextBoxColumn, "CommentDataGridViewTextBoxColumn")
+        Me.CommentDataGridViewTextBoxColumn.Name = "CommentDataGridViewTextBoxColumn"
+        '
+        'TlinesBreaksBindingSource
+        '
+        Me.TlinesBreaksBindingSource.DataMember = "t_linesBreaks"
+        Me.TlinesBreaksBindingSource.DataSource = Me.Sb_tamesDataSet
+        '
+        'Sb_tamesDataSet
+        '
+        Me.Sb_tamesDataSet.DataSetName = "sb_tamesDataSet"
+        Me.Sb_tamesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'TabPageSettings
         '
         Me.TabPageSettings.Controls.Add(Me.T_SettingsDataGridView)
@@ -1976,6 +2113,26 @@ Partial Class Form1
         '
         Me.T_HLabelTableAdapter2.ClearBeforeFill = True
         '
+        'T_linesBreaksTableAdapter
+        '
+        Me.T_linesBreaksTableAdapter.ClearBeforeFill = True
+        '
+        'dtpEndBreak
+        '
+        Me.dtpEndBreak.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpEndBreak, "dtpEndBreak")
+        Me.dtpEndBreak.Name = "dtpEndBreak"
+        Me.dtpEndBreak.ShowUpDown = True
+        Me.dtpEndBreak.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
+        '
+        'dtpBeginBreak
+        '
+        Me.dtpBeginBreak.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpBeginBreak, "dtpBeginBreak")
+        Me.dtpBeginBreak.Name = "dtpBeginBreak"
+        Me.dtpBeginBreak.ShowUpDown = True
+        Me.dtpBeginBreak.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
+        '
         'Form1
         '
         resources.ApplyResources(Me, "$this")
@@ -2042,6 +2199,12 @@ Partial Class Form1
         Me.GroupBox14.PerformLayout()
         Me.GroupBox17.ResumeLayout(False)
         Me.GroupBox17.PerformLayout()
+        Me.TabPageBreaks.ResumeLayout(False)
+        Me.gbNewBreak.ResumeLayout(False)
+        Me.gbNewBreak.PerformLayout()
+        CType(Me.dgvBreaks, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TlinesBreaksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Sb_tamesDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageSettings.ResumeLayout(False)
         CType(Me.T_SettingsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.T_SettingsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2301,4 +2464,24 @@ Partial Class Form1
     Friend WithEvents T_HLabelTableAdapter2 As LabelPrint.ru_sb_tamesTableAdapters.t_HLabelTableAdapter
     Friend WithEvents dtpEndOfTimeFilter As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtpBeginOfTimeFilter As System.Windows.Forms.DateTimePicker
+    Friend WithEvents TabPageBreaks As System.Windows.Forms.TabPage
+    Friend WithEvents Sb_tamesDataSet As LabelPrint.sb_tamesDataSet
+    Friend WithEvents TlinesBreaksBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents T_linesBreaksTableAdapter As LabelPrint.sb_tamesDataSetTableAdapters.t_linesBreaksTableAdapter
+    Friend WithEvents dgvBreaks As System.Windows.Forms.DataGridView
+    Friend WithEvents gbNewBreak As System.Windows.Forms.GroupBox
+    Friend WithEvents btnAddBreak As System.Windows.Forms.Button
+    Friend WithEvents tbComment As System.Windows.Forms.TextBox
+    Friend WithEvents labelComment As System.Windows.Forms.Label
+    Friend WithEvents labelBreakTo As System.Windows.Forms.Label
+    Friend WithEvents tbLineID As System.Windows.Forms.TextBox
+    Friend WithEvents labelBreakFrom As System.Windows.Forms.Label
+    Friend WithEvents labelLineID As System.Windows.Forms.Label
+    Friend WithEvents IDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LineIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents BeginBreakTimeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents EndBreakTimeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CommentDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dtpBeginBreak As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpEndBreak As System.Windows.Forms.DateTimePicker
 End Class
