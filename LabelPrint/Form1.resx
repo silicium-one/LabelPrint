@@ -312,6 +312,9 @@
   <data name="Label30.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
+  <data name="Label30.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label30.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -372,6 +375,9 @@
   <data name="LabelScanMaster.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt, style=Bold</value>
   </data>
+  <data name="LabelScanMaster.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="LabelScanMaster.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -407,6 +413,9 @@
   </data>
   <data name="ButtonCancelMaster.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="ButtonCancelMaster.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="ButtonCancelMaster.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 114</value>
@@ -645,6 +654,9 @@
   <data name="ButtonPrintBoxLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15.75pt, style=Bold</value>
   </data>
+  <data name="ButtonPrintBoxLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="ButtonPrintBoxLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>843, 16</value>
   </data>
@@ -680,6 +692,9 @@
   </data>
   <data name="LabelLabelCount.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 72pt, style=Bold</value>
+  </data>
+  <data name="LabelLabelCount.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="LabelLabelCount.Location" type="System.Drawing.Point, System.Drawing">
     <value>1043, 16</value>
@@ -717,6 +732,9 @@
   <data name="ButtonCloseOrder.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15.75pt, style=Bold</value>
   </data>
+  <data name="ButtonCloseOrder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="ButtonCloseOrder.Location" type="System.Drawing.Point, System.Drawing">
     <value>203, 16</value>
   </data>
@@ -746,6 +764,9 @@
   </data>
   <data name="ButtonOpenOrder.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 15.75pt, style=Bold</value>
+  </data>
+  <data name="ButtonOpenOrder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="ButtonOpenOrder.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
@@ -804,6 +825,9 @@
   <data name="LabelStartOrder.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt, style=Bold</value>
   </data>
+  <data name="LabelStartOrder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="LabelStartOrder.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -839,6 +863,9 @@
   </data>
   <data name="ButtonCancelScanOrder.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="ButtonCancelScanOrder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="ButtonCancelScanOrder.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 114</value>
@@ -894,6 +921,9 @@
   <data name="LabelWarning.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt, style=Bold</value>
   </data>
+  <data name="LabelWarning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="LabelWarning.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -929,6 +959,9 @@
   </data>
   <data name="ButtonWarningCancel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="ButtonWarningCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="ButtonWarningCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 114</value>
@@ -984,6 +1017,9 @@
   <data name="LabelError.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14.25pt, style=Bold</value>
   </data>
+  <data name="LabelError.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="LabelError.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1019,6 +1055,9 @@
   </data>
   <data name="ButtonCloseError.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
+  </data>
+  <data name="ButtonCloseError.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="ButtonCloseError.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 114</value>
@@ -1197,6 +1236,9 @@
   <data name="&gt;&gt;T_orderListDataGridView.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btno_PrintBL.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btno_PrintBL.Location" type="System.Drawing.Point, System.Drawing">
     <value>304, 16</value>
   </data>
@@ -1223,6 +1265,9 @@
   </data>
   <data name="btno_delete.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
+  </data>
+  <data name="btno_delete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btno_delete.Location" type="System.Drawing.Point, System.Drawing">
     <value>695, 16</value>
@@ -1254,6 +1299,9 @@
   <data name="&gt;&gt;btno_delete.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="btno_query.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btno_query.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 16</value>
   </data>
@@ -1280,6 +1328,9 @@
   </data>
   <data name="cbo_stopped.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="cbo_stopped.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="cbo_stopped.Location" type="System.Drawing.Point, System.Drawing">
     <value>142, 25</value>
@@ -1308,6 +1359,9 @@
   <data name="cbo_started.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="cbo_started.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="cbo_started.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 25</value>
   </data>
@@ -1334,6 +1388,9 @@
   </data>
   <data name="cbo_created.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="cbo_created.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="cbo_created.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 25</value>
@@ -1439,6 +1496,9 @@
   </data>
   <data name="btno_addOrder.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btno_addOrder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btno_addOrder.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 379</value>
@@ -1590,6 +1650,9 @@
   <data name="Label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 166</value>
   </data>
@@ -1616,6 +1679,9 @@
   </data>
   <data name="Label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 321</value>
@@ -1644,6 +1710,9 @@
   <data name="Label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 270</value>
   </data>
@@ -1670,6 +1739,9 @@
   </data>
   <data name="Label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 218</value>
@@ -1727,6 +1799,9 @@
   </data>
   <data name="Label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 117</value>
@@ -1788,6 +1863,9 @@
   <data name="Label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 69</value>
   </data>
@@ -1814,6 +1892,9 @@
   </data>
   <data name="Label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 20</value>
@@ -2004,6 +2085,9 @@
   <data name="btnp_Delete.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
+  <data name="btnp_Delete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnp_Delete.Location" type="System.Drawing.Point, System.Drawing">
     <value>695, 16</value>
   </data>
@@ -2033,6 +2117,9 @@
   </data>
   <data name="btnp_query.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
+  </data>
+  <data name="btnp_query.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnp_query.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
@@ -2244,6 +2331,9 @@ EZE_GUT - Nissan White Label</value>
   </data>
   <data name="btn_AddPart.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btn_AddPart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btn_AddPart.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 475</value>
@@ -2537,6 +2627,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="Label28.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label28.Location" type="System.Drawing.Point, System.Drawing">
     <value>133, 245</value>
   </data>
@@ -2560,6 +2653,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;Label28.ZOrder" xml:space="preserve">
     <value>14</value>
+  </data>
+  <data name="Label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label13.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 228</value>
@@ -2585,6 +2681,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;Label13.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
+  <data name="Label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>133, 360</value>
   </data>
@@ -2608,6 +2707,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;Label17.ZOrder" xml:space="preserve">
     <value>16</value>
+  </data>
+  <data name="Label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 346</value>
@@ -2636,6 +2738,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="Label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 333</value>
   </data>
@@ -2663,6 +2768,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="Label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 290</value>
   </data>
@@ -2689,6 +2797,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label12.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 186</value>
@@ -2753,6 +2864,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="Label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label10.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 101</value>
   </data>
@@ -2779,6 +2893,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label11.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 143</value>
@@ -2807,6 +2924,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="Label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 58</value>
   </data>
@@ -2833,6 +2953,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 16</value>
@@ -3014,6 +3137,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="btnh_delete.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
+  <data name="btnh_delete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnh_delete.Location" type="System.Drawing.Point, System.Drawing">
     <value>701, 16</value>
   </data>
@@ -3043,6 +3169,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="btnh_query.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
+  </data>
+  <data name="btnh_query.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnh_query.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
@@ -3152,6 +3281,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="btnh_addHPN.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
   </data>
+  <data name="btnh_addHPN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnh_addHPN.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 351</value>
   </data>
@@ -3208,6 +3340,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label27.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label27.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 307</value>
@@ -3296,6 +3431,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="Label24.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label24.Location" type="System.Drawing.Point, System.Drawing">
     <value>129, 222</value>
   </data>
@@ -3352,6 +3490,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label25.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label25.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 222</value>
@@ -3410,6 +3551,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="Label23.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label23.Location" type="System.Drawing.Point, System.Drawing">
     <value>129, 180</value>
   </data>
@@ -3466,6 +3610,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label22.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label22.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 180</value>
@@ -3554,6 +3701,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="Label26.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label26.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 264</value>
   </data>
@@ -3580,6 +3730,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label21.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label21.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 138</value>
@@ -3637,6 +3790,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label20.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label20.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 96</value>
@@ -3728,6 +3884,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="Label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="Label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="Label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 54</value>
   </data>
@@ -3754,6 +3913,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label18.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 12</value>
@@ -3923,6 +4085,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;T_labelsDataGridView.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btn_FindBarcode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btn_FindBarcode.Location" type="System.Drawing.Point, System.Drawing">
     <value>270, 13</value>
   </data>
@@ -3973,6 +4138,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="Label29.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="Label29.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="Label29.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 16</value>
@@ -4114,6 +4282,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="rbGroupByDate.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
+  </data>
+  <data name="rbGroupByDate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="rbGroupByDate.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
@@ -4496,6 +4667,360 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;TabPageProductivity.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="dtpBeginBreak.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 85</value>
+  </data>
+  <data name="dtpBeginBreak.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 20</value>
+  </data>
+  <data name="dtpBeginBreak.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;dtpBeginBreak.Name" xml:space="preserve">
+    <value>dtpBeginBreak</value>
+  </data>
+  <data name="&gt;&gt;dtpBeginBreak.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpBeginBreak.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;dtpBeginBreak.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dtpEndBreak.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 124</value>
+  </data>
+  <data name="dtpEndBreak.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 20</value>
+  </data>
+  <data name="dtpEndBreak.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;dtpEndBreak.Name" xml:space="preserve">
+    <value>dtpEndBreak</value>
+  </data>
+  <data name="&gt;&gt;dtpEndBreak.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpEndBreak.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;dtpEndBreak.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnAddBreak.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="btnAddBreak.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnAddBreak.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 191</value>
+  </data>
+  <data name="btnAddBreak.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 29</value>
+  </data>
+  <data name="btnAddBreak.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnAddBreak.Text" xml:space="preserve">
+    <value>Add new break</value>
+  </data>
+  <data name="&gt;&gt;btnAddBreak.Name" xml:space="preserve">
+    <value>btnAddBreak</value>
+  </data>
+  <data name="&gt;&gt;btnAddBreak.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnAddBreak.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;btnAddBreak.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tbComment.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="tbComment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 163</value>
+  </data>
+  <data name="tbComment.MaxLength" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="tbComment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 22</value>
+  </data>
+  <data name="tbComment.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tbComment.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;tbComment.Name" xml:space="preserve">
+    <value>tbComment</value>
+  </data>
+  <data name="&gt;&gt;tbComment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbComment.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;tbComment.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelComment.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelComment.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelComment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 147</value>
+  </data>
+  <data name="labelComment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 13</value>
+  </data>
+  <data name="labelComment.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelComment.Text" xml:space="preserve">
+    <value>comment</value>
+  </data>
+  <data name="&gt;&gt;labelComment.Name" xml:space="preserve">
+    <value>labelComment</value>
+  </data>
+  <data name="&gt;&gt;labelComment.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelComment.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;labelComment.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="labelBreakTo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBreakTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelBreakTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 108</value>
+  </data>
+  <data name="labelBreakTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="labelBreakTo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelBreakTo.Text" xml:space="preserve">
+    <value>end break time</value>
+  </data>
+  <data name="&gt;&gt;labelBreakTo.Name" xml:space="preserve">
+    <value>labelBreakTo</value>
+  </data>
+  <data name="&gt;&gt;labelBreakTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBreakTo.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;labelBreakTo.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="tbLineID.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="tbLineID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 37</value>
+  </data>
+  <data name="tbLineID.MaxLength" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tbLineID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 22</value>
+  </data>
+  <data name="tbLineID.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tbLineID.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="tbLineID.ToolTip" xml:space="preserve">
+    <value>6 Numeric Characters</value>
+  </data>
+  <data name="&gt;&gt;tbLineID.Name" xml:space="preserve">
+    <value>tbLineID</value>
+  </data>
+  <data name="&gt;&gt;tbLineID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbLineID.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;tbLineID.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="labelBreakFrom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBreakFrom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelBreakFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 69</value>
+  </data>
+  <data name="labelBreakFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 13</value>
+  </data>
+  <data name="labelBreakFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelBreakFrom.Text" xml:space="preserve">
+    <value>begin break time</value>
+  </data>
+  <data name="&gt;&gt;labelBreakFrom.Name" xml:space="preserve">
+    <value>labelBreakFrom</value>
+  </data>
+  <data name="&gt;&gt;labelBreakFrom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBreakFrom.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;labelBreakFrom.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="labelLineID.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelLineID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelLineID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
+  </data>
+  <data name="labelLineID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
+  <data name="labelLineID.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelLineID.Text" xml:space="preserve">
+    <value>lineID</value>
+  </data>
+  <data name="&gt;&gt;labelLineID.Name" xml:space="preserve">
+    <value>labelLineID</value>
+  </data>
+  <data name="&gt;&gt;labelLineID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelLineID.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;labelLineID.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="gbNewBreak.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="gbNewBreak.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="gbNewBreak.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 513</value>
+  </data>
+  <data name="gbNewBreak.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="gbNewBreak.Text" xml:space="preserve">
+    <value>Add new planned break</value>
+  </data>
+  <data name="&gt;&gt;gbNewBreak.Name" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;gbNewBreak.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbNewBreak.Parent" xml:space="preserve">
+    <value>TabPageBreaks</value>
+  </data>
+  <data name="&gt;&gt;gbNewBreak.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dgvBreaks.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="IDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="IDDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LineIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>lineID</value>
+  </data>
+  <data name="BeginBreakTimeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>begin break time</value>
+  </data>
+  <data name="EndBreakTimeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>end break time</value>
+  </data>
+  <data name="CommentDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>comment</value>
+  </data>
+  <metadata name="TlinesBreaksBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>572, 169</value>
+  </metadata>
+  <metadata name="Sb_tamesDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>426, 169</value>
+  </metadata>
+  <data name="dgvBreaks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>248, 5</value>
+  </data>
+  <data name="dgvBreaks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>792, 505</value>
+  </data>
+  <data name="dgvBreaks.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dgvBreaks.Name" xml:space="preserve">
+    <value>dgvBreaks</value>
+  </data>
+  <data name="&gt;&gt;dgvBreaks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvBreaks.Parent" xml:space="preserve">
+    <value>TabPageBreaks</value>
+  </data>
+  <data name="&gt;&gt;dgvBreaks.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TabPageBreaks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TabPageBreaks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1044, 513</value>
+  </data>
+  <data name="TabPageBreaks.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="TabPageBreaks.Text" xml:space="preserve">
+    <value>Breaks</value>
+  </data>
+  <data name="&gt;&gt;TabPageBreaks.Name" xml:space="preserve">
+    <value>TabPageBreaks</value>
+  </data>
+  <data name="&gt;&gt;TabPageBreaks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TabPageBreaks.Parent" xml:space="preserve">
+    <value>TabControl1</value>
+  </data>
+  <data name="&gt;&gt;TabPageBreaks.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="DataGridViewTextBoxColumnvarName.HeaderText" xml:space="preserve">
     <value>Variable Name</value>
   </data>
@@ -4577,6 +5102,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;tbs_varName.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="ButtonSettingsDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="ButtonSettingsDelete.Location" type="System.Drawing.Point, System.Drawing">
     <value>336, 63</value>
   </data>
@@ -4604,6 +5132,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;ButtonSettingsDelete.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="ButtonSettingsAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="ButtonSettingsAdd.Location" type="System.Drawing.Point, System.Drawing">
     <value>112, 63</value>
   </data>
@@ -4627,6 +5158,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;ButtonSettingsAdd.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="ButtonSettingsUpdate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="ButtonSettingsUpdate.Location" type="System.Drawing.Point, System.Drawing">
     <value>224, 63</value>
@@ -4698,7 +5232,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabControl1</value>
   </data>
   <data name="&gt;&gt;TabPageSettings.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="TabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4828,6 +5362,9 @@ Subassy - Print Subassy BoxLabel</value>
   </metadata>
   <metadata name="T_HLabelTableAdapter2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>245, 169</value>
+  </metadata>
+  <metadata name="T_linesBreaksTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 208</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -8080,6 +8617,48 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;T_labelsBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;IDDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>IDDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;IDDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LineIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>LineIDDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;LineIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BeginBreakTimeDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>BeginBreakTimeDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;BeginBreakTimeDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EndBreakTimeDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>EndBreakTimeDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;EndBreakTimeDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CommentDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>CommentDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;CommentDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TlinesBreaksBindingSource.Name" xml:space="preserve">
+    <value>TlinesBreaksBindingSource</value>
+  </data>
+  <data name="&gt;&gt;TlinesBreaksBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesDataSet.Name" xml:space="preserve">
+    <value>Sb_tamesDataSet</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesDataSet.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesDataSet, sb_tamesDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;DataGridViewTextBoxColumnvarName.Name" xml:space="preserve">
     <value>DataGridViewTextBoxColumnvarName</value>
   </data>
@@ -8223,6 +8802,12 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;T_HLabelTableAdapter2.Type" xml:space="preserve">
     <value>LabelPrint.ru_sb_tamesTableAdapters.t_HLabelTableAdapter, ru_sb_tames.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;T_linesBreaksTableAdapter.Name" xml:space="preserve">
+    <value>T_linesBreaksTableAdapter</value>
+  </data>
+  <data name="&gt;&gt;T_linesBreaksTableAdapter.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesDataSetTableAdapters.t_linesBreaksTableAdapter, sb_tamesDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

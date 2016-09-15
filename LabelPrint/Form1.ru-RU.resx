@@ -3769,4 +3769,31 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAPAADwDwAA8A8AAPAPAAA=
 </value>
   </data>
+  <data name="TabPageBreaks.Text" xml:space="preserve">
+    <value>ПЕРЕРЫВЫ</value>
+  </data>
+  <data name="BeginBreakTimeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Начало перерыва</value>
+  </data>
+  <data name="btnAddBreak.Text" xml:space="preserve">
+    <value>Добавить новый перерыв</value>
+  </data>
+  <data name="CommentDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Комментарий</value>
+  </data>
+  <data name="EndBreakTimeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Конец перерыва</value>
+  </data>
+  <data name="gbNewBreak.Text" xml:space="preserve">
+    <value>Новый запланированный перерыв</value>
+  </data>
+  <data name="labelBreakFrom.Text" xml:space="preserve">
+    <value>Начало перерыва</value>
+  </data>
+  <data name="labelBreakTo.Text" xml:space="preserve">
+    <value>Конец перерыва</value>
+  </data>
+  <data name="labelComment.Text" xml:space="preserve">
+    <value>Комментарий</value>
+  </data>
 </root>
