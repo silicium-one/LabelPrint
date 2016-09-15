@@ -1748,11 +1748,11 @@ Partial Class Form1
         Me.GroupBox16.Name = "GroupBox16"
         Me.GroupBox16.TabStop = False
         '
-        'dtpEndOfWorkTimeFilter
+        'dtpEndOfTimeFilter
         '
         Me.dtpEndOfTimeFilter.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        resources.ApplyResources(Me.dtpEndOfTimeFilter, "dtpEndOfWorkTimeFilter")
-        Me.dtpEndOfTimeFilter.Name = "dtpEndOfWorkTimeFilter"
+        resources.ApplyResources(Me.dtpEndOfTimeFilter, "dtpEndOfTimeFilter")
+        Me.dtpEndOfTimeFilter.Name = "dtpEndOfTimeFilter"
         Me.dtpEndOfTimeFilter.ShowUpDown = True
         Me.dtpEndOfTimeFilter.Value = New Date(2016, 9, 6, 23, 59, 0, 0)
         '
@@ -1770,11 +1770,11 @@ Partial Class Form1
         Me.GroupBox14.Name = "GroupBox14"
         Me.GroupBox14.TabStop = False
         '
-        'dtpBeginOfWorkTimeFilter
+        'dtpBeginOfTimeFilter
         '
         Me.dtpBeginOfTimeFilter.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        resources.ApplyResources(Me.dtpBeginOfTimeFilter, "dtpBeginOfWorkTimeFilter")
-        Me.dtpBeginOfTimeFilter.Name = "dtpBeginOfWorkTimeFilter"
+        resources.ApplyResources(Me.dtpBeginOfTimeFilter, "dtpBeginOfTimeFilter")
+        Me.dtpBeginOfTimeFilter.Name = "dtpBeginOfTimeFilter"
         Me.dtpBeginOfTimeFilter.ShowUpDown = True
         Me.dtpBeginOfTimeFilter.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
         '
