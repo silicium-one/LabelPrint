@@ -241,6 +241,8 @@ Partial Class Form1
         Me.Label31 = New System.Windows.Forms.Label()
         Me.TabPageBreaks = New System.Windows.Forms.TabPage()
         Me.gbNewBreak = New System.Windows.Forms.GroupBox()
+        Me.dtpBeginBreak = New System.Windows.Forms.DateTimePicker()
+        Me.dtpEndBreak = New System.Windows.Forms.DateTimePicker()
         Me.btnAddBreak = New System.Windows.Forms.Button()
         Me.tbComment = New System.Windows.Forms.TextBox()
         Me.labelComment = New System.Windows.Forms.Label()
@@ -254,7 +256,7 @@ Partial Class Form1
         Me.BeginBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EndBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CommentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TlinesBreaksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.T_linesBreaksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Sb_tamesDataSet = New LabelPrint.sb_tamesDataSet()
         Me.TabPageSettings = New System.Windows.Forms.TabPage()
         Me.T_SettingsDataGridView = New System.Windows.Forms.DataGridView()
@@ -289,8 +291,6 @@ Partial Class Form1
         Me.BackgroundWorkerProductivity1 = New System.ComponentModel.BackgroundWorker()
         Me.T_HLabelTableAdapter2 = New LabelPrint.ru_sb_tamesTableAdapters.t_HLabelTableAdapter()
         Me.T_linesBreaksTableAdapter = New LabelPrint.sb_tamesDataSetTableAdapters.t_linesBreaksTableAdapter()
-        Me.dtpEndBreak = New System.Windows.Forms.DateTimePicker()
-        Me.dtpBeginBreak = New System.Windows.Forms.DateTimePicker()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -340,7 +340,7 @@ Partial Class Form1
         Me.TabPageBreaks.SuspendLayout()
         Me.gbNewBreak.SuspendLayout()
         CType(Me.dgvBreaks, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TlinesBreaksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.T_linesBreaksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Sb_tamesDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageSettings.SuspendLayout()
         CType(Me.T_SettingsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1863,6 +1863,22 @@ Partial Class Form1
         Me.gbNewBreak.Name = "gbNewBreak"
         Me.gbNewBreak.TabStop = False
         '
+        'dtpBeginBreak
+        '
+        Me.dtpBeginBreak.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpBeginBreak, "dtpBeginBreak")
+        Me.dtpBeginBreak.Name = "dtpBeginBreak"
+        Me.dtpBeginBreak.ShowUpDown = True
+        Me.dtpBeginBreak.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
+        '
+        'dtpEndBreak
+        '
+        Me.dtpEndBreak.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpEndBreak, "dtpEndBreak")
+        Me.dtpEndBreak.Name = "dtpEndBreak"
+        Me.dtpEndBreak.ShowUpDown = True
+        Me.dtpEndBreak.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
+        '
         'btnAddBreak
         '
         resources.ApplyResources(Me.btnAddBreak, "btnAddBreak")
@@ -1907,7 +1923,7 @@ Partial Class Form1
         Me.dgvBreaks.AutoGenerateColumns = False
         Me.dgvBreaks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBreaks.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.LineIDDataGridViewTextBoxColumn, Me.BeginBreakTimeDataGridViewTextBoxColumn, Me.EndBreakTimeDataGridViewTextBoxColumn, Me.CommentDataGridViewTextBoxColumn})
-        Me.dgvBreaks.DataSource = Me.TlinesBreaksBindingSource
+        Me.dgvBreaks.DataSource = Me.T_linesBreaksBindingSource
         Me.dgvBreaks.Name = "dgvBreaks"
         '
         'IDDataGridViewTextBoxColumn
@@ -1942,8 +1958,8 @@ Partial Class Form1
         '
         'TlinesBreaksBindingSource
         '
-        Me.TlinesBreaksBindingSource.DataMember = "t_linesBreaks"
-        Me.TlinesBreaksBindingSource.DataSource = Me.Sb_tamesDataSet
+        Me.T_linesBreaksBindingSource.DataMember = "t_linesBreaks"
+        Me.T_linesBreaksBindingSource.DataSource = Me.Sb_tamesDataSet
         '
         'Sb_tamesDataSet
         '
@@ -2117,22 +2133,6 @@ Partial Class Form1
         '
         Me.T_linesBreaksTableAdapter.ClearBeforeFill = True
         '
-        'dtpEndBreak
-        '
-        Me.dtpEndBreak.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        resources.ApplyResources(Me.dtpEndBreak, "dtpEndBreak")
-        Me.dtpEndBreak.Name = "dtpEndBreak"
-        Me.dtpEndBreak.ShowUpDown = True
-        Me.dtpEndBreak.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
-        '
-        'dtpBeginBreak
-        '
-        Me.dtpBeginBreak.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        resources.ApplyResources(Me.dtpBeginBreak, "dtpBeginBreak")
-        Me.dtpBeginBreak.Name = "dtpBeginBreak"
-        Me.dtpBeginBreak.ShowUpDown = True
-        Me.dtpBeginBreak.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
-        '
         'Form1
         '
         resources.ApplyResources(Me, "$this")
@@ -2203,7 +2203,7 @@ Partial Class Form1
         Me.gbNewBreak.ResumeLayout(False)
         Me.gbNewBreak.PerformLayout()
         CType(Me.dgvBreaks, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TlinesBreaksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.T_linesBreaksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Sb_tamesDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageSettings.ResumeLayout(False)
         CType(Me.T_SettingsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2466,7 +2466,7 @@ Partial Class Form1
     Friend WithEvents dtpBeginOfTimeFilter As System.Windows.Forms.DateTimePicker
     Friend WithEvents TabPageBreaks As System.Windows.Forms.TabPage
     Friend WithEvents Sb_tamesDataSet As LabelPrint.sb_tamesDataSet
-    Friend WithEvents TlinesBreaksBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents T_linesBreaksBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents T_linesBreaksTableAdapter As LabelPrint.sb_tamesDataSetTableAdapters.t_linesBreaksTableAdapter
     Friend WithEvents dgvBreaks As System.Windows.Forms.DataGridView
     Friend WithEvents gbNewBreak As System.Windows.Forms.GroupBox

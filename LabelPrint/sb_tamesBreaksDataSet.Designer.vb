@@ -957,331 +957,331 @@ Namespace sb_tamesDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ""ID"", ""lineID"", ""beginBreakTime"", ""endBreakTime"", ""comment"" FROM ""public""." & _
+            Me._commandCollection(0).CommandText = "SELECT ""ID"", ""lineID"", ""beginBreakTime"", ""endBreakTime"", ""comment"" FROM ""public""."& _ 
                 """t_linesBreaks"""
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "DELETE FROM ""sb_tames"".""public"".""t_linesBreaks"" WHERE ((""ID"" = ?) AND ((? = 1 AND" & _
-                " ""lineID"" IS NULL) OR (""lineID"" = ?)) AND ((? = 1 AND ""beginBreakTime"" IS NULL) " & _
-                "OR (""beginBreakTime"" = ?)) AND ((? = 1 AND ""endBreakTime"" IS NULL) OR (""endBreak" & _
+            Me._commandCollection(1).CommandText = "DELETE FROM ""sb_tames"".""public"".""t_linesBreaks"" WHERE ((""ID"" = ?) AND ((? = 1 AND"& _ 
+                " ""lineID"" IS NULL) OR (""lineID"" = ?)) AND ((? = 1 AND ""beginBreakTime"" IS NULL) "& _ 
+                "OR (""beginBreakTime"" = ?)) AND ((? = 1 AND ""endBreakTime"" IS NULL) OR (""endBreak"& _ 
                 "Time"" = ?)))"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ID", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginBreakTime", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endBreakTime", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginBreakTime1", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginBreakTime", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("ID1", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ID", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endBreakTime1", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endBreakTime", Global.System.Data.DataRowVersion.Original, False, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginBreakTime", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endBreakTime", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginBreakTime1", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginBreakTime", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("ID1", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endBreakTime1", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endBreakTime", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "INSERT INTO ""sb_tames"".""public"".""t_linesBreaks"" (""lineID"", ""beginBreakTime"", ""end" & _
+            Me._commandCollection(2).CommandText = "INSERT INTO ""sb_tames"".""public"".""t_linesBreaks"" (""lineID"", ""beginBreakTime"", ""end"& _ 
                 "BreakTime"", ""comment"") VALUES (?, ?, ?, ?)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginBreakTime", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endBreakTime", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("comment", Global.System.Data.Odbc.OdbcType.NVarChar, 8190, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "comment", Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginBreakTime", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endBreakTime", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("comment", Global.System.Data.Odbc.OdbcType.NVarChar, 8190, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "comment", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(3) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "UPDATE ""sb_tames"".""public"".""t_linesBreaks"" SET ""lineID"" = ?, ""beginBreakTime"" = ?" & _
+            Me._commandCollection(3).CommandText = "UPDATE ""sb_tames"".""public"".""t_linesBreaks"" SET ""lineID"" = ?, ""beginBreakTime"" = ?"& _ 
                 ", ""endBreakTime"" = ?, ""comment"" = ? WHERE (""ID"" = ?)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginBreakTime", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endBreakTime", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("comment", Global.System.Data.Odbc.OdbcType.NVarChar, 8190, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "comment", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ID", Global.System.Data.DataRowVersion.Original, False, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginBreakTime", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endBreakTime", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endBreakTime", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("comment", Global.System.Data.Odbc.OdbcType.NVarChar, 8190, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "comment", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, True)> _
-        Public Overridable Overloads Function Fill(ByVal dataTable As sb_tamesDataSet.t_linesBreaksDataTable) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As sb_tamesDataSet.t_linesBreaksDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = True) Then
-                dataTable.Clear()
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
             End If
             Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
             Return returnValue
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], True)> _
-        Public Overridable Overloads Function GetData() As sb_tamesDataSet.t_linesBreaksDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As sb_tamesDataSet.t_linesBreaksDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Dim dataTable As sb_tamesDataSet.t_linesBreaksDataTable = New sb_tamesDataSet.t_linesBreaksDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")> _
-        Public Overridable Overloads Function Update(ByVal dataTable As sb_tamesDataSet.t_linesBreaksDataTable) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As sb_tamesDataSet.t_linesBreaksDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")> _
-        Public Overridable Overloads Function Update(ByVal dataSet As sb_tamesDataSet) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As sb_tamesDataSet) As Integer
             Return Me.Adapter.Update(dataSet, "t_linesBreaks")
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")> _
-        Public Overridable Overloads Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
             Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")> _
-        Public Overridable Overloads Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
             Return Me.Adapter.Update(dataRows)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, True)> _
-        Public Overridable Overloads Function Delete(ByVal Original_ID As Integer, ByVal Original_lineID As String, ByVal Original_beginBreakTime As Date, ByVal Original_endBreakTime As Date) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID, Integer)
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_lineID As String, ByVal Original_beginBreakTime As Date, ByVal Original_endBreakTime As Date) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             If (Original_lineID Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_lineID")
             Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0, Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_lineID, String)
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_lineID,String)
             End If
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0, Object)
-            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_beginBreakTime, Date)
-            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0, Object)
-            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_endBreakTime, Date)
+            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_beginBreakTime,Date)
+            Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_endBreakTime,Date)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open()
+                Me.Adapter.DeleteCommand.Connection.Open
             End If
-            Try
+            Try 
                 Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
                 Return returnValue
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close()
+                    Me.Adapter.DeleteCommand.Connection.Close
                 End If
             End Try
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, True)> _
-        Public Overridable Overloads Function Insert(ByVal lineID As String, ByVal beginBreakTime As Date, ByVal endBreakTime As Date, ByVal comment As String) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal lineID As String, ByVal beginBreakTime As Date, ByVal endBreakTime As Date, ByVal comment As String) As Integer
             If (lineID Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("lineID")
             Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(lineID, String)
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(lineID,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(1).Value = CType(beginBreakTime, Date)
-            Me.Adapter.InsertCommand.Parameters(2).Value = CType(endBreakTime, Date)
+            Me.Adapter.InsertCommand.Parameters(1).Value = CType(beginBreakTime,Date)
+            Me.Adapter.InsertCommand.Parameters(2).Value = CType(endBreakTime,Date)
             If (comment Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("comment")
             Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(comment, String)
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(comment,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open()
+                Me.Adapter.InsertCommand.Connection.Open
             End If
-            Try
+            Try 
                 Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
                 Return returnValue
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close()
+                    Me.Adapter.InsertCommand.Connection.Close
                 End If
             End Try
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, True)> _
-        Public Overridable Overloads Function Update(ByVal lineID As String, ByVal beginBreakTime As Date, ByVal endBreakTime As Date, ByVal comment As String, ByVal Original_ID As Integer, ByVal Original_lineID As String, ByVal Original_beginBreakTime As Date, ByVal Original_endBreakTime As Date) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal lineID As String, ByVal beginBreakTime As Date, ByVal endBreakTime As Date, ByVal comment As String, ByVal Original_ID As Integer, ByVal Original_lineID As String, ByVal Original_beginBreakTime As Date, ByVal Original_endBreakTime As Date) As Integer
             If (lineID Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("lineID")
             Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(lineID, String)
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(lineID,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(1).Value = CType(beginBreakTime, Date)
-            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(endBreakTime, Date)
+            Me.Adapter.UpdateCommand.Parameters(1).Value = CType(beginBreakTime,Date)
+            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(endBreakTime,Date)
             If (comment Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("comment")
             Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(comment, String)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(comment,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_ID, Integer)
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_ID,Integer)
             If (Original_lineID Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_lineID")
             Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0, Object)
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_lineID, String)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_lineID,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0, Object)
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_beginBreakTime, Date)
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0, Object)
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_endBreakTime, Date)
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_beginBreakTime,Date)
+            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_endBreakTime,Date)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open()
+                Me.Adapter.UpdateCommand.Connection.Open
             End If
-            Try
+            Try 
                 Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
                 Return returnValue
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close()
+                    Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, False)> _
-        Public Overridable Overloads Function DeleteQuery(ByVal ID As Integer, ByVal beginBreakTime As Global.System.Nullable(Of Date), ByVal lineID As String, ByVal endBreakTime As Global.System.Nullable(Of Date), ByVal beginBreakTime1 As Global.System.Nullable(Of Date), ByVal ID1 As Integer, ByVal endBreakTime1 As Global.System.Nullable(Of Date)) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteQuery(ByVal ID As Integer, ByVal beginBreakTime As Global.System.Nullable(Of Date), ByVal lineID As String, ByVal endBreakTime As Global.System.Nullable(Of Date), ByVal beginBreakTime1 As Global.System.Nullable(Of Date), ByVal ID1 As Integer, ByVal endBreakTime1 As Global.System.Nullable(Of Date)) As Integer
             Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
-            command.Parameters(0).Value = CType(ID, Integer)
-            If (beginBreakTime.HasValue = True) Then
-                command.Parameters(1).Value = CType(beginBreakTime.Value, Date)
+            command.Parameters(0).Value = CType(ID,Integer)
+            If (beginBreakTime.HasValue = true) Then
+                command.Parameters(1).Value = CType(beginBreakTime.Value,Date)
             Else
                 command.Parameters(1).Value = Global.System.DBNull.Value
             End If
             If (lineID Is Nothing) Then
                 command.Parameters(2).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(2).Value = CType(lineID, String)
+                command.Parameters(2).Value = CType(lineID,String)
             End If
-            If (endBreakTime.HasValue = True) Then
-                command.Parameters(3).Value = CType(endBreakTime.Value, Date)
+            If (endBreakTime.HasValue = true) Then
+                command.Parameters(3).Value = CType(endBreakTime.Value,Date)
             Else
                 command.Parameters(3).Value = Global.System.DBNull.Value
             End If
-            If (beginBreakTime1.HasValue = True) Then
-                command.Parameters(4).Value = CType(beginBreakTime1.Value, Date)
+            If (beginBreakTime1.HasValue = true) Then
+                command.Parameters(4).Value = CType(beginBreakTime1.Value,Date)
             Else
                 command.Parameters(4).Value = Global.System.DBNull.Value
             End If
-            command.Parameters(5).Value = CType(ID1, Integer)
-            If (endBreakTime1.HasValue = True) Then
-                command.Parameters(6).Value = CType(endBreakTime1.Value, Date)
+            command.Parameters(5).Value = CType(ID1,Integer)
+            If (endBreakTime1.HasValue = true) Then
+                command.Parameters(6).Value = CType(endBreakTime1.Value,Date)
             Else
                 command.Parameters(6).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open()
+                command.Connection.Open
             End If
             Dim returnValue As Integer
-            Try
+            Try 
                 returnValue = command.ExecuteNonQuery
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close()
+                    command.Connection.Close
                 End If
             End Try
             Return returnValue
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, False)> _
-        Public Overridable Overloads Function InsertQuery(ByVal lineID As String, ByVal beginBreakTime As Global.System.Nullable(Of Date), ByVal endBreakTime As Global.System.Nullable(Of Date), ByVal comment As String) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
+        Public Overloads Overridable Function InsertQuery(ByVal lineID As String, ByVal beginBreakTime As Global.System.Nullable(Of Date), ByVal endBreakTime As Global.System.Nullable(Of Date), ByVal comment As String) As Integer
             Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(2)
             If (lineID Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(0).Value = CType(lineID, String)
+                command.Parameters(0).Value = CType(lineID,String)
             End If
-            If (beginBreakTime.HasValue = True) Then
-                command.Parameters(1).Value = CType(beginBreakTime.Value, Date)
+            If (beginBreakTime.HasValue = true) Then
+                command.Parameters(1).Value = CType(beginBreakTime.Value,Date)
             Else
                 command.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (endBreakTime.HasValue = True) Then
-                command.Parameters(2).Value = CType(endBreakTime.Value, Date)
+            If (endBreakTime.HasValue = true) Then
+                command.Parameters(2).Value = CType(endBreakTime.Value,Date)
             Else
                 command.Parameters(2).Value = Global.System.DBNull.Value
             End If
             If (comment Is Nothing) Then
                 command.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(3).Value = CType(comment, String)
+                command.Parameters(3).Value = CType(comment,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open()
+                command.Connection.Open
             End If
             Dim returnValue As Integer
-            Try
+            Try 
                 returnValue = command.ExecuteNonQuery
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close()
+                    command.Connection.Close
                 End If
             End Try
             Return returnValue
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, False)> _
-        Public Overridable Overloads Function UpdateQuery(ByVal lineID As String, ByVal beginBreakTime As Global.System.Nullable(Of Date), ByVal endBreakTime As Global.System.Nullable(Of Date), ByVal comment As String, ByVal Original_ID As Integer) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function UpdateQuery(ByVal lineID As String, ByVal beginBreakTime As Global.System.Nullable(Of Date), ByVal endBreakTime As Global.System.Nullable(Of Date), ByVal comment As String, ByVal Original_ID As Integer) As Integer
             Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(3)
             If (lineID Is Nothing) Then
                 command.Parameters(0).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(0).Value = CType(lineID, String)
+                command.Parameters(0).Value = CType(lineID,String)
             End If
-            If (beginBreakTime.HasValue = True) Then
-                command.Parameters(1).Value = CType(beginBreakTime.Value, Date)
+            If (beginBreakTime.HasValue = true) Then
+                command.Parameters(1).Value = CType(beginBreakTime.Value,Date)
             Else
                 command.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (endBreakTime.HasValue = True) Then
-                command.Parameters(2).Value = CType(endBreakTime.Value, Date)
+            If (endBreakTime.HasValue = true) Then
+                command.Parameters(2).Value = CType(endBreakTime.Value,Date)
             Else
                 command.Parameters(2).Value = Global.System.DBNull.Value
             End If
             If (comment Is Nothing) Then
                 command.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(3).Value = CType(comment, String)
+                command.Parameters(3).Value = CType(comment,String)
             End If
-            command.Parameters(4).Value = CType(Original_ID, Integer)
+            command.Parameters(4).Value = CType(Original_ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open()
+                command.Connection.Open
             End If
             Dim returnValue As Integer
-            Try
+            Try 
                 returnValue = command.ExecuteNonQuery
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close()
+                    command.Connection.Close
                 End If
             End Try
             Return returnValue
