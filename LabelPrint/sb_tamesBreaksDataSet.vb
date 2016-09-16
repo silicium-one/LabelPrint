@@ -1,3 +1,3 @@
-﻿Partial Class sb_tamesDataSet
+﻿Partial Class sb_tamesBreaksDataSet
 End Class
 

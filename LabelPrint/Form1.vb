@@ -43,8 +43,10 @@ Public Class Form1
     Private ReadOnly plannedWorkTimeInMinuts(0 To 23) As UInt32
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
-        Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesDataSet.t_linesBreaks)
+        'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
+        Me.T_linesInterruptsTableAdapter.Fill(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
+        'TODO: данная строка кода позволяет загрузить данные в таблицу "sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
+        Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
         Try
             Text += " " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
 #If VERSION_TYPE = "a" Then
@@ -3253,6 +3255,47 @@ retry:
 
     Private Sub btnAddBreak_Click(sender As Object, e As EventArgs) Handles btnAddBreak.Click
         T_linesBreaksTableAdapter.InsertQuery(tbLineID.Text, dtpBeginBreak.Value, dtpEndBreak.Value, tbComment.Text)
-        Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesDataSet.t_linesBreaks)
+        Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
+    End Sub
+
+    Private Sub dgvInterrupts_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvInterrupts.UserDeletedRow
+        T_linesInterruptsTableAdapter.Update(CType(dgvInterrupts.DataSource, System.Windows.Forms.BindingSource).DataSource)
+    End Sub
+
+
+    Private Sub dgvInterrupts_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvInterrupts.CellEndEdit
+        Dim dgv = DirectCast(sender, DataGridView)
+        If dgv.Columns.Item(e.ColumnIndex).Name = "InterruptNoDataGridViewTextBoxColumn" Then
+            MessageBox.Show("This cell is readonly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
+
+        Dim row = dgv.Rows.Item(e.RowIndex)
+        T_linesInterruptsTableAdapter.UpdateQuery(Date.Parse(row.Cells("AccidentDateDataGridViewTextBoxColumn").Value.ToString()),
+                                                  row.Cells("GangDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("PartOfManufactureDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("EquipmentNameDataGridViewTextBoxColumn").Value.ToString(),
+                                                  Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString()),
+                                                  Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString()),
+                                                  Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString()),
+                                                  row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("InterruptNameDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("InterruptCodeDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("CauseOfInterruptDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("CarriedOutActionsDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("WhoIsLastDataGridViewTextBoxColumn").Value.ToString(),
+                                                  Integer.Parse(row.Cells("InterruptNoDataGridViewTextBoxColumn").Value.ToString()))
+
+    End Sub
+
+
+    Private Sub buttonAddInterrupt_Click(sender As Object, e As EventArgs) Handles buttonAddInterrupt.Click
+        Dim interval = dtpMainteranceWaitingInterval.Value.ToString("dd \d\a\y\s HH:mm:ss")
+        tbInterruptNo.Text =
+        T_linesInterruptsTableAdapter.InsertQuery(dtpAccidentDate.Value, tbGang.Text, tbPartOfManufacture.Text, tbEqupmentName.Text,
+                                                  dtpInterruptTimestamp.Value, dtpBeginRepairTimestamp.Value, dtpEndOfInterruptTimestamp.Value,
+                                                  interval, tbInterruptName.Text, tbInterruptCode.Text,
+                                                  tbCauseOfInterrupt.Text, tbCarriedOutActions.Text, tbWhoIsLast.Text).ToString()
+        Me.T_linesInterruptsTableAdapter.Fill(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
     End Sub
 End Class
