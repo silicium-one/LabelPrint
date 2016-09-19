@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="sb_tamesBreaksDataSet" targetNamespace="http://tempuri.org/sb_tamesBreaksDataSet.xsd" xmlns:mstns="http://tempuri.org/sb_tamesBreaksDataSet.xsd" xmlns="http://tempuri.org/sb_tamesBreaksDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="sb_tamesDataSet" targetNamespace="http://tempuri.org/sb_tamesDataSet.xsd" xmlns:mstns="http://tempuri.org/sb_tamesDataSet.xsd" xmlns="http://tempuri.org/sb_tamesDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -119,7 +119,7 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="sb_tamesBreaksDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="sb_tamesBreaksDataSet" msprop:Generator_UserDSName="sb_tamesBreaksDataSet">
+  <xs:element name="sb_tamesDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="sb_tamesDataSet" msprop:Generator_UserDSName="sb_tamesDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="t_linesBreaks" msprop:Generator_TableClassName="t_linesBreaksDataTable" msprop:Generator_TableVarName="tablet_linesBreaks" msprop:Generator_TablePropName="t_linesBreaks" msprop:Generator_RowDeletingName="t_linesBreaksRowDeleting" msprop:Generator_RowChangingName="t_linesBreaksRowChanging" msprop:Generator_RowEvHandlerName="t_linesBreaksRowChangeEventHandler" msprop:Generator_RowDeletedName="t_linesBreaksRowDeleted" msprop:Generator_UserTableName="t_linesBreaks" msprop:Generator_RowChangedName="t_linesBreaksRowChanged" msprop:Generator_RowEvArgName="t_linesBreaksRowChangeEvent" msprop:Generator_RowClassName="t_linesBreaksRow">

@@ -131,18 +131,13 @@
     <Compile Include="ru_sb_tames.vb">
       <DependentUpon>ru_sb_tames.xsd</DependentUpon>
     </Compile>
-    <Compile Include="sb_tamesBreaksDataSet.Designer.vb">
+    <Compile Include="sb_tamesDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
+      <DependentUpon>sb_tamesDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="sb_tamesBreaksDataSet.vb">
-      <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="sb_tamesInterruptsDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>sb_tamesInterruptsDataSet.xsd</DependentUpon>
+    <Compile Include="sb_tamesDataSet.vb">
+      <DependentUpon>sb_tamesDataSet.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -188,27 +183,16 @@
     <None Include="ru_sb_tames.xss">
       <DependentUpon>ru_sb_tames.xsd</DependentUpon>
     </None>
-    <None Include="sb_tamesBreaksDataSet.xsc">
-      <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
+    <None Include="sb_tamesDataSet.xsc">
+      <DependentUpon>sb_tamesDataSet.xsd</DependentUpon>
     </None>
-    <None Include="sb_tamesBreaksDataSet.xsd">
+    <None Include="sb_tamesDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>sb_tamesBreaksDataSet.Designer.vb</LastGenOutput>
+      <LastGenOutput>sb_tamesDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="sb_tamesBreaksDataSet.xss">
-      <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="sb_tamesInterruptsDataSet.xsc">
-      <DependentUpon>sb_tamesInterruptsDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="sb_tamesInterruptsDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>sb_tamesInterruptsDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="sb_tamesInterruptsDataSet.xss">
-      <DependentUpon>sb_tamesInterruptsDataSet.xsd</DependentUpon>
+    <None Include="sb_tamesDataSet.xss">
+      <DependentUpon>sb_tamesDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -249,7 +233,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PreBuildEvent>$(SolutionDir)VBversionIncrementor\bin\Debug\VBversionIncrementor.exe
-copy $(ProjectDir)*.ini $(TargetDir)</PreBuildEvent>
+copy $(ProjectDir)LabelPrint.ini $(TargetDir)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
