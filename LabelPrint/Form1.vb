@@ -44,7 +44,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
-        Me.T_linesInterruptsTableAdapter.Fill(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
+        Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
         'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
         Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
         Try
@@ -3278,12 +3278,39 @@ retry:
                                                   row.Cells("WhoIsLastDataGridViewTextBoxColumn").Value.ToString(),
                                                   Integer.Parse(row.Cells("InterruptsIDDataGridViewTextBoxColumn").Value.ToString()))
     End Sub
-
-
+    
     Private Sub btnAddInterrupt_Click(sender As Object, e As EventArgs) Handles btnAddInterrupt.Click
         T_linesInterruptsTableAdapter.InsertQuery(dtpAccidentDate.Value, tbGang.Text, tbInterruptsLineID.Text, tbEquipmentName.Text,
                                                   dtpInterruptTimestamp.Value, dtpBeginRepairTimestamp.Value, dtpEndOfInterruptTimestamp.Value,
                                                   tbInterruptCode.Text, tbCauseOfInterrupt.Text, tbCarriedOutActions.Text, tbWhoIsLast.Text)
-        Me.T_linesInterruptsTableAdapter.Fill(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
+        Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
     End Sub
+
+    Private Sub dgvInterrupts_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgvInterrupts.CellValueChanged
+        If e.RowIndex < 0 Or e.ColumnIndex < 0 Then Exit Sub
+        Dim dgv = DirectCast(sender, DataGridView)
+        Dim col = dgv.Columns.Item(e.ColumnIndex)
+        Dim row = dgv.Rows.Item(e.RowIndex)
+        If col.Name = "InterruptTimestampDataGridViewTextBoxColumn" Then 'calculate mainteranceWaitingInterval and interruptDuration
+            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
+            Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value = (beginRepairTimestamp - interruptTimestamp).ToString()
+            row.Cells("InterruptDurationDataGridViewTextBoxColumn").Value = (endOfInterruptTimestamp - interruptTimestamp).ToString()
+        ElseIf col.Name = "BeginRepairTimestampDataGridViewTextBoxColumn" Then 'calcaulae mainteranceWaitingInterval
+            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
+            row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value = (beginRepairTimestamp - interruptTimestamp).ToString()
+        ElseIf col.Name = "EndOfInterruptTimestampDataGridViewTextBoxColumn" Then 'calcaulae interruptDuration
+            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            row.Cells("InterruptDurationDataGridViewTextBoxColumn").Value = (endOfInterruptTimestamp - interruptTimestamp).ToString()
+        End If
+    End Sub
+
+
+
+
+
+
 End Class

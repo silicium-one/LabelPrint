@@ -3820,8 +3820,14 @@
   <data name="InterruptCodeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Код простоя</value>
   </data>
+  <data name="InterruptDurationDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Общее время простоя</value>
+  </data>
   <data name="InterruptTimestampDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Время остановки оборудования</value>
+  </data>
+  <data name="MainteranceWaitingIntervalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Время ожидания техслужбы</value>
   </data>
   <data name="TabPageInterrupts.Text" xml:space="preserve">
     <value>ПРОСТОИ</value>

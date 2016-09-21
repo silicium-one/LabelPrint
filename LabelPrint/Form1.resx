@@ -5363,6 +5363,9 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="labelInterruptDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="labelInterruptDate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="labelInterruptDate.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 20</value>
   </data>
@@ -5680,6 +5683,18 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="EndOfInterruptTimestampDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>80</value>
+  </data>
+  <metadata name="MainteranceWaitingIntervalDataGridViewTextBoxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="MainteranceWaitingIntervalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>mainteranceWaitingInterval</value>
+  </data>
+  <metadata name="InterruptDurationDataGridViewTextBoxColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="InterruptDurationDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>interruptDuration</value>
   </data>
   <data name="InterruptCodeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>interruptCode</value>
@@ -9544,29 +9559,23 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;Sb_tamesBreaksDataSet.Type" xml:space="preserve">
     <value>LabelPrint.sb_tamesBreaksDataSet, sb_tamesBreaksDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;T_linesInterruptsBindingSource.Name" xml:space="preserve">
-    <value>T_linesInterruptsBindingSource</value>
-  </data>
-  <data name="&gt;&gt;T_linesInterruptsBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Name" xml:space="preserve">
-    <value>Sb_tamesInterruptsDataSet</value>
-  </data>
-  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Type" xml:space="preserve">
-    <value>LabelPrint.sb_tamesInterruptsDataSet, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;T_linesBreaksTableAdapter.Name" xml:space="preserve">
     <value>T_linesBreaksTableAdapter</value>
   </data>
   <data name="&gt;&gt;T_linesBreaksTableAdapter.Type" xml:space="preserve">
     <value>LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter, sb_tamesBreaksDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;T_linesInterruptsTableAdapter.Name" xml:space="preserve">
-    <value>T_linesInterruptsTableAdapter</value>
+  <data name="&gt;&gt;MainteranceWaitingIntervalDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>MainteranceWaitingIntervalDataGridViewTextBoxColumn</value>
   </data>
-  <data name="&gt;&gt;T_linesInterruptsTableAdapter.Type" xml:space="preserve">
-    <value>LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;MainteranceWaitingIntervalDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;InterruptDurationDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>InterruptDurationDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;InterruptDurationDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;InterruptsIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>InterruptsIDDataGridViewTextBoxColumn</value>
@@ -9639,6 +9648,24 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;WhoIsLastDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsBindingSource.Name" xml:space="preserve">
+    <value>T_linesInterruptsBindingSource</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Name" xml:space="preserve">
+    <value>Sb_tamesInterruptsDataSet</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesInterruptsDataSet, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsTableAdapter.Name" xml:space="preserve">
+    <value>T_linesInterruptsTableAdapter</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsTableAdapter.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>
