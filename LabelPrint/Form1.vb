@@ -43,8 +43,8 @@ Public Class Form1
     Private ReadOnly plannedWorkTimeInMinuts(0 To 23) As UInt32
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
-        Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesDataSet.t_linesBreaks)
+        'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
+        Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
         Try
             Text += " " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
 #If VERSION_TYPE = "a" Then
@@ -3253,6 +3253,6 @@ retry:
 
     Private Sub btnAddBreak_Click(sender As Object, e As EventArgs) Handles btnAddBreak.Click
         T_linesBreaksTableAdapter.InsertQuery(tbLineID.Text, dtpBeginBreak.Value, dtpEndBreak.Value, tbComment.Text)
-        Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesDataSet.t_linesBreaks)
+        Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
     End Sub
 End Class

@@ -229,7 +229,7 @@
     <value>1</value>
   </data>
   <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>17, 56</value>
   </metadata>
   <data name="ToolStripStatusLabelLineName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9.75pt, style=Bold</value>
@@ -1207,10 +1207,10 @@
     <value>50</value>
   </data>
   <metadata name="T_orderListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>582, 54</value>
+    <value>17, 602</value>
   </metadata>
   <metadata name="Ru_sb_tames1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>399, 17</value>
+    <value>17, 173</value>
   </metadata>
   <data name="T_orderListDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1282,7 +1282,7 @@
     <value>Delete</value>
   </data>
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>488, 54</value>
+    <value>17, 563</value>
   </metadata>
   <data name="btno_delete.ToolTip" xml:space="preserve">
     <value>Delete selected Production Order</value>
@@ -2056,7 +2056,7 @@
     <value>90</value>
   </data>
   <metadata name="T_partListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1354, 54</value>
+    <value>17, 758</value>
   </metadata>
   <data name="T_partListDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3108,7 +3108,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>73</value>
   </data>
   <metadata name="T_HLabelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>235, 91</value>
+    <value>17, 836</value>
   </metadata>
   <data name="T_HLabelDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4059,7 +4059,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>50</value>
   </data>
   <metadata name="T_labelsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>757, 91</value>
+    <value>17, 953</value>
   </metadata>
   <data name="T_labelsDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4970,11 +4970,8 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="CommentDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>comment</value>
   </data>
-  <metadata name="TlinesBreaksBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>572, 169</value>
-  </metadata>
-  <metadata name="Sb_tamesDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>426, 169</value>
+  <metadata name="T_linesBreaksBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
   <data name="dgvBreaks.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 5</value>
@@ -5031,7 +5028,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>Variable Value</value>
   </data>
   <metadata name="T_SettingsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>598, 91</value>
+    <value>17, 914</value>
   </metadata>
   <data name="T_SettingsDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -5304,67 +5301,64 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0</value>
   </data>
   <metadata name="SerialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>294, 17</value>
+    <value>17, 134</value>
   </metadata>
   <metadata name="TimerStartOrder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>524, 17</value>
+    <value>17, 212</value>
   </metadata>
   <metadata name="TimerNoWorkWarning.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1187, 17</value>
+    <value>17, 368</value>
   </metadata>
   <metadata name="TimerStopOrder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1348, 17</value>
+    <value>17, 407</value>
   </metadata>
   <metadata name="TimerCountBlink.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 54</value>
+    <value>17, 446</value>
   </metadata>
   <metadata name="TimerHideCurentStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>321, 54</value>
+    <value>17, 524</value>
   </metadata>
   <metadata name="BackgroundWorkerQueryOrders.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>922, 54</value>
+    <value>17, 680</value>
   </metadata>
   <metadata name="BackgroundWorkerFillOrderPNInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1132, 54</value>
+    <value>17, 719</value>
   </metadata>
   <metadata name="BackgroundWorkerLoadPartTabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 91</value>
+    <value>17, 797</value>
   </metadata>
   <metadata name="BackgroundWorkerLoadHomoLabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>388, 91</value>
+    <value>17, 875</value>
   </metadata>
   <metadata name="t_HLabelTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>150, 54</value>
+    <value>17, 485</value>
   </metadata>
   <metadata name="T_partListTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>656, 17</value>
+    <value>17, 251</value>
   </metadata>
   <metadata name="T_orderListTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>830, 17</value>
+    <value>17, 290</value>
   </metadata>
   <metadata name="T_SettingsTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1010, 17</value>
+    <value>17, 329</value>
   </metadata>
   <metadata name="T_labelsTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>129, 17</value>
+    <value>17, 95</value>
   </metadata>
   <metadata name="TableAdapterManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>761, 54</value>
+    <value>17, 641</value>
   </metadata>
   <metadata name="BackgroundWorkerLoadCustLabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>904, 91</value>
+    <value>17, 992</value>
   </metadata>
   <metadata name="T_productivityTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1107, 91</value>
+    <value>17, 1031</value>
   </metadata>
   <metadata name="BackgroundWorkerProductivity1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 169</value>
+    <value>17, 1070</value>
   </metadata>
   <metadata name="T_HLabelTableAdapter2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>245, 169</value>
-  </metadata>
-  <metadata name="T_linesBreaksTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 208</value>
+    <value>17, 1109</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -8647,17 +8641,17 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;CommentDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TlinesBreaksBindingSource.Name" xml:space="preserve">
-    <value>TlinesBreaksBindingSource</value>
+  <data name="&gt;&gt;T_linesBreaksBindingSource.Name" xml:space="preserve">
+    <value>T_linesBreaksBindingSource</value>
   </data>
-  <data name="&gt;&gt;TlinesBreaksBindingSource.Type" xml:space="preserve">
+  <data name="&gt;&gt;T_linesBreaksBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Sb_tamesDataSet.Name" xml:space="preserve">
     <value>Sb_tamesDataSet</value>
   </data>
   <data name="&gt;&gt;Sb_tamesDataSet.Type" xml:space="preserve">
-    <value>LabelPrint.sb_tamesDataSet, sb_tamesDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LabelPrint.sb_tamesDataSet, sb_tamesBreaksDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;DataGridViewTextBoxColumnvarName.Name" xml:space="preserve">
     <value>DataGridViewTextBoxColumnvarName</value>
@@ -8807,7 +8801,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>T_linesBreaksTableAdapter</value>
   </data>
   <data name="&gt;&gt;T_linesBreaksTableAdapter.Type" xml:space="preserve">
-    <value>LabelPrint.sb_tamesDataSetTableAdapters.t_linesBreaksTableAdapter, sb_tamesDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LabelPrint.sb_tamesDataSetTableAdapters.t_linesBreaksTableAdapter, sb_tamesBreaksDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

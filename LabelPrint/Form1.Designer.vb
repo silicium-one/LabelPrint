@@ -257,7 +257,7 @@ Partial Class Form1
         Me.EndBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CommentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.T_linesBreaksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Sb_tamesDataSet = New LabelPrint.sb_tamesDataSet()
+        Me.Sb_tamesBreaksDataSet = New LabelPrint.sb_tamesBreaksDataSet()
         Me.TabPageSettings = New System.Windows.Forms.TabPage()
         Me.T_SettingsDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumnvarName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -290,7 +290,7 @@ Partial Class Form1
         Me.T_productivityTableAdapter1 = New LabelPrint.ru_sb_tamesTableAdapters.t_productivityTableAdapter()
         Me.BackgroundWorkerProductivity1 = New System.ComponentModel.BackgroundWorker()
         Me.T_HLabelTableAdapter2 = New LabelPrint.ru_sb_tamesTableAdapters.t_HLabelTableAdapter()
-        Me.T_linesBreaksTableAdapter = New LabelPrint.sb_tamesDataSetTableAdapters.t_linesBreaksTableAdapter()
+        Me.T_linesBreaksTableAdapter = New LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -341,7 +341,7 @@ Partial Class Form1
         Me.gbNewBreak.SuspendLayout()
         CType(Me.dgvBreaks, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.T_linesBreaksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Sb_tamesDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Sb_tamesBreaksDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageSettings.SuspendLayout()
         CType(Me.T_SettingsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.T_SettingsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1959,12 +1959,12 @@ Partial Class Form1
         'TlinesBreaksBindingSource
         '
         Me.T_linesBreaksBindingSource.DataMember = "t_linesBreaks"
-        Me.T_linesBreaksBindingSource.DataSource = Me.Sb_tamesDataSet
+        Me.T_linesBreaksBindingSource.DataSource = Me.Sb_tamesBreaksDataSet
         '
-        'Sb_tamesDataSet
+        'Sb_tamesBreaksDataSet
         '
-        Me.Sb_tamesDataSet.DataSetName = "sb_tamesDataSet"
-        Me.Sb_tamesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.Sb_tamesBreaksDataSet.DataSetName = "sb_tamesBreaksDataSet"
+        Me.Sb_tamesBreaksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TabPageSettings
         '
@@ -2204,7 +2204,7 @@ Partial Class Form1
         Me.gbNewBreak.PerformLayout()
         CType(Me.dgvBreaks, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.T_linesBreaksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Sb_tamesDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Sb_tamesBreaksDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageSettings.ResumeLayout(False)
         CType(Me.T_SettingsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.T_SettingsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2465,9 +2465,9 @@ Partial Class Form1
     Friend WithEvents dtpEndOfTimeFilter As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtpBeginOfTimeFilter As System.Windows.Forms.DateTimePicker
     Friend WithEvents TabPageBreaks As System.Windows.Forms.TabPage
-    Friend WithEvents Sb_tamesDataSet As LabelPrint.sb_tamesDataSet
+    Friend WithEvents Sb_tamesBreaksDataSet As LabelPrint.sb_tamesBreaksDataSet
     Friend WithEvents T_linesBreaksBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents T_linesBreaksTableAdapter As LabelPrint.sb_tamesDataSetTableAdapters.t_linesBreaksTableAdapter
+    Friend WithEvents T_linesBreaksTableAdapter As LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter
     Friend WithEvents dgvBreaks As System.Windows.Forms.DataGridView
     Friend WithEvents gbNewBreak As System.Windows.Forms.GroupBox
     Friend WithEvents btnAddBreak As System.Windows.Forms.Button
