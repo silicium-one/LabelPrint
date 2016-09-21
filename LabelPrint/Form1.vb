@@ -43,6 +43,8 @@ Public Class Form1
     Private ReadOnly plannedWorkTimeInMinuts(0 To 23) As UInt32
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
+        Me.T_linesInterruptsTableAdapter.Fill(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
         'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
         Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
         Try
@@ -50,11 +52,13 @@ Public Class Form1
 #If VERSION_TYPE = "a" Then
             Text += " a"
             Me.TabControl1.Controls.Remove(TabPageBreaks)
+            Me.TabControl1.Controls.Remove(TabPageInterrupts)
 #ElseIf VERSION_TYPE = "b" Then
             Text += " b"
 #End If
 
-            IDDataGridViewTextBoxColumn.Visible = False
+            BreaksIDDataGridViewTextBoxColumn.Visible = False
+            InterruptsIDDataGridViewTextBoxColumn.Visible = False ' VS Designer bugfix
             Me.Enabled = False
             Refresh()
             TabControlIndex.Alignment = TabAlignment.Bottom
@@ -3248,11 +3252,33 @@ retry:
                                               Date.Parse(row.Cells("BeginBreakTimeDataGridViewTextBoxColumn").Value.ToString()),
                                               Date.Parse(row.Cells("EndBreakTimeDataGridViewTextBoxColumn").Value.ToString()),
                                               row.Cells("CommentDataGridViewTextBoxColumn").Value.ToString(),
-                                              Integer.Parse(row.Cells("IDDataGridViewTextBoxColumn").Value.ToString()))
+                                              Integer.Parse(row.Cells("BreaksIDDataGridViewTextBoxColumn").Value.ToString()))
     End Sub
 
     Private Sub btnAddBreak_Click(sender As Object, e As EventArgs) Handles btnAddBreak.Click
         T_linesBreaksTableAdapter.InsertQuery(tbLineID.Text, dtpBeginBreak.Value, dtpEndBreak.Value, tbComment.Text)
         Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
     End Sub
+
+    Private Sub dgvInterrupts_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvInterrupts.UserDeletedRow
+        T_linesInterruptsTableAdapter.Update(CType(dgvInterrupts.DataSource, System.Windows.Forms.BindingSource).DataSource)
+    End Sub
+
+    Private Sub dgvInterrupts_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvInterrupts.CellEndEdit
+        Dim dgv = DirectCast(sender, DataGridView)
+        Dim row = dgv.Rows.Item(e.RowIndex)
+        T_linesInterruptsTableAdapter.UpdateQuery(Date.Parse(row.Cells("AccidentDateDataGridViewTextBoxColumn").Value.ToString()),
+                                                  row.Cells("GangDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("InterruptsLineIDDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("EquipmentNameDataGridViewTextBoxColumn").Value.ToString(),
+                                                  Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString()),
+                                                  Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString()),
+                                                  Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString()),
+                                                  row.Cells("InterruptCodeDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("CauseOfInterruptDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("CarriedOutActionsDataGridViewTextBoxColumn").Value.ToString(),
+                                                  row.Cells("WhoIsLastDataGridViewTextBoxColumn").Value.ToString(),
+                                                  Integer.Parse(row.Cells("InterruptsIDDataGridViewTextBoxColumn").Value.ToString()))
+    End Sub
+
 End Class

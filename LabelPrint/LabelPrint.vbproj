@@ -139,6 +139,11 @@
     <Compile Include="sb_tamesBreaksDataSet.vb">
       <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="sb_tamesInterruptsDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sb_tamesInterruptsDataSet.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -192,6 +197,17 @@
     </None>
     <None Include="sb_tamesBreaksDataSet.xss">
       <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sb_tamesInterruptsDataSet.xsc">
+      <DependentUpon>sb_tamesInterruptsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sb_tamesInterruptsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sb_tamesInterruptsDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sb_tamesInterruptsDataSet.xss">
+      <DependentUpon>sb_tamesInterruptsDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
