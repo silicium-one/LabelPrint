@@ -107,8 +107,6 @@ Public Class Form1
 
     End Sub
 
-
-
     Private Sub LoadSettings()
         Try
             'objini = New IniFile
@@ -3256,7 +3254,7 @@ retry:
     End Sub
 
     Private Sub btnAddBreak_Click(sender As Object, e As EventArgs) Handles btnAddBreak.Click
-        T_linesBreaksTableAdapter.InsertQuery(tbLineID.Text, dtpBeginBreak.Value, dtpEndBreak.Value, tbComment.Text)
+        T_linesBreaksTableAdapter.InsertQuery(tbBreaksLineID.Text, dtpBeginBreak.Value, dtpEndBreak.Value, tbComment.Text)
         Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
     End Sub
 
@@ -3281,4 +3279,11 @@ retry:
                                                   Integer.Parse(row.Cells("InterruptsIDDataGridViewTextBoxColumn").Value.ToString()))
     End Sub
 
+
+    Private Sub btnAddInterrupt_Click(sender As Object, e As EventArgs) Handles btnAddInterrupt.Click
+        T_linesInterruptsTableAdapter.InsertQuery(dtpAccidentDate.Value, tbGang.Text, tbInterruptsLineID.Text, tbEquipmentName.Text,
+                                                  dtpInterruptTimestamp.Value, dtpBeginRepairTimestamp.Value, dtpEndOfInterruptTimestamp.Value,
+                                                  tbInterruptCode.Text, tbCauseOfInterrupt.Text, tbCarriedOutActions.Text, tbWhoIsLast.Text)
+        Me.T_linesInterruptsTableAdapter.Fill(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
+    End Sub
 End Class
