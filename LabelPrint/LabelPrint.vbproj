@@ -232,7 +232,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PreBuildEvent>$(SolutionDir)VBversionIncrementor\bin\Debug\VBversionIncrementor.exe
-copy $(ProjectDir)LabelPrint.ini $(TargetDir)</PreBuildEvent>
+copy $(ProjectDir)LabelPrint.ini $(TargetDir)
+copy $(ProjectDir)CurentInfo.ini $(TargetDir)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

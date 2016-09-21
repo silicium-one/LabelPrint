@@ -3244,7 +3244,7 @@ retry:
     Private Sub dgvBreaks_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBreaks.CellEndEdit
         Dim dgv = DirectCast(sender, DataGridView)
         Dim row = dgv.Rows.Item(e.RowIndex)
-        T_linesBreaksTableAdapter.UpdateQuery(row.Cells("LineIDDataGridViewTextBoxColumn").Value.ToString(),
+        T_linesBreaksTableAdapter.UpdateQuery(row.Cells("BreaksLineIDDataGridViewTextBoxColumn").Value.ToString(),
                                               Date.Parse(row.Cells("BeginBreakTimeDataGridViewTextBoxColumn").Value.ToString()),
                                               Date.Parse(row.Cells("EndBreakTimeDataGridViewTextBoxColumn").Value.ToString()),
                                               row.Cells("CommentDataGridViewTextBoxColumn").Value.ToString(),

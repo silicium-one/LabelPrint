@@ -252,7 +252,7 @@ Partial Class Form1
         Me.labelLineID = New System.Windows.Forms.Label()
         Me.dgvBreaks = New System.Windows.Forms.DataGridView()
         Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LineIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BreaksLineIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BeginBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EndBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CommentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -1922,7 +1922,7 @@ Partial Class Form1
         resources.ApplyResources(Me.dgvBreaks, "dgvBreaks")
         Me.dgvBreaks.AutoGenerateColumns = False
         Me.dgvBreaks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvBreaks.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.LineIDDataGridViewTextBoxColumn, Me.BeginBreakTimeDataGridViewTextBoxColumn, Me.EndBreakTimeDataGridViewTextBoxColumn, Me.CommentDataGridViewTextBoxColumn})
+        Me.dgvBreaks.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.BreaksLineIDDataGridViewTextBoxColumn, Me.BeginBreakTimeDataGridViewTextBoxColumn, Me.EndBreakTimeDataGridViewTextBoxColumn, Me.CommentDataGridViewTextBoxColumn})
         Me.dgvBreaks.DataSource = Me.T_linesBreaksBindingSource
         Me.dgvBreaks.Name = "dgvBreaks"
         '
@@ -1932,11 +1932,11 @@ Partial Class Form1
         resources.ApplyResources(Me.IDDataGridViewTextBoxColumn, "IDDataGridViewTextBoxColumn")
         Me.IDDataGridViewTextBoxColumn.Name = "IDDataGridViewTextBoxColumn"
         '
-        'LineIDDataGridViewTextBoxColumn
+        'BreaksLineIDDataGridViewTextBoxColumn
         '
-        Me.LineIDDataGridViewTextBoxColumn.DataPropertyName = "lineID"
-        resources.ApplyResources(Me.LineIDDataGridViewTextBoxColumn, "LineIDDataGridViewTextBoxColumn")
-        Me.LineIDDataGridViewTextBoxColumn.Name = "LineIDDataGridViewTextBoxColumn"
+        Me.BreaksLineIDDataGridViewTextBoxColumn.DataPropertyName = "lineID"
+        resources.ApplyResources(Me.BreaksLineIDDataGridViewTextBoxColumn, "BreaksLineIDDataGridViewTextBoxColumn")
+        Me.BreaksLineIDDataGridViewTextBoxColumn.Name = "BreaksLineIDDataGridViewTextBoxColumn"
         '
         'BeginBreakTimeDataGridViewTextBoxColumn
         '
@@ -1956,7 +1956,7 @@ Partial Class Form1
         resources.ApplyResources(Me.CommentDataGridViewTextBoxColumn, "CommentDataGridViewTextBoxColumn")
         Me.CommentDataGridViewTextBoxColumn.Name = "CommentDataGridViewTextBoxColumn"
         '
-        'TlinesBreaksBindingSource
+        'T_linesBreaksBindingSource
         '
         Me.T_linesBreaksBindingSource.DataMember = "t_linesBreaks"
         Me.T_linesBreaksBindingSource.DataSource = Me.Sb_tamesBreaksDataSet
@@ -2478,7 +2478,7 @@ Partial Class Form1
     Friend WithEvents labelBreakFrom As System.Windows.Forms.Label
     Friend WithEvents labelLineID As System.Windows.Forms.Label
     Friend WithEvents IDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LineIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents BreaksLineIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents BeginBreakTimeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EndBreakTimeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CommentDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
