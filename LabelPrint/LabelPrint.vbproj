@@ -131,6 +131,14 @@
     <Compile Include="ru_sb_tames.vb">
       <DependentUpon>ru_sb_tames.xsd</DependentUpon>
     </Compile>
+    <Compile Include="sb_tamesDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sb_tamesDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sb_tamesDataSet.vb">
+      <DependentUpon>sb_tamesDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="sb_tamesBreaksDataSet.Designer.vb">
       <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -182,6 +190,17 @@
     </None>
     <None Include="ru_sb_tames.xss">
       <DependentUpon>ru_sb_tames.xsd</DependentUpon>
+    </None>
+    <None Include="sb_tamesDataSet.xsc">
+      <DependentUpon>sb_tamesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sb_tamesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sb_tamesDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sb_tamesDataSet.xss">
+      <DependentUpon>sb_tamesDataSet.xsd</DependentUpon>
     </None>
     <None Include="sb_tamesBreaksDataSet.xsc">
       <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
