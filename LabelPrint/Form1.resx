@@ -4829,36 +4829,48 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;labelBreakTo.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="tbLineID.Font" type="System.Drawing.Font, System.Drawing">
   <data name="tbBreaksLineID.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
   </data>
+  <data name="tbLineID.Location" type="System.Drawing.Point, System.Drawing">
   <data name="tbBreaksLineID.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 37</value>
   </data>
+  <data name="tbLineID.MaxLength" type="System.Int32, mscorlib">
   <data name="tbBreaksLineID.MaxLength" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
+  <data name="tbLineID.Size" type="System.Drawing.Size, System.Drawing">
   <data name="tbBreaksLineID.Size" type="System.Drawing.Size, System.Drawing">
     <value>226, 22</value>
   </data>
+  <data name="tbLineID.TabIndex" type="System.Int32, mscorlib">
   <data name="tbBreaksLineID.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="tbLineID.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
   <data name="tbBreaksLineID.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>
+  <data name="tbLineID.ToolTip" xml:space="preserve">
   <data name="tbBreaksLineID.ToolTip" xml:space="preserve">
     <value>6 Numeric Characters</value>
   </data>
+  <data name="&gt;&gt;tbLineID.Name" xml:space="preserve">
+    <value>tbLineID</value>
   <data name="&gt;&gt;tbBreaksLineID.Name" xml:space="preserve">
     <value>tbBreaksLineID</value>
   </data>
+  <data name="&gt;&gt;tbLineID.Type" xml:space="preserve">
   <data name="&gt;&gt;tbBreaksLineID.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;tbLineID.Parent" xml:space="preserve">
   <data name="&gt;&gt;tbBreaksLineID.Parent" xml:space="preserve">
     <value>gbNewBreak</value>
   </data>
+  <data name="&gt;&gt;tbLineID.ZOrder" xml:space="preserve">
   <data name="&gt;&gt;tbBreaksLineID.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
@@ -4892,33 +4904,44 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;labelBreakFrom.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="labelLineID.AutoSize" type="System.Boolean, mscorlib">
   <data name="labelBreaksLineID.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="labelLineID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
   <data name="labelBreaksLineID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="labelLineID.Location" type="System.Drawing.Point, System.Drawing">
   <data name="labelBreaksLineID.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 20</value>
   </data>
+  <data name="labelLineID.Size" type="System.Drawing.Size, System.Drawing">
   <data name="labelBreaksLineID.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 13</value>
   </data>
+  <data name="labelLineID.TabIndex" type="System.Int32, mscorlib">
   <data name="labelBreaksLineID.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="labelLineID.Text" xml:space="preserve">
   <data name="labelBreaksLineID.Text" xml:space="preserve">
     <value>lineID</value>
   </data>
+  <data name="&gt;&gt;labelLineID.Name" xml:space="preserve">
+    <value>labelLineID</value>
   <data name="&gt;&gt;labelBreaksLineID.Name" xml:space="preserve">
     <value>labelBreaksLineID</value>
   </data>
+  <data name="&gt;&gt;labelLineID.Type" xml:space="preserve">
   <data name="&gt;&gt;labelBreaksLineID.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;labelLineID.Parent" xml:space="preserve">
   <data name="&gt;&gt;labelBreaksLineID.Parent" xml:space="preserve">
     <value>gbNewBreak</value>
   </data>
+  <data name="&gt;&gt;labelLineID.ZOrder" xml:space="preserve">
   <data name="&gt;&gt;labelBreaksLineID.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
@@ -5021,6 +5044,8 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;TabPageBreaks.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="dgvInterrupts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   <data name="tbWhoIsLast.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
   </data>
@@ -5639,18 +5664,51 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="InterruptsIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>ID</value>
   </data>
+  <data name="AccidentDateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>accidentDate</value>
   <data name="InterruptsIDDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="AccidentDateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>accidentDate</value>
   </data>
+  <data name="GangDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>gang</value>
   <data name="AccidentDateDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
   <data name="GangDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>gang</value>
   </data>
+  <data name="InterruptsLineIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>lineID</value>
+  </data>
+  <data name="EquipmentNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>equipmentName</value>
+  </data>
+  <data name="InterruptTimestampDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>interruptTimestamp</value>
+  </data>
+  <data name="BeginRepairTimestampDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>beginRepairTimestamp</value>
+  </data>
+  <data name="EndOfInterruptTimestampDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>endOfInterruptTimestamp</value>
+  </data>
+  <data name="InterruptCodeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>interruptCode</value>
+  </data>
+  <data name="CauseOfInterruptDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>causeOfInterrupt</value>
+  </data>
+  <data name="CarriedOutActionsDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>carriedOutActions</value>
+  </data>
+  <data name="WhoIsLastDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>whoIsLast</value>
+  </data>
+  <metadata name="T_linesInterruptsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>625, 251</value>
   <data name="GangDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
@@ -5727,8 +5785,15 @@ Subassy - Print Subassy BoxLabel</value>
     <value>426, 251</value>
   </metadata>
   <data name="dgvInterrupts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 7</value>
+  <metadata name="Sb_tamesInterruptsDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>426, 251</value>
+  </metadata>
+  <data name="dgvInterrupts.Location" type="System.Drawing.Point, System.Drawing">
     <value>251, 7</value>
   </data>
+  <data name="dgvInterrupts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1032, 500</value>
   <data name="dgvInterrupts.Size" type="System.Drawing.Size, System.Drawing">
     <value>787, 500</value>
   </data>
@@ -5744,6 +5809,8 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;dgvInterrupts.Parent" xml:space="preserve">
     <value>TabPageInterrupts</value>
   </data>
+  <data name="&gt;&gt;dgvInterrupts.ZOrder" xml:space="preserve">
+    <value>0</value>
   <data name="&gt;&gt;dgvInterrupts.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -9547,6 +9614,18 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;CommentDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+
+
+
+
+
+
+
+
+
+
+
+
   <data name="&gt;&gt;T_linesBreaksBindingSource.Name" xml:space="preserve">
     <value>T_linesBreaksBindingSource</value>
   </data>
@@ -9577,6 +9656,12 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;InterruptDurationDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+
+
+
+
+
+
   <data name="&gt;&gt;InterruptsIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>InterruptsIDDataGridViewTextBoxColumn</value>
   </data>
@@ -9648,6 +9733,42 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;WhoIsLastDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T_linesBreaksBindingSource.Name" xml:space="preserve">
+    <value>T_linesBreaksBindingSource</value>
+  </data>
+  <data name="&gt;&gt;T_linesBreaksBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesBreaksDataSet.Name" xml:space="preserve">
+    <value>Sb_tamesBreaksDataSet</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesBreaksDataSet.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesBreaksDataSet, sb_tamesBreaksDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsBindingSource.Name" xml:space="preserve">
+    <value>T_linesInterruptsBindingSource</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Name" xml:space="preserve">
+    <value>Sb_tamesInterruptsDataSet</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesInterruptsDataSet, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;T_linesBreaksTableAdapter.Name" xml:space="preserve">
+    <value>T_linesBreaksTableAdapter</value>
+  </data>
+  <data name="&gt;&gt;T_linesBreaksTableAdapter.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter, sb_tamesBreaksDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsTableAdapter.Name" xml:space="preserve">
+    <value>T_linesInterruptsTableAdapter</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsTableAdapter.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;T_linesInterruptsBindingSource.Name" xml:space="preserve">
     <value>T_linesInterruptsBindingSource</value>

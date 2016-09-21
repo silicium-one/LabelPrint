@@ -3313,4 +3313,11 @@ retry:
 
 
 
+
+    Private Sub btnAddInterrupt_Click(sender As Object, e As EventArgs) Handles btnAddInterrupt.Click
+        T_linesInterruptsTableAdapter.InsertQuery(dtpAccidentDate.Value, tbGang.Text, tbInterruptsLineID.Text, tbEquipmentName.Text,
+                                                  dtpInterruptTimestamp.Value, dtpBeginRepairTimestamp.Value, dtpEndOfInterruptTimestamp.Value,
+                                                  tbInterruptCode.Text, tbCauseOfInterrupt.Text, tbCarriedOutActions.Text, tbWhoIsLast.Text)
+        Me.T_linesInterruptsTableAdapter.Fill(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
+    End Sub
 End Class

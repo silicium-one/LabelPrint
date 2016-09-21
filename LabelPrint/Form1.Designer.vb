@@ -247,8 +247,10 @@ Partial Class Form1
         Me.tbComment = New System.Windows.Forms.TextBox()
         Me.labelComment = New System.Windows.Forms.Label()
         Me.labelBreakTo = New System.Windows.Forms.Label()
+        Me.tbLineID = New System.Windows.Forms.TextBox()
         Me.tbBreaksLineID = New System.Windows.Forms.TextBox()
         Me.labelBreakFrom = New System.Windows.Forms.Label()
+        Me.labelLineID = New System.Windows.Forms.Label()
         Me.labelBreaksLineID = New System.Windows.Forms.Label()
         Me.dgvBreaks = New System.Windows.Forms.DataGridView()
         Me.TabPageInterrupts = New System.Windows.Forms.TabPage()
@@ -290,6 +292,8 @@ Partial Class Form1
         Me.BeginBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EndBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CommentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+
+
         Me.T_linesBreaksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Sb_tamesBreaksDataSet = New LabelPrint.sb_tamesBreaksDataSet()
         Me.T_linesBreaksTableAdapter = New LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter()
@@ -328,9 +332,18 @@ Partial Class Form1
         Me.CauseOfInterruptDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CarriedOutActionsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.WhoIsLastDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.T_linesBreaksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Sb_tamesBreaksDataSet = New LabelPrint.sb_tamesBreaksDataSet()
+        Me.T_linesInterruptsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Sb_tamesInterruptsDataSet = New LabelPrint.sb_tamesInterruptsDataSet()
+        Me.T_linesBreaksTableAdapter = New LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter()
+        Me.T_linesInterruptsTableAdapter = New LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter()
         Me.T_linesInterruptsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Sb_tamesInterruptsDataSet = New LabelPrint.sb_tamesInterruptsDataSet()
         Me.T_linesInterruptsTableAdapter = New LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter()
+
+
+
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -1901,8 +1914,10 @@ Partial Class Form1
         Me.gbNewBreak.Controls.Add(Me.tbComment)
         Me.gbNewBreak.Controls.Add(Me.labelComment)
         Me.gbNewBreak.Controls.Add(Me.labelBreakTo)
+        Me.gbNewBreak.Controls.Add(Me.tbLineID)
         Me.gbNewBreak.Controls.Add(Me.tbBreaksLineID)
         Me.gbNewBreak.Controls.Add(Me.labelBreakFrom)
+        Me.gbNewBreak.Controls.Add(Me.labelLineID)
         Me.gbNewBreak.Controls.Add(Me.labelBreaksLineID)
         resources.ApplyResources(Me.gbNewBreak, "gbNewBreak")
         Me.gbNewBreak.ForeColor = System.Drawing.Color.Black
@@ -1946,8 +1961,12 @@ Partial Class Form1
         resources.ApplyResources(Me.labelBreakTo, "labelBreakTo")
         Me.labelBreakTo.Name = "labelBreakTo"
         '
+        'tbLineID
         'tbBreaksLineID
         '
+        resources.ApplyResources(Me.tbLineID, "tbLineID")
+        Me.tbLineID.Name = "tbLineID"
+        Me.ToolTip1.SetToolTip(Me.tbLineID, resources.GetString("tbLineID.ToolTip"))
         resources.ApplyResources(Me.tbBreaksLineID, "tbBreaksLineID")
         Me.tbBreaksLineID.Name = "tbBreaksLineID"
         Me.ToolTip1.SetToolTip(Me.tbBreaksLineID, resources.GetString("tbBreaksLineID.ToolTip"))
@@ -1957,8 +1976,11 @@ Partial Class Form1
         resources.ApplyResources(Me.labelBreakFrom, "labelBreakFrom")
         Me.labelBreakFrom.Name = "labelBreakFrom"
         '
+        'labelLineID
         'labelBreaksLineID
         '
+        resources.ApplyResources(Me.labelLineID, "labelLineID")
+        Me.labelLineID.Name = "labelLineID"
         resources.ApplyResources(Me.labelBreaksLineID, "labelBreaksLineID")
         Me.labelBreaksLineID.Name = "labelBreaksLineID"
         '
@@ -1985,6 +2007,7 @@ Partial Class Form1
         resources.ApplyResources(Me.dgvInterrupts, "dgvInterrupts")
         Me.dgvInterrupts.AutoGenerateColumns = False
         Me.dgvInterrupts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvInterrupts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.InterruptsIDDataGridViewTextBoxColumn, Me.AccidentDateDataGridViewTextBoxColumn, Me.GangDataGridViewTextBoxColumn, Me.InterruptsLineIDDataGridViewTextBoxColumn, Me.EquipmentNameDataGridViewTextBoxColumn, Me.InterruptTimestampDataGridViewTextBoxColumn, Me.BeginRepairTimestampDataGridViewTextBoxColumn, Me.EndOfInterruptTimestampDataGridViewTextBoxColumn, Me.InterruptCodeDataGridViewTextBoxColumn, Me.CauseOfInterruptDataGridViewTextBoxColumn, Me.CarriedOutActionsDataGridViewTextBoxColumn, Me.WhoIsLastDataGridViewTextBoxColumn})
         Me.dgvInterrupts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.InterruptsIDDataGridViewTextBoxColumn, Me.AccidentDateDataGridViewTextBoxColumn, Me.GangDataGridViewTextBoxColumn, Me.InterruptsLineIDDataGridViewTextBoxColumn, Me.EquipmentNameDataGridViewTextBoxColumn, Me.InterruptTimestampDataGridViewTextBoxColumn, Me.BeginRepairTimestampDataGridViewTextBoxColumn, Me.EndOfInterruptTimestampDataGridViewTextBoxColumn, Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn, Me.InterruptDurationDataGridViewTextBoxColumn, Me.InterruptCodeDataGridViewTextBoxColumn, Me.CauseOfInterruptDataGridViewTextBoxColumn, Me.CarriedOutActionsDataGridViewTextBoxColumn, Me.WhoIsLastDataGridViewTextBoxColumn})
         Me.dgvInterrupts.DataSource = Me.T_linesInterruptsBindingSource
         Me.dgvInterrupts.Name = "dgvInterrupts"
@@ -2182,6 +2205,16 @@ Partial Class Form1
         resources.ApplyResources(Me.CommentDataGridViewTextBoxColumn, "CommentDataGridViewTextBoxColumn")
         Me.CommentDataGridViewTextBoxColumn.Name = "CommentDataGridViewTextBoxColumn"
         '
+
+
+
+
+
+
+
+
+
+
         'T_linesBreaksBindingSource
         '
         Me.T_linesBreaksBindingSource.DataMember = "t_linesBreaks"
@@ -2426,6 +2459,28 @@ Partial Class Form1
         resources.ApplyResources(Me.WhoIsLastDataGridViewTextBoxColumn, "WhoIsLastDataGridViewTextBoxColumn")
         Me.WhoIsLastDataGridViewTextBoxColumn.Name = "WhoIsLastDataGridViewTextBoxColumn"
         '
+        'T_linesBreaksBindingSource
+        '
+        Me.T_linesBreaksBindingSource.DataMember = "t_linesBreaks"
+        Me.T_linesBreaksBindingSource.DataSource = Me.Sb_tamesBreaksDataSet
+        '
+        'Sb_tamesBreaksDataSet
+        '
+        Me.Sb_tamesBreaksDataSet.DataSetName = "sb_tamesBreaksDataSet"
+        Me.Sb_tamesBreaksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+
+
+
+
+
+
+
+
+
+
+
+
         'T_linesInterruptsBindingSource
         '
         Me.T_linesInterruptsBindingSource.DataMember = "t_linesInterrupts"
@@ -2436,6 +2491,16 @@ Partial Class Form1
         Me.Sb_tamesInterruptsDataSet.DataSetName = "sb_tamesInterruptsDataSet"
         Me.Sb_tamesInterruptsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'T_linesBreaksTableAdapter
+        '
+        Me.T_linesBreaksTableAdapter.ClearBeforeFill = True
+        '
+
+
+
+
+
+
         'T_linesInterruptsTableAdapter
         '
         Me.T_linesInterruptsTableAdapter.ClearBeforeFill = True
@@ -2787,8 +2852,10 @@ Partial Class Form1
     Friend WithEvents tbComment As System.Windows.Forms.TextBox
     Friend WithEvents labelComment As System.Windows.Forms.Label
     Friend WithEvents labelBreakTo As System.Windows.Forms.Label
+    Friend WithEvents tbLineID As System.Windows.Forms.TextBox
     Friend WithEvents tbBreaksLineID As System.Windows.Forms.TextBox
     Friend WithEvents labelBreakFrom As System.Windows.Forms.Label
+    Friend WithEvents labelLineID As System.Windows.Forms.Label
     Friend WithEvents labelBreaksLineID As System.Windows.Forms.Label
     Friend WithEvents BreaksIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents BreaksLineIDDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -2802,6 +2869,21 @@ Partial Class Form1
     Friend WithEvents Sb_tamesInterruptsDataSet As LabelPrint.sb_tamesInterruptsDataSet
     Friend WithEvents T_linesInterruptsBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents T_linesInterruptsTableAdapter As LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Friend WithEvents gbNewInterrupt As System.Windows.Forms.GroupBox
     Friend WithEvents tbGang As System.Windows.Forms.TextBox
     Friend WithEvents labelGang As System.Windows.Forms.Label
