@@ -3796,4 +3796,37 @@
   <data name="labelComment.Text" xml:space="preserve">
     <value>Комментарий</value>
   </data>
+  <data name="AccidentDateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="BeginRepairTimestampDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Время начала ремонта</value>
+  </data>
+  <data name="CarriedOutActionsDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Проведённые действия</value>
+  </data>
+  <data name="CauseOfInterruptDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Причина отказа</value>
+  </data>
+  <data name="EndOfInterruptTimestampDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Время запуска оборудования</value>
+  </data>
+  <data name="EquipmentNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Название оборудования</value>
+  </data>
+  <data name="GangDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Смена</value>
+  </data>
+  <data name="InterruptCodeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Код простоя</value>
+  </data>
+  <data name="InterruptTimestampDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Время остановки оборудования</value>
+  </data>
+  <data name="TabPageInterrupts.Text" xml:space="preserve">
+    <value>ПРОСТОИ</value>
+  </data>
+  <data name="WhoIsLastDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Ответственное лицо</value>
+  </data>
 </root>
