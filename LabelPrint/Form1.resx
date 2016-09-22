@@ -175,7 +175,7 @@
     <value>1</value>
   </data>
   <data name="SplitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 428</value>
+    <value>1174, 428</value>
   </data>
   <data name="SplitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>874</value>
@@ -211,7 +211,7 @@
     <value>0, 547</value>
   </data>
   <data name="ListBoxLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1079, 104</value>
+    <value>1209, 104</value>
   </data>
   <data name="ListBoxLog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -229,7 +229,7 @@
     <value>1</value>
   </data>
   <metadata name="StatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>597, 17</value>
+    <value>219, 56</value>
   </metadata>
   <data name="ToolStripStatusLabelLineName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9.75pt, style=Bold</value>
@@ -244,7 +244,7 @@
     <value>Tahoma, 9.75pt, style=Bold</value>
   </data>
   <data name="ToolStripStatusLabelCurentInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1010, 20</value>
+    <value>1140, 20</value>
   </data>
   <data name="ToolStripStatusLabelCurentInfo.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -259,7 +259,7 @@
     <value>0, 651</value>
   </data>
   <data name="StatusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1079, 25</value>
+    <value>1209, 25</value>
   </data>
   <data name="StatusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -289,7 +289,7 @@
     <value>105, 0</value>
   </data>
   <data name="DataGridViewProductivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>941, 92</value>
+    <value>1071, 92</value>
   </data>
   <data name="DataGridViewProductivity.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -349,7 +349,7 @@
     <value>3, 253</value>
   </data>
   <data name="PanelProductivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1046, 92</value>
+    <value>1176, 92</value>
   </data>
   <data name="PanelProductivity.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -595,7 +595,7 @@
     <value>3, 122</value>
   </data>
   <data name="DataGridViewOrders.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1046, 131</value>
+    <value>1176, 131</value>
   </data>
   <data name="DataGridViewOrders.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -658,7 +658,7 @@
     <value>NoControl</value>
   </data>
   <data name="ButtonPrintBoxLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>843, 16</value>
+    <value>973, 16</value>
   </data>
   <data name="ButtonPrintBoxLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 100</value>
@@ -697,7 +697,7 @@
     <value>NoControl</value>
   </data>
   <data name="LabelLabelCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1043, 16</value>
+    <value>1173, 16</value>
   </data>
   <data name="LabelLabelCount.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 108</value>
@@ -799,7 +799,7 @@
     <value>3, 3</value>
   </data>
   <data name="GroupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1046, 119</value>
+    <value>1176, 119</value>
   </data>
   <data name="GroupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1114,7 +1114,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1052, 539</value>
+    <value>1182, 539</value>
   </data>
   <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1207,10 +1207,10 @@
     <value>50</value>
   </data>
   <metadata name="T_orderListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 134</value>
+    <value>472, 134</value>
   </metadata>
   <metadata name="Ru_sb_tames1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 56</value>
+    <value>620, 56</value>
   </metadata>
   <data name="T_orderListDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1219,7 +1219,7 @@
     <value>3, 73</value>
   </data>
   <data name="T_orderListDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 431</value>
+    <value>920, 431</value>
   </data>
   <data name="T_orderListDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1270,7 +1270,7 @@
     <value>NoControl</value>
   </data>
   <data name="btno_delete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>695, 16</value>
+    <value>825, 16</value>
   </data>
   <data name="btno_delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 38</value>
@@ -1282,7 +1282,7 @@
     <value>Delete</value>
   </data>
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>828, 95</value>
+    <value>373, 134</value>
   </metadata>
   <data name="btno_delete.ToolTip" xml:space="preserve">
     <value>Delete selected Production Order</value>
@@ -1423,7 +1423,7 @@
     <value>3, 16</value>
   </data>
   <data name="GroupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 57</value>
+    <value>920, 57</value>
   </data>
   <data name="GroupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1450,7 +1450,7 @@
     <value>245, 3</value>
   </data>
   <data name="GroupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>796, 507</value>
+    <value>926, 507</value>
   </data>
   <data name="GroupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1954,7 +1954,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabPageOrder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 513</value>
+    <value>1174, 513</value>
   </data>
   <data name="TabPageOrder.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2056,7 +2056,7 @@
     <value>90</value>
   </data>
   <metadata name="T_partListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 173</value>
+    <value>258, 173</value>
   </metadata>
   <data name="T_partListDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2065,7 +2065,7 @@
     <value>3, 71</value>
   </data>
   <data name="T_partListDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 433</value>
+    <value>920, 433</value>
   </data>
   <data name="T_partListDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2089,7 +2089,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnp_Delete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>695, 16</value>
+    <value>825, 16</value>
   </data>
   <data name="btnp_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 36</value>
@@ -2152,7 +2152,7 @@
     <value>3, 16</value>
   </data>
   <data name="GroupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>790, 55</value>
+    <value>920, 55</value>
   </data>
   <data name="GroupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2176,7 +2176,7 @@
     <value>245, 3</value>
   </data>
   <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>796, 507</value>
+    <value>926, 507</value>
   </data>
   <data name="GroupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3015,7 +3015,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabPagePN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 513</value>
+    <value>1174, 513</value>
   </data>
   <data name="TabPagePN.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3108,7 +3108,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>73</value>
   </data>
   <metadata name="T_HLabelBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>434, 173</value>
+    <value>675, 173</value>
   </metadata>
   <data name="T_HLabelDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3117,7 +3117,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>3, 71</value>
   </data>
   <data name="T_HLabelDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>796, 439</value>
+    <value>926, 439</value>
   </data>
   <data name="T_HLabelDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3141,7 +3141,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>NoControl</value>
   </data>
   <data name="btnh_delete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>701, 16</value>
+    <value>831, 16</value>
   </data>
   <data name="btnh_delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 36</value>
@@ -3204,7 +3204,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>3, 16</value>
   </data>
   <data name="GroupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>796, 55</value>
+    <value>926, 55</value>
   </data>
   <data name="GroupBox10.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3228,7 +3228,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>242, 0</value>
   </data>
   <data name="GroupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>802, 513</value>
+    <value>932, 513</value>
   </data>
   <data name="GroupBox9.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3972,7 +3972,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 22</value>
   </data>
   <data name="TabPageHLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 513</value>
+    <value>1174, 513</value>
   </data>
   <data name="TabPageHLabel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3996,7 +3996,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>Label Barcode</value>
   </data>
   <data name="DataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
-    <value>101</value>
+    <value>93</value>
   </data>
   <data name="DataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
     <value>Date of Production</value>
@@ -4059,7 +4059,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>50</value>
   </data>
   <metadata name="T_labelsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>203, 212</value>
+    <value>449, 212</value>
   </metadata>
   <data name="T_labelsDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4068,7 +4068,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 43</value>
   </data>
   <data name="T_labelsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 470</value>
+    <value>1174, 470</value>
   </data>
   <data name="T_labelsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4173,7 +4173,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="GroupBox12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 43</value>
+    <value>1174, 43</value>
   </data>
   <data name="GroupBox12.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4194,7 +4194,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 22</value>
   </data>
   <data name="TabPageTraceability.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 513</value>
+    <value>1174, 513</value>
   </data>
   <data name="TabPageTraceability.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4626,7 +4626,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="GroupBox13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 85</value>
+    <value>1174, 85</value>
   </data>
   <data name="GroupBox13.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4647,7 +4647,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 22</value>
   </data>
   <data name="TabPageProductivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 513</value>
+    <value>1174, 513</value>
   </data>
   <data name="TabPageProductivity.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -4829,50 +4829,62 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;labelBreakTo.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="tbLineID.Font" type="System.Drawing.Font, System.Drawing">
-  <data name="tbBreaksLineID.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
-  </data>
   <data name="tbLineID.Location" type="System.Drawing.Point, System.Drawing">
-  <data name="tbBreaksLineID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 37</value>
+    <value>0, 0</value>
   </data>
   <data name="tbLineID.MaxLength" type="System.Int32, mscorlib">
-  <data name="tbBreaksLineID.MaxLength" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="tbLineID.Size" type="System.Drawing.Size, System.Drawing">
-  <data name="tbBreaksLineID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 22</value>
-  </data>
-  <data name="tbLineID.TabIndex" type="System.Int32, mscorlib">
-  <data name="tbBreaksLineID.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="tbLineID.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-  <data name="tbBreaksLineID.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Center</value>
+  <data name="tbLineID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 20</value>
   </data>
-  <data name="tbLineID.ToolTip" xml:space="preserve">
-  <data name="tbBreaksLineID.ToolTip" xml:space="preserve">
-    <value>6 Numeric Characters</value>
+  <data name="tbLineID.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tbLineID.Name" xml:space="preserve">
     <value>tbLineID</value>
-  <data name="&gt;&gt;tbBreaksLineID.Name" xml:space="preserve">
-    <value>tbBreaksLineID</value>
   </data>
   <data name="&gt;&gt;tbLineID.Type" xml:space="preserve">
-  <data name="&gt;&gt;tbBreaksLineID.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tbLineID.Parent" xml:space="preserve">
-  <data name="&gt;&gt;tbBreaksLineID.Parent" xml:space="preserve">
     <value>gbNewBreak</value>
   </data>
   <data name="&gt;&gt;tbLineID.ZOrder" xml:space="preserve">
-  <data name="&gt;&gt;tbBreaksLineID.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="tbBreaksLineID.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
+  </data>
+  <data name="tbBreaksLineID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 37</value>
+  </data>
+  <data name="tbBreaksLineID.MaxLength" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tbBreaksLineID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 22</value>
+  </data>
+  <data name="tbBreaksLineID.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tbBreaksLineID.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="tbBreaksLineID.ToolTip" xml:space="preserve">
+    <value>6 Numeric Characters</value>
+  </data>
+  <data name="&gt;&gt;tbBreaksLineID.Name" xml:space="preserve">
+    <value>tbBreaksLineID</value>
+  </data>
+  <data name="&gt;&gt;tbBreaksLineID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbBreaksLineID.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
+  <data name="&gt;&gt;tbBreaksLineID.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="labelBreakFrom.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4902,48 +4914,61 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewBreak</value>
   </data>
   <data name="&gt;&gt;labelBreakFrom.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="labelLineID.AutoSize" type="System.Boolean, mscorlib">
-  <data name="labelBreaksLineID.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>8</value>
   </data>
   <data name="labelLineID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-  <data name="labelBreaksLineID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="labelLineID.Location" type="System.Drawing.Point, System.Drawing">
-  <data name="labelBreaksLineID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
+    <value>0, 0</value>
   </data>
   <data name="labelLineID.Size" type="System.Drawing.Size, System.Drawing">
-  <data name="labelBreaksLineID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
+    <value>0, 0</value>
   </data>
   <data name="labelLineID.TabIndex" type="System.Int32, mscorlib">
-  <data name="labelBreaksLineID.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="labelLineID.Text" xml:space="preserve">
-  <data name="labelBreaksLineID.Text" xml:space="preserve">
-    <value>lineID</value>
   </data>
   <data name="&gt;&gt;labelLineID.Name" xml:space="preserve">
     <value>labelLineID</value>
-  <data name="&gt;&gt;labelBreaksLineID.Name" xml:space="preserve">
-    <value>labelBreaksLineID</value>
   </data>
   <data name="&gt;&gt;labelLineID.Type" xml:space="preserve">
-  <data name="&gt;&gt;labelBreaksLineID.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelLineID.Parent" xml:space="preserve">
-  <data name="&gt;&gt;labelBreaksLineID.Parent" xml:space="preserve">
     <value>gbNewBreak</value>
   </data>
   <data name="&gt;&gt;labelLineID.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="labelBreaksLineID.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelBreaksLineID.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelBreaksLineID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
+  </data>
+  <data name="labelBreaksLineID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 13</value>
+  </data>
+  <data name="labelBreaksLineID.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelBreaksLineID.Text" xml:space="preserve">
+    <value>lineID</value>
+  </data>
+  <data name="&gt;&gt;labelBreaksLineID.Name" xml:space="preserve">
+    <value>labelBreaksLineID</value>
+  </data>
+  <data name="&gt;&gt;labelBreaksLineID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelBreaksLineID.Parent" xml:space="preserve">
+    <value>gbNewBreak</value>
+  </data>
   <data name="&gt;&gt;labelBreaksLineID.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="gbNewBreak.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -4994,16 +5019,16 @@ Subassy - Print Subassy BoxLabel</value>
     <value>comment</value>
   </data>
   <metadata name="T_linesBreaksBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>395, 17</value>
+    <value>17, 56</value>
   </metadata>
   <metadata name="Sb_tamesBreaksDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>214, 17</value>
+    <value>716, 17</value>
   </metadata>
   <data name="dgvBreaks.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 5</value>
   </data>
   <data name="dgvBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>792, 505</value>
+    <value>922, 505</value>
   </data>
   <data name="dgvBreaks.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5024,7 +5049,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 22</value>
   </data>
   <data name="TabPageBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 513</value>
+    <value>1174, 513</value>
   </data>
   <data name="TabPageBreaks.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -5044,8 +5069,300 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;TabPageBreaks.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="dgvInterrupts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="btnInterruptFilterReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnInterruptFilterReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>733, 6</value>
+  </data>
+  <data name="btnInterruptFilterReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 63</value>
+  </data>
+  <data name="btnInterruptFilterReset.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="btnInterruptFilterReset.Text" xml:space="preserve">
+    <value>Reset Filter</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptFilterReset.Name" xml:space="preserve">
+    <value>btnInterruptFilterReset</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptFilterReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptFilterReset.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptFilterReset.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnInterruptsFilterApply.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnInterruptsFilterApply.Location" type="System.Drawing.Point, System.Drawing">
+    <value>652, 6</value>
+  </data>
+  <data name="btnInterruptsFilterApply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 63</value>
+  </data>
+  <data name="btnInterruptsFilterApply.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnInterruptsFilterApply.Text" xml:space="preserve">
+    <value>Apply Filter</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsFilterApply.Name" xml:space="preserve">
+    <value>btnInterruptsFilterApply</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsFilterApply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsFilterApply.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsFilterApply.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 14</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 20</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.Name" xml:space="preserve">
+    <value>dtpInterruptsFilterTimeFrom</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.Parent" xml:space="preserve">
+    <value>gbInterruptsFilterTimeInterval</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 20</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeTo.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.Name" xml:space="preserve">
+    <value>dtpInterruptsFilterTimeTo</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.Parent" xml:space="preserve">
+    <value>gbInterruptsFilterTimeInterval</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gbInterruptsFilterTimeInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>539, 3</value>
+  </data>
+  <data name="gbInterruptsFilterTimeInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 66</value>
+  </data>
+  <data name="gbInterruptsFilterTimeInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="gbInterruptsFilterTimeInterval.Text" xml:space="preserve">
+    <value>Interval</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.Name" xml:space="preserve">
+    <value>gbInterruptsFilterTimeInterval</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="T_linesInterruptsLineIDBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>265, 17</value>
+  </metadata>
+  <metadata name="Sb_tamesInterruptsLineIDDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>231, 290</value>
+  </metadata>
+  <data name="cbInterruptLineIDfilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="cbInterruptLineIDfilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 21</value>
+  </data>
+  <data name="cbInterruptLineIDfilter.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbInterruptLineIDfilter.Name" xml:space="preserve">
+    <value>cbInterruptLineIDfilter</value>
+  </data>
+  <data name="&gt;&gt;cbInterruptLineIDfilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbInterruptLineIDfilter.Parent" xml:space="preserve">
+    <value>gbInterruptsLineID</value>
+  </data>
+  <data name="&gt;&gt;cbInterruptLineIDfilter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbInterruptsLineID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>434, 3</value>
+  </data>
+  <data name="gbInterruptsLineID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 66</value>
+  </data>
+  <data name="gbInterruptsLineID.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="gbInterruptsLineID.Text" xml:space="preserve">
+    <value>lineID</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsLineID.Name" xml:space="preserve">
+    <value>gbInterruptsLineID</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsLineID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsLineID.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsLineID.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 13</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.Text" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateTo.Name" xml:space="preserve">
+    <value>labelInterruptsFilterDateTo</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateTo.Parent" xml:space="preserve">
+    <value>gbInterruptsDateInterval</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateTo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dtpInterruptsFilterDateTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 39</value>
+  </data>
+  <data name="dtpInterruptsFilterDateTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 20</value>
+  </data>
+  <data name="dtpInterruptsFilterDateTo.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateTo.Name" xml:space="preserve">
+    <value>dtpInterruptsFilterDateTo</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateTo.Parent" xml:space="preserve">
+    <value>gbInterruptsDateInterval</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateTo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="dtpInterruptsFilterDateFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="dtpInterruptsFilterDateFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 20</value>
+  </data>
+  <data name="dtpInterruptsFilterDateFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.Name" xml:space="preserve">
+    <value>dtpInterruptsFilterDateFrom</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.Parent" xml:space="preserve">
+    <value>gbInterruptsDateInterval</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.Text" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateFrom.Name" xml:space="preserve">
+    <value>labelInterruptsFilterDateFrom</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateFrom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateFrom.Parent" xml:space="preserve">
+    <value>gbInterruptsDateInterval</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateFrom.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="gbInterruptsDateInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>251, 3</value>
+  </data>
+  <data name="gbInterruptsDateInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 66</value>
+  </data>
+  <data name="gbInterruptsDateInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsDateInterval.Name" xml:space="preserve">
+    <value>gbInterruptsDateInterval</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsDateInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsDateInterval.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsDateInterval.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="tbWhoIsLast.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
   </data>
@@ -5656,59 +5973,23 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabPageInterrupts</value>
   </data>
   <data name="&gt;&gt;gbNewInterrupt.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="dgvInterrupts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+    <value>5</value>
   </data>
   <data name="InterruptsIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>ID</value>
   </data>
-  <data name="AccidentDateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>accidentDate</value>
   <data name="InterruptsIDDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="AccidentDateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>accidentDate</value>
   </data>
-  <data name="GangDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>gang</value>
   <data name="AccidentDateDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
   <data name="GangDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>gang</value>
   </data>
-  <data name="InterruptsLineIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>lineID</value>
-  </data>
-  <data name="EquipmentNameDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>equipmentName</value>
-  </data>
-  <data name="InterruptTimestampDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>interruptTimestamp</value>
-  </data>
-  <data name="BeginRepairTimestampDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>beginRepairTimestamp</value>
-  </data>
-  <data name="EndOfInterruptTimestampDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>endOfInterruptTimestamp</value>
-  </data>
-  <data name="InterruptCodeDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>interruptCode</value>
-  </data>
-  <data name="CauseOfInterruptDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>causeOfInterrupt</value>
-  </data>
-  <data name="CarriedOutActionsDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>carriedOutActions</value>
-  </data>
-  <data name="WhoIsLastDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>whoIsLast</value>
-  </data>
-  <metadata name="T_linesInterruptsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>625, 251</value>
   <data name="GangDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
@@ -5779,23 +6060,16 @@ Subassy - Print Subassy BoxLabel</value>
     <value>50</value>
   </data>
   <metadata name="T_linesInterruptsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>625, 251</value>
+    <value>833, 251</value>
   </metadata>
   <metadata name="Sb_tamesInterruptsDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>426, 251</value>
+    <value>634, 251</value>
   </metadata>
   <data name="dgvInterrupts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 7</value>
-  <metadata name="Sb_tamesInterruptsDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>426, 251</value>
-  </metadata>
-  <data name="dgvInterrupts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 7</value>
+    <value>251, 78</value>
   </data>
   <data name="dgvInterrupts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1032, 500</value>
-  <data name="dgvInterrupts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>787, 500</value>
+    <value>917, 429</value>
   </data>
   <data name="dgvInterrupts.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -5810,9 +6084,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabPageInterrupts</value>
   </data>
   <data name="&gt;&gt;dgvInterrupts.ZOrder" xml:space="preserve">
-    <value>0</value>
-  <data name="&gt;&gt;dgvInterrupts.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>6</value>
   </data>
   <data name="TabPageInterrupts.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -5821,7 +6093,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabPageInterrupts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 513</value>
+    <value>1174, 513</value>
   </data>
   <data name="TabPageInterrupts.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -5851,7 +6123,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>Variable Value</value>
   </data>
   <metadata name="T_SettingsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 212</value>
+    <value>263, 212</value>
   </metadata>
   <data name="T_SettingsDataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -5863,7 +6135,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>None</value>
   </data>
   <data name="T_SettingsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 413</value>
+    <value>1174, 413</value>
   </data>
   <data name="T_SettingsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6013,7 +6285,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="GroupBox11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 100</value>
+    <value>1174, 100</value>
   </data>
   <data name="GroupBox11.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -6034,7 +6306,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 22</value>
   </data>
   <data name="TabPageSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1044, 513</value>
+    <value>1174, 513</value>
   </data>
   <data name="TabPageSettings.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -6061,7 +6333,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="TabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1052, 539</value>
+    <value>1182, 539</value>
   </data>
   <data name="TabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6082,7 +6354,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>23, 4</value>
   </data>
   <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1052, 539</value>
+    <value>1182, 539</value>
   </data>
   <data name="TabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -6106,7 +6378,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="TabControlIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1079, 547</value>
+    <value>1209, 547</value>
   </data>
   <data name="TabControlIndex.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -6124,70 +6396,73 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0</value>
   </data>
   <metadata name="SerialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>888, 17</value>
+    <value>510, 56</value>
   </metadata>
   <metadata name="TimerStartOrder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>145, 56</value>
+    <value>748, 56</value>
   </metadata>
   <metadata name="TimerNoWorkWarning.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 95</value>
+    <value>578, 95</value>
   </metadata>
   <metadata name="TimerStopOrder.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>191, 95</value>
+    <value>752, 95</value>
   </metadata>
   <metadata name="TimerCountBlink.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>330, 95</value>
+    <value>891, 95</value>
   </metadata>
   <metadata name="TimerHideCurentStatus.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>650, 95</value>
+    <value>195, 134</value>
   </metadata>
   <metadata name="BackgroundWorkerQueryOrders.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>380, 134</value>
+    <value>835, 134</value>
   </metadata>
   <metadata name="BackgroundWorkerFillOrderPNInfo.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>607, 134</value>
+    <value>17, 173</value>
   </metadata>
   <metadata name="BackgroundWorkerLoadPartTabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>199, 173</value>
+    <value>440, 173</value>
   </metadata>
   <metadata name="BackgroundWorkerLoadHomoLabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>614, 173</value>
+    <value>17, 212</value>
   </metadata>
   <metadata name="t_HLabelTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>472, 95</value>
+    <value>17, 134</value>
   </metadata>
   <metadata name="T_partListTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>285, 56</value>
+    <value>17, 95</value>
   </metadata>
   <metadata name="T_orderListTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>468, 56</value>
+    <value>200, 95</value>
   </metadata>
   <metadata name="T_SettingsTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>659, 56</value>
+    <value>391, 95</value>
   </metadata>
   <metadata name="T_labelsTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>714, 17</value>
+    <value>336, 56</value>
   </metadata>
   <metadata name="TableAdapterManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>207, 134</value>
+    <value>662, 134</value>
   </metadata>
   <metadata name="BackgroundWorkerLoadCustLabel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>376, 212</value>
+    <value>622, 212</value>
   </metadata>
   <metadata name="T_productivityTableAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>612, 212</value>
-  </metadata>
-  <metadata name="BackgroundWorkerProductivity1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 251</value>
   </metadata>
+  <metadata name="BackgroundWorkerProductivity1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>225, 251</value>
+  </metadata>
   <metadata name="T_HLabelTableAdapter2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>245, 251</value>
+    <value>453, 251</value>
   </metadata>
   <metadata name="T_linesBreaksTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>519, 17</value>
   </metadata>
   <metadata name="T_linesInterruptsTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 290</value>
+  </metadata>
+  <metadata name="T_linesInterruptsLineIDTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -6199,7 +6474,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1079, 676</value>
+    <value>1209, 676</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -9440,6 +9715,156 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;T_labelsBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;BreaksIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>BreaksIDDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;BreaksIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BreaksLineIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>BreaksLineIDDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;BreaksLineIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BeginBreakTimeDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>BeginBreakTimeDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;BeginBreakTimeDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EndBreakTimeDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>EndBreakTimeDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;EndBreakTimeDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CommentDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>CommentDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;CommentDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T_linesBreaksBindingSource.Name" xml:space="preserve">
+    <value>T_linesBreaksBindingSource</value>
+  </data>
+  <data name="&gt;&gt;T_linesBreaksBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesBreaksDataSet.Name" xml:space="preserve">
+    <value>Sb_tamesBreaksDataSet</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesBreaksDataSet.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesBreaksDataSet, sb_tamesBreaksDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsLineIDBindingSource.Name" xml:space="preserve">
+    <value>T_linesInterruptsLineIDBindingSource</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsLineIDBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesInterruptsLineIDDataSet.Name" xml:space="preserve">
+    <value>Sb_tamesInterruptsLineIDDataSet</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesInterruptsLineIDDataSet.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesInterruptsLineIDDataSet, sb_tamesInterruptsLineIDDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;InterruptsIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>InterruptsIDDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;InterruptsIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AccidentDateDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>AccidentDateDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;AccidentDateDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GangDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>GangDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;GangDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;InterruptsLineIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>InterruptsLineIDDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;InterruptsLineIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EquipmentNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>EquipmentNameDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;EquipmentNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;InterruptTimestampDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>InterruptTimestampDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;InterruptTimestampDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BeginRepairTimestampDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>BeginRepairTimestampDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;BeginRepairTimestampDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EndOfInterruptTimestampDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>EndOfInterruptTimestampDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;EndOfInterruptTimestampDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainteranceWaitingIntervalDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>MainteranceWaitingIntervalDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;MainteranceWaitingIntervalDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;InterruptDurationDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>InterruptDurationDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;InterruptDurationDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;InterruptCodeDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>InterruptCodeDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;InterruptCodeDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CauseOfInterruptDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>CauseOfInterruptDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;CauseOfInterruptDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CarriedOutActionsDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>CarriedOutActionsDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;CarriedOutActionsDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;WhoIsLastDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>WhoIsLastDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;WhoIsLastDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsBindingSource.Name" xml:space="preserve">
+    <value>T_linesInterruptsBindingSource</value>
+  </data>
+  <data name="&gt;&gt;T_linesInterruptsBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Name" xml:space="preserve">
+    <value>Sb_tamesInterruptsDataSet</value>
+  </data>
+  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesInterruptsDataSet, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="&gt;&gt;DataGridViewTextBoxColumnvarName.Name" xml:space="preserve">
     <value>DataGridViewTextBoxColumnvarName</value>
   </data>
@@ -9584,180 +10009,6 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;T_HLabelTableAdapter2.Type" xml:space="preserve">
     <value>LabelPrint.ru_sb_tamesTableAdapters.t_HLabelTableAdapter, ru_sb_tames.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;BreaksIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>BreaksIDDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;BreaksIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BreaksLineIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>BreaksLineIDDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;BreaksLineIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BeginBreakTimeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>BeginBreakTimeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;BeginBreakTimeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;EndBreakTimeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>EndBreakTimeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;EndBreakTimeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CommentDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>CommentDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;CommentDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-
-
-
-
-
-
-
-
-
-
-
-
-  <data name="&gt;&gt;T_linesBreaksBindingSource.Name" xml:space="preserve">
-    <value>T_linesBreaksBindingSource</value>
-  </data>
-  <data name="&gt;&gt;T_linesBreaksBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Sb_tamesBreaksDataSet.Name" xml:space="preserve">
-    <value>Sb_tamesBreaksDataSet</value>
-  </data>
-  <data name="&gt;&gt;Sb_tamesBreaksDataSet.Type" xml:space="preserve">
-    <value>LabelPrint.sb_tamesBreaksDataSet, sb_tamesBreaksDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;T_linesBreaksTableAdapter.Name" xml:space="preserve">
-    <value>T_linesBreaksTableAdapter</value>
-  </data>
-  <data name="&gt;&gt;T_linesBreaksTableAdapter.Type" xml:space="preserve">
-    <value>LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter, sb_tamesBreaksDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;MainteranceWaitingIntervalDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>MainteranceWaitingIntervalDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;MainteranceWaitingIntervalDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;InterruptDurationDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>InterruptDurationDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;InterruptDurationDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-
-
-
-
-
-
-  <data name="&gt;&gt;InterruptsIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>InterruptsIDDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;InterruptsIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AccidentDateDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>AccidentDateDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;AccidentDateDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GangDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>GangDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;GangDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;InterruptsLineIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>InterruptsLineIDDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;InterruptsLineIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;EquipmentNameDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>EquipmentNameDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;EquipmentNameDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;InterruptTimestampDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>InterruptTimestampDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;InterruptTimestampDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BeginRepairTimestampDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>BeginRepairTimestampDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;BeginRepairTimestampDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;EndOfInterruptTimestampDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>EndOfInterruptTimestampDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;EndOfInterruptTimestampDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;InterruptCodeDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>InterruptCodeDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;InterruptCodeDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CauseOfInterruptDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>CauseOfInterruptDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;CauseOfInterruptDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CarriedOutActionsDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>CarriedOutActionsDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;CarriedOutActionsDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;WhoIsLastDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>WhoIsLastDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;WhoIsLastDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;T_linesBreaksBindingSource.Name" xml:space="preserve">
-    <value>T_linesBreaksBindingSource</value>
-  </data>
-  <data name="&gt;&gt;T_linesBreaksBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Sb_tamesBreaksDataSet.Name" xml:space="preserve">
-    <value>Sb_tamesBreaksDataSet</value>
-  </data>
-  <data name="&gt;&gt;Sb_tamesBreaksDataSet.Type" xml:space="preserve">
-    <value>LabelPrint.sb_tamesBreaksDataSet, sb_tamesBreaksDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;T_linesInterruptsBindingSource.Name" xml:space="preserve">
-    <value>T_linesInterruptsBindingSource</value>
-  </data>
-  <data name="&gt;&gt;T_linesInterruptsBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Name" xml:space="preserve">
-    <value>Sb_tamesInterruptsDataSet</value>
-  </data>
-  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Type" xml:space="preserve">
-    <value>LabelPrint.sb_tamesInterruptsDataSet, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;T_linesBreaksTableAdapter.Name" xml:space="preserve">
     <value>T_linesBreaksTableAdapter</value>
   </data>
@@ -9770,23 +10021,11 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;T_linesInterruptsTableAdapter.Type" xml:space="preserve">
     <value>LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;T_linesInterruptsBindingSource.Name" xml:space="preserve">
-    <value>T_linesInterruptsBindingSource</value>
+  <data name="&gt;&gt;T_linesInterruptsLineIDTableAdapter.Name" xml:space="preserve">
+    <value>T_linesInterruptsLineIDTableAdapter</value>
   </data>
-  <data name="&gt;&gt;T_linesInterruptsBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Name" xml:space="preserve">
-    <value>Sb_tamesInterruptsDataSet</value>
-  </data>
-  <data name="&gt;&gt;Sb_tamesInterruptsDataSet.Type" xml:space="preserve">
-    <value>LabelPrint.sb_tamesInterruptsDataSet, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;T_linesInterruptsTableAdapter.Name" xml:space="preserve">
-    <value>T_linesInterruptsTableAdapter</value>
-  </data>
-  <data name="&gt;&gt;T_linesInterruptsTableAdapter.Type" xml:space="preserve">
-    <value>LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter, sb_tamesInterruptsDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;T_linesInterruptsLineIDTableAdapter.Type" xml:space="preserve">
+    <value>LabelPrint.sb_tamesInterruptsLineIDDataSetTableAdapters.t_linesInterruptsTableAdapter, sb_tamesInterruptsLineIDDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

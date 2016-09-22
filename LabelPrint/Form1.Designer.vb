@@ -253,8 +253,66 @@ Partial Class Form1
         Me.labelLineID = New System.Windows.Forms.Label()
         Me.labelBreaksLineID = New System.Windows.Forms.Label()
         Me.dgvBreaks = New System.Windows.Forms.DataGridView()
+        Me.BreaksIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BreaksLineIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BeginBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EndBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CommentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.T_linesBreaksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Sb_tamesBreaksDataSet = New LabelPrint.sb_tamesBreaksDataSet()
         Me.TabPageInterrupts = New System.Windows.Forms.TabPage()
+        Me.btnInterruptFilterReset = New System.Windows.Forms.Button()
+        Me.btnInterruptsFilterApply = New System.Windows.Forms.Button()
+        Me.gbInterruptsFilterTimeInterval = New System.Windows.Forms.GroupBox()
+        Me.dtpInterruptsFilterTimeFrom = New System.Windows.Forms.DateTimePicker()
+        Me.dtpInterruptsFilterTimeTo = New System.Windows.Forms.DateTimePicker()
+        Me.gbInterruptsLineID = New System.Windows.Forms.GroupBox()
+        Me.cbInterruptLineIDfilter = New System.Windows.Forms.ComboBox()
+        Me.T_linesInterruptsLineIDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Sb_tamesInterruptsLineIDDataSet = New LabelPrint.sb_tamesInterruptsLineIDDataSet()
+        Me.gbInterruptsDateInterval = New System.Windows.Forms.GroupBox()
+        Me.labelInterruptsFilterDateTo = New System.Windows.Forms.Label()
+        Me.dtpInterruptsFilterDateTo = New System.Windows.Forms.DateTimePicker()
+        Me.dtpInterruptsFilterDateFrom = New System.Windows.Forms.DateTimePicker()
+        Me.labelInterruptsFilterDateFrom = New System.Windows.Forms.Label()
+        Me.gbNewInterrupt = New System.Windows.Forms.GroupBox()
+        Me.tbWhoIsLast = New System.Windows.Forms.TextBox()
+        Me.labelWhoIsLast = New System.Windows.Forms.Label()
+        Me.tbCarriedOutActions = New System.Windows.Forms.TextBox()
+        Me.labelCarriedOutActions = New System.Windows.Forms.Label()
+        Me.tbCauseOfInterrupt = New System.Windows.Forms.TextBox()
+        Me.tbInterruptCode = New System.Windows.Forms.TextBox()
+        Me.dtpEndOfInterruptTimestamp = New System.Windows.Forms.DateTimePicker()
+        Me.tbEquipmentName = New System.Windows.Forms.TextBox()
+        Me.labelEqupmentName = New System.Windows.Forms.Label()
+        Me.tbGang = New System.Windows.Forms.TextBox()
+        Me.labelGang = New System.Windows.Forms.Label()
+        Me.labelInterruptDate = New System.Windows.Forms.Label()
+        Me.dtpAccidentDate = New System.Windows.Forms.DateTimePicker()
+        Me.dtpInterruptTimestamp = New System.Windows.Forms.DateTimePicker()
+        Me.dtpBeginRepairTimestamp = New System.Windows.Forms.DateTimePicker()
+        Me.btnAddInterrupt = New System.Windows.Forms.Button()
+        Me.labelCauseOfInterrupt = New System.Windows.Forms.Label()
+        Me.tbInterruptsLineID = New System.Windows.Forms.TextBox()
+        Me.labelInterruptCode = New System.Windows.Forms.Label()
+        Me.labelInterruptsLineID = New System.Windows.Forms.Label()
         Me.dgvInterrupts = New System.Windows.Forms.DataGridView()
+        Me.InterruptsIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AccidentDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GangDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InterruptsLineIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EquipmentNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InterruptTimestampDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BeginRepairTimestampDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EndOfInterruptTimestampDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InterruptDurationDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.InterruptCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CauseOfInterruptDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CarriedOutActionsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.WhoIsLastDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.T_linesInterruptsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Sb_tamesInterruptsDataSet = New LabelPrint.sb_tamesInterruptsDataSet()
         Me.TabPageSettings = New System.Windows.Forms.TabPage()
         Me.T_SettingsDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumnvarName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -287,63 +345,9 @@ Partial Class Form1
         Me.T_productivityTableAdapter1 = New LabelPrint.ru_sb_tamesTableAdapters.t_productivityTableAdapter()
         Me.BackgroundWorkerProductivity1 = New System.ComponentModel.BackgroundWorker()
         Me.T_HLabelTableAdapter2 = New LabelPrint.ru_sb_tamesTableAdapters.t_HLabelTableAdapter()
-        Me.BreaksIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BreaksLineIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BeginBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EndBreakTimeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CommentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-
-
-        Me.T_linesBreaksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Sb_tamesBreaksDataSet = New LabelPrint.sb_tamesBreaksDataSet()
-        Me.T_linesBreaksTableAdapter = New LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter()
-        Me.gbNewInterrupt = New System.Windows.Forms.GroupBox()
-        Me.dtpInterruptTimestamp = New System.Windows.Forms.DateTimePicker()
-        Me.dtpBeginRepairTimestamp = New System.Windows.Forms.DateTimePicker()
-        Me.btnAddInterrupt = New System.Windows.Forms.Button()
-        Me.labelCauseOfInterrupt = New System.Windows.Forms.Label()
-        Me.tbInterruptsLineID = New System.Windows.Forms.TextBox()
-        Me.labelInterruptCode = New System.Windows.Forms.Label()
-        Me.labelInterruptsLineID = New System.Windows.Forms.Label()
-        Me.dtpAccidentDate = New System.Windows.Forms.DateTimePicker()
-        Me.labelInterruptDate = New System.Windows.Forms.Label()
-        Me.tbGang = New System.Windows.Forms.TextBox()
-        Me.labelGang = New System.Windows.Forms.Label()
-        Me.tbEquipmentName = New System.Windows.Forms.TextBox()
-        Me.labelEqupmentName = New System.Windows.Forms.Label()
-        Me.dtpEndOfInterruptTimestamp = New System.Windows.Forms.DateTimePicker()
-        Me.tbInterruptCode = New System.Windows.Forms.TextBox()
-        Me.tbCauseOfInterrupt = New System.Windows.Forms.TextBox()
-        Me.tbCarriedOutActions = New System.Windows.Forms.TextBox()
-        Me.labelCarriedOutActions = New System.Windows.Forms.Label()
-        Me.tbWhoIsLast = New System.Windows.Forms.TextBox()
-        Me.labelWhoIsLast = New System.Windows.Forms.Label()
-        Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InterruptDurationDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InterruptsIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AccidentDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GangDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InterruptsLineIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EquipmentNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InterruptTimestampDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BeginRepairTimestampDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EndOfInterruptTimestampDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.InterruptCodeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CauseOfInterruptDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CarriedOutActionsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WhoIsLastDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.T_linesBreaksBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Sb_tamesBreaksDataSet = New LabelPrint.sb_tamesBreaksDataSet()
-        Me.T_linesInterruptsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Sb_tamesInterruptsDataSet = New LabelPrint.sb_tamesInterruptsDataSet()
         Me.T_linesBreaksTableAdapter = New LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter()
         Me.T_linesInterruptsTableAdapter = New LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter()
-        Me.T_linesInterruptsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Sb_tamesInterruptsDataSet = New LabelPrint.sb_tamesInterruptsDataSet()
-        Me.T_linesInterruptsTableAdapter = New LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter()
-
-
-
+        Me.T_linesInterruptsLineIDTableAdapter = New LabelPrint.sb_tamesInterruptsLineIDDataSetTableAdapters.t_linesInterruptsTableAdapter()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -393,17 +397,22 @@ Partial Class Form1
         Me.TabPageBreaks.SuspendLayout()
         Me.gbNewBreak.SuspendLayout()
         CType(Me.dgvBreaks, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.T_linesBreaksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Sb_tamesBreaksDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageInterrupts.SuspendLayout()
+        Me.gbInterruptsFilterTimeInterval.SuspendLayout()
+        Me.gbInterruptsLineID.SuspendLayout()
+        CType(Me.T_linesInterruptsLineIDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Sb_tamesInterruptsLineIDDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbInterruptsDateInterval.SuspendLayout()
+        Me.gbNewInterrupt.SuspendLayout()
         CType(Me.dgvInterrupts, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.T_linesInterruptsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Sb_tamesInterruptsDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPageSettings.SuspendLayout()
         CType(Me.T_SettingsDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.T_SettingsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox11.SuspendLayout()
-        CType(Me.T_linesBreaksBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Sb_tamesBreaksDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gbNewInterrupt.SuspendLayout()
-        CType(Me.T_linesInterruptsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Sb_tamesInterruptsDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SplitContainer1
@@ -1962,11 +1971,12 @@ Partial Class Form1
         Me.labelBreakTo.Name = "labelBreakTo"
         '
         'tbLineID
-        'tbBreaksLineID
         '
         resources.ApplyResources(Me.tbLineID, "tbLineID")
         Me.tbLineID.Name = "tbLineID"
-        Me.ToolTip1.SetToolTip(Me.tbLineID, resources.GetString("tbLineID.ToolTip"))
+        '
+        'tbBreaksLineID
+        '
         resources.ApplyResources(Me.tbBreaksLineID, "tbBreaksLineID")
         Me.tbBreaksLineID.Name = "tbBreaksLineID"
         Me.ToolTip1.SetToolTip(Me.tbBreaksLineID, resources.GetString("tbBreaksLineID.ToolTip"))
@@ -1977,10 +1987,12 @@ Partial Class Form1
         Me.labelBreakFrom.Name = "labelBreakFrom"
         '
         'labelLineID
-        'labelBreaksLineID
         '
         resources.ApplyResources(Me.labelLineID, "labelLineID")
         Me.labelLineID.Name = "labelLineID"
+        '
+        'labelBreaksLineID
+        '
         resources.ApplyResources(Me.labelBreaksLineID, "labelBreaksLineID")
         Me.labelBreaksLineID.Name = "labelBreaksLineID"
         '
@@ -1994,23 +2006,401 @@ Partial Class Form1
         Me.dgvBreaks.DataSource = Me.T_linesBreaksBindingSource
         Me.dgvBreaks.Name = "dgvBreaks"
         '
+        'BreaksIDDataGridViewTextBoxColumn
+        '
+        Me.BreaksIDDataGridViewTextBoxColumn.DataPropertyName = "ID"
+        resources.ApplyResources(Me.BreaksIDDataGridViewTextBoxColumn, "BreaksIDDataGridViewTextBoxColumn")
+        Me.BreaksIDDataGridViewTextBoxColumn.Name = "BreaksIDDataGridViewTextBoxColumn"
+        '
+        'BreaksLineIDDataGridViewTextBoxColumn
+        '
+        Me.BreaksLineIDDataGridViewTextBoxColumn.DataPropertyName = "lineID"
+        resources.ApplyResources(Me.BreaksLineIDDataGridViewTextBoxColumn, "BreaksLineIDDataGridViewTextBoxColumn")
+        Me.BreaksLineIDDataGridViewTextBoxColumn.Name = "BreaksLineIDDataGridViewTextBoxColumn"
+        '
+        'BeginBreakTimeDataGridViewTextBoxColumn
+        '
+        Me.BeginBreakTimeDataGridViewTextBoxColumn.DataPropertyName = "beginBreakTime"
+        resources.ApplyResources(Me.BeginBreakTimeDataGridViewTextBoxColumn, "BeginBreakTimeDataGridViewTextBoxColumn")
+        Me.BeginBreakTimeDataGridViewTextBoxColumn.Name = "BeginBreakTimeDataGridViewTextBoxColumn"
+        '
+        'EndBreakTimeDataGridViewTextBoxColumn
+        '
+        Me.EndBreakTimeDataGridViewTextBoxColumn.DataPropertyName = "endBreakTime"
+        resources.ApplyResources(Me.EndBreakTimeDataGridViewTextBoxColumn, "EndBreakTimeDataGridViewTextBoxColumn")
+        Me.EndBreakTimeDataGridViewTextBoxColumn.Name = "EndBreakTimeDataGridViewTextBoxColumn"
+        '
+        'CommentDataGridViewTextBoxColumn
+        '
+        Me.CommentDataGridViewTextBoxColumn.DataPropertyName = "comment"
+        resources.ApplyResources(Me.CommentDataGridViewTextBoxColumn, "CommentDataGridViewTextBoxColumn")
+        Me.CommentDataGridViewTextBoxColumn.Name = "CommentDataGridViewTextBoxColumn"
+        '
+        'T_linesBreaksBindingSource
+        '
+        Me.T_linesBreaksBindingSource.DataMember = "t_linesBreaks"
+        Me.T_linesBreaksBindingSource.DataSource = Me.Sb_tamesBreaksDataSet
+        '
+        'Sb_tamesBreaksDataSet
+        '
+        Me.Sb_tamesBreaksDataSet.DataSetName = "sb_tamesBreaksDataSet"
+        Me.Sb_tamesBreaksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'TabPageInterrupts
         '
+        Me.TabPageInterrupts.Controls.Add(Me.btnInterruptFilterReset)
+        Me.TabPageInterrupts.Controls.Add(Me.btnInterruptsFilterApply)
+        Me.TabPageInterrupts.Controls.Add(Me.gbInterruptsFilterTimeInterval)
+        Me.TabPageInterrupts.Controls.Add(Me.gbInterruptsLineID)
+        Me.TabPageInterrupts.Controls.Add(Me.gbInterruptsDateInterval)
         Me.TabPageInterrupts.Controls.Add(Me.gbNewInterrupt)
         Me.TabPageInterrupts.Controls.Add(Me.dgvInterrupts)
         resources.ApplyResources(Me.TabPageInterrupts, "TabPageInterrupts")
         Me.TabPageInterrupts.Name = "TabPageInterrupts"
         Me.TabPageInterrupts.UseVisualStyleBackColor = True
         '
+        'btnInterruptFilterReset
+        '
+        resources.ApplyResources(Me.btnInterruptFilterReset, "btnInterruptFilterReset")
+        Me.btnInterruptFilterReset.Name = "btnInterruptFilterReset"
+        Me.btnInterruptFilterReset.UseVisualStyleBackColor = True
+        '
+        'btnInterruptsFilterApply
+        '
+        resources.ApplyResources(Me.btnInterruptsFilterApply, "btnInterruptsFilterApply")
+        Me.btnInterruptsFilterApply.Name = "btnInterruptsFilterApply"
+        Me.btnInterruptsFilterApply.UseVisualStyleBackColor = True
+        '
+        'gbInterruptsFilterTimeInterval
+        '
+        Me.gbInterruptsFilterTimeInterval.Controls.Add(Me.dtpInterruptsFilterTimeFrom)
+        Me.gbInterruptsFilterTimeInterval.Controls.Add(Me.dtpInterruptsFilterTimeTo)
+        Me.gbInterruptsFilterTimeInterval.ForeColor = System.Drawing.Color.Black
+        resources.ApplyResources(Me.gbInterruptsFilterTimeInterval, "gbInterruptsFilterTimeInterval")
+        Me.gbInterruptsFilterTimeInterval.Name = "gbInterruptsFilterTimeInterval"
+        Me.gbInterruptsFilterTimeInterval.TabStop = False
+        '
+        'dtpInterruptsFilterTimeFrom
+        '
+        Me.dtpInterruptsFilterTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpInterruptsFilterTimeFrom, "dtpInterruptsFilterTimeFrom")
+        Me.dtpInterruptsFilterTimeFrom.Name = "dtpInterruptsFilterTimeFrom"
+        Me.dtpInterruptsFilterTimeFrom.ShowUpDown = True
+        Me.dtpInterruptsFilterTimeFrom.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
+        '
+        'dtpInterruptsFilterTimeTo
+        '
+        Me.dtpInterruptsFilterTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpInterruptsFilterTimeTo, "dtpInterruptsFilterTimeTo")
+        Me.dtpInterruptsFilterTimeTo.Name = "dtpInterruptsFilterTimeTo"
+        Me.dtpInterruptsFilterTimeTo.ShowUpDown = True
+        Me.dtpInterruptsFilterTimeTo.Value = New Date(2016, 9, 6, 23, 59, 0, 0)
+        '
+        'gbInterruptsLineID
+        '
+        Me.gbInterruptsLineID.Controls.Add(Me.cbInterruptLineIDfilter)
+        Me.gbInterruptsLineID.ForeColor = System.Drawing.Color.Black
+        resources.ApplyResources(Me.gbInterruptsLineID, "gbInterruptsLineID")
+        Me.gbInterruptsLineID.Name = "gbInterruptsLineID"
+        Me.gbInterruptsLineID.TabStop = False
+        '
+        'cbInterruptLineIDfilter
+        '
+        Me.cbInterruptLineIDfilter.DataSource = Me.T_linesInterruptsLineIDBindingSource
+        Me.cbInterruptLineIDfilter.DisplayMember = "lineID"
+        Me.cbInterruptLineIDfilter.FormattingEnabled = True
+        resources.ApplyResources(Me.cbInterruptLineIDfilter, "cbInterruptLineIDfilter")
+        Me.cbInterruptLineIDfilter.Name = "cbInterruptLineIDfilter"
+        Me.cbInterruptLineIDfilter.ValueMember = "lineID"
+        '
+        'T_linesInterruptsLineIDBindingSource
+        '
+        Me.T_linesInterruptsLineIDBindingSource.DataMember = "t_linesInterrupts"
+        Me.T_linesInterruptsLineIDBindingSource.DataSource = Me.Sb_tamesInterruptsLineIDDataSet
+        '
+        'Sb_tamesInterruptsLineIDDataSet
+        '
+        Me.Sb_tamesInterruptsLineIDDataSet.DataSetName = "sb_tamesInterruptsLineIDDataSet"
+        Me.Sb_tamesInterruptsLineIDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'gbInterruptsDateInterval
+        '
+        Me.gbInterruptsDateInterval.Controls.Add(Me.labelInterruptsFilterDateTo)
+        Me.gbInterruptsDateInterval.Controls.Add(Me.dtpInterruptsFilterDateTo)
+        Me.gbInterruptsDateInterval.Controls.Add(Me.dtpInterruptsFilterDateFrom)
+        Me.gbInterruptsDateInterval.Controls.Add(Me.labelInterruptsFilterDateFrom)
+        resources.ApplyResources(Me.gbInterruptsDateInterval, "gbInterruptsDateInterval")
+        Me.gbInterruptsDateInterval.Name = "gbInterruptsDateInterval"
+        Me.gbInterruptsDateInterval.TabStop = False
+        '
+        'labelInterruptsFilterDateTo
+        '
+        resources.ApplyResources(Me.labelInterruptsFilterDateTo, "labelInterruptsFilterDateTo")
+        Me.labelInterruptsFilterDateTo.Name = "labelInterruptsFilterDateTo"
+        '
+        'dtpInterruptsFilterDateTo
+        '
+        resources.ApplyResources(Me.dtpInterruptsFilterDateTo, "dtpInterruptsFilterDateTo")
+        Me.dtpInterruptsFilterDateTo.Name = "dtpInterruptsFilterDateTo"
+        '
+        'dtpInterruptsFilterDateFrom
+        '
+        resources.ApplyResources(Me.dtpInterruptsFilterDateFrom, "dtpInterruptsFilterDateFrom")
+        Me.dtpInterruptsFilterDateFrom.Name = "dtpInterruptsFilterDateFrom"
+        '
+        'labelInterruptsFilterDateFrom
+        '
+        resources.ApplyResources(Me.labelInterruptsFilterDateFrom, "labelInterruptsFilterDateFrom")
+        Me.labelInterruptsFilterDateFrom.Name = "labelInterruptsFilterDateFrom"
+        '
+        'gbNewInterrupt
+        '
+        Me.gbNewInterrupt.Controls.Add(Me.tbWhoIsLast)
+        Me.gbNewInterrupt.Controls.Add(Me.labelWhoIsLast)
+        Me.gbNewInterrupt.Controls.Add(Me.tbCarriedOutActions)
+        Me.gbNewInterrupt.Controls.Add(Me.labelCarriedOutActions)
+        Me.gbNewInterrupt.Controls.Add(Me.tbCauseOfInterrupt)
+        Me.gbNewInterrupt.Controls.Add(Me.tbInterruptCode)
+        Me.gbNewInterrupt.Controls.Add(Me.dtpEndOfInterruptTimestamp)
+        Me.gbNewInterrupt.Controls.Add(Me.tbEquipmentName)
+        Me.gbNewInterrupt.Controls.Add(Me.labelEqupmentName)
+        Me.gbNewInterrupt.Controls.Add(Me.tbGang)
+        Me.gbNewInterrupt.Controls.Add(Me.labelGang)
+        Me.gbNewInterrupt.Controls.Add(Me.labelInterruptDate)
+        Me.gbNewInterrupt.Controls.Add(Me.dtpAccidentDate)
+        Me.gbNewInterrupt.Controls.Add(Me.dtpInterruptTimestamp)
+        Me.gbNewInterrupt.Controls.Add(Me.dtpBeginRepairTimestamp)
+        Me.gbNewInterrupt.Controls.Add(Me.btnAddInterrupt)
+        Me.gbNewInterrupt.Controls.Add(Me.labelCauseOfInterrupt)
+        Me.gbNewInterrupt.Controls.Add(Me.tbInterruptsLineID)
+        Me.gbNewInterrupt.Controls.Add(Me.labelInterruptCode)
+        Me.gbNewInterrupt.Controls.Add(Me.labelInterruptsLineID)
+        resources.ApplyResources(Me.gbNewInterrupt, "gbNewInterrupt")
+        Me.gbNewInterrupt.ForeColor = System.Drawing.Color.Black
+        Me.gbNewInterrupt.Name = "gbNewInterrupt"
+        Me.gbNewInterrupt.TabStop = False
+        '
+        'tbWhoIsLast
+        '
+        resources.ApplyResources(Me.tbWhoIsLast, "tbWhoIsLast")
+        Me.tbWhoIsLast.Name = "tbWhoIsLast"
+        Me.ToolTip1.SetToolTip(Me.tbWhoIsLast, resources.GetString("tbWhoIsLast.ToolTip"))
+        '
+        'labelWhoIsLast
+        '
+        resources.ApplyResources(Me.labelWhoIsLast, "labelWhoIsLast")
+        Me.labelWhoIsLast.Name = "labelWhoIsLast"
+        '
+        'tbCarriedOutActions
+        '
+        resources.ApplyResources(Me.tbCarriedOutActions, "tbCarriedOutActions")
+        Me.tbCarriedOutActions.Name = "tbCarriedOutActions"
+        Me.ToolTip1.SetToolTip(Me.tbCarriedOutActions, resources.GetString("tbCarriedOutActions.ToolTip"))
+        '
+        'labelCarriedOutActions
+        '
+        resources.ApplyResources(Me.labelCarriedOutActions, "labelCarriedOutActions")
+        Me.labelCarriedOutActions.Name = "labelCarriedOutActions"
+        '
+        'tbCauseOfInterrupt
+        '
+        resources.ApplyResources(Me.tbCauseOfInterrupt, "tbCauseOfInterrupt")
+        Me.tbCauseOfInterrupt.Name = "tbCauseOfInterrupt"
+        Me.ToolTip1.SetToolTip(Me.tbCauseOfInterrupt, resources.GetString("tbCauseOfInterrupt.ToolTip"))
+        '
+        'tbInterruptCode
+        '
+        resources.ApplyResources(Me.tbInterruptCode, "tbInterruptCode")
+        Me.tbInterruptCode.Name = "tbInterruptCode"
+        Me.ToolTip1.SetToolTip(Me.tbInterruptCode, resources.GetString("tbInterruptCode.ToolTip"))
+        '
+        'dtpEndOfInterruptTimestamp
+        '
+        Me.dtpEndOfInterruptTimestamp.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpEndOfInterruptTimestamp, "dtpEndOfInterruptTimestamp")
+        Me.dtpEndOfInterruptTimestamp.Name = "dtpEndOfInterruptTimestamp"
+        Me.dtpEndOfInterruptTimestamp.ShowUpDown = True
+        Me.dtpEndOfInterruptTimestamp.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
+        '
+        'tbEquipmentName
+        '
+        resources.ApplyResources(Me.tbEquipmentName, "tbEquipmentName")
+        Me.tbEquipmentName.Name = "tbEquipmentName"
+        Me.ToolTip1.SetToolTip(Me.tbEquipmentName, resources.GetString("tbEquipmentName.ToolTip"))
+        '
+        'labelEqupmentName
+        '
+        resources.ApplyResources(Me.labelEqupmentName, "labelEqupmentName")
+        Me.labelEqupmentName.Name = "labelEqupmentName"
+        '
+        'tbGang
+        '
+        resources.ApplyResources(Me.tbGang, "tbGang")
+        Me.tbGang.Name = "tbGang"
+        Me.ToolTip1.SetToolTip(Me.tbGang, resources.GetString("tbGang.ToolTip"))
+        '
+        'labelGang
+        '
+        resources.ApplyResources(Me.labelGang, "labelGang")
+        Me.labelGang.Name = "labelGang"
+        '
+        'labelInterruptDate
+        '
+        resources.ApplyResources(Me.labelInterruptDate, "labelInterruptDate")
+        Me.labelInterruptDate.Name = "labelInterruptDate"
+        '
+        'dtpAccidentDate
+        '
+        resources.ApplyResources(Me.dtpAccidentDate, "dtpAccidentDate")
+        Me.dtpAccidentDate.Name = "dtpAccidentDate"
+        '
+        'dtpInterruptTimestamp
+        '
+        Me.dtpInterruptTimestamp.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpInterruptTimestamp, "dtpInterruptTimestamp")
+        Me.dtpInterruptTimestamp.Name = "dtpInterruptTimestamp"
+        Me.dtpInterruptTimestamp.ShowUpDown = True
+        Me.dtpInterruptTimestamp.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
+        '
+        'dtpBeginRepairTimestamp
+        '
+        Me.dtpBeginRepairTimestamp.Format = System.Windows.Forms.DateTimePickerFormat.Time
+        resources.ApplyResources(Me.dtpBeginRepairTimestamp, "dtpBeginRepairTimestamp")
+        Me.dtpBeginRepairTimestamp.Name = "dtpBeginRepairTimestamp"
+        Me.dtpBeginRepairTimestamp.ShowUpDown = True
+        Me.dtpBeginRepairTimestamp.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
+        '
+        'btnAddInterrupt
+        '
+        resources.ApplyResources(Me.btnAddInterrupt, "btnAddInterrupt")
+        Me.btnAddInterrupt.Name = "btnAddInterrupt"
+        Me.btnAddInterrupt.UseVisualStyleBackColor = True
+        '
+        'labelCauseOfInterrupt
+        '
+        resources.ApplyResources(Me.labelCauseOfInterrupt, "labelCauseOfInterrupt")
+        Me.labelCauseOfInterrupt.Name = "labelCauseOfInterrupt"
+        '
+        'tbInterruptsLineID
+        '
+        resources.ApplyResources(Me.tbInterruptsLineID, "tbInterruptsLineID")
+        Me.tbInterruptsLineID.Name = "tbInterruptsLineID"
+        Me.ToolTip1.SetToolTip(Me.tbInterruptsLineID, resources.GetString("tbInterruptsLineID.ToolTip"))
+        '
+        'labelInterruptCode
+        '
+        resources.ApplyResources(Me.labelInterruptCode, "labelInterruptCode")
+        Me.labelInterruptCode.Name = "labelInterruptCode"
+        '
+        'labelInterruptsLineID
+        '
+        resources.ApplyResources(Me.labelInterruptsLineID, "labelInterruptsLineID")
+        Me.labelInterruptsLineID.Name = "labelInterruptsLineID"
+        '
         'dgvInterrupts
         '
-        resources.ApplyResources(Me.dgvInterrupts, "dgvInterrupts")
         Me.dgvInterrupts.AutoGenerateColumns = False
         Me.dgvInterrupts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvInterrupts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.InterruptsIDDataGridViewTextBoxColumn, Me.AccidentDateDataGridViewTextBoxColumn, Me.GangDataGridViewTextBoxColumn, Me.InterruptsLineIDDataGridViewTextBoxColumn, Me.EquipmentNameDataGridViewTextBoxColumn, Me.InterruptTimestampDataGridViewTextBoxColumn, Me.BeginRepairTimestampDataGridViewTextBoxColumn, Me.EndOfInterruptTimestampDataGridViewTextBoxColumn, Me.InterruptCodeDataGridViewTextBoxColumn, Me.CauseOfInterruptDataGridViewTextBoxColumn, Me.CarriedOutActionsDataGridViewTextBoxColumn, Me.WhoIsLastDataGridViewTextBoxColumn})
         Me.dgvInterrupts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.InterruptsIDDataGridViewTextBoxColumn, Me.AccidentDateDataGridViewTextBoxColumn, Me.GangDataGridViewTextBoxColumn, Me.InterruptsLineIDDataGridViewTextBoxColumn, Me.EquipmentNameDataGridViewTextBoxColumn, Me.InterruptTimestampDataGridViewTextBoxColumn, Me.BeginRepairTimestampDataGridViewTextBoxColumn, Me.EndOfInterruptTimestampDataGridViewTextBoxColumn, Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn, Me.InterruptDurationDataGridViewTextBoxColumn, Me.InterruptCodeDataGridViewTextBoxColumn, Me.CauseOfInterruptDataGridViewTextBoxColumn, Me.CarriedOutActionsDataGridViewTextBoxColumn, Me.WhoIsLastDataGridViewTextBoxColumn})
         Me.dgvInterrupts.DataSource = Me.T_linesInterruptsBindingSource
+        resources.ApplyResources(Me.dgvInterrupts, "dgvInterrupts")
         Me.dgvInterrupts.Name = "dgvInterrupts"
+        '
+        'InterruptsIDDataGridViewTextBoxColumn
+        '
+        Me.InterruptsIDDataGridViewTextBoxColumn.DataPropertyName = "ID"
+        resources.ApplyResources(Me.InterruptsIDDataGridViewTextBoxColumn, "InterruptsIDDataGridViewTextBoxColumn")
+        Me.InterruptsIDDataGridViewTextBoxColumn.Name = "InterruptsIDDataGridViewTextBoxColumn"
+        '
+        'AccidentDateDataGridViewTextBoxColumn
+        '
+        Me.AccidentDateDataGridViewTextBoxColumn.DataPropertyName = "accidentDate"
+        resources.ApplyResources(Me.AccidentDateDataGridViewTextBoxColumn, "AccidentDateDataGridViewTextBoxColumn")
+        Me.AccidentDateDataGridViewTextBoxColumn.Name = "AccidentDateDataGridViewTextBoxColumn"
+        '
+        'GangDataGridViewTextBoxColumn
+        '
+        Me.GangDataGridViewTextBoxColumn.DataPropertyName = "gang"
+        resources.ApplyResources(Me.GangDataGridViewTextBoxColumn, "GangDataGridViewTextBoxColumn")
+        Me.GangDataGridViewTextBoxColumn.Name = "GangDataGridViewTextBoxColumn"
+        '
+        'InterruptsLineIDDataGridViewTextBoxColumn
+        '
+        Me.InterruptsLineIDDataGridViewTextBoxColumn.DataPropertyName = "lineID"
+        resources.ApplyResources(Me.InterruptsLineIDDataGridViewTextBoxColumn, "InterruptsLineIDDataGridViewTextBoxColumn")
+        Me.InterruptsLineIDDataGridViewTextBoxColumn.Name = "InterruptsLineIDDataGridViewTextBoxColumn"
+        '
+        'EquipmentNameDataGridViewTextBoxColumn
+        '
+        Me.EquipmentNameDataGridViewTextBoxColumn.DataPropertyName = "equipmentName"
+        resources.ApplyResources(Me.EquipmentNameDataGridViewTextBoxColumn, "EquipmentNameDataGridViewTextBoxColumn")
+        Me.EquipmentNameDataGridViewTextBoxColumn.Name = "EquipmentNameDataGridViewTextBoxColumn"
+        '
+        'InterruptTimestampDataGridViewTextBoxColumn
+        '
+        Me.InterruptTimestampDataGridViewTextBoxColumn.DataPropertyName = "interruptTimestamp"
+        resources.ApplyResources(Me.InterruptTimestampDataGridViewTextBoxColumn, "InterruptTimestampDataGridViewTextBoxColumn")
+        Me.InterruptTimestampDataGridViewTextBoxColumn.Name = "InterruptTimestampDataGridViewTextBoxColumn"
+        '
+        'BeginRepairTimestampDataGridViewTextBoxColumn
+        '
+        Me.BeginRepairTimestampDataGridViewTextBoxColumn.DataPropertyName = "beginRepairTimestamp"
+        resources.ApplyResources(Me.BeginRepairTimestampDataGridViewTextBoxColumn, "BeginRepairTimestampDataGridViewTextBoxColumn")
+        Me.BeginRepairTimestampDataGridViewTextBoxColumn.Name = "BeginRepairTimestampDataGridViewTextBoxColumn"
+        '
+        'EndOfInterruptTimestampDataGridViewTextBoxColumn
+        '
+        Me.EndOfInterruptTimestampDataGridViewTextBoxColumn.DataPropertyName = "endOfInterruptTimestamp"
+        resources.ApplyResources(Me.EndOfInterruptTimestampDataGridViewTextBoxColumn, "EndOfInterruptTimestampDataGridViewTextBoxColumn")
+        Me.EndOfInterruptTimestampDataGridViewTextBoxColumn.Name = "EndOfInterruptTimestampDataGridViewTextBoxColumn"
+        '
+        'MainteranceWaitingIntervalDataGridViewTextBoxColumn
+        '
+        Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn.DataPropertyName = "mainteranceWaitingInterval"
+        resources.ApplyResources(Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn, "MainteranceWaitingIntervalDataGridViewTextBoxColumn")
+        Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn.Name = "MainteranceWaitingIntervalDataGridViewTextBoxColumn"
+        Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'InterruptDurationDataGridViewTextBoxColumn
+        '
+        Me.InterruptDurationDataGridViewTextBoxColumn.DataPropertyName = "interruptDuration"
+        resources.ApplyResources(Me.InterruptDurationDataGridViewTextBoxColumn, "InterruptDurationDataGridViewTextBoxColumn")
+        Me.InterruptDurationDataGridViewTextBoxColumn.Name = "InterruptDurationDataGridViewTextBoxColumn"
+        Me.InterruptDurationDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'InterruptCodeDataGridViewTextBoxColumn
+        '
+        Me.InterruptCodeDataGridViewTextBoxColumn.DataPropertyName = "interruptCode"
+        resources.ApplyResources(Me.InterruptCodeDataGridViewTextBoxColumn, "InterruptCodeDataGridViewTextBoxColumn")
+        Me.InterruptCodeDataGridViewTextBoxColumn.Name = "InterruptCodeDataGridViewTextBoxColumn"
+        '
+        'CauseOfInterruptDataGridViewTextBoxColumn
+        '
+        Me.CauseOfInterruptDataGridViewTextBoxColumn.DataPropertyName = "causeOfInterrupt"
+        resources.ApplyResources(Me.CauseOfInterruptDataGridViewTextBoxColumn, "CauseOfInterruptDataGridViewTextBoxColumn")
+        Me.CauseOfInterruptDataGridViewTextBoxColumn.Name = "CauseOfInterruptDataGridViewTextBoxColumn"
+        '
+        'CarriedOutActionsDataGridViewTextBoxColumn
+        '
+        Me.CarriedOutActionsDataGridViewTextBoxColumn.DataPropertyName = "carriedOutActions"
+        resources.ApplyResources(Me.CarriedOutActionsDataGridViewTextBoxColumn, "CarriedOutActionsDataGridViewTextBoxColumn")
+        Me.CarriedOutActionsDataGridViewTextBoxColumn.Name = "CarriedOutActionsDataGridViewTextBoxColumn"
+        '
+        'WhoIsLastDataGridViewTextBoxColumn
+        '
+        Me.WhoIsLastDataGridViewTextBoxColumn.DataPropertyName = "whoIsLast"
+        resources.ApplyResources(Me.WhoIsLastDataGridViewTextBoxColumn, "WhoIsLastDataGridViewTextBoxColumn")
+        Me.WhoIsLastDataGridViewTextBoxColumn.Name = "WhoIsLastDataGridViewTextBoxColumn"
+        '
+        'T_linesInterruptsBindingSource
+        '
+        Me.T_linesInterruptsBindingSource.DataMember = "t_linesInterrupts"
+        Me.T_linesInterruptsBindingSource.DataSource = Me.Sb_tamesInterruptsDataSet
+        '
+        'Sb_tamesInterruptsDataSet
+        '
+        Me.Sb_tamesInterruptsDataSet.DataSetName = "sb_tamesInterruptsDataSet"
+        Me.Sb_tamesInterruptsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TabPageSettings
         '
@@ -2175,335 +2565,17 @@ Partial Class Form1
         '
         Me.T_HLabelTableAdapter2.ClearBeforeFill = True
         '
-        'BreaksIDDataGridViewTextBoxColumn
-        '
-        Me.BreaksIDDataGridViewTextBoxColumn.DataPropertyName = "ID"
-        resources.ApplyResources(Me.BreaksIDDataGridViewTextBoxColumn, "BreaksIDDataGridViewTextBoxColumn")
-        Me.BreaksIDDataGridViewTextBoxColumn.Name = "BreaksIDDataGridViewTextBoxColumn"
-        '
-        'BreaksLineIDDataGridViewTextBoxColumn
-        '
-        Me.BreaksLineIDDataGridViewTextBoxColumn.DataPropertyName = "lineID"
-        resources.ApplyResources(Me.BreaksLineIDDataGridViewTextBoxColumn, "BreaksLineIDDataGridViewTextBoxColumn")
-        Me.BreaksLineIDDataGridViewTextBoxColumn.Name = "BreaksLineIDDataGridViewTextBoxColumn"
-        '
-        'BeginBreakTimeDataGridViewTextBoxColumn
-        '
-        Me.BeginBreakTimeDataGridViewTextBoxColumn.DataPropertyName = "beginBreakTime"
-        resources.ApplyResources(Me.BeginBreakTimeDataGridViewTextBoxColumn, "BeginBreakTimeDataGridViewTextBoxColumn")
-        Me.BeginBreakTimeDataGridViewTextBoxColumn.Name = "BeginBreakTimeDataGridViewTextBoxColumn"
-        '
-        'EndBreakTimeDataGridViewTextBoxColumn
-        '
-        Me.EndBreakTimeDataGridViewTextBoxColumn.DataPropertyName = "endBreakTime"
-        resources.ApplyResources(Me.EndBreakTimeDataGridViewTextBoxColumn, "EndBreakTimeDataGridViewTextBoxColumn")
-        Me.EndBreakTimeDataGridViewTextBoxColumn.Name = "EndBreakTimeDataGridViewTextBoxColumn"
-        '
-        'CommentDataGridViewTextBoxColumn
-        '
-        Me.CommentDataGridViewTextBoxColumn.DataPropertyName = "comment"
-        resources.ApplyResources(Me.CommentDataGridViewTextBoxColumn, "CommentDataGridViewTextBoxColumn")
-        Me.CommentDataGridViewTextBoxColumn.Name = "CommentDataGridViewTextBoxColumn"
-        '
-
-
-
-
-
-
-
-
-
-
-        'T_linesBreaksBindingSource
-        '
-        Me.T_linesBreaksBindingSource.DataMember = "t_linesBreaks"
-        Me.T_linesBreaksBindingSource.DataSource = Me.Sb_tamesBreaksDataSet
-        '
-        'Sb_tamesBreaksDataSet
-        '
-        Me.Sb_tamesBreaksDataSet.DataSetName = "sb_tamesBreaksDataSet"
-        Me.Sb_tamesBreaksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'T_linesBreaksTableAdapter
         '
         Me.T_linesBreaksTableAdapter.ClearBeforeFill = True
         '
-        'gbNewInterrupt
-        '
-        Me.gbNewInterrupt.Controls.Add(Me.tbWhoIsLast)
-        Me.gbNewInterrupt.Controls.Add(Me.labelWhoIsLast)
-        Me.gbNewInterrupt.Controls.Add(Me.tbCarriedOutActions)
-        Me.gbNewInterrupt.Controls.Add(Me.labelCarriedOutActions)
-        Me.gbNewInterrupt.Controls.Add(Me.tbCauseOfInterrupt)
-        Me.gbNewInterrupt.Controls.Add(Me.tbInterruptCode)
-        Me.gbNewInterrupt.Controls.Add(Me.dtpEndOfInterruptTimestamp)
-        Me.gbNewInterrupt.Controls.Add(Me.tbEquipmentName)
-        Me.gbNewInterrupt.Controls.Add(Me.labelEqupmentName)
-        Me.gbNewInterrupt.Controls.Add(Me.tbGang)
-        Me.gbNewInterrupt.Controls.Add(Me.labelGang)
-        Me.gbNewInterrupt.Controls.Add(Me.labelInterruptDate)
-        Me.gbNewInterrupt.Controls.Add(Me.dtpAccidentDate)
-        Me.gbNewInterrupt.Controls.Add(Me.dtpInterruptTimestamp)
-        Me.gbNewInterrupt.Controls.Add(Me.dtpBeginRepairTimestamp)
-        Me.gbNewInterrupt.Controls.Add(Me.btnAddInterrupt)
-        Me.gbNewInterrupt.Controls.Add(Me.labelCauseOfInterrupt)
-        Me.gbNewInterrupt.Controls.Add(Me.tbInterruptsLineID)
-        Me.gbNewInterrupt.Controls.Add(Me.labelInterruptCode)
-        Me.gbNewInterrupt.Controls.Add(Me.labelInterruptsLineID)
-        resources.ApplyResources(Me.gbNewInterrupt, "gbNewInterrupt")
-        Me.gbNewInterrupt.ForeColor = System.Drawing.Color.Black
-        Me.gbNewInterrupt.Name = "gbNewInterrupt"
-        Me.gbNewInterrupt.TabStop = False
-        '
-        'dtpInterruptTimestamp
-        '
-        Me.dtpInterruptTimestamp.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        resources.ApplyResources(Me.dtpInterruptTimestamp, "dtpInterruptTimestamp")
-        Me.dtpInterruptTimestamp.Name = "dtpInterruptTimestamp"
-        Me.dtpInterruptTimestamp.ShowUpDown = True
-        Me.dtpInterruptTimestamp.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
-        '
-        'dtpBeginRepairTimestamp
-        '
-        Me.dtpBeginRepairTimestamp.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        resources.ApplyResources(Me.dtpBeginRepairTimestamp, "dtpBeginRepairTimestamp")
-        Me.dtpBeginRepairTimestamp.Name = "dtpBeginRepairTimestamp"
-        Me.dtpBeginRepairTimestamp.ShowUpDown = True
-        Me.dtpBeginRepairTimestamp.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
-        '
-        'btnAddInterrupt
-        '
-        resources.ApplyResources(Me.btnAddInterrupt, "btnAddInterrupt")
-        Me.btnAddInterrupt.Name = "btnAddInterrupt"
-        Me.btnAddInterrupt.UseVisualStyleBackColor = True
-        '
-        'labelCauseOfInterrupt
-        '
-        resources.ApplyResources(Me.labelCauseOfInterrupt, "labelCauseOfInterrupt")
-        Me.labelCauseOfInterrupt.Name = "labelCauseOfInterrupt"
-        '
-        'tbInterruptsLineID
-        '
-        resources.ApplyResources(Me.tbInterruptsLineID, "tbInterruptsLineID")
-        Me.tbInterruptsLineID.Name = "tbInterruptsLineID"
-        Me.ToolTip1.SetToolTip(Me.tbInterruptsLineID, resources.GetString("tbInterruptsLineID.ToolTip"))
-        '
-        'labelInterruptCode
-        '
-        resources.ApplyResources(Me.labelInterruptCode, "labelInterruptCode")
-        Me.labelInterruptCode.Name = "labelInterruptCode"
-        '
-        'labelInterruptsLineID
-        '
-        resources.ApplyResources(Me.labelInterruptsLineID, "labelInterruptsLineID")
-        Me.labelInterruptsLineID.Name = "labelInterruptsLineID"
-        '
-        'dtpAccidentDate
-        '
-        resources.ApplyResources(Me.dtpAccidentDate, "dtpAccidentDate")
-        Me.dtpAccidentDate.Name = "dtpAccidentDate"
-        '
-        'labelInterruptDate
-        '
-        resources.ApplyResources(Me.labelInterruptDate, "labelInterruptDate")
-        Me.labelInterruptDate.Name = "labelInterruptDate"
-        '
-        'tbGang
-        '
-        resources.ApplyResources(Me.tbGang, "tbGang")
-        Me.tbGang.Name = "tbGang"
-        Me.ToolTip1.SetToolTip(Me.tbGang, resources.GetString("tbGang.ToolTip"))
-        '
-        'labelGang
-        '
-        resources.ApplyResources(Me.labelGang, "labelGang")
-        Me.labelGang.Name = "labelGang"
-        '
-        'tbEquipmentName
-        '
-        resources.ApplyResources(Me.tbEquipmentName, "tbEquipmentName")
-        Me.tbEquipmentName.Name = "tbEquipmentName"
-        Me.ToolTip1.SetToolTip(Me.tbEquipmentName, resources.GetString("tbEquipmentName.ToolTip"))
-        '
-        'labelEqupmentName
-        '
-        resources.ApplyResources(Me.labelEqupmentName, "labelEqupmentName")
-        Me.labelEqupmentName.Name = "labelEqupmentName"
-        '
-        'dtpEndOfInterruptTimestamp
-        '
-        Me.dtpEndOfInterruptTimestamp.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        resources.ApplyResources(Me.dtpEndOfInterruptTimestamp, "dtpEndOfInterruptTimestamp")
-        Me.dtpEndOfInterruptTimestamp.Name = "dtpEndOfInterruptTimestamp"
-        Me.dtpEndOfInterruptTimestamp.ShowUpDown = True
-        Me.dtpEndOfInterruptTimestamp.Value = New Date(2016, 9, 6, 0, 1, 0, 0)
-        '
-        'tbInterruptCode
-        '
-        resources.ApplyResources(Me.tbInterruptCode, "tbInterruptCode")
-        Me.tbInterruptCode.Name = "tbInterruptCode"
-        Me.ToolTip1.SetToolTip(Me.tbInterruptCode, resources.GetString("tbInterruptCode.ToolTip"))
-        '
-        'tbCauseOfInterrupt
-        '
-        resources.ApplyResources(Me.tbCauseOfInterrupt, "tbCauseOfInterrupt")
-        Me.tbCauseOfInterrupt.Name = "tbCauseOfInterrupt"
-        Me.ToolTip1.SetToolTip(Me.tbCauseOfInterrupt, resources.GetString("tbCauseOfInterrupt.ToolTip"))
-        '
-        'tbCarriedOutActions
-        '
-        resources.ApplyResources(Me.tbCarriedOutActions, "tbCarriedOutActions")
-        Me.tbCarriedOutActions.Name = "tbCarriedOutActions"
-        Me.ToolTip1.SetToolTip(Me.tbCarriedOutActions, resources.GetString("tbCarriedOutActions.ToolTip"))
-        '
-        'labelCarriedOutActions
-        '
-        resources.ApplyResources(Me.labelCarriedOutActions, "labelCarriedOutActions")
-        Me.labelCarriedOutActions.Name = "labelCarriedOutActions"
-        '
-        'tbWhoIsLast
-        '
-        resources.ApplyResources(Me.tbWhoIsLast, "tbWhoIsLast")
-        Me.tbWhoIsLast.Name = "tbWhoIsLast"
-        Me.ToolTip1.SetToolTip(Me.tbWhoIsLast, resources.GetString("tbWhoIsLast.ToolTip"))
-        '
-        'labelWhoIsLast
-        '
-        resources.ApplyResources(Me.labelWhoIsLast, "labelWhoIsLast")
-        Me.labelWhoIsLast.Name = "labelWhoIsLast"
-        '
-        'MainteranceWaitingIntervalDataGridViewTextBoxColumn
-        '
-        Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn.DataPropertyName = "mainteranceWaitingInterval"
-        resources.ApplyResources(Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn, "MainteranceWaitingIntervalDataGridViewTextBoxColumn")
-        Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn.Name = "MainteranceWaitingIntervalDataGridViewTextBoxColumn"
-        Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'InterruptDurationDataGridViewTextBoxColumn
-        '
-        Me.InterruptDurationDataGridViewTextBoxColumn.DataPropertyName = "interruptDuration"
-        resources.ApplyResources(Me.InterruptDurationDataGridViewTextBoxColumn, "InterruptDurationDataGridViewTextBoxColumn")
-        Me.InterruptDurationDataGridViewTextBoxColumn.Name = "InterruptDurationDataGridViewTextBoxColumn"
-        Me.InterruptDurationDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'InterruptsIDDataGridViewTextBoxColumn
-        '
-        Me.InterruptsIDDataGridViewTextBoxColumn.DataPropertyName = "ID"
-        resources.ApplyResources(Me.InterruptsIDDataGridViewTextBoxColumn, "InterruptsIDDataGridViewTextBoxColumn")
-        Me.InterruptsIDDataGridViewTextBoxColumn.Name = "InterruptsIDDataGridViewTextBoxColumn"
-        '
-        'AccidentDateDataGridViewTextBoxColumn
-        '
-        Me.AccidentDateDataGridViewTextBoxColumn.DataPropertyName = "accidentDate"
-        resources.ApplyResources(Me.AccidentDateDataGridViewTextBoxColumn, "AccidentDateDataGridViewTextBoxColumn")
-        Me.AccidentDateDataGridViewTextBoxColumn.Name = "AccidentDateDataGridViewTextBoxColumn"
-        '
-        'GangDataGridViewTextBoxColumn
-        '
-        Me.GangDataGridViewTextBoxColumn.DataPropertyName = "gang"
-        resources.ApplyResources(Me.GangDataGridViewTextBoxColumn, "GangDataGridViewTextBoxColumn")
-        Me.GangDataGridViewTextBoxColumn.Name = "GangDataGridViewTextBoxColumn"
-        '
-        'InterruptsLineIDDataGridViewTextBoxColumn
-        '
-        Me.InterruptsLineIDDataGridViewTextBoxColumn.DataPropertyName = "lineID"
-        resources.ApplyResources(Me.InterruptsLineIDDataGridViewTextBoxColumn, "InterruptsLineIDDataGridViewTextBoxColumn")
-        Me.InterruptsLineIDDataGridViewTextBoxColumn.Name = "InterruptsLineIDDataGridViewTextBoxColumn"
-        '
-        'EquipmentNameDataGridViewTextBoxColumn
-        '
-        Me.EquipmentNameDataGridViewTextBoxColumn.DataPropertyName = "equipmentName"
-        resources.ApplyResources(Me.EquipmentNameDataGridViewTextBoxColumn, "EquipmentNameDataGridViewTextBoxColumn")
-        Me.EquipmentNameDataGridViewTextBoxColumn.Name = "EquipmentNameDataGridViewTextBoxColumn"
-        '
-        'InterruptTimestampDataGridViewTextBoxColumn
-        '
-        Me.InterruptTimestampDataGridViewTextBoxColumn.DataPropertyName = "interruptTimestamp"
-        resources.ApplyResources(Me.InterruptTimestampDataGridViewTextBoxColumn, "InterruptTimestampDataGridViewTextBoxColumn")
-        Me.InterruptTimestampDataGridViewTextBoxColumn.Name = "InterruptTimestampDataGridViewTextBoxColumn"
-        '
-        'BeginRepairTimestampDataGridViewTextBoxColumn
-        '
-        Me.BeginRepairTimestampDataGridViewTextBoxColumn.DataPropertyName = "beginRepairTimestamp"
-        resources.ApplyResources(Me.BeginRepairTimestampDataGridViewTextBoxColumn, "BeginRepairTimestampDataGridViewTextBoxColumn")
-        Me.BeginRepairTimestampDataGridViewTextBoxColumn.Name = "BeginRepairTimestampDataGridViewTextBoxColumn"
-        '
-        'EndOfInterruptTimestampDataGridViewTextBoxColumn
-        '
-        Me.EndOfInterruptTimestampDataGridViewTextBoxColumn.DataPropertyName = "endOfInterruptTimestamp"
-        resources.ApplyResources(Me.EndOfInterruptTimestampDataGridViewTextBoxColumn, "EndOfInterruptTimestampDataGridViewTextBoxColumn")
-        Me.EndOfInterruptTimestampDataGridViewTextBoxColumn.Name = "EndOfInterruptTimestampDataGridViewTextBoxColumn"
-        '
-        'InterruptCodeDataGridViewTextBoxColumn
-        '
-        Me.InterruptCodeDataGridViewTextBoxColumn.DataPropertyName = "interruptCode"
-        resources.ApplyResources(Me.InterruptCodeDataGridViewTextBoxColumn, "InterruptCodeDataGridViewTextBoxColumn")
-        Me.InterruptCodeDataGridViewTextBoxColumn.Name = "InterruptCodeDataGridViewTextBoxColumn"
-        '
-        'CauseOfInterruptDataGridViewTextBoxColumn
-        '
-        Me.CauseOfInterruptDataGridViewTextBoxColumn.DataPropertyName = "causeOfInterrupt"
-        resources.ApplyResources(Me.CauseOfInterruptDataGridViewTextBoxColumn, "CauseOfInterruptDataGridViewTextBoxColumn")
-        Me.CauseOfInterruptDataGridViewTextBoxColumn.Name = "CauseOfInterruptDataGridViewTextBoxColumn"
-        '
-        'CarriedOutActionsDataGridViewTextBoxColumn
-        '
-        Me.CarriedOutActionsDataGridViewTextBoxColumn.DataPropertyName = "carriedOutActions"
-        resources.ApplyResources(Me.CarriedOutActionsDataGridViewTextBoxColumn, "CarriedOutActionsDataGridViewTextBoxColumn")
-        Me.CarriedOutActionsDataGridViewTextBoxColumn.Name = "CarriedOutActionsDataGridViewTextBoxColumn"
-        '
-        'WhoIsLastDataGridViewTextBoxColumn
-        '
-        Me.WhoIsLastDataGridViewTextBoxColumn.DataPropertyName = "whoIsLast"
-        resources.ApplyResources(Me.WhoIsLastDataGridViewTextBoxColumn, "WhoIsLastDataGridViewTextBoxColumn")
-        Me.WhoIsLastDataGridViewTextBoxColumn.Name = "WhoIsLastDataGridViewTextBoxColumn"
-        '
-        'T_linesBreaksBindingSource
-        '
-        Me.T_linesBreaksBindingSource.DataMember = "t_linesBreaks"
-        Me.T_linesBreaksBindingSource.DataSource = Me.Sb_tamesBreaksDataSet
-        '
-        'Sb_tamesBreaksDataSet
-        '
-        Me.Sb_tamesBreaksDataSet.DataSetName = "sb_tamesBreaksDataSet"
-        Me.Sb_tamesBreaksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-
-
-
-
-
-
-
-
-
-
-
-
-        'T_linesInterruptsBindingSource
-        '
-        Me.T_linesInterruptsBindingSource.DataMember = "t_linesInterrupts"
-        Me.T_linesInterruptsBindingSource.DataSource = Me.Sb_tamesInterruptsDataSet
-        '
-        'Sb_tamesInterruptsDataSet
-        '
-        Me.Sb_tamesInterruptsDataSet.DataSetName = "sb_tamesInterruptsDataSet"
-        Me.Sb_tamesInterruptsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'T_linesBreaksTableAdapter
-        '
-        Me.T_linesBreaksTableAdapter.ClearBeforeFill = True
-        '
-
-
-
-
-
-
         'T_linesInterruptsTableAdapter
         '
         Me.T_linesInterruptsTableAdapter.ClearBeforeFill = True
+        '
+        'T_linesInterruptsLineIDTableAdapter
+        '
+        Me.T_linesInterruptsLineIDTableAdapter.ClearBeforeFill = True
         '
         'Form1
         '
@@ -2575,19 +2647,25 @@ Partial Class Form1
         Me.gbNewBreak.ResumeLayout(False)
         Me.gbNewBreak.PerformLayout()
         CType(Me.dgvBreaks, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.T_linesBreaksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Sb_tamesBreaksDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageInterrupts.ResumeLayout(False)
+        Me.gbInterruptsFilterTimeInterval.ResumeLayout(False)
+        Me.gbInterruptsLineID.ResumeLayout(False)
+        CType(Me.T_linesInterruptsLineIDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Sb_tamesInterruptsLineIDDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbInterruptsDateInterval.ResumeLayout(False)
+        Me.gbInterruptsDateInterval.PerformLayout()
+        Me.gbNewInterrupt.ResumeLayout(False)
+        Me.gbNewInterrupt.PerformLayout()
         CType(Me.dgvInterrupts, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.T_linesInterruptsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Sb_tamesInterruptsDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPageSettings.ResumeLayout(False)
         CType(Me.T_SettingsDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.T_SettingsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox11.ResumeLayout(False)
         Me.GroupBox11.PerformLayout()
-        CType(Me.T_linesBreaksBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Sb_tamesBreaksDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gbNewInterrupt.ResumeLayout(False)
-        Me.gbNewInterrupt.PerformLayout()
-        CType(Me.T_linesInterruptsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Sb_tamesInterruptsDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2867,7 +2945,7 @@ Partial Class Form1
     Friend WithEvents TabPageInterrupts As System.Windows.Forms.TabPage
     Friend WithEvents dgvInterrupts As System.Windows.Forms.DataGridView
     Friend WithEvents Sb_tamesInterruptsDataSet As LabelPrint.sb_tamesInterruptsDataSet
-    Friend WithEvents T_linesInterruptsBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents T_linesInterruptsLineIDBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents T_linesInterruptsTableAdapter As LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter
 
 
@@ -2919,4 +2997,19 @@ Partial Class Form1
     Friend WithEvents CauseOfInterruptDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CarriedOutActionsDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents WhoIsLastDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents btnInterruptsFilterApply As System.Windows.Forms.Button
+    Friend WithEvents gbInterruptsFilterTimeInterval As System.Windows.Forms.GroupBox
+    Friend WithEvents dtpInterruptsFilterTimeFrom As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpInterruptsFilterTimeTo As System.Windows.Forms.DateTimePicker
+    Friend WithEvents gbInterruptsLineID As System.Windows.Forms.GroupBox
+    Friend WithEvents cbInterruptLineIDfilter As System.Windows.Forms.ComboBox
+    Friend WithEvents gbInterruptsDateInterval As System.Windows.Forms.GroupBox
+    Friend WithEvents labelInterruptsFilterDateTo As System.Windows.Forms.Label
+    Friend WithEvents dtpInterruptsFilterDateTo As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpInterruptsFilterDateFrom As System.Windows.Forms.DateTimePicker
+    Friend WithEvents labelInterruptsFilterDateFrom As System.Windows.Forms.Label
+    Friend WithEvents Sb_tamesInterruptsLineIDDataSet As LabelPrint.sb_tamesInterruptsLineIDDataSet
+    Friend WithEvents T_linesInterruptsBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents T_linesInterruptsLineIDTableAdapter As LabelPrint.sb_tamesInterruptsLineIDDataSetTableAdapters.t_linesInterruptsTableAdapter
+    Friend WithEvents btnInterruptFilterReset As System.Windows.Forms.Button
 End Class

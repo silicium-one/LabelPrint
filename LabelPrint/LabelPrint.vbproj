@@ -131,18 +131,26 @@
     <Compile Include="ru_sb_tames.vb">
       <DependentUpon>ru_sb_tames.xsd</DependentUpon>
     </Compile>
-    <Compile Include="sb_tamesBreaksDataSet.Designer.vb">
+    <Compile Include="sb_tamesBreaksDataSet.vb">
       <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sb_tamesBreaksDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="sb_tamesBreaksDataSet.vb">
       <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="sb_tamesInterruptsDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>sb_tamesInterruptsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sb_tamesInterruptsDataSet.vb">
+      <DependentUpon>sb_tamesInterruptsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="sb_tamesInterruptsLineIDDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sb_tamesInterruptsLineIDDataSet.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +202,7 @@
     <None Include="sb_tamesBreaksDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>sb_tamesBreaksDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <None Include="sb_tamesBreaksDataSet.xss">
       <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
@@ -203,11 +212,22 @@
     </None>
     <None Include="sb_tamesInterruptsDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>sb_tamesInterruptsDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>sb_tamesInterruptsDataSet.Designer.vb</LastGenOutput>
     </None>
     <None Include="sb_tamesInterruptsDataSet.xss">
       <DependentUpon>sb_tamesInterruptsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sb_tamesInterruptsLineIDDataSet.xsc">
+      <DependentUpon>sb_tamesInterruptsLineIDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sb_tamesInterruptsLineIDDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sb_tamesInterruptsLineIDDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sb_tamesInterruptsLineIDDataSet.xss">
+      <DependentUpon>sb_tamesInterruptsLineIDDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

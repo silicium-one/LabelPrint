@@ -43,6 +43,8 @@ Public Class Form1
     Private ReadOnly plannedWorkTimeInMinuts(0 To 23) As UInt32
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
+        Me.T_linesInterruptsLineIDTableAdapter.Fill(Me.Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts)
         'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
         Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
         'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
@@ -3309,15 +3311,17 @@ retry:
     End Sub
 
 
+    Private Sub btnInterruptsFilterApply_Click(sender As Object, e As EventArgs) Handles btnInterruptsFilterApply.Click
+        T_linesInterruptsTableAdapter.FillAndCalculateBy(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts,
+                                                         dtpInterruptsFilterDateFrom.Value,
+                                                         dtpInterruptsFilterDateTo.Value,
+                                                         cbInterruptLineIDfilter.Text,
+                                                         cbInterruptLineIDfilter.Text,
+                                                         dtpInterruptsFilterTimeFrom.Value.TimeOfDay,
+                                                         dtpInterruptsFilterDateTo.Value.TimeOfDay)
+    End Sub
 
-
-
-
-
-    Private Sub btnAddInterrupt_Click(sender As Object, e As EventArgs) Handles btnAddInterrupt.Click
-        T_linesInterruptsTableAdapter.InsertQuery(dtpAccidentDate.Value, tbGang.Text, tbInterruptsLineID.Text, tbEquipmentName.Text,
-                                                  dtpInterruptTimestamp.Value, dtpBeginRepairTimestamp.Value, dtpEndOfInterruptTimestamp.Value,
-                                                  tbInterruptCode.Text, tbCauseOfInterrupt.Text, tbCarriedOutActions.Text, tbWhoIsLast.Text)
-        Me.T_linesInterruptsTableAdapter.Fill(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
+    Private Sub btnInterruptFilterReset_Click(sender As Object, e As EventArgs) Handles btnInterruptFilterReset.Click
+        T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
     End Sub
 End Class

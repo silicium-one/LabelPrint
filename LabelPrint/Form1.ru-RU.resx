@@ -3835,4 +3835,19 @@
   <data name="WhoIsLastDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Ответственное лицо</value>
   </data>
+  <data name="btnInterruptFilterReset.Text" xml:space="preserve">
+    <value>Сбросить фильтр</value>
+  </data>
+  <data name="btnInterruptsFilterApply.Text" xml:space="preserve">
+    <value>Применить фильтр</value>
+  </data>
+  <data name="gbInterruptsFilterTimeInterval.Text" xml:space="preserve">
+    <value>Период времени</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.Text" xml:space="preserve">
+    <value>С</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.Text" xml:space="preserve">
+    <value>По</value>
+  </data>
 </root>
