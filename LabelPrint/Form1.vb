@@ -5,6 +5,7 @@ Imports System.IO.Ports
 Imports System.IO
 Imports System.Threading
 Imports LabelPrint.ru_sb_tamesTableAdapters
+Imports System.Text
 
 
 Public Class Form1
@@ -3324,4 +3325,49 @@ retry:
     Private Sub btnInterruptFilterReset_Click(sender As Object, e As EventArgs) Handles btnInterruptFilterReset.Click
         T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
     End Sub
+
+    Private Sub btnInterruptsExport_Click(sender As Object, e As EventArgs) Handles btnInterruptsExport.Click
+        Dim dgv = dgvInterrupts
+        If dgv.Rows.Count < 1 Then Return
+        Dim dlg = New SaveFileDialog()
+        dlg.Filter = "Файлы CSV (*.csv)|*.csv"
+        If dlg.ShowDialog() <> DialogResult.OK Then Return
+
+        Dim sw = New StreamWriter(dlg.FileName, False, Encoding.GetEncoding("windows-1251"))
+        Dim str = toCSV(dgv)
+        sw.Write(str)
+        sw.Close()
+    End Sub
+
+    Public Function toCSV(srcTable As DataGridView) As String
+        Dim result = New StringBuilder
+        For i = 0 To srcTable.Columns.Count - 1
+            result.Append(Chr(34).ToString())
+            result.Append(srcTable.Columns(i).HeaderText)
+            result.Append(Chr(34).ToString())
+            result.Append(";")
+        Next
+        result.Remove(result.Length - 1, 1)
+        result.AppendLine()
+
+        For Each row As DataGridViewRow In srcTable.Rows
+            For i = 0 To srcTable.Columns.Count - 1
+                result.Append(Chr(34).ToString())
+                result.Append(row.Cells(i).Value)
+                result.Append(Chr(34).ToString())
+                result.Append(";")
+            Next
+            result.Remove(result.Length - 1, 1)
+            result.AppendLine()
+        Next
+        Return result.ToString()
+        Dim ascii = Encoding.GetEncoding("windows-1251")
+        Dim unicode As Encoding = Encoding.UTF8
+        Dim unicodeBytes = unicode.GetBytes(result.ToString())
+        Dim asciiBytes = Encoding.Convert(unicode, ascii, unicodeBytes)
+        Dim asciiChars(ascii.GetCharCount(asciiBytes, 0, asciiBytes.Length)) As Char ' todo: optimize
+        ascii.GetChars(asciiBytes, 0, asciiBytes.Length, asciiChars, 0)
+        Dim asciiString = New String(asciiChars)
+        Return asciiString
+    End Function
 End Class

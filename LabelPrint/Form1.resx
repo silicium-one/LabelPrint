@@ -5069,6 +5069,33 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;TabPageBreaks.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="btnInterruptsExport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnInterruptsExport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>814, 6</value>
+  </data>
+  <data name="btnInterruptsExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 63</value>
+  </data>
+  <data name="btnInterruptsExport.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btnInterruptsExport.Text" xml:space="preserve">
+    <value>Upload to Excel</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsExport.Name" xml:space="preserve">
+    <value>btnInterruptsExport</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsExport.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsExport.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnInterruptFilterReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -5094,7 +5121,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabPageInterrupts</value>
   </data>
   <data name="&gt;&gt;btnInterruptFilterReset.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnInterruptsFilterApply.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5121,7 +5148,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabPageInterrupts</value>
   </data>
   <data name="&gt;&gt;btnInterruptsFilterApply.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="dtpInterruptsFilterTimeFrom.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 14</value>
@@ -5187,7 +5214,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabPageInterrupts</value>
   </data>
   <data name="&gt;&gt;gbInterruptsFilterTimeInterval.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <metadata name="T_linesInterruptsLineIDBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>265, 17</value>
@@ -5238,7 +5265,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabPageInterrupts</value>
   </data>
   <data name="&gt;&gt;gbInterruptsLineID.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="labelInterruptsFilterDateTo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5361,7 +5388,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabPageInterrupts</value>
   </data>
   <data name="&gt;&gt;gbInterruptsDateInterval.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tbWhoIsLast.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -5973,7 +6000,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabPageInterrupts</value>
   </data>
   <data name="&gt;&gt;gbNewInterrupt.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="InterruptsIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>ID</value>
@@ -6084,7 +6111,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabPageInterrupts</value>
   </data>
   <data name="&gt;&gt;dgvInterrupts.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="TabPageInterrupts.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>

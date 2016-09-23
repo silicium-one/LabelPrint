@@ -3850,4 +3850,7 @@
   <data name="labelInterruptsFilterDateTo.Text" xml:space="preserve">
     <value>По</value>
   </data>
+  <data name="btnInterruptsExport.Text" xml:space="preserve">
+    <value>Выгрузить в Excel</value>
+  </data>
 </root>
