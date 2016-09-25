@@ -870,7 +870,7 @@
     <value>499, 16</value>
   </data>
   <data name="btnProdFind.Text" xml:space="preserve">
-    <value>Находить</value>
+    <value>Поиск</value>
   </data>
   <data name="GroupBox15.Location" type="System.Drawing.Point, System.Drawing">
     <value>391, 16</value>
@@ -879,7 +879,7 @@
     <value>108, 66</value>
   </data>
   <data name="GroupBox15.Text" xml:space="preserve">
-    <value>Всего частей</value>
+    <value>Фильтровать по</value>
   </data>
   <data name="rbGroupByOrder.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 47</value>
@@ -897,7 +897,7 @@
     <value>112, 66</value>
   </data>
   <data name="GroupBox14.Text" xml:space="preserve">
-    <value>Поточная Линия</value>
+    <value>Номер Линии</value>
   </data>
   <data name="tbProdLine.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 20</value>
@@ -906,7 +906,7 @@
     <value>14, 13</value>
   </data>
   <data name="Label32.Text" xml:space="preserve">
-    <value>К</value>
+    <value>По</value>
   </data>
   <data name="dtpProdEnd.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 42</value>
@@ -918,7 +918,7 @@
     <value>21, 13</value>
   </data>
   <data name="Label31.Text" xml:space="preserve">
-    <value>Из</value>
+    <value>С</value>
   </data>
   <data name="TabPageSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>1044, 533</value>
@@ -3852,5 +3852,20 @@
   </data>
   <data name="btnInterruptsExport.Text" xml:space="preserve">
     <value>Выгрузить в Excel</value>
+  </data>
+  <data name="BreaksLineIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Номер Линии</value>
+  </data>
+  <data name="gbInterruptsLineID.Text" xml:space="preserve">
+    <value>Номер Линии</value>
+  </data>
+  <data name="GroupBox16.Text" xml:space="preserve">
+    <value>Номер заказа</value>
+  </data>
+  <data name="InterruptsLineIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Номер Линии</value>
+  </data>
+  <data name="labelBreaksLineID.Text" xml:space="preserve">
+    <value>Номер Линии</value>
   </data>
 </root>

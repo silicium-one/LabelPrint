@@ -3214,14 +3214,14 @@ retry:
             ToolStripProgressBar1.Visible = False
             btnProdFind.Enabled = True
             With dgvProd
-                .Columns(0).HeaderText = "Order"
-                .Columns(1).HeaderText = "Part"
-                .Columns(2).HeaderText = "Part Description"
-                .Columns(3).HeaderText = "Date"
-                .Columns(4).HeaderText = "Hour"
-                .Columns(5).HeaderText = "Pcs"
-                .Columns(6).HeaderText = "Pcs Total"
-                .Columns(7).HeaderText = "Productivity"
+                .Columns(0).HeaderText = "Заказ №"
+                .Columns(1).HeaderText = "Номер изделия"
+                .Columns(2).HeaderText = "Описание изделия"
+                .Columns(3).HeaderText = "Дата"
+                .Columns(4).HeaderText = "Период"
+                .Columns(5).HeaderText = "Количество"
+                .Columns(6).HeaderText = "Количество всего"
+                .Columns(7).HeaderText = "Средняя производительность"
                 .Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             End With
 
@@ -3406,4 +3406,6 @@ retry:
         Dim asciiString = New String(asciiChars)
         Return asciiString
     End Function
+
+
 End Class
