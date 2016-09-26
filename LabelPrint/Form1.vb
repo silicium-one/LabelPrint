@@ -6,6 +6,7 @@ Imports System.IO
 Imports System.Threading
 Imports LabelPrint.ru_sb_tamesTableAdapters
 Imports System.Text
+Imports System.Data.Odbc
 
 
 Public Class Form1
@@ -43,7 +44,7 @@ Public Class Form1
     'время на работу за вычетом времени на запланированные перерывы и простои, для каждого часа суток (до 7 утра обычно 0, потом начинает расти)
     'заполняется всякий раз, когда выполняется вычисление производительности
     Private ReadOnly workTimeInMinuts(0 To 23) As UInt32
-
+    
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
         Me.T_linesInterruptsLineIDTableAdapter.Fill(Me.Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts)
@@ -51,6 +52,7 @@ Public Class Form1
         Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
         'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
         Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
+
         Try
             Text += " " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
 #If VERSION_TYPE = "a" Then
@@ -85,6 +87,7 @@ Public Class Form1
             End If
 
             LoadSettings()
+            respawnLineStateTimers()
 
             'load order if it is opened
             _curentInfoIni.Load(_curentIniPath)
@@ -3126,43 +3129,6 @@ retry:
 
     End Function
 
-    Private Function sumOfInterruptsInMinuts(lineID As String, timeFrom As String, timeTo As String) As UInt32
-        Dim odbcConnector As New Global.System.Data.Odbc.OdbcCommand()
-        odbcConnector.Connection = New Global.System.Data.Odbc.OdbcConnection(Global.LabelPrint.My.MySettings.Default.ru_sb_tames)
-        odbcConnector.CommandText = "SELECT sum(least(to_timestamp(""endBreakTime""::varchar,'HH24:MI:SS'),to_timestamp(" & _
-               "'" & timeTo & "', 'HH24:MI'))-greatest(to_timestamp(""beginBreakTime""::varchar,'HH24:MI:SS" & _
-               "'),to_timestamp('" & timeFrom & "', 'HH24:MI'))) FROM ""t_linesBreaks"" where to_timestamp(""e" & _
-               "ndBreakTime""::varchar,'HH24:MI:SS')>=to_timestamp('" & timeFrom & "', 'HH24:MI') and to_tim" & _
-               "estamp(""beginBreakTime""::varchar,'HH24:MI:SS')<=to_timestamp('" & timeTo & "', 'HH24:MI')" & _
-               " and ""lineID"" = '" & lineID & "';"
-        odbcConnector.CommandType = Global.System.Data.CommandType.Text
-
-        Dim previousConnectionState As Global.System.Data.ConnectionState = odbcConnector.Connection.State
-        If ((odbcConnector.Connection.State And Global.System.Data.ConnectionState.Open) _
-                    <> Global.System.Data.ConnectionState.Open) Then
-            odbcConnector.Connection.Open()
-        End If
-
-        Dim queryReturnValue As Object
-
-        Try
-            queryReturnValue = odbcConnector.ExecuteScalar
-        Finally
-            If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                odbcConnector.Connection.Close()
-            End If
-        End Try
-
-        If ((queryReturnValue Is Nothing) _
-                    OrElse (queryReturnValue.GetType Is GetType(Global.System.DBNull))) Then Return 0
-
-        Dim sumTimeOfBreaks As Date
-        If Not DateTime.TryParse(CType(queryReturnValue, String), sumTimeOfBreaks) Then Return 0
-
-        Return sumTimeOfBreaks.TimeOfDay.TotalMinutes
-
-    End Function
-
     Private Sub BackgroundWorkerProductivity1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorkerProductivity1.RunWorkerCompleted
         Try
             'add column pcs/day or pcs/order 
@@ -3280,6 +3246,7 @@ retry:
 
     Private Sub dgvBreaks_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvBreaks.UserDeletedRow
         T_linesBreaksTableAdapter.Update(CType(dgvBreaks.DataSource, System.Windows.Forms.BindingSource).DataSource)
+        respawnLineStateTimers()
     End Sub
 
     Private Sub dgvBreaks_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBreaks.CellEndEdit
@@ -3290,11 +3257,13 @@ retry:
                                               Date.Parse(row.Cells("EndBreakTimeDataGridViewTextBoxColumn").Value.ToString()),
                                               row.Cells("CommentDataGridViewTextBoxColumn").Value.ToString(),
                                               Integer.Parse(row.Cells("BreaksIDDataGridViewTextBoxColumn").Value.ToString()))
+        respawnLineStateTimers()
     End Sub
 
     Private Sub btnAddBreak_Click(sender As Object, e As EventArgs) Handles btnAddBreak.Click
         T_linesBreaksTableAdapter.InsertQuery(tbBreaksLineID.Text, dtpBeginBreak.Value, dtpEndBreak.Value, tbComment.Text)
         Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
+        respawnLineStateTimers()
     End Sub
 
     Private Sub dgvInterrupts_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvInterrupts.UserDeletedRow
@@ -3396,7 +3365,7 @@ retry:
             result.Remove(result.Length - 1, 1)
             result.AppendLine()
         Next
-        Return result.ToString()
+        'Return result.ToString()
         Dim ascii = Encoding.GetEncoding("windows-1251")
         Dim unicode As Encoding = Encoding.UTF8
         Dim unicodeBytes = unicode.GetBytes(result.ToString())
@@ -3406,6 +3375,71 @@ retry:
         Dim asciiString = New String(asciiChars)
         Return asciiString
     End Function
+
+    'Private Sub respawnLineStateTimers(sender As Object, e As ElapsedEventArgs)
+    '    respawnLineStateTimers()
+    'End Sub
+    'набор таймеров для отслеживания состояния линии (1 перерыв - 2 таймера + 1 не перевзводку в конце суток) 
+    Private ReadOnly _breakTimers As New List(Of Timer)
+
+    Private Sub respawnLineStateTimers() ' перевзвести все таймеры, по которым переключается состояние линии перерыв/работа (простой учитывается отдельно)
+        Dim nowMs As Long = DateTime.Now.TimeOfDay.TotalMilliseconds ' Отправная точка для взвода таймеров
+        _breakTimers.Clear()
+        isLineBreaked = False
+        updateLineState()
+        Dim tableOfBreaks = T_linesBreaksTableAdapter.GetDataByLine(LineName)
+
+        With tableOfBreaks
+            For row = 0 To tableOfBreaks.Rows.Count - 1
+                Debug.WriteLine(.Rows(row).Item("beginBreakTime").ToString() & " - " & .Rows(row).Item("endBreakTime").ToString())
+                Dim beginBreakMs As Long = .Rows(row).Item("beginBreakTime").TotalMilliseconds
+                Dim endBreakMs As Long = .Rows(row).Item("endBreakTime").TotalMilliseconds
+
+                If beginBreakMs > nowMs Then
+                    Dim timerFrom As New Timer(AddressOf beginBreakOnLine, vbNull, beginBreakMs - nowMs, Timeout.Infinite)
+                    Dim timerTo As New Timer(AddressOf endBreakOnLine, vbNull, endBreakMs - nowMs, Timeout.Infinite)
+                    _breakTimers.Add(timerFrom)
+                    _breakTimers.Add(timerTo)
+                ElseIf endBreakMs > nowMs Then
+                    Dim timerFrom As New Timer(AddressOf beginBreakOnLine, vbNull, 1, Timeout.Infinite)
+                    Dim timerTo As New Timer(AddressOf endBreakOnLine, vbNull, endBreakMs - nowMs, Timeout.Infinite)
+                    _breakTimers.Add(timerFrom)
+                    _breakTimers.Add(timerTo)
+                End If
+            Next
+        End With
+        Dim timerAutoRepeat As New Timer(AddressOf beginBreakOnLine, vbNull, CType((24 * 60 * 60 * 1000 - nowMs), Long), Timeout.Infinite)
+        _breakTimers.Add(timerAutoRepeat)
+    End Sub
+
+    Dim isLineBreaked As Boolean = False
+    Dim isLineInterrupted As Boolean = False
+    Private Sub beginBreakOnLine(sender As Object) ' для вывода на панель оператора информации о том, что линия в состоянии "перерыв"
+        isLineBreaked = True
+        updateLineState()
+    End Sub
+
+    Private Sub endBreakOnLine(sender As Object) ' для вывода на панель оператора информации о том, что линия вышла из состояния "перерыв"
+        isLineBreaked = False
+        updateLineState()
+    End Sub
+
+    Delegate Sub updateTextDelegate()
+    Private Sub updateLineState()
+        If labelLineState.InvokeRequired Then
+            labelLineState.Invoke(New updateTextDelegate(AddressOf updateLineState))
+        Else
+            Dim currState As String
+            If Not isLineBreaked And Not isLineInterrupted Then
+                currState = "Линия " & LineName & Chr(13) & "Состояние: работает"
+            ElseIf isLineBreaked Then
+                currState = "Линия " & LineName & Chr(13) & "Состояние: перерыв"
+            ElseIf isLineInterrupted Then
+                currState = "Линия " & LineName & Chr(13) & "Состояние: простой"
+            End If
+            labelLineState.Text = currState
+        End If
+    End Sub
 
 
 End Class
