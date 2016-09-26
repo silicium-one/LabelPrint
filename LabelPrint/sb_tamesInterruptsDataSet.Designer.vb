@@ -493,38 +493,38 @@ Partial Public Class sb_tamesInterruptsDataSet
             Me.Rows.Add(row)
         End Sub
         
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overloads Function Addt_linesInterruptsRow(ByVal accidentDate As Date, ByVal gang As String, ByVal lineID As String, ByVal equipmentName As String, ByVal interruptTimestamp As System.TimeSpan, ByVal beginRepairTimestamp As System.TimeSpan, ByVal endOfInterruptTimestamp As System.TimeSpan, ByVal interruptCode As String, ByVal causeOfInterrupt As String, ByVal carriedOutActions As String, ByVal whoIsLast As String, ByVal mainteranceWaitingInterval As String, ByVal interruptDuration As String) As t_linesInterruptsRow
-            Dim rowt_linesInterruptsRow As t_linesInterruptsRow = CType(Me.NewRow, t_linesInterruptsRow)
+            Dim rowt_linesInterruptsRow As t_linesInterruptsRow = CType(Me.NewRow,t_linesInterruptsRow)
             Dim columnValuesArray() As Object = New Object() {Nothing, accidentDate, gang, lineID, equipmentName, interruptTimestamp, beginRepairTimestamp, endOfInterruptTimestamp, interruptCode, causeOfInterrupt, carriedOutActions, whoIsLast, mainteranceWaitingInterval, interruptDuration}
             rowt_linesInterruptsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowt_linesInterruptsRow)
             Return rowt_linesInterruptsRow
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function FindByID(ByVal ID As Integer) As t_linesInterruptsRow
-            Return CType(Me.Rows.Find(New Object() {ID}), t_linesInterruptsRow)
+            Return CType(Me.Rows.Find(New Object() {ID}),t_linesInterruptsRow)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As t_linesInterruptsDataTable = CType(MyBase.Clone, t_linesInterruptsDataTable)
-            cln.InitVars()
+            Dim cln As t_linesInterruptsDataTable = CType(MyBase.Clone,t_linesInterruptsDataTable)
+            cln.InitVars
             Return cln
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
             Return New t_linesInterruptsDataTable()
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnID = MyBase.Columns("ID")
             Me.columnaccidentDate = MyBase.Columns("accidentDate")
@@ -541,9 +541,9 @@ Partial Public Class sb_tamesInterruptsDataSet
             Me.columnmainteranceWaitingInterval = MyBase.Columns("mainteranceWaitingInterval")
             Me.columninterruptDuration = MyBase.Columns("interruptDuration")
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitClass()
             Me.columnID = New Global.System.Data.DataColumn("ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnID)
@@ -573,12 +573,12 @@ Partial Public Class sb_tamesInterruptsDataSet
             MyBase.Columns.Add(Me.columnmainteranceWaitingInterval)
             Me.columninterruptDuration = New Global.System.Data.DataColumn("interruptDuration", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columninterruptDuration)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, True))
-            Me.columnID.AutoIncrement = True
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
+            Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
             Me.columnID.AutoIncrementStep = -1
-            Me.columnID.AllowDBNull = False
-            Me.columnID.Unique = True
+            Me.columnID.AllowDBNull = false
+            Me.columnID.Unique = true
             Me.columngang.MaxLength = 254
             Me.columnlineID.MaxLength = 254
             Me.columnequipmentName.MaxLength = 254
@@ -587,69 +587,69 @@ Partial Public Class sb_tamesInterruptsDataSet
             Me.columncarriedOutActions.MaxLength = 254
             Me.columnwhoIsLast.MaxLength = 254
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Newt_linesInterruptsRow() As t_linesInterruptsRow
-            Return CType(Me.NewRow, t_linesInterruptsRow)
+            Return CType(Me.NewRow,t_linesInterruptsRow)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
             Return New t_linesInterruptsRow(builder)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
             Return GetType(t_linesInterruptsRow)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
             If (Not (Me.t_linesInterruptsRowChangedEvent) Is Nothing) Then
-                RaiseEvent t_linesInterruptsRowChanged(Me, New t_linesInterruptsRowChangeEvent(CType(e.Row, t_linesInterruptsRow), e.Action))
+                RaiseEvent t_linesInterruptsRowChanged(Me, New t_linesInterruptsRowChangeEvent(CType(e.Row,t_linesInterruptsRow), e.Action))
             End If
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
             If (Not (Me.t_linesInterruptsRowChangingEvent) Is Nothing) Then
-                RaiseEvent t_linesInterruptsRowChanging(Me, New t_linesInterruptsRowChangeEvent(CType(e.Row, t_linesInterruptsRow), e.Action))
+                RaiseEvent t_linesInterruptsRowChanging(Me, New t_linesInterruptsRowChangeEvent(CType(e.Row,t_linesInterruptsRow), e.Action))
             End If
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
             If (Not (Me.t_linesInterruptsRowDeletedEvent) Is Nothing) Then
-                RaiseEvent t_linesInterruptsRowDeleted(Me, New t_linesInterruptsRowChangeEvent(CType(e.Row, t_linesInterruptsRow), e.Action))
+                RaiseEvent t_linesInterruptsRowDeleted(Me, New t_linesInterruptsRowChangeEvent(CType(e.Row,t_linesInterruptsRow), e.Action))
             End If
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
             If (Not (Me.t_linesInterruptsRowDeletingEvent) Is Nothing) Then
-                RaiseEvent t_linesInterruptsRowDeleting(Me, New t_linesInterruptsRowChangeEvent(CType(e.Row, t_linesInterruptsRow), e.Action))
+                RaiseEvent t_linesInterruptsRowDeleting(Me, New t_linesInterruptsRowChangeEvent(CType(e.Row,t_linesInterruptsRow), e.Action))
             End If
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Removet_linesInterruptsRow(ByVal row As t_linesInterruptsRow)
             Me.Rows.Remove(row)
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
@@ -678,35 +678,35 @@ Partial Public Class sb_tamesInterruptsDataSet
             If xs.Contains(dsSchema.TargetNamespace) Then
                 Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
                 Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
-                Try
+                Try 
                     Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
                     dsSchema.Write(s1)
                     Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
                     Do While schemas.MoveNext
-                        schema = CType(schemas.Current, Global.System.Xml.Schema.XmlSchema)
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
                         s2.SetLength(0)
                         schema.Write(s2)
                         If (s1.Length = s2.Length) Then
                             s1.Position = 0
                             s2.Position = 0
-
-                            Do While ((s1.Position <> s1.Length) _
+                            
+                            Do While ((s1.Position <> s1.Length)  _
                                         AndAlso (s1.ReadByte = s2.ReadByte))
-
-
+                                
+                                
                             Loop
                             If (s1.Position = s1.Length) Then
                                 Return type
                             End If
                         End If
-
+                        
                     Loop
                 Finally
                     If (Not (s1) Is Nothing) Then
-                        s1.Close()
+                        s1.Close
                     End If
                     If (Not (s2) Is Nothing) Then
-                        s2.Close()
+                        s2.Close
                     End If
                 End Try
             End If
@@ -714,421 +714,421 @@ Partial Public Class sb_tamesInterruptsDataSet
             Return type
         End Function
     End Class
-
+    
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class t_linesInterruptsRow
         Inherits Global.System.Data.DataRow
-
+        
         Private tablet_linesInterrupts As t_linesInterruptsDataTable
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tablet_linesInterrupts = CType(Me.Table, t_linesInterruptsDataTable)
+            Me.tablet_linesInterrupts = CType(Me.Table,t_linesInterruptsDataTable)
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property ID() As Integer
             Get
-                Return CType(Me(Me.tablet_linesInterrupts.IDColumn), Integer)
+                Return CType(Me(Me.tablet_linesInterrupts.IDColumn),Integer)
             End Get
-            Set(value As Integer)
+            Set
                 Me(Me.tablet_linesInterrupts.IDColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property accidentDate() As Date
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.accidentDateColumn), Date)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.accidentDateColumn),Date)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("Значение для столбца 'accidentDate' в таблице 't_linesInterrupts' равно DBNull.", e)
                 End Try
             End Get
-            Set(value As Date)
+            Set
                 Me(Me.tablet_linesInterrupts.accidentDateColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property gang() As String
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.gangColumn), String)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.gangColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("Значение для столбца 'gang' в таблице 't_linesInterrupts' равно DBNull.", e)
                 End Try
             End Get
-            Set(value As String)
+            Set
                 Me(Me.tablet_linesInterrupts.gangColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property lineID() As String
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.lineIDColumn), String)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.lineIDColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("Значение для столбца 'lineID' в таблице 't_linesInterrupts' равно DBNull.", e)
                 End Try
             End Get
-            Set(value As String)
+            Set
                 Me(Me.tablet_linesInterrupts.lineIDColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property equipmentName() As String
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.equipmentNameColumn), String)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.equipmentNameColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("Значение для столбца 'equipmentName' в таблице 't_linesInterrupts' равно DBNull.", e)
                 End Try
             End Get
-            Set(value As String)
+            Set
                 Me(Me.tablet_linesInterrupts.equipmentNameColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property interruptTimestamp() As System.TimeSpan
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.interruptTimestampColumn), Global.System.TimeSpan)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.interruptTimestampColumn),Global.System.TimeSpan)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'interruptTimestamp' в таблице 't_linesInterrupts' равно DBN" & _
+                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'interruptTimestamp' в таблице 't_linesInterrupts' равно DBN"& _ 
                             "ull.", e)
                 End Try
             End Get
-            Set(value As System.TimeSpan)
+            Set
                 Me(Me.tablet_linesInterrupts.interruptTimestampColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property beginRepairTimestamp() As System.TimeSpan
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.beginRepairTimestampColumn), Global.System.TimeSpan)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.beginRepairTimestampColumn),Global.System.TimeSpan)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'beginRepairTimestamp' в таблице 't_linesInterrupts' равно D" & _
+                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'beginRepairTimestamp' в таблице 't_linesInterrupts' равно D"& _ 
                             "BNull.", e)
                 End Try
             End Get
-            Set(value As System.TimeSpan)
+            Set
                 Me(Me.tablet_linesInterrupts.beginRepairTimestampColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property endOfInterruptTimestamp() As System.TimeSpan
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.endOfInterruptTimestampColumn), Global.System.TimeSpan)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.endOfInterruptTimestampColumn),Global.System.TimeSpan)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'endOfInterruptTimestamp' в таблице 't_linesInterrupts' равн" & _
+                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'endOfInterruptTimestamp' в таблице 't_linesInterrupts' равн"& _ 
                             "о DBNull.", e)
                 End Try
             End Get
-            Set(value As System.TimeSpan)
+            Set
                 Me(Me.tablet_linesInterrupts.endOfInterruptTimestampColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property interruptCode() As String
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.interruptCodeColumn), String)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.interruptCodeColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("Значение для столбца 'interruptCode' в таблице 't_linesInterrupts' равно DBNull.", e)
                 End Try
             End Get
-            Set(value As String)
+            Set
                 Me(Me.tablet_linesInterrupts.interruptCodeColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property causeOfInterrupt() As String
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.causeOfInterruptColumn), String)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.causeOfInterruptColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'causeOfInterrupt' в таблице 't_linesInterrupts' равно DBNul" & _
+                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'causeOfInterrupt' в таблице 't_linesInterrupts' равно DBNul"& _ 
                             "l.", e)
                 End Try
             End Get
-            Set(value As String)
+            Set
                 Me(Me.tablet_linesInterrupts.causeOfInterruptColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property carriedOutActions() As String
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.carriedOutActionsColumn), String)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.carriedOutActionsColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'carriedOutActions' в таблице 't_linesInterrupts' равно DBNu" & _
+                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'carriedOutActions' в таблице 't_linesInterrupts' равно DBNu"& _ 
                             "ll.", e)
                 End Try
             End Get
-            Set(value As String)
+            Set
                 Me(Me.tablet_linesInterrupts.carriedOutActionsColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property whoIsLast() As String
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.whoIsLastColumn), String)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.whoIsLastColumn),String)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("Значение для столбца 'whoIsLast' в таблице 't_linesInterrupts' равно DBNull.", e)
                 End Try
             End Get
-            Set(value As String)
+            Set
                 Me(Me.tablet_linesInterrupts.whoIsLastColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property mainteranceWaitingInterval() As String
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.mainteranceWaitingIntervalColumn), String)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.mainteranceWaitingIntervalColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'mainteranceWaitingInterval' в таблице 't_linesInterrupts' р" & _
+                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'mainteranceWaitingInterval' в таблице 't_linesInterrupts' р"& _ 
                             "авно DBNull.", e)
                 End Try
             End Get
-            Set(value As String)
+            Set
                 Me(Me.tablet_linesInterrupts.mainteranceWaitingIntervalColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property interruptDuration() As String
             Get
-                Try
-                    Return CType(Me(Me.tablet_linesInterrupts.interruptDurationColumn), String)
+                Try 
+                    Return CType(Me(Me.tablet_linesInterrupts.interruptDurationColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'interruptDuration' в таблице 't_linesInterrupts' равно DBNu" & _
+                    Throw New Global.System.Data.StrongTypingException("Значение для столбца 'interruptDuration' в таблице 't_linesInterrupts' равно DBNu"& _ 
                             "ll.", e)
                 End Try
             End Get
-            Set(value As String)
+            Set
                 Me(Me.tablet_linesInterrupts.interruptDurationColumn) = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsaccidentDateNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.accidentDateColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetaccidentDateNull()
             Me(Me.tablet_linesInterrupts.accidentDateColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsgangNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.gangColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetgangNull()
             Me(Me.tablet_linesInterrupts.gangColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IslineIDNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.lineIDColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetlineIDNull()
             Me(Me.tablet_linesInterrupts.lineIDColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsequipmentNameNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.equipmentNameColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetequipmentNameNull()
             Me(Me.tablet_linesInterrupts.equipmentNameColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsinterruptTimestampNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.interruptTimestampColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetinterruptTimestampNull()
             Me(Me.tablet_linesInterrupts.interruptTimestampColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsbeginRepairTimestampNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.beginRepairTimestampColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetbeginRepairTimestampNull()
             Me(Me.tablet_linesInterrupts.beginRepairTimestampColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsendOfInterruptTimestampNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.endOfInterruptTimestampColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetendOfInterruptTimestampNull()
             Me(Me.tablet_linesInterrupts.endOfInterruptTimestampColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsinterruptCodeNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.interruptCodeColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetinterruptCodeNull()
             Me(Me.tablet_linesInterrupts.interruptCodeColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IscauseOfInterruptNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.causeOfInterruptColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetcauseOfInterruptNull()
             Me(Me.tablet_linesInterrupts.causeOfInterruptColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IscarriedOutActionsNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.carriedOutActionsColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetcarriedOutActionsNull()
             Me(Me.tablet_linesInterrupts.carriedOutActionsColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IswhoIsLastNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.whoIsLastColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetwhoIsLastNull()
             Me(Me.tablet_linesInterrupts.whoIsLastColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsmainteranceWaitingIntervalNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.mainteranceWaitingIntervalColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetmainteranceWaitingIntervalNull()
             Me(Me.tablet_linesInterrupts.mainteranceWaitingIntervalColumn) = Global.System.Convert.DBNull
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsinterruptDurationNull() As Boolean
             Return Me.IsNull(Me.tablet_linesInterrupts.interruptDurationColumn)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetinterruptDurationNull()
             Me(Me.tablet_linesInterrupts.interruptDurationColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
-
+    
     '''<summary>
     '''Row event argument class
     '''</summary>
-    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Class t_linesInterruptsRowChangeEvent
         Inherits Global.System.EventArgs
-
+        
         Private eventRow As t_linesInterruptsRow
-
+        
         Private eventAction As Global.System.Data.DataRowAction
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New(ByVal row As t_linesInterruptsRow, ByVal action As Global.System.Data.DataRowAction)
-            MyBase.New()
+            MyBase.New
             Me.eventRow = row
             Me.eventAction = action
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As t_linesInterruptsRow
             Get
                 Return Me.eventRow
             End Get
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Action() As Global.System.Data.DataRowAction
             Get
                 Return Me.eventAction
@@ -1138,57 +1138,57 @@ Partial Public Class sb_tamesInterruptsDataSet
 End Class
 
 Namespace sb_tamesInterruptsDataSetTableAdapters
-
+    
     '''<summary>
     '''Represents the connection and commands used to retrieve and save data.
     '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"), _
-     Global.System.ComponentModel.ToolboxItem(True), _
-     Global.System.ComponentModel.DataObjectAttribute(True), _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" & _
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"), _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")> _
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
     Partial Public Class t_linesInterruptsTableAdapter
         Inherits Global.System.ComponentModel.Component
-
+        
         Private WithEvents _adapter As Global.System.Data.Odbc.OdbcDataAdapter
-
+        
         Private _connection As Global.System.Data.Odbc.OdbcConnection
-
+        
         Private _transaction As Global.System.Data.Odbc.OdbcTransaction
-
+        
         Private _commandCollection() As Global.System.Data.Odbc.OdbcCommand
-
+        
         Private _clearBeforeFill As Boolean
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
-            MyBase.New()
-            Me.ClearBeforeFill = True
+            MyBase.New
+            Me.ClearBeforeFill = true
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Friend ReadOnly Property Adapter() As Global.System.Data.Odbc.OdbcDataAdapter
             Get
                 If (Me._adapter Is Nothing) Then
-                    Me.InitAdapter()
+                    Me.InitAdapter
                 End If
                 Return Me._adapter
             End Get
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Property Connection() As Global.System.Data.Odbc.OdbcConnection
             Get
                 If (Me._connection Is Nothing) Then
-                    Me.InitConnection()
+                    Me.InitConnection
                 End If
                 Return Me._connection
             End Get
-            Set(value As Global.System.Data.Odbc.OdbcConnection)
+            Set
                 Me._connection = value
                 If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
                     Me.Adapter.InsertCommand.Connection = value
@@ -1202,65 +1202,65 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     If (Not (Me.CommandCollection(i)) Is Nothing) Then
-                        CType(Me.CommandCollection(i), Global.System.Data.Odbc.OdbcCommand).Connection = value
+                        CType(Me.CommandCollection(i),Global.System.Data.Odbc.OdbcCommand).Connection = value
                     End If
                     i = (i + 1)
                 Loop
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Property Transaction() As Global.System.Data.Odbc.OdbcTransaction
             Get
                 Return Me._transaction
             End Get
-            Set(value As Global.System.Data.Odbc.OdbcTransaction)
+            Set
                 Me._transaction = value
                 Dim i As Integer = 0
                 Do While (i < Me.CommandCollection.Length)
                     Me.CommandCollection(i).Transaction = Me._transaction
                     i = (i + 1)
                 Loop
-                If ((Not (Me.Adapter) Is Nothing) _
+                If ((Not (Me.Adapter) Is Nothing)  _
                             AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
                     Me.Adapter.DeleteCommand.Transaction = Me._transaction
                 End If
-                If ((Not (Me.Adapter) Is Nothing) _
+                If ((Not (Me.Adapter) Is Nothing)  _
                             AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
                     Me.Adapter.InsertCommand.Transaction = Me._transaction
                 End If
-                If ((Not (Me.Adapter) Is Nothing) _
+                If ((Not (Me.Adapter) Is Nothing)  _
                             AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
                     Me.Adapter.UpdateCommand.Transaction = Me._transaction
                 End If
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected ReadOnly Property CommandCollection() As Global.System.Data.Odbc.OdbcCommand()
             Get
                 If (Me._commandCollection Is Nothing) Then
-                    Me.InitCommandCollection()
+                    Me.InitCommandCollection
                 End If
                 Return Me._commandCollection
             End Get
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property ClearBeforeFill() As Boolean
             Get
                 Return Me._clearBeforeFill
             End Get
-            Set(value As Boolean)
+            Set
                 Me._clearBeforeFill = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitAdapter()
             Me._adapter = New Global.System.Data.Odbc.OdbcDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
@@ -1281,958 +1281,1032 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.Odbc.OdbcCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM ""sb_tames"".""public"".""t_linesInterrupts"" WHERE ((""ID"" = ?) AND ((? = 1" & _
-                " AND ""accidentDate"" IS NULL) OR (""accidentDate"" = ?)) AND ((? = 1 AND ""gang"" IS " & _
-                "NULL) OR (""gang"" = ?)) AND ((? = 1 AND ""lineID"" IS NULL) OR (""lineID"" = ?)) AND " & _
-                "((? = 1 AND ""equipmentName"" IS NULL) OR (""equipmentName"" = ?)) AND ((? = 1 AND """ & _
-                "interruptTimestamp"" IS NULL) OR (""interruptTimestamp"" = ?)) AND ((? = 1 AND ""beg" & _
-                "inRepairTimestamp"" IS NULL) OR (""beginRepairTimestamp"" = ?)) AND ((? = 1 AND ""en" & _
-                "dOfInterruptTimestamp"" IS NULL) OR (""endOfInterruptTimestamp"" = ?)) AND ((? = 1 " & _
-                "AND ""interruptCode"" IS NULL) OR (""interruptCode"" = ?)) AND ((? = 1 AND ""causeOfI" & _
-                "nterrupt"" IS NULL) OR (""causeOfInterrupt"" = ?)) AND ((? = 1 AND ""carriedOutActio" & _
-                "ns"" IS NULL) OR (""carriedOutActions"" = ?)) AND ((? = 1 AND ""whoIsLast"" IS NULL) " & _
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM ""sb_tames"".""public"".""t_linesInterrupts"" WHERE ((""ID"" = ?) AND ((? = 1"& _ 
+                " AND ""accidentDate"" IS NULL) OR (""accidentDate"" = ?)) AND ((? = 1 AND ""gang"" IS "& _ 
+                "NULL) OR (""gang"" = ?)) AND ((? = 1 AND ""lineID"" IS NULL) OR (""lineID"" = ?)) AND "& _ 
+                "((? = 1 AND ""equipmentName"" IS NULL) OR (""equipmentName"" = ?)) AND ((? = 1 AND """& _ 
+                "interruptTimestamp"" IS NULL) OR (""interruptTimestamp"" = ?)) AND ((? = 1 AND ""beg"& _ 
+                "inRepairTimestamp"" IS NULL) OR (""beginRepairTimestamp"" = ?)) AND ((? = 1 AND ""en"& _ 
+                "dOfInterruptTimestamp"" IS NULL) OR (""endOfInterruptTimestamp"" = ?)) AND ((? = 1 "& _ 
+                "AND ""interruptCode"" IS NULL) OR (""interruptCode"" = ?)) AND ((? = 1 AND ""causeOfI"& _ 
+                "nterrupt"" IS NULL) OR (""causeOfInterrupt"" = ?)) AND ((? = 1 AND ""carriedOutActio"& _ 
+                "ns"" IS NULL) OR (""carriedOutActions"" = ?)) AND ((? = 1 AND ""whoIsLast"" IS NULL) "& _ 
                 "OR (""whoIsLast"" = ?)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ID", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_accidentDate", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_gang", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "gang", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_gang", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "gang", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_lineID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_equipmentName", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_interruptTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_interruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_interruptCode", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_causeOfInterrupt", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_carriedOutActions", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_whoIsLast", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, False, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_accidentDate", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_gang", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "gang", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_gang", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "gang", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_lineID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_equipmentName", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_interruptTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_interruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_interruptCode", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_causeOfInterrupt", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_carriedOutActions", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_whoIsLast", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.Odbc.OdbcCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO ""sb_tames"".""public"".""t_linesInterrupts"" (""accidentDate"", ""gang"", ""lin" & _
-                "eID"", ""equipmentName"", ""interruptTimestamp"", ""beginRepairTimestamp"", ""endOfInter" & _
-                "ruptTimestamp"", ""interruptCode"", ""causeOfInterrupt"", ""carriedOutActions"", ""whoIs" & _
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO ""sb_tames"".""public"".""t_linesInterrupts"" (""accidentDate"", ""gang"", ""lin"& _ 
+                "eID"", ""equipmentName"", ""interruptTimestamp"", ""beginRepairTimestamp"", ""endOfInter"& _ 
+                "ruptTimestamp"", ""interruptCode"", ""causeOfInterrupt"", ""carriedOutActions"", ""whoIs"& _ 
                 "Last"") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "gang", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "equipmentName", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptCode", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "whoIsLast", Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "gang", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "equipmentName", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptCode", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "whoIsLast", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.Odbc.OdbcCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE ""sb_tames"".""public"".""t_linesInterrupts"" SET ""accidentDate"" = ?, ""gang"" = ?" & _
-                ", ""lineID"" = ?, ""equipmentName"" = ?, ""interruptTimestamp"" = ?, ""beginRepairTimes" & _
-                "tamp"" = ?, ""endOfInterruptTimestamp"" = ?, ""interruptCode"" = ?, ""causeOfInterrupt" & _
-                """ = ?, ""carriedOutActions"" = ?, ""whoIsLast"" = ? WHERE ((""ID"" = ?) AND ((? = 1 AN" & _
-                "D ""accidentDate"" IS NULL) OR (""accidentDate"" = ?)) AND ((? = 1 AND ""gang"" IS NUL" & _
-                "L) OR (""gang"" = ?)) AND ((? = 1 AND ""lineID"" IS NULL) OR (""lineID"" = ?)) AND ((?" & _
-                " = 1 AND ""equipmentName"" IS NULL) OR (""equipmentName"" = ?)) AND ((? = 1 AND ""int" & _
-                "erruptTimestamp"" IS NULL) OR (""interruptTimestamp"" = ?)) AND ((? = 1 AND ""beginR" & _
-                "epairTimestamp"" IS NULL) OR (""beginRepairTimestamp"" = ?)) AND ((? = 1 AND ""endOf" & _
-                "InterruptTimestamp"" IS NULL) OR (""endOfInterruptTimestamp"" = ?)) AND ((? = 1 AND" & _
-                " ""interruptCode"" IS NULL) OR (""interruptCode"" = ?)) AND ((? = 1 AND ""causeOfInte" & _
-                "rrupt"" IS NULL) OR (""causeOfInterrupt"" = ?)) AND ((? = 1 AND ""carriedOutActions""" & _
-                " IS NULL) OR (""carriedOutActions"" = ?)) AND ((? = 1 AND ""whoIsLast"" IS NULL) OR " & _
+            Me._adapter.UpdateCommand.CommandText = "UPDATE ""sb_tames"".""public"".""t_linesInterrupts"" SET ""accidentDate"" = ?, ""gang"" = ?"& _ 
+                ", ""lineID"" = ?, ""equipmentName"" = ?, ""interruptTimestamp"" = ?, ""beginRepairTimes"& _ 
+                "tamp"" = ?, ""endOfInterruptTimestamp"" = ?, ""interruptCode"" = ?, ""causeOfInterrupt"& _ 
+                """ = ?, ""carriedOutActions"" = ?, ""whoIsLast"" = ? WHERE ((""ID"" = ?) AND ((? = 1 AN"& _ 
+                "D ""accidentDate"" IS NULL) OR (""accidentDate"" = ?)) AND ((? = 1 AND ""gang"" IS NUL"& _ 
+                "L) OR (""gang"" = ?)) AND ((? = 1 AND ""lineID"" IS NULL) OR (""lineID"" = ?)) AND ((?"& _ 
+                " = 1 AND ""equipmentName"" IS NULL) OR (""equipmentName"" = ?)) AND ((? = 1 AND ""int"& _ 
+                "erruptTimestamp"" IS NULL) OR (""interruptTimestamp"" = ?)) AND ((? = 1 AND ""beginR"& _ 
+                "epairTimestamp"" IS NULL) OR (""beginRepairTimestamp"" = ?)) AND ((? = 1 AND ""endOf"& _ 
+                "InterruptTimestamp"" IS NULL) OR (""endOfInterruptTimestamp"" = ?)) AND ((? = 1 AND"& _ 
+                " ""interruptCode"" IS NULL) OR (""interruptCode"" = ?)) AND ((? = 1 AND ""causeOfInte"& _ 
+                "rrupt"" IS NULL) OR (""causeOfInterrupt"" = ?)) AND ((? = 1 AND ""carriedOutActions"""& _ 
+                " IS NULL) OR (""carriedOutActions"" = ?)) AND ((? = 1 AND ""whoIsLast"" IS NULL) OR "& _ 
                 "(""whoIsLast"" = ?)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "gang", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "equipmentName", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptCode", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "whoIsLast", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ID", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_accidentDate", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_gang", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "gang", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_gang", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "gang", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_lineID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_equipmentName", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_interruptTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_interruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_interruptCode", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_causeOfInterrupt", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_carriedOutActions", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_whoIsLast", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, True, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, False, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "gang", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "equipmentName", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptCode", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "whoIsLast", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_accidentDate", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_gang", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "gang", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_gang", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "gang", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_lineID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_equipmentName", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_interruptTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_interruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_interruptCode", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_causeOfInterrupt", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_carriedOutActions", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("IsNull_whoIsLast", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.Odbc.OdbcConnection()
             Me._connection.ConnectionString = Global.LabelPrint.My.MySettings.Default.ru_sb_tames
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(5) {}
+            Me._commandCollection = New Global.System.Data.Odbc.OdbcCommand(6) {}
             Me._commandCollection(0) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ""ID"", ""accidentDate"", ""gang"", ""lineID"", ""equipmentName"", ""interruptTimesta" & _
-                "mp"", ""beginRepairTimestamp"", ""endOfInterruptTimestamp"", ""interruptCode"", ""causeO" & _
+            Me._commandCollection(0).CommandText = "SELECT ""ID"", ""accidentDate"", ""gang"", ""lineID"", ""equipmentName"", ""interruptTimesta"& _ 
+                "mp"", ""beginRepairTimestamp"", ""endOfInterruptTimestamp"", ""interruptCode"", ""causeO"& _ 
                 "fInterrupt"", ""carriedOutActions"", ""whoIsLast"" FROM ""public"".""t_linesInterrupts"""
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "DELETE FROM ""sb_tames"".""public"".""t_linesInterrupts"" WHERE ((""ID"" = ?) AND ((? = 1" & _
-                " AND ""accidentDate"" IS NULL) OR (""accidentDate"" = ?)) AND ((? = 1 AND ""gang"" IS " & _
-                "NULL) OR (""gang"" = ?)) AND ((? = 1 AND ""lineID"" IS NULL) OR (""lineID"" = ?)) AND " & _
-                "((? = 1 AND ""equipmentName"" IS NULL) OR (""equipmentName"" = ?)) AND ((? = 1 AND """ & _
-                "interruptTimestamp"" IS NULL) OR (""interruptTimestamp"" = ?)) AND ((? = 1 AND ""beg" & _
-                "inRepairTimestamp"" IS NULL) OR (""beginRepairTimestamp"" = ?)) AND ((? = 1 AND ""en" & _
-                "dOfInterruptTimestamp"" IS NULL) OR (""endOfInterruptTimestamp"" = ?)) AND ((? = 1 " & _
-                "AND ""interruptCode"" IS NULL) OR (""interruptCode"" = ?)) AND ((? = 1 AND ""causeOfI" & _
-                "nterrupt"" IS NULL) OR (""causeOfInterrupt"" = ?)) AND ((? = 1 AND ""carriedOutActio" & _
-                "ns"" IS NULL) OR (""carriedOutActions"" = ?)) AND ((? = 1 AND ""whoIsLast"" IS NULL) " & _
+            Me._commandCollection(1).CommandText = "DELETE FROM ""sb_tames"".""public"".""t_linesInterrupts"" WHERE ((""ID"" = ?) AND ((? = 1"& _ 
+                " AND ""accidentDate"" IS NULL) OR (""accidentDate"" = ?)) AND ((? = 1 AND ""gang"" IS "& _ 
+                "NULL) OR (""gang"" = ?)) AND ((? = 1 AND ""lineID"" IS NULL) OR (""lineID"" = ?)) AND "& _ 
+                "((? = 1 AND ""equipmentName"" IS NULL) OR (""equipmentName"" = ?)) AND ((? = 1 AND """& _ 
+                "interruptTimestamp"" IS NULL) OR (""interruptTimestamp"" = ?)) AND ((? = 1 AND ""beg"& _ 
+                "inRepairTimestamp"" IS NULL) OR (""beginRepairTimestamp"" = ?)) AND ((? = 1 AND ""en"& _ 
+                "dOfInterruptTimestamp"" IS NULL) OR (""endOfInterruptTimestamp"" = ?)) AND ((? = 1 "& _ 
+                "AND ""interruptCode"" IS NULL) OR (""interruptCode"" = ?)) AND ((? = 1 AND ""causeOfI"& _ 
+                "nterrupt"" IS NULL) OR (""causeOfInterrupt"" = ?)) AND ((? = 1 AND ""carriedOutActio"& _ 
+                "ns"" IS NULL) OR (""carriedOutActions"" = ?)) AND ((? = 1 AND ""whoIsLast"" IS NULL) "& _ 
                 "OR (""whoIsLast"" = ?)))"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ID", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate1", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "gang", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "gang", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp1", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp1", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp1", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, False, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, False, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate1", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "gang", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "gang", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "equipmentName", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp1", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp1", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp1", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptCode", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast1", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "whoIsLast", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._commandCollection(2) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT ""ID"", ""accidentDate"", ""gang"", ""lineID"", ""equipmentName"", ""interruptTimesta" & _
-                "mp"", ""beginRepairTimestamp"", ""endOfInterruptTimestamp""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """beginRepairTimestamp"" " & _
-                "-  ""interruptTimestamp"" as ""mainteranceWaitingInterval""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """endOfInterruptTimesta" & _
-                "mp"" -  ""interruptTimestamp"" as ""interruptDuration""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " ""interruptCode"", ""causeOfI" & _
+            Me._commandCollection(2).CommandText = "SELECT ""ID"", ""accidentDate"", ""gang"", ""lineID"", ""equipmentName"", ""interruptTimesta"& _ 
+                "mp"", ""beginRepairTimestamp"", ""endOfInterruptTimestamp"","&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"""beginRepairTimestamp"" "& _ 
+                "-  ""interruptTimestamp"" as ""mainteranceWaitingInterval"","&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"""endOfInterruptTimesta"& _ 
+                "mp"" -  ""interruptTimestamp"" as ""interruptDuration"","&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" ""interruptCode"", ""causeOfI"& _ 
                 "nterrupt"", ""carriedOutActions"", ""whoIsLast"" FROM ""public"".""t_linesInterrupts"""
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT ""ID"", ""accidentDate"", gang, ""lineID"", ""equipmentName"", ""interruptTimestamp" & _
-                """, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "       ""beginRepairTimestamp"", ""endOfInterruptTimestamp""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """beginRepairTime" & _
-                "stamp""-""interruptTimestamp"" as ""mainteranceWaitingInterval""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & """endOfInterruptTim" & _
-                "estamp""-""interruptTimestamp"" as ""interruptDuration""," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " ""interruptCode"", " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "      " & _
-                " ""causeOfInterrupt"", ""carriedOutActions"", ""whoIsLast""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  FROM ""t_linesInterrupts" & _
-                """" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  WHERE " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  ""accidentDate"" >= ? AND " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  ""accidentDate"" <= ? AND" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  (? = '' OR" & _
-                " ""lineID"" =?) AND" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  ""interruptTimestamp"" >= ? AND " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "  ""interruptTimestamp"" <= ?" & _
+            Me._commandCollection(3).CommandText = "SELECT ""ID"", ""accidentDate"", gang, ""lineID"", ""equipmentName"", ""interruptTimestamp"& _ 
+                """, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       ""beginRepairTimestamp"", ""endOfInterruptTimestamp"","&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"""beginRepairTime"& _ 
+                "stamp""-""interruptTimestamp"" as ""mainteranceWaitingInterval"","&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"""endOfInterruptTim"& _ 
+                "estamp""-""interruptTimestamp"" as ""interruptDuration"","&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" ""interruptCode"", "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+                " ""causeOfInterrupt"", ""carriedOutActions"", ""whoIsLast"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  FROM ""t_linesInterrupts"& _ 
+                """"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  WHERE "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  ""accidentDate"" >= ? AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  ""accidentDate"" <= ? AND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  (? = '' OR"& _ 
+                " ""lineID"" =?) AND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  ""interruptTimestamp"" >= ? AND "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  ""interruptTimestamp"" <= ?"& _ 
                 " "
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDateFrom", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDateTo", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineIDempty", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestampFrom", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestampTo", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDateFrom", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDateTo", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineIDempty", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestampFrom", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestampTo", Global.System.Data.Odbc.OdbcType.Time, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(4) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "INSERT INTO ""sb_tames"".""public"".""t_linesInterrupts"" (""accidentDate"", ""gang"", ""lin" & _
-                "eID"", ""equipmentName"", ""interruptTimestamp"", ""beginRepairTimestamp"", ""endOfInter" & _
-                "ruptTimestamp"", ""interruptCode"", ""causeOfInterrupt"", ""carriedOutActions"", ""whoIs" & _
-                "Last"") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            Me._commandCollection(4).CommandText = "SELECT ""accidentDate"",  ""lineID"",""interruptTimestamp"", ""beginRepairTimestamp"", ""e"& _ 
+                "ndOfInterruptTimestamp"" FROM ""public"".""t_linesInterrupts"""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE ""lineID""=? AND "& _ 
+                """accidentDate""=?"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "gang", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "equipmentName", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptCode", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "whoIsLast", Global.System.Data.DataRowVersion.Current, False, Nothing))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(5) = New Global.System.Data.Odbc.OdbcCommand()
             Me._commandCollection(5).Connection = Me.Connection
-            Me._commandCollection(5).CommandText = "UPDATE ""sb_tames"".""public"".""t_linesInterrupts"" SET ""accidentDate"" = ?, ""gang"" = ?" & _
-                ", ""lineID"" = ?, ""equipmentName"" = ?, ""interruptTimestamp"" = ?, ""beginRepairTimes" & _
-                "tamp"" = ?, ""endOfInterruptTimestamp"" = ?, ""interruptCode"" = ?, ""causeOfInterrupt" & _
-                """ = ?, ""carriedOutActions"" = ?, ""whoIsLast"" = ? WHERE (""ID"" = ?) "
+            Me._commandCollection(5).CommandText = "INSERT INTO ""sb_tames"".""public"".""t_linesInterrupts"" (""accidentDate"", ""gang"", ""lin"& _ 
+                "eID"", ""equipmentName"", ""interruptTimestamp"", ""beginRepairTimestamp"", ""endOfInter"& _ 
+                "ruptTimestamp"", ""interruptCode"", ""causeOfInterrupt"", ""carriedOutActions"", ""whoIs"& _ 
+                "Last"") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "gang", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "lineID", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "equipmentName", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "interruptCode", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "whoIsLast", Global.System.Data.DataRowVersion.Current, False, Nothing))
-            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0, Byte), CType(0, Byte), "ID", Global.System.Data.DataRowVersion.Original, False, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "gang", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "equipmentName", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptCode", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "whoIsLast", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6) = New Global.System.Data.Odbc.OdbcCommand()
+            Me._commandCollection(6).Connection = Me.Connection
+            Me._commandCollection(6).CommandText = "UPDATE ""sb_tames"".""public"".""t_linesInterrupts"" SET ""accidentDate"" = ?, ""gang"" = ?"& _ 
+                ", ""lineID"" = ?, ""equipmentName"" = ?, ""interruptTimestamp"" = ?, ""beginRepairTimes"& _ 
+                "tamp"" = ?, ""endOfInterruptTimestamp"" = ?, ""interruptCode"" = ?, ""causeOfInterrupt"& _ 
+                """ = ?, ""carriedOutActions"" = ?, ""whoIsLast"" = ? WHERE (""ID"" = ?) "
+            Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("accidentDate", Global.System.Data.Odbc.OdbcType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "accidentDate", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("gang", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "gang", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("lineID", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "lineID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("equipmentName", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "equipmentName", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("beginRepairTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "beginRepairTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("endOfInterruptTimestamp", Global.System.Data.Odbc.OdbcType.DateTime, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "endOfInterruptTimestamp", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("interruptCode", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "interruptCode", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("causeOfInterrupt", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "causeOfInterrupt", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("carriedOutActions", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "carriedOutActions", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("whoIsLast", Global.System.Data.Odbc.OdbcType.NVarChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "whoIsLast", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(6).Parameters.Add(New Global.System.Data.Odbc.OdbcParameter("Original_ID", Global.System.Data.Odbc.OdbcType.Int, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, True)> _
-        Public Overridable Overloads Function Fill(ByVal dataTable As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (Me.ClearBeforeFill = True) Then
-                dataTable.Clear()
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
             End If
             Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
             Return returnValue
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], True)> _
-        Public Overridable Overloads Function GetData() As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Dim dataTable As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable = New sb_tamesInterruptsDataSet.t_linesInterruptsDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, False)> _
-        Public Overridable Overloads Function FillAndCalculate(ByVal dataTable As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillAndCalculate(ByVal dataTable As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            If (Me.ClearBeforeFill = True) Then
-                dataTable.Clear()
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
             End If
             Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
             Return returnValue
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], False)> _
-        Public Overridable Overloads Function GetDataAndCalculate() As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataAndCalculate() As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
             Dim dataTable As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable = New sb_tamesInterruptsDataSet.t_linesInterruptsDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")> _
-        Public Overridable Overloads Function Update(ByVal dataTable As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillAndCalculateBy(ByVal dataTable As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable, ByVal accidentDateFrom As Global.System.Nullable(Of Date), ByVal accidentDateTo As Global.System.Nullable(Of Date), ByVal lineIDempty As String, ByVal lineID As String, ByVal interruptTimestampFrom As Global.System.Nullable(Of Date), ByVal interruptTimestampTo As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (accidentDateFrom.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(accidentDateFrom.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (accidentDateTo.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(accidentDateTo.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (lineIDempty Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(2).Value = CType(lineIDempty,String)
+            End If
+            If (lineID Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(3).Value = CType(lineID,String)
+            End If
+            If (interruptTimestampFrom.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(4).Value = CType(interruptTimestampFrom.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (interruptTimestampTo.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(5).Value = CType(interruptTimestampTo.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillBy4(ByVal dataTable As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable, ByVal lineID As String, ByVal accidentDate As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            If (lineID Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(lineID,String)
+            End If
+            If (accidentDate.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(accidentDate.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As sb_tamesInterruptsDataSet.t_linesInterruptsDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")> _
-        Public Overridable Overloads Function Update(ByVal dataSet As sb_tamesInterruptsDataSet) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As sb_tamesInterruptsDataSet) As Integer
             Return Me.Adapter.Update(dataSet, "t_linesInterrupts")
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")> _
-        Public Overridable Overloads Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
             Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")> _
-        Public Overridable Overloads Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
             Return Me.Adapter.Update(dataRows)
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, True)> _
-        Public Overridable Overloads Function Delete(ByVal Original_ID As Integer, ByVal Original_accidentDate As Date, ByVal Original_gang As String, ByVal Original_lineID As String, ByVal Original_equipmentName As String, ByVal Original_interruptTimestamp As Date, ByVal Original_beginRepairTimestamp As Date, ByVal Original_endOfInterruptTimestamp As Date, ByVal Original_interruptCode As String, ByVal Original_causeOfInterrupt As String, ByVal Original_carriedOutActions As String, ByVal Original_whoIsLast As String) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID, Integer)
-            Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0, Object)
-            Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_accidentDate, Date)
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_accidentDate As Date, ByVal Original_gang As String, ByVal Original_lineID As String, ByVal Original_equipmentName As String, ByVal Original_interruptTimestamp As Date, ByVal Original_beginRepairTimestamp As Date, ByVal Original_endOfInterruptTimestamp As Date, ByVal Original_interruptCode As String, ByVal Original_causeOfInterrupt As String, ByVal Original_carriedOutActions As String, ByVal Original_whoIsLast As String) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
+            Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_accidentDate,Date)
             If (Original_gang Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_gang")
             Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0, Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_gang, String)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_gang,String)
             End If
             If (Original_lineID Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_lineID")
             Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0, Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_lineID, String)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_lineID,String)
             End If
             If (Original_equipmentName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_equipmentName")
             Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0, Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_equipmentName, String)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_equipmentName,String)
             End If
-            Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0, Object)
-            Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_interruptTimestamp, Date)
-            Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0, Object)
-            Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_beginRepairTimestamp, Date)
-            Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0, Object)
-            Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_endOfInterruptTimestamp, Date)
+            Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_interruptTimestamp,Date)
+            Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_beginRepairTimestamp,Date)
+            Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+            Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_endOfInterruptTimestamp,Date)
             If (Original_interruptCode Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_interruptCode")
             Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0, Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_interruptCode, String)
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_interruptCode,String)
             End If
             If (Original_causeOfInterrupt Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_causeOfInterrupt")
             Else
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0, Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_causeOfInterrupt, String)
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_causeOfInterrupt,String)
             End If
             If (Original_carriedOutActions Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_carriedOutActions")
             Else
-                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0, Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_carriedOutActions, String)
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_carriedOutActions,String)
             End If
             If (Original_whoIsLast Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_whoIsLast")
             Else
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0, Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_whoIsLast, String)
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_whoIsLast,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open()
+                Me.Adapter.DeleteCommand.Connection.Open
             End If
-            Try
+            Try 
                 Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
                 Return returnValue
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close()
+                    Me.Adapter.DeleteCommand.Connection.Close
                 End If
             End Try
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, True)> _
-        Public Overridable Overloads Function Insert(ByVal accidentDate As Date, ByVal gang As String, ByVal lineID As String, ByVal equipmentName As String, ByVal interruptTimestamp As Date, ByVal beginRepairTimestamp As Date, ByVal endOfInterruptTimestamp As Date, ByVal interruptCode As String, ByVal causeOfInterrupt As String, ByVal carriedOutActions As String, ByVal whoIsLast As String) As Integer
-            Me.Adapter.InsertCommand.Parameters(0).Value = CType(accidentDate, Date)
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal accidentDate As Date, ByVal gang As String, ByVal lineID As String, ByVal equipmentName As String, ByVal interruptTimestamp As Date, ByVal beginRepairTimestamp As Date, ByVal endOfInterruptTimestamp As Date, ByVal interruptCode As String, ByVal causeOfInterrupt As String, ByVal carriedOutActions As String, ByVal whoIsLast As String) As Integer
+            Me.Adapter.InsertCommand.Parameters(0).Value = CType(accidentDate,Date)
             If (gang Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("gang")
             Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(gang, String)
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(gang,String)
             End If
             If (lineID Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("lineID")
             Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(lineID, String)
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(lineID,String)
             End If
             If (equipmentName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("equipmentName")
             Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(equipmentName, String)
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(equipmentName,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(4).Value = CType(interruptTimestamp, Date)
-            Me.Adapter.InsertCommand.Parameters(5).Value = CType(beginRepairTimestamp, Date)
-            Me.Adapter.InsertCommand.Parameters(6).Value = CType(endOfInterruptTimestamp, Date)
+            Me.Adapter.InsertCommand.Parameters(4).Value = CType(interruptTimestamp,Date)
+            Me.Adapter.InsertCommand.Parameters(5).Value = CType(beginRepairTimestamp,Date)
+            Me.Adapter.InsertCommand.Parameters(6).Value = CType(endOfInterruptTimestamp,Date)
             If (interruptCode Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("interruptCode")
             Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(interruptCode, String)
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(interruptCode,String)
             End If
             If (causeOfInterrupt Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("causeOfInterrupt")
             Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(causeOfInterrupt, String)
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(causeOfInterrupt,String)
             End If
             If (carriedOutActions Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("carriedOutActions")
             Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(carriedOutActions, String)
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(carriedOutActions,String)
             End If
             If (whoIsLast Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("whoIsLast")
             Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(whoIsLast, String)
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(whoIsLast,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open()
+                Me.Adapter.InsertCommand.Connection.Open
             End If
-            Try
+            Try 
                 Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
                 Return returnValue
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close()
+                    Me.Adapter.InsertCommand.Connection.Close
                 End If
             End Try
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, True)> _
-        Public Overridable Overloads Function Update( _
-                    ByVal accidentDate As Date, _
-                    ByVal gang As String, _
-                    ByVal lineID As String, _
-                    ByVal equipmentName As String, _
-                    ByVal interruptTimestamp As Date, _
-                    ByVal beginRepairTimestamp As Date, _
-                    ByVal endOfInterruptTimestamp As Date, _
-                    ByVal interruptCode As String, _
-                    ByVal causeOfInterrupt As String, _
-                    ByVal carriedOutActions As String, _
-                    ByVal whoIsLast As String, _
-                    ByVal Original_ID As Integer, _
-                    ByVal Original_accidentDate As Date, _
-                    ByVal Original_gang As String, _
-                    ByVal Original_lineID As String, _
-                    ByVal Original_equipmentName As String, _
-                    ByVal Original_interruptTimestamp As Date, _
-                    ByVal Original_beginRepairTimestamp As Date, _
-                    ByVal Original_endOfInterruptTimestamp As Date, _
-                    ByVal Original_interruptCode As String, _
-                    ByVal Original_causeOfInterrupt As String, _
-                    ByVal Original_carriedOutActions As String, _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal accidentDate As Date,  _
+                    ByVal gang As String,  _
+                    ByVal lineID As String,  _
+                    ByVal equipmentName As String,  _
+                    ByVal interruptTimestamp As Date,  _
+                    ByVal beginRepairTimestamp As Date,  _
+                    ByVal endOfInterruptTimestamp As Date,  _
+                    ByVal interruptCode As String,  _
+                    ByVal causeOfInterrupt As String,  _
+                    ByVal carriedOutActions As String,  _
+                    ByVal whoIsLast As String,  _
+                    ByVal Original_ID As Integer,  _
+                    ByVal Original_accidentDate As Date,  _
+                    ByVal Original_gang As String,  _
+                    ByVal Original_lineID As String,  _
+                    ByVal Original_equipmentName As String,  _
+                    ByVal Original_interruptTimestamp As Date,  _
+                    ByVal Original_beginRepairTimestamp As Date,  _
+                    ByVal Original_endOfInterruptTimestamp As Date,  _
+                    ByVal Original_interruptCode As String,  _
+                    ByVal Original_causeOfInterrupt As String,  _
+                    ByVal Original_carriedOutActions As String,  _
                     ByVal Original_whoIsLast As String) As Integer
-            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(accidentDate, Date)
+            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(accidentDate,Date)
             If (gang Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("gang")
             Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(gang, String)
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(gang,String)
             End If
             If (lineID Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("lineID")
             Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(lineID, String)
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(lineID,String)
             End If
             If (equipmentName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("equipmentName")
             Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(equipmentName, String)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(equipmentName,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(interruptTimestamp, Date)
-            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(beginRepairTimestamp, Date)
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(endOfInterruptTimestamp, Date)
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(interruptTimestamp,Date)
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(beginRepairTimestamp,Date)
+            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(endOfInterruptTimestamp,Date)
             If (interruptCode Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("interruptCode")
             Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(interruptCode, String)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(interruptCode,String)
             End If
             If (causeOfInterrupt Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("causeOfInterrupt")
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(causeOfInterrupt, String)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(causeOfInterrupt,String)
             End If
             If (carriedOutActions Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("carriedOutActions")
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(carriedOutActions, String)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(carriedOutActions,String)
             End If
             If (whoIsLast Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("whoIsLast")
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(whoIsLast, String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(whoIsLast,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ID, Integer)
-            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0, Object)
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_accidentDate, Date)
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_accidentDate,Date)
             If (Original_gang Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_gang")
             Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0, Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_gang, String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_gang,String)
             End If
             If (Original_lineID Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_lineID")
             Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0, Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_lineID, String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_lineID,String)
             End If
             If (Original_equipmentName Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_equipmentName")
             Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0, Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_equipmentName, String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_equipmentName,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0, Object)
-            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_interruptTimestamp, Date)
-            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0, Object)
-            Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_beginRepairTimestamp, Date)
-            Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0, Object)
-            Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_endOfInterruptTimestamp, Date)
+            Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_interruptTimestamp,Date)
+            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_beginRepairTimestamp,Date)
+            Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+            Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_endOfInterruptTimestamp,Date)
             If (Original_interruptCode Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_interruptCode")
             Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0, Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_interruptCode, String)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_interruptCode,String)
             End If
             If (Original_causeOfInterrupt Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_causeOfInterrupt")
             Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0, Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_causeOfInterrupt, String)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_causeOfInterrupt,String)
             End If
             If (Original_carriedOutActions Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_carriedOutActions")
             Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0, Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_carriedOutActions, String)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_carriedOutActions,String)
             End If
             If (Original_whoIsLast Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_whoIsLast")
             Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0, Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_whoIsLast, String)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_whoIsLast,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open()
+                Me.Adapter.UpdateCommand.Connection.Open
             End If
-            Try
+            Try 
                 Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
                 Return returnValue
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close()
+                    Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, False)> _
-        Public Overridable Overloads Function DeleteQuery( _
-                    ByVal ID As Integer, _
-                    ByVal accidentDate As Global.System.Nullable(Of Date), _
-                    ByVal accidentDate1 As Global.System.Nullable(Of Date), _
-                    ByVal gang As String, _
-                    ByVal gang1 As String, _
-                    ByVal lineID As String, _
-                    ByVal lineID1 As String, _
-                    ByVal equipmentName As String, _
-                    ByVal equipmentName1 As String, _
-                    ByVal interruptTimestamp As Global.System.Nullable(Of Date), _
-                    ByVal interruptTimestamp1 As Global.System.Nullable(Of Date), _
-                    ByVal beginRepairTimestamp As Global.System.Nullable(Of Date), _
-                    ByVal beginRepairTimestamp1 As Global.System.Nullable(Of Date), _
-                    ByVal endOfInterruptTimestamp As Global.System.Nullable(Of Date), _
-                    ByVal endOfInterruptTimestamp1 As Global.System.Nullable(Of Date), _
-                    ByVal interruptCode As String, _
-                    ByVal interruptCode1 As String, _
-                    ByVal causeOfInterrupt As String, _
-                    ByVal causeOfInterrupt1 As String, _
-                    ByVal carriedOutActions As String, _
-                    ByVal carriedOutActions1 As String, _
-                    ByVal whoIsLast As String, _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteQuery( _
+                    ByVal ID As Integer,  _
+                    ByVal accidentDate As Global.System.Nullable(Of Date),  _
+                    ByVal accidentDate1 As Global.System.Nullable(Of Date),  _
+                    ByVal gang As String,  _
+                    ByVal gang1 As String,  _
+                    ByVal lineID As String,  _
+                    ByVal lineID1 As String,  _
+                    ByVal equipmentName As String,  _
+                    ByVal equipmentName1 As String,  _
+                    ByVal interruptTimestamp As Global.System.Nullable(Of Date),  _
+                    ByVal interruptTimestamp1 As Global.System.Nullable(Of Date),  _
+                    ByVal beginRepairTimestamp As Global.System.Nullable(Of Date),  _
+                    ByVal beginRepairTimestamp1 As Global.System.Nullable(Of Date),  _
+                    ByVal endOfInterruptTimestamp As Global.System.Nullable(Of Date),  _
+                    ByVal endOfInterruptTimestamp1 As Global.System.Nullable(Of Date),  _
+                    ByVal interruptCode As String,  _
+                    ByVal interruptCode1 As String,  _
+                    ByVal causeOfInterrupt As String,  _
+                    ByVal causeOfInterrupt1 As String,  _
+                    ByVal carriedOutActions As String,  _
+                    ByVal carriedOutActions1 As String,  _
+                    ByVal whoIsLast As String,  _
                     ByVal whoIsLast1 As String) As Integer
             Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(1)
-            command.Parameters(0).Value = CType(ID, Integer)
-            If (accidentDate.HasValue = True) Then
-                command.Parameters(1).Value = CType(accidentDate.Value, Date)
+            command.Parameters(0).Value = CType(ID,Integer)
+            If (accidentDate.HasValue = true) Then
+                command.Parameters(1).Value = CType(accidentDate.Value,Date)
             Else
                 command.Parameters(1).Value = Global.System.DBNull.Value
             End If
-            If (accidentDate1.HasValue = True) Then
-                command.Parameters(2).Value = CType(accidentDate1.Value, Date)
+            If (accidentDate1.HasValue = true) Then
+                command.Parameters(2).Value = CType(accidentDate1.Value,Date)
             Else
                 command.Parameters(2).Value = Global.System.DBNull.Value
             End If
             If (gang Is Nothing) Then
                 command.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(3).Value = CType(gang, String)
+                command.Parameters(3).Value = CType(gang,String)
             End If
             If (gang1 Is Nothing) Then
                 command.Parameters(4).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(4).Value = CType(gang1, String)
+                command.Parameters(4).Value = CType(gang1,String)
             End If
             If (lineID Is Nothing) Then
                 command.Parameters(5).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(5).Value = CType(lineID, String)
+                command.Parameters(5).Value = CType(lineID,String)
             End If
             If (lineID1 Is Nothing) Then
                 command.Parameters(6).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(6).Value = CType(lineID1, String)
+                command.Parameters(6).Value = CType(lineID1,String)
             End If
             If (equipmentName Is Nothing) Then
                 command.Parameters(7).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(7).Value = CType(equipmentName, String)
+                command.Parameters(7).Value = CType(equipmentName,String)
             End If
             If (equipmentName1 Is Nothing) Then
                 command.Parameters(8).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(8).Value = CType(equipmentName1, String)
+                command.Parameters(8).Value = CType(equipmentName1,String)
             End If
-            If (interruptTimestamp.HasValue = True) Then
-                command.Parameters(9).Value = CType(interruptTimestamp.Value, Date)
+            If (interruptTimestamp.HasValue = true) Then
+                command.Parameters(9).Value = CType(interruptTimestamp.Value,Date)
             Else
                 command.Parameters(9).Value = Global.System.DBNull.Value
             End If
-            If (interruptTimestamp1.HasValue = True) Then
-                command.Parameters(10).Value = CType(interruptTimestamp1.Value, Date)
+            If (interruptTimestamp1.HasValue = true) Then
+                command.Parameters(10).Value = CType(interruptTimestamp1.Value,Date)
             Else
                 command.Parameters(10).Value = Global.System.DBNull.Value
             End If
-            If (beginRepairTimestamp.HasValue = True) Then
-                command.Parameters(11).Value = CType(beginRepairTimestamp.Value, Date)
+            If (beginRepairTimestamp.HasValue = true) Then
+                command.Parameters(11).Value = CType(beginRepairTimestamp.Value,Date)
             Else
                 command.Parameters(11).Value = Global.System.DBNull.Value
             End If
-            If (beginRepairTimestamp1.HasValue = True) Then
-                command.Parameters(12).Value = CType(beginRepairTimestamp1.Value, Date)
+            If (beginRepairTimestamp1.HasValue = true) Then
+                command.Parameters(12).Value = CType(beginRepairTimestamp1.Value,Date)
             Else
                 command.Parameters(12).Value = Global.System.DBNull.Value
             End If
-            If (endOfInterruptTimestamp.HasValue = True) Then
-                command.Parameters(13).Value = CType(endOfInterruptTimestamp.Value, Date)
+            If (endOfInterruptTimestamp.HasValue = true) Then
+                command.Parameters(13).Value = CType(endOfInterruptTimestamp.Value,Date)
             Else
                 command.Parameters(13).Value = Global.System.DBNull.Value
             End If
-            If (endOfInterruptTimestamp1.HasValue = True) Then
-                command.Parameters(14).Value = CType(endOfInterruptTimestamp1.Value, Date)
+            If (endOfInterruptTimestamp1.HasValue = true) Then
+                command.Parameters(14).Value = CType(endOfInterruptTimestamp1.Value,Date)
             Else
                 command.Parameters(14).Value = Global.System.DBNull.Value
             End If
             If (interruptCode Is Nothing) Then
                 command.Parameters(15).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(15).Value = CType(interruptCode, String)
+                command.Parameters(15).Value = CType(interruptCode,String)
             End If
             If (interruptCode1 Is Nothing) Then
                 command.Parameters(16).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(16).Value = CType(interruptCode1, String)
+                command.Parameters(16).Value = CType(interruptCode1,String)
             End If
             If (causeOfInterrupt Is Nothing) Then
                 command.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(17).Value = CType(causeOfInterrupt, String)
+                command.Parameters(17).Value = CType(causeOfInterrupt,String)
             End If
             If (causeOfInterrupt1 Is Nothing) Then
                 command.Parameters(18).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(18).Value = CType(causeOfInterrupt1, String)
+                command.Parameters(18).Value = CType(causeOfInterrupt1,String)
             End If
             If (carriedOutActions Is Nothing) Then
                 command.Parameters(19).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(19).Value = CType(carriedOutActions, String)
+                command.Parameters(19).Value = CType(carriedOutActions,String)
             End If
             If (carriedOutActions1 Is Nothing) Then
                 command.Parameters(20).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(20).Value = CType(carriedOutActions1, String)
+                command.Parameters(20).Value = CType(carriedOutActions1,String)
             End If
             If (whoIsLast Is Nothing) Then
                 command.Parameters(21).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(21).Value = CType(whoIsLast, String)
+                command.Parameters(21).Value = CType(whoIsLast,String)
             End If
             If (whoIsLast1 Is Nothing) Then
                 command.Parameters(22).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(22).Value = CType(whoIsLast1, String)
+                command.Parameters(22).Value = CType(whoIsLast1,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open()
+                command.Connection.Open
             End If
             Dim returnValue As Integer
-            Try
+            Try 
                 returnValue = command.ExecuteNonQuery
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close()
+                    command.Connection.Close
                 End If
             End Try
             Return returnValue
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, False)> _
-        Public Overridable Overloads Function InsertQuery(ByVal accidentDate As Global.System.Nullable(Of Date), ByVal gang As String, ByVal lineID As String, ByVal equipmentName As String, ByVal interruptTimestamp As Global.System.Nullable(Of Date), ByVal beginRepairTimestamp As Global.System.Nullable(Of Date), ByVal endOfInterruptTimestamp As Global.System.Nullable(Of Date), ByVal interruptCode As String, ByVal causeOfInterrupt As String, ByVal carriedOutActions As String, ByVal whoIsLast As String) As Integer
-            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(4)
-            If (accidentDate.HasValue = True) Then
-                command.Parameters(0).Value = CType(accidentDate.Value, Date)
-            Else
-                command.Parameters(0).Value = Global.System.DBNull.Value
-            End If
-            If (gang Is Nothing) Then
-                command.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(1).Value = CType(gang, String)
-            End If
-            If (lineID Is Nothing) Then
-                command.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(2).Value = CType(lineID, String)
-            End If
-            If (equipmentName Is Nothing) Then
-                command.Parameters(3).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(3).Value = CType(equipmentName, String)
-            End If
-            If (interruptTimestamp.HasValue = True) Then
-                command.Parameters(4).Value = CType(interruptTimestamp.Value, Date)
-            Else
-                command.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (beginRepairTimestamp.HasValue = True) Then
-                command.Parameters(5).Value = CType(beginRepairTimestamp.Value, Date)
-            Else
-                command.Parameters(5).Value = Global.System.DBNull.Value
-            End If
-            If (endOfInterruptTimestamp.HasValue = True) Then
-                command.Parameters(6).Value = CType(endOfInterruptTimestamp.Value, Date)
-            Else
-                command.Parameters(6).Value = Global.System.DBNull.Value
-            End If
-            If (interruptCode Is Nothing) Then
-                command.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(7).Value = CType(interruptCode, String)
-            End If
-            If (causeOfInterrupt Is Nothing) Then
-                command.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(8).Value = CType(causeOfInterrupt, String)
-            End If
-            If (carriedOutActions Is Nothing) Then
-                command.Parameters(9).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(9).Value = CType(carriedOutActions, String)
-            End If
-            If (whoIsLast Is Nothing) Then
-                command.Parameters(10).Value = Global.System.DBNull.Value
-            Else
-                command.Parameters(10).Value = CType(whoIsLast, String)
-            End If
-            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open) _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open()
-            End If
-            Dim returnValue As Integer
-            Try
-                returnValue = command.ExecuteNonQuery
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close()
-                End If
-            End Try
-            Return returnValue
-        End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, False)> _
-        Public Overridable Overloads Function UpdateQuery(ByVal accidentDate As Global.System.Nullable(Of Date), ByVal gang As String, ByVal lineID As String, ByVal equipmentName As String, ByVal interruptTimestamp As Global.System.Nullable(Of Date), ByVal beginRepairTimestamp As Global.System.Nullable(Of Date), ByVal endOfInterruptTimestamp As Global.System.Nullable(Of Date), ByVal interruptCode As String, ByVal causeOfInterrupt As String, ByVal carriedOutActions As String, ByVal whoIsLast As String, ByVal Original_ID As Integer) As Integer
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
+        Public Overloads Overridable Function InsertQuery(ByVal accidentDate As Global.System.Nullable(Of Date), ByVal gang As String, ByVal lineID As String, ByVal equipmentName As String, ByVal interruptTimestamp As Global.System.Nullable(Of Date), ByVal beginRepairTimestamp As Global.System.Nullable(Of Date), ByVal endOfInterruptTimestamp As Global.System.Nullable(Of Date), ByVal interruptCode As String, ByVal causeOfInterrupt As String, ByVal carriedOutActions As String, ByVal whoIsLast As String) As Integer
             Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(5)
-            If (accidentDate.HasValue = True) Then
-                command.Parameters(0).Value = CType(accidentDate.Value, Date)
+            If (accidentDate.HasValue = true) Then
+                command.Parameters(0).Value = CType(accidentDate.Value,Date)
             Else
                 command.Parameters(0).Value = Global.System.DBNull.Value
             End If
             If (gang Is Nothing) Then
                 command.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(1).Value = CType(gang, String)
+                command.Parameters(1).Value = CType(gang,String)
             End If
             If (lineID Is Nothing) Then
                 command.Parameters(2).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(2).Value = CType(lineID, String)
+                command.Parameters(2).Value = CType(lineID,String)
             End If
             If (equipmentName Is Nothing) Then
                 command.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(3).Value = CType(equipmentName, String)
+                command.Parameters(3).Value = CType(equipmentName,String)
             End If
-            If (interruptTimestamp.HasValue = True) Then
-                command.Parameters(4).Value = CType(interruptTimestamp.Value, Date)
+            If (interruptTimestamp.HasValue = true) Then
+                command.Parameters(4).Value = CType(interruptTimestamp.Value,Date)
             Else
                 command.Parameters(4).Value = Global.System.DBNull.Value
             End If
-            If (beginRepairTimestamp.HasValue = True) Then
-                command.Parameters(5).Value = CType(beginRepairTimestamp.Value, Date)
+            If (beginRepairTimestamp.HasValue = true) Then
+                command.Parameters(5).Value = CType(beginRepairTimestamp.Value,Date)
             Else
                 command.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (endOfInterruptTimestamp.HasValue = True) Then
-                command.Parameters(6).Value = CType(endOfInterruptTimestamp.Value, Date)
+            If (endOfInterruptTimestamp.HasValue = true) Then
+                command.Parameters(6).Value = CType(endOfInterruptTimestamp.Value,Date)
             Else
                 command.Parameters(6).Value = Global.System.DBNull.Value
             End If
             If (interruptCode Is Nothing) Then
                 command.Parameters(7).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(7).Value = CType(interruptCode, String)
+                command.Parameters(7).Value = CType(interruptCode,String)
             End If
             If (causeOfInterrupt Is Nothing) Then
                 command.Parameters(8).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(8).Value = CType(causeOfInterrupt, String)
+                command.Parameters(8).Value = CType(causeOfInterrupt,String)
             End If
             If (carriedOutActions Is Nothing) Then
                 command.Parameters(9).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(9).Value = CType(carriedOutActions, String)
+                command.Parameters(9).Value = CType(carriedOutActions,String)
             End If
             If (whoIsLast Is Nothing) Then
                 command.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(10).Value = CType(whoIsLast, String)
+                command.Parameters(10).Value = CType(whoIsLast,String)
             End If
-            command.Parameters(11).Value = CType(Original_ID, Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
-            If ((command.Connection.State And Global.System.Data.ConnectionState.Open) _
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
-                command.Connection.Open()
+                command.Connection.Open
             End If
             Dim returnValue As Integer
-            Try
+            Try 
                 returnValue = command.ExecuteNonQuery
             Finally
                 If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    command.Connection.Close()
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, false)>  _
+        Public Overloads Overridable Function UpdateQuery(ByVal accidentDate As Global.System.Nullable(Of Date), ByVal gang As String, ByVal lineID As String, ByVal equipmentName As String, ByVal interruptTimestamp As Global.System.Nullable(Of Date), ByVal beginRepairTimestamp As Global.System.Nullable(Of Date), ByVal endOfInterruptTimestamp As Global.System.Nullable(Of Date), ByVal interruptCode As String, ByVal causeOfInterrupt As String, ByVal carriedOutActions As String, ByVal whoIsLast As String, ByVal Original_ID As Integer) As Integer
+            Dim command As Global.System.Data.Odbc.OdbcCommand = Me.CommandCollection(6)
+            If (accidentDate.HasValue = true) Then
+                command.Parameters(0).Value = CType(accidentDate.Value,Date)
+            Else
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (gang Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(gang,String)
+            End If
+            If (lineID Is Nothing) Then
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(2).Value = CType(lineID,String)
+            End If
+            If (equipmentName Is Nothing) Then
+                command.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(3).Value = CType(equipmentName,String)
+            End If
+            If (interruptTimestamp.HasValue = true) Then
+                command.Parameters(4).Value = CType(interruptTimestamp.Value,Date)
+            Else
+                command.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (beginRepairTimestamp.HasValue = true) Then
+                command.Parameters(5).Value = CType(beginRepairTimestamp.Value,Date)
+            Else
+                command.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (endOfInterruptTimestamp.HasValue = true) Then
+                command.Parameters(6).Value = CType(endOfInterruptTimestamp.Value,Date)
+            Else
+                command.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (interruptCode Is Nothing) Then
+                command.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(7).Value = CType(interruptCode,String)
+            End If
+            If (causeOfInterrupt Is Nothing) Then
+                command.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(8).Value = CType(causeOfInterrupt,String)
+            End If
+            If (carriedOutActions Is Nothing) Then
+                command.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(9).Value = CType(carriedOutActions,String)
+            End If
+            If (whoIsLast Is Nothing) Then
+                command.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(10).Value = CType(whoIsLast,String)
+            End If
+            command.Parameters(11).Value = CType(Original_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
                 End If
             End Try
             Return returnValue
         End Function
     End Class
-
+    
     '''<summary>
     '''TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     '''</summary>
-    <Global.System.ComponentModel.DesignerCategoryAttribute("code"), _
-     Global.System.ComponentModel.ToolboxItem(True), _
-     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerDesigner, Microsoft.VSD" & _
-        "esigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"), _
-     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapterManager")> _
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerDesigner, Microsoft.VSD"& _ 
+        "esigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapterManager")>  _
     Partial Public Class TableAdapterManager
         Inherits Global.System.ComponentModel.Component
-
+        
         Private _updateOrder As UpdateOrderOption
-
+        
         Private _t_linesInterruptsTableAdapter As t_linesInterruptsTableAdapter
-
+        
         Private _backupDataSetBeforeUpdate As Boolean
-
+        
         Private _connection As Global.System.Data.IDbConnection
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property UpdateOrder() As UpdateOrderOption
             Get
                 Return Me._updateOrder
             End Get
-            Set(value As UpdateOrderOption)
+            Set
                 Me._updateOrder = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" & _
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" & _
-            "a", "System.Drawing.Design.UITypeEditor")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
         Public Property t_linesInterruptsTableAdapter() As t_linesInterruptsTableAdapter
             Get
                 Return Me._t_linesInterruptsTableAdapter
             End Get
-            Set(value As t_linesInterruptsTableAdapter)
+            Set
                 Me._t_linesInterruptsTableAdapter = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property BackupDataSetBeforeUpdate() As Boolean
             Get
                 Return Me._backupDataSetBeforeUpdate
             End Get
-            Set(value As Boolean)
+            Set
                 Me._backupDataSetBeforeUpdate = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Browsable(False)> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
         Public Property Connection() As Global.System.Data.IDbConnection
             Get
                 If (Not (Me._connection) Is Nothing) Then
                     Return Me._connection
                 End If
-                If ((Not (Me._t_linesInterruptsTableAdapter) Is Nothing) _
+                If ((Not (Me._t_linesInterruptsTableAdapter) Is Nothing)  _
                             AndAlso (Not (Me._t_linesInterruptsTableAdapter.Connection) Is Nothing)) Then
                     Return Me._t_linesInterruptsTableAdapter.Connection
                 End If
                 Return Nothing
             End Get
-            Set(value As Global.System.Data.IDbConnection)
+            Set
                 Me._connection = value
             End Set
         End Property
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
-         Global.System.ComponentModel.Browsable(False)> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property TableAdapterInstanceCount() As Integer
             Get
                 Dim count As Integer = 0
@@ -2242,18 +2316,18 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                 Return count
             End Get
         End Property
-
+        
         '''<summary>
         '''Update rows in top-down order.
         '''</summary>
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateUpdatedRows(ByVal dataSet As sb_tamesInterruptsDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             If (Not (Me._t_linesInterruptsTableAdapter) Is Nothing) Then
                 Dim updatedRows() As Global.System.Data.DataRow = dataSet.t_linesInterrupts.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
                 updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
-                If ((Not (updatedRows) Is Nothing) _
+                If ((Not (updatedRows) Is Nothing)  _
                             AndAlso (0 < updatedRows.Length)) Then
                     result = (result + Me._t_linesInterruptsTableAdapter.Update(updatedRows))
                     allChangedRows.AddRange(updatedRows)
@@ -2261,17 +2335,17 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
             End If
             Return result
         End Function
-
+        
         '''<summary>
         '''Insert rows in top-down order.
         '''</summary>
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateInsertedRows(ByVal dataSet As sb_tamesInterruptsDataSet, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             If (Not (Me._t_linesInterruptsTableAdapter) Is Nothing) Then
                 Dim addedRows() As Global.System.Data.DataRow = dataSet.t_linesInterrupts.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
-                If ((Not (addedRows) Is Nothing) _
+                If ((Not (addedRows) Is Nothing)  _
                             AndAlso (0 < addedRows.Length)) Then
                     result = (result + Me._t_linesInterruptsTableAdapter.Update(addedRows))
                     allAddedRows.AddRange(addedRows)
@@ -2279,17 +2353,17 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
             End If
             Return result
         End Function
-
+        
         '''<summary>
         '''Delete rows in bottom-up order.
         '''</summary>
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As sb_tamesInterruptsDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             If (Not (Me._t_linesInterruptsTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.t_linesInterrupts.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
-                If ((Not (deletedRows) Is Nothing) _
+                If ((Not (deletedRows) Is Nothing)  _
                             AndAlso (0 < deletedRows.Length)) Then
                     result = (result + Me._t_linesInterruptsTableAdapter.Update(deletedRows))
                     allChangedRows.AddRange(deletedRows)
@@ -2297,18 +2371,18 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
             End If
             Return result
         End Function
-
+        
         '''<summary>
         '''Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
         '''</summary>
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Function GetRealUpdatedRows(ByVal updatedRows() As Global.System.Data.DataRow, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Global.System.Data.DataRow()
-            If ((updatedRows Is Nothing) _
+            If ((updatedRows Is Nothing)  _
                         OrElse (updatedRows.Length < 1)) Then
                 Return updatedRows
             End If
-            If ((allAddedRows Is Nothing) _
+            If ((allAddedRows Is Nothing)  _
                         OrElse (allAddedRows.Count < 1)) Then
                 Return updatedRows
             End If
@@ -2316,48 +2390,48 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
             Dim i As Integer = 0
             Do While (i < updatedRows.Length)
                 Dim row As Global.System.Data.DataRow = updatedRows(i)
-                If (allAddedRows.Contains(row) = False) Then
+                If (allAddedRows.Contains(row) = false) Then
                     realUpdatedRows.Add(row)
                 End If
                 i = (i + 1)
             Loop
             Return realUpdatedRows.ToArray
         End Function
-
+        
         '''<summary>
         '''Update all changes to the dataset.
         '''</summary>
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overridable Function UpdateAll(ByVal dataSet As sb_tamesInterruptsDataSet) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If
-            If (dataSet.HasChanges = False) Then
+            If (dataSet.HasChanges = false) Then
                 Return 0
             End If
-            If ((Not (Me._t_linesInterruptsTableAdapter) Is Nothing) _
-                        AndAlso (Me.MatchTableAdapterConnection(Me._t_linesInterruptsTableAdapter.Connection) = False)) Then
-                Throw New Global.System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" & _
+            If ((Not (Me._t_linesInterruptsTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._t_linesInterruptsTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage"& _ 
                         "r, должны использовать одинаковую строку подключения.")
             End If
             Dim workConnection As Global.System.Data.IDbConnection = Me.Connection
             If (workConnection Is Nothing) Then
-                Throw New Global.System.ApplicationException("TableAdapterManager не содержит сведений о подключении. Укажите для каждого адапт" & _
+                Throw New Global.System.ApplicationException("TableAdapterManager не содержит сведений о подключении. Укажите для каждого адапт"& _ 
                         "ера таблицы TableAdapterManager допустимый экземпляр адаптера таблицы.")
             End If
-            Dim workConnOpened As Boolean = False
-            If ((workConnection.State And Global.System.Data.ConnectionState.Broken) _
+            Dim workConnOpened As Boolean = false
+            If ((workConnection.State And Global.System.Data.ConnectionState.Broken)  _
                         = Global.System.Data.ConnectionState.Broken) Then
-                workConnection.Close()
+                workConnection.Close
             End If
             If (workConnection.State = Global.System.Data.ConnectionState.Closed) Then
-                workConnection.Open()
-                workConnOpened = True
+                workConnection.Open
+                workConnOpened = true
             End If
             Dim workTransaction As Global.System.Data.IDbTransaction = workConnection.BeginTransaction
             If (workTransaction Is Nothing) Then
-                Throw New Global.System.ApplicationException("Не удается начать транзакцию. Текущее соединение данных не поддерживает транзакци" & _
+                Throw New Global.System.ApplicationException("Не удается начать транзакцию. Текущее соединение данных не поддерживает транзакци"& _ 
                         "и или текущее состояние не позволяет начать транзакцию.")
             End If
             Dim allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow) = New Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)()
@@ -2370,15 +2444,15 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                 backupDataSet = New Global.System.Data.DataSet()
                 backupDataSet.Merge(dataSet)
             End If
-            Try
+            Try 
                 '---- Prepare for update -----------
                 '
                 If (Not (Me._t_linesInterruptsTableAdapter) Is Nothing) Then
                     revertConnections.Add(Me._t_linesInterruptsTableAdapter, Me._t_linesInterruptsTableAdapter.Connection)
-                    Me._t_linesInterruptsTableAdapter.Connection = CType(workConnection, Global.System.Data.Odbc.OdbcConnection)
-                    Me._t_linesInterruptsTableAdapter.Transaction = CType(workTransaction, Global.System.Data.Odbc.OdbcTransaction)
+                    Me._t_linesInterruptsTableAdapter.Connection = CType(workConnection,Global.System.Data.Odbc.OdbcConnection)
+                    Me._t_linesInterruptsTableAdapter.Transaction = CType(workTransaction,Global.System.Data.Odbc.OdbcTransaction)
                     If Me._t_linesInterruptsTableAdapter.Adapter.AcceptChangesDuringUpdate Then
-                        Me._t_linesInterruptsTableAdapter.Adapter.AcceptChangesDuringUpdate = False
+                        Me._t_linesInterruptsTableAdapter.Adapter.AcceptChangesDuringUpdate = false
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._t_linesInterruptsTableAdapter.Adapter)
                     End If
                 End If
@@ -2396,14 +2470,14 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                 '
                 '---- Commit updates -----------
                 '
-                workTransaction.Commit()
+                workTransaction.Commit
                 If (0 < allAddedRows.Count) Then
                     Dim rows((allAddedRows.Count) - 1) As Global.System.Data.DataRow
                     allAddedRows.CopyTo(rows)
                     Dim i As Integer = 0
                     Do While (i < rows.Length)
                         Dim row As Global.System.Data.DataRow = rows(i)
-                        row.AcceptChanges()
+                        row.AcceptChanges
                         i = (i + 1)
                     Loop
                 End If
@@ -2413,16 +2487,16 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                     Dim i As Integer = 0
                     Do While (i < rows.Length)
                         Dim row As Global.System.Data.DataRow = rows(i)
-                        row.AcceptChanges()
+                        row.AcceptChanges
                         i = (i + 1)
                     Loop
                 End If
             Catch ex As Global.System.Exception
-                workTransaction.Rollback()
+                workTransaction.Rollback
                 '---- Restore the dataset -----------
                 If Me.BackupDataSetBeforeUpdate Then
                     Global.System.Diagnostics.Debug.Assert((Not (backupDataSet) Is Nothing))
-                    dataSet.Clear()
+                    dataSet.Clear
                     dataSet.Merge(backupDataSet)
                 Else
                     If (0 < allAddedRows.Count) Then
@@ -2431,8 +2505,8 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                         Dim i As Integer = 0
                         Do While (i < rows.Length)
                             Dim row As Global.System.Data.DataRow = rows(i)
-                            row.AcceptChanges()
-                            row.SetAdded()
+                            row.AcceptChanges
+                            row.SetAdded
                             i = (i + 1)
                         Loop
                     End If
@@ -2440,10 +2514,10 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                 Throw ex
             Finally
                 If workConnOpened Then
-                    workConnection.Close()
+                    workConnection.Close
                 End If
                 If (Not (Me._t_linesInterruptsTableAdapter) Is Nothing) Then
-                    Me._t_linesInterruptsTableAdapter.Connection = CType(revertConnections(Me._t_linesInterruptsTableAdapter), Global.System.Data.Odbc.OdbcConnection)
+                    Me._t_linesInterruptsTableAdapter.Connection = CType(revertConnections(Me._t_linesInterruptsTableAdapter),Global.System.Data.Odbc.OdbcConnection)
                     Me._t_linesInterruptsTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
@@ -2452,63 +2526,63 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                     Dim i As Integer = 0
                     Do While (i < adapters.Length)
                         Dim adapter As Global.System.Data.Common.DataAdapter = adapters(i)
-                        adapter.AcceptChangesDuringUpdate = True
+                        adapter.AcceptChangesDuringUpdate = true
                         i = (i + 1)
                     Loop
                 End If
             End Try
             Return result
         End Function
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overridable Sub SortSelfReferenceRows(ByVal rows() As Global.System.Data.DataRow, ByVal relation As Global.System.Data.DataRelation, ByVal childFirst As Boolean)
             Global.System.Array.Sort(Of Global.System.Data.DataRow)(rows, New SelfReferenceComparer(relation, childFirst))
         End Sub
-
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overridable Function MatchTableAdapterConnection(ByVal inputConnection As Global.System.Data.IDbConnection) As Boolean
             If (Not (Me._connection) Is Nothing) Then
-                Return True
+                Return true
             End If
-            If ((Me.Connection Is Nothing) _
+            If ((Me.Connection Is Nothing)  _
                         OrElse (inputConnection Is Nothing)) Then
-                Return True
+                Return true
             End If
             If String.Equals(Me.Connection.ConnectionString, inputConnection.ConnectionString, Global.System.StringComparison.Ordinal) Then
-                Return True
+                Return true
             End If
-            Return False
+            Return false
         End Function
-
+        
         '''<summary>
         '''Update Order Option
         '''</summary>
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Enum UpdateOrderOption
-
+            
             InsertUpdateDelete = 0
-
+            
             UpdateInsertDelete = 1
         End Enum
-
+        
         '''<summary>
         '''Used to sort self-referenced table's rows
         '''</summary>
-        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Class SelfReferenceComparer
             Inherits Object
             Implements Global.System.Collections.Generic.IComparer(Of Global.System.Data.DataRow)
-
+            
             Private _relation As Global.System.Data.DataRelation
-
+            
             Private _childFirst As Integer
-
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
             Friend Sub New(ByVal relation As Global.System.Data.DataRelation, ByVal childFirst As Boolean)
-                MyBase.New()
+                MyBase.New
                 Me._relation = relation
                 If childFirst Then
                     Me._childFirst = -1
@@ -2516,9 +2590,9 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                     Me._childFirst = 1
                 End If
             End Sub
-
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
             Private Function GetRoot(ByVal row As Global.System.Data.DataRow, ByRef distance As Integer) As Global.System.Data.DataRow
                 Global.System.Diagnostics.Debug.Assert((Not (row) Is Nothing))
                 Dim root As Global.System.Data.DataRow = row
@@ -2529,8 +2603,8 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
 
                 Dim parent As Global.System.Data.DataRow = row.GetParentRow(Me._relation, Global.System.Data.DataRowVersion.[Default])
 
-                Do While ((Not (parent) Is Nothing) _
-                            AndAlso (traversedRows.ContainsKey(parent) = False))
+                Do While ((Not (parent) Is Nothing)  _
+                            AndAlso (traversedRows.ContainsKey(parent) = false))
                     distance = (distance + 1)
                     root = parent
                     traversedRows(parent) = parent
@@ -2539,12 +2613,12 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                 Loop
 
                 If (distance = 0) Then
-                    traversedRows.Clear()
+                    traversedRows.Clear
                     traversedRows(row) = row
                     parent = row.GetParentRow(Me._relation, Global.System.Data.DataRowVersion.Original)
 
-                    Do While ((Not (parent) Is Nothing) _
-                                AndAlso (traversedRows.ContainsKey(parent) = False))
+                    Do While ((Not (parent) Is Nothing)  _
+                                AndAlso (traversedRows.ContainsKey(parent) = false))
                         distance = (distance + 1)
                         root = parent
                         traversedRows(parent) = parent
@@ -2555,9 +2629,9 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
 
                 Return root
             End Function
-
-            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+            
+            <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+             Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
             Public Function Compare(ByVal row1 As Global.System.Data.DataRow, ByVal row2 As Global.System.Data.DataRow) As Integer Implements Global.System.Collections.Generic.IComparer(Of Global.System.Data.DataRow).Compare
                 If Object.ReferenceEquals(row1, row2) Then
                     Return 0
@@ -2578,7 +2652,7 @@ Namespace sb_tamesInterruptsDataSetTableAdapters
                 If Object.ReferenceEquals(root1, root2) Then
                     Return (Me._childFirst * distance1.CompareTo(distance2))
                 Else
-                    Global.System.Diagnostics.Debug.Assert(((Not (root1.Table) Is Nothing) _
+                    Global.System.Diagnostics.Debug.Assert(((Not (root1.Table) Is Nothing)  _
                                     AndAlso (Not (root2.Table) Is Nothing)))
                     If (root1.Table.Rows.IndexOf(root1) < root2.Table.Rows.IndexOf(root2)) Then
                         Return -1

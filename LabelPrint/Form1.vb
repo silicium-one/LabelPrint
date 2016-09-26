@@ -3148,7 +3148,62 @@ retry:
                 T_productivityTableAdapter1.FillBy(Ru_sb_tames1.t_productivity, param(0), param(1), param(2), CType(param(3), Date).ToString("HH:mm"), CType(param(4), Date).ToString("HH:mm"))
             End If
 
-        Catch ex As Exception
+            ' в связи с введенеием в программу простоев, нужна кололнка, которая покажет,
+            ' сколько минут работали до текущего часа на текущую дату
+            ' алгоритм рассчёта:
+            ' 1. запросить таблицу перерывов за период времени от начала фильтра до конца текущего часа или конца фильтра (что меньше)
+            ' 2. на основании записей в таблице сформировать интервалы работы
+            ' 3. запросить у таблицы простоев сумму всех простоев за каждый рабочий промежуток на текущую дату
+            ' 4. вычесть из всего рабочего времени все простои
+
+            Ru_sb_tames1.t_productivity.Columns.Add("work_in_minutes")
+
+            With Ru_sb_tames1.t_productivity
+                Dim timeFrom = CType(param(3), Date)
+                Dim timeFromStr = timeFrom.ToString("HH:mm")
+                Dim timeTo = CType(param(4), Date)
+                For r = 0 To .Rows.Count - 1
+                    'Dim endOfHour = New Date(timeTo.Year, timeTo.Month, timeTo.Day, Integer.Parse(.Rows(r).Item("ora").ToString().Split("-"c)(1)), 0, 0)
+                    Dim endOfHour = Integer.Parse(.Rows(r).Item("ora").ToString().Split("-"c)(1))
+                    Dim timeToStr As String
+                    Dim sumOfWorkMin As Integer = 0
+                    If endOfHour > timeTo.Hour Then
+                        timeToStr = timeTo.ToString("HH:mm")
+                        sumOfWorkMin = (timeTo - timeFrom).TotalMinutes
+                    Else
+                        timeToStr = TimeSpan.FromHours(endOfHour).ToString("hh\:mm")
+                        sumOfWorkMin = (TimeSpan.FromHours(endOfHour) - timeFrom.TimeOfDay).TotalMinutes
+                    End If
+                    Dim tableOfBreaks = T_linesBreaksTableAdapter.GetDataByLineNtime(timeFrom.TimeOfDay, TimeSpan.Parse(timeToStr),
+                                                                                     LineName)
+                    Dim beginIntervalStr As String = timeFromStr
+                    Dim endIntervalStr As String = timeFromStr
+                    Dim sumOfInterruptsMin As Integer = 0
+                    Dim sumOfBreaksMin = sumOfBreaksInMinuts(LineName, timeFromStr, timeToStr)
+                    Dim accidentDate = DirectCast(.Rows(r).Item(3), Date) ' дата из таблицы продуктивностей, которую заполняем
+
+                    For r2 = 0 To tableOfBreaks.Rows.Count - 1
+                        Debug.WriteLine(tableOfBreaks.Rows(r2).Item("timeFrom").ToString() & " - " & tableOfBreaks.Rows(r2).Item("timeTo").ToString())
+
+                        endIntervalStr = tableOfBreaks.Rows(r2).Item("timeFrom").ToString()
+                        sumOfInterruptsMin += sumOfInterruptsInMinuts(LineName,
+                                                                      beginIntervalStr,
+                                                                      endIntervalStr,
+                                                                      accidentDate)
+                        beginIntervalStr = tableOfBreaks.Rows(r2).Item("timeTo").ToString()
+                    Next
+
+                    endIntervalStr = timeToStr
+                    sumOfInterruptsMin += sumOfInterruptsInMinuts(LineName,
+                                                                  beginIntervalStr,
+                                                                  endIntervalStr,
+                                                                  accidentDate)
+
+                    .Rows(r).Item("work_in_minutes") = sumOfWorkMin - sumOfInterruptsMin - sumOfBreaksMin
+                Next
+            End With
+
+        Catch ex As NullReferenceException
             MsgBox(ex.ToString)
         End Try
     End Sub
@@ -3190,6 +3245,50 @@ retry:
 
     End Function
 
+    Private Function sumOfInterruptsInMinuts(lineID As String, timeFrom As String, timeTo As String, accidentDate As Date?) As UInt32
+        Dim odbcConnector As New Global.System.Data.Odbc.OdbcCommand()
+        odbcConnector.Connection = New Global.System.Data.Odbc.OdbcConnection(Global.LabelPrint.My.MySettings.Default.ru_sb_tames)
+        odbcConnector.CommandText = "SELECT sum(least(to_timestamp(""endOfInterruptTimestamp""::varchar,'HH24:MI:SS'),to_timestamp(" & _
+               "'" & timeTo & "', 'HH24:MI'))-greatest(to_timestamp(""interruptTimestamp""::varchar,'HH24:MI:SS" & _
+               "'),to_timestamp('" & timeFrom & "', 'HH24:MI'))) FROM ""t_linesInterrupts"" where to_timestamp(""" & _
+               "endOfInterruptTimestamp""::varchar,'HH24:MI:SS')>=to_timestamp('" & timeFrom & "', 'HH24:MI') and to_tim" & _
+               "estamp(""interruptTimestamp""::varchar,'HH24:MI:SS')<=to_timestamp('" & timeTo & "', 'HH24:MI')" & _
+               " and ""accidentDate"" =? and ""lineID"" = '" & lineID & "';"
+        odbcConnector.CommandType = Global.System.Data.CommandType.Text
+        odbcConnector.Parameters.Add(New OdbcParameter("accidentDate", OdbcType.Date))
+
+        If (accidentDate.HasValue = True) Then
+            odbcConnector.Parameters(0).Value = CType(accidentDate.Value, Date)
+        Else
+            odbcConnector.Parameters(0).Value = Global.System.DBNull.Value
+        End If
+
+        Dim previousConnectionState As Global.System.Data.ConnectionState = odbcConnector.Connection.State
+        If ((odbcConnector.Connection.State And Global.System.Data.ConnectionState.Open) _
+                    <> Global.System.Data.ConnectionState.Open) Then
+            odbcConnector.Connection.Open()
+        End If
+
+        Dim queryReturnValue As Object
+
+        Try
+            queryReturnValue = odbcConnector.ExecuteScalar
+        Finally
+            If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                odbcConnector.Connection.Close()
+            End If
+        End Try
+
+        If ((queryReturnValue Is Nothing) _
+                    OrElse (queryReturnValue.GetType Is GetType(Global.System.DBNull))) Then Return 0
+
+        Dim sumTimeOfInterrupts As Date
+        If Not DateTime.TryParse(CType(queryReturnValue, String), sumTimeOfInterrupts) Then Return 0
+
+        Return sumTimeOfInterrupts.TimeOfDay.TotalMinutes
+
+    End Function
+
     Private Sub BackgroundWorkerProductivity1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorkerProductivity1.RunWorkerCompleted
         Try
             'add column pcs/day or pcs/order 
@@ -3205,6 +3304,7 @@ retry:
             With Ru_sb_tames1.t_productivity
                 .Columns.Add("pcs_total")
                 .Columns.Add("productivity")
+                .Columns.Add("productivity_check")
                 For r = 0 To .Rows.Count - 1
                     If r = 0 Then
                         .Rows(r).Item("pcs_total") = .Rows(r).Item("nr")
@@ -3219,10 +3319,11 @@ retry:
                     Dim hours = Integer.Parse(.Rows(r).Item("ora").ToString().Substring(0, 2))
                     Dim workedMinuts = workTimeInMinuts(hours)
                     If (workedMinuts > 0) Then
-                        .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") * 60 / workedMinuts)
+                        .Rows(r).Item("productivity_check") = Math.Round(.Rows(r).Item("pcs_total") * 60 / workedMinuts)
                     Else
-                        .Rows(r).Item("productivity") = 0
+                        .Rows(r).Item("productivity_check") = 0
                     End If
+                    .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") * 60 / .Rows(r).Item("work_in_minutes"))
                 Next
 
                 If tbLeitzahl.Text <> vbNullString Then
@@ -3241,16 +3342,19 @@ retry:
             ToolStripProgressBar1.Visible = False
             btnProdFind.Enabled = True
             With dgvProd
-                .Columns(0).HeaderText = "Заказ №"
-                .Columns(1).HeaderText = "Номер изделия"
-                .Columns(2).HeaderText = "Описание изделия"
-                .Columns(3).HeaderText = "Дата"
-                .Columns(4).HeaderText = "Период"
-                .Columns(5).HeaderText = "Количество"
-                .Columns(6).HeaderText = "Количество всего"
-                .Columns(7).HeaderText = "Средняя производительность"
+                .Columns("orderNo").HeaderText = "Заказ №"
+                .Columns("partNo").HeaderText = "Номер изделия"
+                .Columns("partDesc").HeaderText = "Описание изделия"
+                .Columns("logDate").HeaderText = "Дата"
+                .Columns("ora").HeaderText = "Период"
+                .Columns("nr").HeaderText = "Количество"
+                .Columns("pcs_total").HeaderText = "Количество всего"
+                .Columns("productivity").HeaderText = "Средняя производительность"
                 .Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
             End With
+
+            dgvProd.Columns("work_in_minutes").Visible = False
+            dgvProd.Columns("productivity_check").Visible = False
 
         Catch ex As Exception
             btnProdFind.Enabled = True
