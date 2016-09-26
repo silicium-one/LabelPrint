@@ -44,7 +44,54 @@ Public Class Form1
     'время на работу за вычетом времени на запланированные перерывы и простои, для каждого часа суток (до 7 утра обычно 0, потом начинает расти)
     'заполняется всякий раз, когда выполняется вычисление производительности
     Private ReadOnly workTimeInMinuts(0 To 23) As UInt32
-    
+
+    Private _beginOfInterruptTime As Date?
+    Private _beginOfRepairInterruptTime As Date?
+    Private _endOfInterruptTime As Date?
+
+    Private _isLineBreaked As Boolean = False
+    Private _isLineInterrupted As Boolean = False
+
+    Protected Property IsLineBreaked As Boolean
+        Get
+            Return _isLineBreaked
+        End Get
+        Set(value As Boolean)
+            _isLineBreaked = value
+            updateLineState()
+        End Set
+    End Property
+
+    Public Property IsLineInterrupted As Boolean
+        Get
+            Return _isLineInterrupted
+        End Get
+        Set(value As Boolean)
+            If _isLineInterrupted And Not value Then 'end interrupt
+                _endOfInterruptTime = nowTimeRoundToMinute()
+                _isLineInterrupted = value
+                updateLineState()
+                T_linesInterruptsTableAdapter.InsertQuery(_beginOfInterruptTime, "Заполнить!", LineName, "Заполнить!",
+                                              _beginOfInterruptTime, _beginOfRepairInterruptTime, _endOfInterruptTime,
+                                              "Заполнить!", "Заполнить!", "Заполнить!", "Заполнить!")
+                Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
+                _beginOfInterruptTime = Nothing
+                _beginOfRepairInterruptTime = Nothing
+                _endOfInterruptTime = Nothing
+            ElseIf Not _isLineInterrupted And value Then 'begin interrupt
+                _beginOfInterruptTime = nowTimeRoundToMinute()
+                _isLineInterrupted = value
+                updateLineState()
+            End If
+        End Set
+    End Property
+
+    Private Function nowTimeRoundToMinute() As Date?
+        Dim ret = Date.Now
+        ret = New Date(ret.Year, ret.Month, ret.Day, ret.Hour, ret.Minute, 0)
+        Return ret
+    End Function
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
         Me.T_linesInterruptsLineIDTableAdapter.Fill(Me.Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts)
@@ -137,14 +184,14 @@ Public Class Form1
                 'Ports for scanners -----------------------------------------------------------------------------------------------------------
 
                 If Mid(s.Name, 1, 7) = "Scanner" Then
-                    serialCom = New SerialPort
-                    serialCom.PortName = s.Value
+                    SerialCom = New SerialPort
+                    SerialCom.PortName = s.Value
 
-                    If Not serialCom.IsOpen Then
-                        AddHandler serialCom.DataReceived, AddressOf ScanDataReceivedHandler
-                        serialCom.Open()
-                        _monitorSp.Add(serialCom)
-                        writelog("Assign " & s.Name & ": " & s.Value)
+                    If Not SerialCom.IsOpen Then
+                        AddHandler SerialCom.DataReceived, AddressOf ScanDataReceivedHandler
+                        SerialCom.Open()
+                        _monitorSp.Add(SerialCom)
+                        Writelog("Assign " & s.Name & ": " & s.Value)
                     Else
 
                     End If
@@ -153,22 +200,22 @@ Public Class Form1
                 'Port for EOL -----------------------------------------------------------------------------------------------------------
 
                 If Mid(s.Name, 1, 3) = "EOL" Then
-                    serialCom = New SerialPort
-                    serialCom.PortName = s.Value
-                    serialCom.Parity = Parity.Even
-                    If Not serialCom.IsOpen Then
-                        AddHandler serialCom.DataReceived, AddressOf EOLDataReceivedHandler
-                        serialCom.Open()
-                        _monitorSp.Add(serialCom)
+                    SerialCom = New SerialPort
+                    SerialCom.PortName = s.Value
+                    SerialCom.Parity = Parity.Even
+                    If Not SerialCom.IsOpen Then
+                        AddHandler SerialCom.DataReceived, AddressOf EOLDataReceivedHandler
+                        SerialCom.Open()
+                        _monitorSp.Add(SerialCom)
 
 
                         Dim tim As String = _objini.GetKeyValue("COMTimeOut", s.Value)
 
                         If IsNumeric(tim) Then
-                            EOLtimeOut = tim
+                            EoLtimeOut = tim
                         End If
 
-                        writelog("Assign " & s.Name & ": " & s.Value & ", Signal interval: " & tim & " s")
+                        Writelog("Assign " & s.Name & ": " & s.Value & ", Signal interval: " & tim & " s")
 
                     Else
 
@@ -178,13 +225,13 @@ Public Class Form1
                 'port for label Homologation Print signal -----------------------------------------------------------------------------------------------------------
 
                 If s.Name = "HLabelSgn" Then
-                    serialCom = New SerialPort
-                    serialCom.PortName = s.Value
-                    serialCom.Parity = Parity.Even
-                    If Not serialCom.IsOpen Then
-                        AddHandler serialCom.DataReceived, AddressOf HLabelSgnDataReceivedHandler
-                        serialCom.Open()
-                        _monitorSp.Add(serialCom)
+                    SerialCom = New SerialPort
+                    SerialCom.PortName = s.Value
+                    SerialCom.Parity = Parity.Even
+                    If Not SerialCom.IsOpen Then
+                        AddHandler SerialCom.DataReceived, AddressOf HLabelSgnDataReceivedHandler
+                        SerialCom.Open()
+                        _monitorSp.Add(SerialCom)
 
                         Dim tim As String = _objini.GetKeyValue("COMTimeOut", s.Value)
 
@@ -192,7 +239,7 @@ Public Class Form1
                             HlbltimeOut = tim
                         End If
 
-                        writelog("Assign Homologation Label Print Signal: " & s.Value & ", Signal interval: " & tim & " s")
+                        Writelog("Assign Homologation Label Print Signal: " & s.Value & ", Signal interval: " & tim & " s")
                     End If
                 End If
 
@@ -203,7 +250,7 @@ Public Class Form1
 
             If LCase(_objini.GetKeyValue("TPRULabelPrint", "testMode")) = "no" Then
                 'if On production Mode
-                testMode()
+                TestMode()
             End If
 
 
@@ -245,12 +292,12 @@ Public Class Form1
             For Each port As SerialPort In _monitorSp
                 If port.IsOpen Then
                     port.Close()
-                    writelog(port.PortName & " closed")
+                    Writelog(port.PortName & " closed")
                 End If
             Next
         Catch
         End Try
-        writelog("Application Close")
+        Writelog("Application Close")
     End Sub
 
     Private Sub ScanDataReceivedHandler(sender As Object, e As SerialDataReceivedEventArgs)
@@ -262,9 +309,9 @@ Public Class Form1
             Dim indata As String = Trim(Replace(sp.ReadExisting(), vbCrLf, vbNullString))
 
             If Me.InvokeRequired Then
-                Me.Invoke(New processScannersignalDelegate(AddressOf processScannersignal), New Object() {sp.PortName, indata})
+                Me.Invoke(New ProcessScannersignalDelegate(AddressOf ProcessScannersignal), New Object() {sp.PortName, indata})
             Else
-                Me.processScannersignal(sp.PortName, indata)
+                Me.ProcessScannersignal(sp.PortName, indata)
             End If
 
         Catch ex As Exception
@@ -281,7 +328,7 @@ Public Class Form1
 
             If TabControlIndex.SelectedTab Is TabPage1 Then
                 'reset close order warning interval
-                warningInterval()
+                WarningInterval()
 
                 ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & spName & ": " & indata)
                 ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
@@ -289,7 +336,7 @@ Public Class Form1
 
                 'start production order
 
-                If orderOpen = False Then
+                If OrderOpen = False Then
 
                     'orderPN -  the data scanned from AS400 order
                     'indata - current scanned data
@@ -298,8 +345,8 @@ Public Class Form1
 
                         If IsNumeric(Mid(indata, 1, 6)) Then
 
-                            orderPN = trimInfo(indata)
-                            ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": Leitzahl: <" & orderPN.Substring(0, 6) & ">    PartNo: <" & orderPN.Substring(6) & ">")
+                            OrderPn = TrimInfo(indata)
+                            ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": Leitzahl: <" & OrderPn.Substring(0, 6) & ">    PartNo: <" & OrderPn.Substring(6) & ">")
                             ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
                             PanelScanMaster.Visible = True
                             PanelStartOrder.Visible = False
@@ -312,24 +359,24 @@ Public Class Form1
 
                     End If
 
-                    If PanelScanMaster.Visible = True And orderPN <> vbNullString Then
+                    If PanelScanMaster.Visible = True And OrderPn <> vbNullString Then
 
                         If indata.Substring(0, 1) = "L" Then
 
                             indata = indata.Substring(1)
 
-                            If Len(orderPN) > 6 Then
+                            If Len(OrderPn) > 6 Then
 
-                                If orderPN.Substring(6) = indata Then
+                                If OrderPn.Substring(6) = indata Then
 
-                                    sub_Start_Order(orderPN, True)
+                                    sub_Start_Order(OrderPn, True)
 
                                 Else
 
                                     If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                        setError("Изделие отличается от Главного Образца")
+                                        SetError("Изделие отличается от Главного Образца")
                                     Else
-                                        setError("PART DIFFERENT THEN MASTER")
+                                        SetError("PART DIFFERENT THEN MASTER")
                                     End If
 
 
@@ -340,11 +387,11 @@ Public Class Form1
 
                             If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
 
-                                setError("Штрих-код недействителен; первая буква должна быть 'L'")
+                                SetError("Штрих-код недействителен; первая буква должна быть 'L'")
 
                             Else
 
-                                setError("INVALID BARCODE FORMAT; FIRST LETTER MUST BE 'L'")
+                                SetError("INVALID BARCODE FORMAT; FIRST LETTER MUST BE 'L'")
 
                             End If
 
@@ -357,7 +404,7 @@ Public Class Form1
 
                 'check for clientlabel format
 
-                If orderOpen = True And isError = False Then
+                If OrderOpen = True And IsError = False Then
 
 
                     'c1 = BCInfo1 - Indicator of position in car (Ex: 2A,  2C)
@@ -368,9 +415,9 @@ Public Class Form1
                     Dim partNoFr As String = vbNullString
 
                     If InStr(partNo, "-") > 0 Then
-                        partNoFR = partNo.Substring(0, InStr(partNo, "-"))
+                        partNoFr = partNo.Substring(0, InStr(partNo, "-"))
                     Else
-                        partNoFR = partNo
+                        partNoFr = partNo
                     End If
 
                     'spCode  = Supplyer Code
@@ -384,7 +431,7 @@ Public Class Form1
 
                     'If Not IsDBNull(customerLabeltype) Then
 
-                    If customerLabeltype = "EZE_GUT" Then
+                    If CustomerLabeltype = "EZE_GUT" Then
                         'Check Wite Label (Nissan) format
 
                         Dim curentYear As String = Mid(Now.ToString("yyyy"), 4, 1)
@@ -399,11 +446,11 @@ Public Class Form1
 
                         'Factory Number (XX) + Line Identificator (X) + Year Identificator 201(4) + Day Identificator (XXX) + Alphanumeric Serial (XXX) -> from database
 
-                        CustBC = c1 & lineIdentification & curentYear & Now.DayOfYear.ToString("000")
+                        custBc = c1 & lineIdentification & curentYear & Now.DayOfYear.ToString("000")
 
                         indata = indata.Substring(1)
 
-                        If InStr(indata, CustBC, CompareMethod.Text) > 0 Then
+                        If InStr(indata, custBc, CompareMethod.Text) > 0 Then
 
                             ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & indata)
                             ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
@@ -411,7 +458,7 @@ Public Class Form1
                             If T_labelsTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, indata) = 1 Then
                                 'if barcode was  found in DB with BoxNo = 0 then the box number was inserted
                                 'update counter
-                                updateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                                UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
                             Else
 
                                 'if barcode was found in DB and the box number was already updated
@@ -421,17 +468,17 @@ Public Class Form1
 
                                     'display error message
                                     If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                        setError("Штрих-код уже отсканирован")
+                                        SetError("Штрих-код уже отсканирован")
                                     Else
-                                        setError("BARCODE ALLREADY SCANNED")
+                                        SetError("BARCODE ALLREADY SCANNED")
                                     End If
 
                                 Else
 
                                     If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                        setError("Штрих-код не найден")
+                                        SetError("Штрих-код не найден")
                                     Else
-                                        setError("BARCODE NOT FOUND")
+                                        SetError("BARCODE NOT FOUND")
                                     End If
 
 
@@ -444,7 +491,7 @@ Public Class Form1
                     End If
                     'End If
 
-                    If InStr(indata, CustBC, CompareMethod.Text) = 2 Then
+                    If InStr(indata, custBc, CompareMethod.Text) = 2 Then
 
                         ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & indata)
                         ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
@@ -456,7 +503,7 @@ Public Class Form1
                         If T_labelsTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, indata) = 1 Then
                             'if barcode was  found in DB then the box number was inserted
                             'update counter
-                            updateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                            UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
                         Else
 
                             'if barcode was found in DB and the box number was already updated
@@ -466,17 +513,17 @@ Public Class Form1
 
                                 'display error message
                                 If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                    setError("Штрих-код уже отсканирован")
+                                    SetError("Штрих-код уже отсканирован")
                                 Else
-                                    setError("BARCODE ALLREADY SCANNED")
+                                    SetError("BARCODE ALLREADY SCANNED")
                                 End If
 
                             Else
 
                                 If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                    setError("Штрих-код не найден")
+                                    SetError("Штрих-код не найден")
                                 Else
-                                    setError("BARCODE NOT FOUND")
+                                    SetError("BARCODE NOT FOUND")
                                 End If
 
 
@@ -490,7 +537,7 @@ Public Class Form1
 
                 'Scanning of GAZ Sets
 
-                If orderOpen = True And isError = False Then
+                If OrderOpen = True And IsError = False Then
                     'if data scanned contains character _ then continue
 
                     If InStr(indata, "_") > 0 Then
@@ -511,14 +558,14 @@ Public Class Form1
                                                         DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value, _
                                                         vbNullString, vbNullString, vbNullString, vbNullString) > 0 Then
 
-                                    updateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                                    UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
 
                                 End If
                             Catch ex As Exception
                                 'if error ocure, test to see if error text contains pk_t_labels.
 
                                 If InStr(ex.ToString, "pk_t_labels") > 0 Then
-                                    setError("BARCODE ALLREADY SCANNED")
+                                    SetError("BARCODE ALLREADY SCANNED")
                                 Else
                                     MsgBox(ex.ToString)
                                 End If
@@ -528,9 +575,9 @@ Public Class Form1
                         Else
 
                             If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                setError("ошибочный номер детали")
+                                SetError("ошибочный номер детали")
                             Else
-                                setError("WRONG PART NUMBER")
+                                SetError("WRONG PART NUMBER")
                             End If
 
                         End If
@@ -551,14 +598,14 @@ Public Class Form1
                                                     DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value, _
                                                     vbNullString, vbNullString, vbNullString, vbNullString) > 0 Then
 
-                                updateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                                UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
 
                             End If
                         Catch ex As Exception
                             'if error ocure, test to see if error text contains pk_t_labels.
 
                             If InStr(ex.ToString, "pk_t_labels") > 0 Then
-                                setError("BARCODE ALLREADY SCANNED")
+                                SetError("BARCODE ALLREADY SCANNED")
                             Else
                                 MsgBox(ex.ToString)
                             End If
@@ -606,7 +653,7 @@ Public Class Form1
         Try
 
             'next signal counter = 1
-            If counter > packFactor Then
+            If counter > PackFactor Then
                 counter = 1
             End If
 
@@ -629,17 +676,17 @@ Public Class Form1
             _curentInfoIni.Save(_curentIniPath)
 
             'print BoxLabel when counter = packfactor
-            If counter = packFactor Then
+            If counter = PackFactor Then
                 If T_orderListTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value) > 0 Then
                     DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value += 1
                     ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  BoxNumber changed"
                 End If
-                printBoxLabel()
+                PrintBoxLabel()
                 counter = 0
             End If
 
             'show counter on screen
-            LabelLabelCount.Text = counter.ToString & " / " & packFactor.ToString
+            LabelLabelCount.Text = counter.ToString & " / " & PackFactor.ToString
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -647,7 +694,7 @@ Public Class Form1
     End Sub
     Private Sub SetError(errMessage As String)
         Try
-            isError = True
+            IsError = True
             PanelError.Visible = True
             PanelError.BringToFront()
             LabelError.Text = errMessage
@@ -695,13 +742,13 @@ Public Class Form1
 
                 If Not IsDBNull(partNo) Then
                     If InStr(partNo, "-", CompareMethod.Text) > 0 Then
-                        partNoFR = Mid(partNo, 1, InStr(partNo, "-", CompareMethod.Text))
+                        partNoFr = Mid(partNo, 1, InStr(partNo, "-", CompareMethod.Text))
                     Else
-                        partNoFR = partNo
+                        partNoFr = partNo
                     End If
                 End If
 
-                T_partListTableAdapter1.FillByPartNo(Ru_sb_tames1.t_partList, partNoFR)
+                T_partListTableAdapter1.FillByPartNo(Ru_sb_tames1.t_partList, partNoFr)
 
                 If Ru_sb_tames1.t_partList.Rows.Count > 0 Then
 
@@ -718,14 +765,14 @@ Public Class Form1
                                              .Item("partDesc"),
                                              .Item("custpartNo"),
                                              .Item("custName"),
-                                        Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).Item("packfactor"), _
+                                        Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("packfactor"), _
                                        .Item("BoxNo"),
                                        .Item("c1"),
-                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).Item("DGSymbol"), _
-                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).Item("BCinfo1"), _
-                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).Item("BCinfo2"), _
-                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).Item("c1"), _
-                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).Item("c2")}
+                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("DGSymbol"), _
+                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("BCinfo1"), _
+                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("BCinfo2"), _
+                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("c1"), _
+                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("c2")}
                                    )
                     End With
 
@@ -742,10 +789,10 @@ Public Class Form1
 
                     'Customer label type  Lada or Nissan (white label)
 
-                    With Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'")
+                    With Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'")
                         If .Count > 0 Then
                             If Not IsDBNull(.GetValue(0).Item("c3")) Then
-                                customerLabeltype = .GetValue(0).Item("c3").ToString
+                                CustomerLabeltype = .GetValue(0).Item("c3").ToString
                             End If
                         End If
                     End With
@@ -757,14 +804,14 @@ Public Class Form1
 
                         If IsNumeric(parts) Then
 
-                            logCurrentStatus(orderNo & DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, parts, False)
+                            LogCurrentStatus(orderNo & DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, parts, False)
 
-                            LabelLabelCount.Text = parts.ToString & " / " & packFactor
+                            LabelLabelCount.Text = parts.ToString & " / " & PackFactor
 
                         End If
                     Else
 
-                        logCurrentStatus(orderNo & DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, 0)
+                        LogCurrentStatus(orderNo & DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, 0)
 
                     End If
 
@@ -777,9 +824,9 @@ Public Class Form1
 
                     Ru_sb_tames1.t_HLabel.Rows.Clear()
 
-                    If Not IsDBNull(Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).Item("c1")) Then
-                        HomolPN = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).Item("c1")
-                        t_HLabelTableAdapter1.FillBylabelPN(Ru_sb_tames1.t_HLabel, HomolPN)
+                    If Not IsDBNull(Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("c1")) Then
+                        homolPn = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("c1")
+                        t_HLabelTableAdapter1.FillBylabelPN(Ru_sb_tames1.t_HLabel, homolPn)
                     End If
 
                 End If
@@ -787,7 +834,7 @@ Public Class Form1
             Else
 
                 PanelScanMaster.Visible = False
-                setError("Production Order " & Mid(indata, 1, 6) & " does not exist !!!")
+                SetError("Production Order " & Mid(indata, 1, 6) & " does not exist !!!")
 
             End If
         Catch ex As Exception
@@ -860,30 +907,30 @@ Public Class Form1
 
 retry:
 
-            If curentCustomerLabel = vbNullString Then  ' the first print of the order 
+            If CurentCustomerLabel = vbNullString Then  ' the first print of the order 
 
                 'get last label from DB
 
-                lastLabel = T_labelsTableAdapter1.MaxLabel(curentDate, CustBC & "%")
+                lastLabel = T_labelsTableAdapter1.MaxLabel(curentDate, custBc & "%")
 
                 If lastLabel <> Nothing Then
 
                     'if label found 
                     ctr = Mid(lastLabel, Len(lastLabel) - 2, 3)
 
-                    curentCustomerLabel = CustBC & CustCounter(ctr)
+                    CurentCustomerLabel = custBc & CustCounter(ctr)
 
                 Else
 
                     'if label not found, register with counter 001
 
-                    curentCustomerLabel = CustBC & "001"
+                    CurentCustomerLabel = custBc & "001"
 
                 End If
 
                 'try to write the customer label to DB
 
-                If T_labelsTableAdapter1.InsertNewLabel(curentCustomerLabel, curentDate, curentTime, _
+                If T_labelsTableAdapter1.InsertNewLabel(CurentCustomerLabel, curentDate, curentTime, _
                                                      DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value, _
                                                      DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, _
                                                      DataGridViewOrders.Rows(0).Cells("ColumnCustPN").Value, _
@@ -897,10 +944,10 @@ retry:
             Else
 
                 'if last customer label was printet at the same day as the curent label
-                If InStr(curentCustomerLabel, CustBC, CompareMethod.Text) > 0 Then
+                If InStr(CurentCustomerLabel, custBc, CompareMethod.Text) > 0 Then
                     'get the counter of the last printed label
 
-                    ctr = Mid(curentCustomerLabel, Len(curentCustomerLabel) - 2, 3)
+                    ctr = Mid(CurentCustomerLabel, Len(CurentCustomerLabel) - 2, 3)
 
                     Dim lInserted = False  'this flag exits the next while LOOP
 
@@ -910,13 +957,13 @@ retry:
                         Try
                             ctr = CustCounter(ctr)
 
-                            T_labelsTableAdapter1.InsertNewLabel(CustBC & ctr, curentDate, curentTime, _
+                            T_labelsTableAdapter1.InsertNewLabel(custBc & ctr, curentDate, curentTime, _
                                                                  DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value, _
                                                      DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, _
                                                      DataGridViewOrders.Rows(0).Cells("ColumnCustPN").Value, _
                                                     0, val1, val2, val3, val4)
 
-                            curentCustomerLabel = CustBC & ctr
+                            CurentCustomerLabel = custBc & ctr
                             lInserted = True
 
                         Catch
@@ -925,14 +972,14 @@ retry:
                     End While
                 Else
 
-                    curentCustomerLabel = vbNullString
+                    CurentCustomerLabel = vbNullString
                     GoTo retry
 
                 End If
 
             End If
 
-            If curentCustomerLabel <> vbNullString Then   ' if White label was inserted to DB then print label
+            If CurentCustomerLabel <> vbNullString Then   ' if White label was inserted to DB then print label
 
                 If _objini.GetKeyValue("PrintCtrl", "printCustomerLabel") <> "Yes" Then
                     Exit Sub
@@ -953,13 +1000,13 @@ retry:
                                     "|ZEI=" & CInt(Now.TimeOfDay.TotalSeconds) &
                                     "|AUNR=" & DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value &
                                     "|ATK=" & DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value &
-                                    "|CNR=" & curentCustomerLabel & "|PRAEFIX:CNR=H|"
+                                    "|CNR=" & CurentCustomerLabel & "|PRAEFIX:CNR=H|"
 
                 File.WriteAllText(spoolPath, args)
 
-                ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing White Label: " & curentCustomerLabel
+                ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing White Label: " & CurentCustomerLabel
 
-                Shell(PrintCtrlApp & " " & spoolPath)
+                Shell(printCtrlApp & " " & spoolPath)
 
             End If
 
@@ -978,7 +1025,7 @@ retry:
 
             Dim indata As String = sp.ReadExisting
 
-            writelog("EOLSignal received: " & indata)
+            Writelog("EOLSignal received: " & indata)
 
             'If InStr(indata, Chr(2), CompareMethod.Text) = 0 Or InStr(indata, Chr(3), CompareMethod.Text) = 0 Then
             ' writelog("Signal not plausible (No <STX> or <ETX> found)")
@@ -987,12 +1034,12 @@ retry:
 
             indata = Trim(Replace(indata, vbCrLf, vbNullString))
 
-            If DateDiff(DateInterval.Second, EOLtime, Now) < EOLtimeOut Then
-                writelog("EOLSignal ignored: " & indata & ";  " & DateDiff(DateInterval.Second, EOLtime, Now) & "<" & EOLtimeOut)
+            If DateDiff(DateInterval.Second, EoLtime, Now) < EoLtimeOut Then
+                Writelog("EOLSignal ignored: " & indata & ";  " & DateDiff(DateInterval.Second, EoLtime, Now) & "<" & EoLtimeOut)
                 Exit Sub
             End If
 
-            EOLtime = Now
+            EoLtime = Now
 
             'replace <STX> 
             ' indata = Replace(indata, Chr(2), "")
@@ -1004,9 +1051,9 @@ retry:
             'indata = Trim(indata)
 
             If Me.InvokeRequired Then
-                Me.Invoke(New processEOLsignalDelegate(AddressOf processEOLsignal), New Object() {sp.PortName, indata})
+                Me.Invoke(New ProcessEoLsignalDelegate(AddressOf ProcessEoLsignal), New Object() {sp.PortName, indata})
             Else
-                Me.processEOLsignal(sp.PortName, indata)
+                Me.ProcessEoLsignal(sp.PortName, indata)
             End If
 
         Catch ex As Exception
@@ -1021,30 +1068,30 @@ retry:
     Private Sub ProcessEoLsignal(spName As String, indata As String)
         Try
             'disable close order warning interval
-            warningInterval()
+            WarningInterval()
 
             ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & spName & ": " & indata)
             ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
             ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Input Data: EOL"
 
-            eolDataBuffer += indata
+            EolDataBuffer += indata
 
-            Dim stx As Integer = InStr(eolDataBuffer, Chr(2), CompareMethod.Text)
-            Dim etx As Integer = InStr(eolDataBuffer, Chr(3), CompareMethod.Text)
+            Dim stx As Integer = InStr(EolDataBuffer, Chr(2), CompareMethod.Text)
+            Dim etx As Integer = InStr(EolDataBuffer, Chr(3), CompareMethod.Text)
 
 
             If stx > 0 And etx > 0 Then     'if eolDataBuffer contains both STX and ETX
 
                 If stx < etx Then           'if STX is before ETX 
 
-                    indata = eolDataBuffer.Substring(stx, etx - stx - 1)   'get content between first STX and ETX
+                    indata = EolDataBuffer.Substring(stx, etx - stx - 1)   'get content between first STX and ETX
 
-                    eolDataBuffer = eolDataBuffer.Substring(etx)            ' cut from eolDataBuffer content that is before ETX
+                    EolDataBuffer = EolDataBuffer.Substring(etx)            ' cut from eolDataBuffer content that is before ETX
 
                 Else
 
                     If etx > 0 Then
-                        eolDataBuffer = eolDataBuffer.Substring(etx)        ' cut from eolDataBuffer content that is before ETX
+                        EolDataBuffer = EolDataBuffer.Substring(etx)        ' cut from eolDataBuffer content that is before ETX
                     End If
 
                     Exit Sub
@@ -1053,7 +1100,7 @@ retry:
             Else
 
                 If etx > 0 Then
-                    eolDataBuffer = eolDataBuffer.Substring(etx)            ' cut from eolDataBuffer content that is before ETX
+                    EolDataBuffer = EolDataBuffer.Substring(etx)            ' cut from eolDataBuffer content that is before ETX
                 End If
 
                 Exit Sub
@@ -1063,6 +1110,20 @@ retry:
             indata = Trim(indata)
 
             If Len(indata) >= 3 Then
+                If indata.Substring(0, 3) = "200" Then 'begin of interrupt
+                    IsLineInterrupted = True
+                ElseIf indata.Substring(0, 3) = "201" Then 'begin of repair
+                    _beginOfRepairInterruptTime = nowTimeRoundToMinute()
+                    IsLineInterrupted = True
+                ElseIf indata.Substring(0, 3) = "202" Then 'end of interrupt
+                    IsLineInterrupted = False
+                ElseIf indata.Substring(0, 3) = "203" Then 'end of interrupt, code 1
+                    IsLineInterrupted = False
+                ElseIf indata.Substring(0, 3) = "204" Then 'end of interrupt, code 2
+                    IsLineInterrupted = False
+                ElseIf indata.Substring(0, 3) = "205" Then 'end of interrupt, code 3
+                    IsLineInterrupted = False
+                End If
 
                 If indata.Substring(0, 1) = "1" Then   'Good part and Scrap 
 
@@ -1071,22 +1132,22 @@ retry:
                         Dim partType As String = DataGridViewOrders.Rows(0).Cells("ColumnPartType").Value
 
                         If LCase(_objini.GetKeyValue("TPRULabelPrint", "lineType")) = "final" Then   'if lineType is FINAL then print customer label, else increment counter
-                            printCustomerLabel(indata)
+                            PrintCustomerLabel(indata)
                         Else
                             If partType = "final" Then          'cases when LineType is Subassy and partType is Final
-                                printCustomerLabel(indata)
-                                updateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                                PrintCustomerLabel(indata)
+                                UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
                             Else
-                                updateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                                UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
                             End If
                         End If
 
                     Else
 
                         If IsNumeric(indata.Substring(1, 2)) Then
-                            printScrapLabel(indata.Substring(1, 2))              'Scrap part 1 XX
+                            PrintScrapLabel(indata.Substring(1, 2))              'Scrap part 1 XX
                         Else
-                            writelog("Scrap ID NOK: " & indata.Substring(1, 2))
+                            Writelog("Scrap ID NOK: " & indata.Substring(1, 2))
                         End If
 
                     End If
@@ -1096,13 +1157,13 @@ retry:
                 If indata.Substring(0, 1) = "0" Then   'Master or Dummy
 
                     If indata.Substring(1, 2) = "00" Then
-                        printMasterLabel()                               'Master 0 00
+                        PrintMasterLabel()                               'Master 0 00
                     Else
 
                         If IsNumeric(indata.Substring(1, 2)) Then
-                            printDummyLabel(indata.Substring(1, 2))               'Dummy 0 XX
+                            PrintDummyLabel(indata.Substring(1, 2))               'Dummy 0 XX
                         Else
-                            writelog("Dummy ID NOK: " & indata.Substring(1, 2))
+                            Writelog("Dummy ID NOK: " & indata.Substring(1, 2))
                         End If
 
                     End If
@@ -1128,7 +1189,7 @@ retry:
             ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
             ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Input Data: " & sp.PortName
 
-            printHomologationLabel()
+            PrintHomologationLabel()
 
             If DateDiff(DateInterval.Second, Hlbltime, Now) < HlbltimeOut Then
                 Exit Sub
@@ -1173,40 +1234,40 @@ retry:
 
             If e.KeyValue = 71 Then
 
-                printCustomerLabel("1001234123412341234")
-                updateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                PrintCustomerLabel("1001234123412341234")
+                UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
 
             End If
 
             If e.KeyCode = 68 Then   'D
-                printDummyLabel(InputBox("Dummy Number:", "Print Dummy Label", "01"))
+                PrintDummyLabel(InputBox("Dummy Number:", "Print Dummy Label", "01"))
                 MsgBox("Dummy Label Printed")
             End If
 
             If e.KeyCode = 83 Then   'S
-                printScrapLabel(InputBox("Scrap Number:", "Print Scrap Label", "01"))
+                PrintScrapLabel(InputBox("Scrap Number:", "Print Scrap Label", "01"))
                 MsgBox("Scrap Label Printed")
             End If
 
             If e.KeyCode = 72 Then    'H
-                printHomologationLabel()
+                PrintHomologationLabel()
                 MsgBox("Homologation Label Printed")
             End If
 
             If e.KeyCode = 77 Then    'M
-                printMasterLabel()
+                PrintMasterLabel()
                 MsgBox("Master Label Printed")
             End If
 
         End If
 
 
-        keyspressed += e.KeyData.ToString
+        Keyspressed += e.KeyData.ToString
 
-        If Len(keyspressed) > 4 Then
-            keyspressed = Mid(keyspressed, Len(keyspressed) - 3, 4)
+        If Len(Keyspressed) > 4 Then
+            Keyspressed = Mid(Keyspressed, Len(Keyspressed) - 3, 4)
         End If
-        If keyspressed = "EXIT" Then
+        If Keyspressed = "EXIT" Then
             If MessageBox.Show("Exit Program?", "Exit Program", MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then
                 Me.Close()
             End If
@@ -1246,10 +1307,10 @@ retry:
             ButtonCloseOrder.Enabled = True
             ButtonChangeCounter.Enabled = True
             ButtonOpenOrder.Enabled = False
-            orderOpen = True
-            packFactor = DataGridViewOrders.Rows(0).Cells("columnPackfactor").Value
-            LabelLabelCount.Text = 0 & " / " & packFactor.ToString
-            warningInterval()
+            OrderOpen = True
+            PackFactor = DataGridViewOrders.Rows(0).Cells("columnPackfactor").Value
+            LabelLabelCount.Text = 0 & " / " & PackFactor.ToString
+            WarningInterval()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -1260,8 +1321,8 @@ retry:
             ButtonOpenOrder.Enabled = True
             ButtonCloseOrder.Enabled = False
             ButtonChangeCounter.Enabled = False
-            orderOpen = False
-            curentCustomerLabel = vbNullString
+            OrderOpen = False
+            CurentCustomerLabel = vbNullString
             ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Production Order Stopped"
 
         Catch ex As Exception
@@ -1272,7 +1333,7 @@ retry:
     Private Sub ButtonCloseOrder_Click(sender As Object, e As EventArgs) Handles ButtonCloseOrder.Click
         Try
 
-            If orderOpen Then
+            If OrderOpen Then
 
                 Dim result As MsgBoxResult
 
@@ -1289,10 +1350,10 @@ retry:
                         'update order status to STOPPED
                         T_orderListTableAdapter1.UpdateStatus("Stopped", CInt(DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value))
                         DataGridViewOrders.Rows.RemoveAt(0)
-                        orderOpen = False
-                        packFactor = 0
+                        OrderOpen = False
+                        PackFactor = 0
                         LabelLabelCount.Text = vbNullString
-                        logCurrentStatus(vbNullString, 0)
+                        LogCurrentStatus(vbNullString, 0)
 
                     End If
                 End If
@@ -1423,8 +1484,8 @@ retry:
 
             'print White label if customerLabeltype = EZE_GUT
             'If Not IsDBNull(customerLabeltype) Then
-            If customerLabeltype = "EZE_GUT" Then
-                printWhiteLabel(indata)
+            If CustomerLabeltype = "EZE_GUT" Then
+                PrintWhiteLabel(indata)
                 Exit Sub
             End If
             'End If
@@ -1467,9 +1528,9 @@ retry:
             Dim partNoFr As String = vbNullString
 
             If InStr(partNo, "-") > 0 Then
-                partNoFR = partNo.Substring(0, InStr(partNo, "-"))
+                partNoFr = partNo.Substring(0, InStr(partNo, "-"))
             Else
-                partNoFR = partNo
+                partNoFr = partNo
             End If
 
             Dim c2 As String = DataGridViewOrders.Rows(0).Cells("ColumnBCInfo2").Value
@@ -1483,30 +1544,30 @@ retry:
 
 retry:
 
-            If curentCustomerLabel = vbNullString Then  ' the first print of the order 
+            If CurentCustomerLabel = vbNullString Then  ' the first print of the order 
 
                 'get last label from DB
 
-                lastLabel = T_labelsTableAdapter1.MaxLabel(curentDate, CustBC & "%")
+                lastLabel = T_labelsTableAdapter1.MaxLabel(curentDate, custBc & "%")
 
                 If lastLabel <> Nothing Then
 
                     'if label found 
                     ctr = Mid(lastLabel, Len(lastLabel) - 2, 3)
 
-                    curentCustomerLabel = CustBC & CustCounter(ctr)
+                    CurentCustomerLabel = custBc & CustCounter(ctr)
 
                 Else
 
                     'if label not found, register with counter 001
 
-                    curentCustomerLabel = CustBC & "001"
+                    CurentCustomerLabel = custBc & "001"
 
                 End If
 
                 'try to write the customer label to DB
 
-                If T_labelsTableAdapter1.InsertNewLabel(curentCustomerLabel, curentDate, curentTime, _
+                If T_labelsTableAdapter1.InsertNewLabel(CurentCustomerLabel, curentDate, curentTime, _
                                                      DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value, _
                                                      DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, _
                                                      DataGridViewOrders.Rows(0).Cells("ColumnCustPN").Value, _
@@ -1520,10 +1581,10 @@ retry:
             Else
 
                 'if last customer label was printet at the same day as the curent label
-                If InStr(curentCustomerLabel, CustBC, CompareMethod.Text) > 0 Then
+                If InStr(CurentCustomerLabel, custBc, CompareMethod.Text) > 0 Then
                     'get the counter of the last printed label
 
-                    ctr = Mid(curentCustomerLabel, Len(curentCustomerLabel) - 2, 3)
+                    ctr = Mid(CurentCustomerLabel, Len(CurentCustomerLabel) - 2, 3)
 
                     Dim lInserted = False  'this flag exits the next while LOOP
 
@@ -1533,13 +1594,13 @@ retry:
                         Try
                             ctr = CustCounter(ctr)
 
-                            T_labelsTableAdapter1.InsertNewLabel(CustBC & ctr, curentDate, curentTime, _
+                            T_labelsTableAdapter1.InsertNewLabel(custBc & ctr, curentDate, curentTime, _
                                                                  DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value, _
                                                      DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, _
                                                      DataGridViewOrders.Rows(0).Cells("ColumnCustPN").Value, _
                                                     0, val1, val2, val3, val4)
 
-                            curentCustomerLabel = CustBC & ctr
+                            CurentCustomerLabel = custBc & ctr
                             lInserted = True
 
                         Catch
@@ -1548,7 +1609,7 @@ retry:
                     End While
                 Else
 
-                    curentCustomerLabel = vbNullString
+                    CurentCustomerLabel = vbNullString
                     GoTo retry
 
                 End If
@@ -1556,7 +1617,7 @@ retry:
             End If
 
 
-            If curentCustomerLabel <> vbNullString Then   ' if customer label was inserted to DB then print label
+            If CurentCustomerLabel <> vbNullString Then   ' if customer label was inserted to DB then print label
 
                 If _objini.GetKeyValue("PrintCtrl", "printCustomerLabel") <> "Yes" Then
                     Exit Sub
@@ -1576,15 +1637,15 @@ retry:
 
                 Dim args As String = "DLG=EZE_KD|DAT=" & prodDate & _
                                      "|ZEI=" & CInt(Now.TimeOfDay.TotalSeconds) & _
-                                     "|BARCODE=" & curentCustomerLabel & _
-                                     "|TEXT:1=LADA-HW.DRU|TEXT:2=" & custPN & _
+                                     "|BARCODE=" & CurentCustomerLabel & _
+                                     "|TEXT:1=LADA-HW.DRU|TEXT:2=" & custPn & _
                                      "|TEXT:3=|TEXT:4=|TEXT:5=|"
 
                 File.WriteAllText(spoolPath, args)
 
-                ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Customer Label: " & curentCustomerLabel
+                ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Customer Label: " & CurentCustomerLabel
 
-                Shell(PrintCtrlApp & " " & spoolPath)
+                Shell(printCtrlApp & " " & spoolPath)
 
             End If
 
@@ -1596,8 +1657,8 @@ retry:
 
     Private Sub ButtonCloseError_Click(sender As Object, e As EventArgs) Handles ButtonCloseError.Click
         PanelError.Visible = False
-        isError = False
-        If orderOpen = False Then
+        IsError = False
+        If OrderOpen = False Then
             ButtonOpenOrder.Enabled = True
         End If
     End Sub
@@ -1613,9 +1674,9 @@ retry:
                     ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  BoxNumber changed"
                 End If
 
-                printBoxLabel()
+                PrintBoxLabel()
 
-                LabelLabelCount.Text = "0 / " & packFactor.ToString
+                LabelLabelCount.Text = "0 / " & PackFactor.ToString
                 _curentInfoIni.SetKeyValue("CurentInfo", "parts", 0)
                 _curentInfoIni.Save(_curentIniPath)
 
@@ -1629,7 +1690,7 @@ retry:
     Private Sub PrintBoxLabel()
         Try
 
-            If orderOpen = False Then
+            If OrderOpen = False Then
                 Exit Sub
             End If
 
@@ -1650,9 +1711,9 @@ retry:
             Dim partNoFr As String = vbNullString
 
             If InStr(partNo, "-") > 0 Then
-                partNoFR = partNo.Substring(0, InStr(partNo, "-"))
+                partNoFr = partNo.Substring(0, InStr(partNo, "-"))
             Else
-                partNoFR = partNo
+                partNoFr = partNo
             End If
 
             Dim spCode As String = Ru_sb_tames1.t_Settings.Select("varName = 'SupplyerCode'").GetValue(0).item("varValue")   'Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("suppliercode")  
@@ -1678,7 +1739,7 @@ retry:
                                             "LEITZAHL=" & order & "|" & _
                                             "MNR=" & line & "|" & _
                                             "TEXT:1=LADA-HW.DRU|" & _
-                                            "TEXT:11=" & custPN & "|" & _
+                                            "TEXT:11=" & custPn & "|" & _
                                             "TEXT:12=" & spCode & "|" & _
                                             "TEXT:13=" & custName & "|" & _
                                             "TEXT:14=" & spName & "|" & _
@@ -1718,10 +1779,10 @@ retry:
 
             ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Box Label: " & labelNumber
 
-            Shell(PrintCtrlApp & " " & spoolPath)
+            Shell(printCtrlApp & " " & spoolPath)
 
-            writelog("Print BoxLabel: " & labelNumber + vbNewLine + dgSy + vbNewLine + counter + vbNewLine + prodDate + vbNewLine + partNo + vbNewLine + _
-                     partDesc + vbNewLine + custPN + vbNewLine + custName + vbNewLine + spCode + vbNewLine + spName)
+            Writelog("Print BoxLabel: " & labelNumber + vbNewLine + dgSy + vbNewLine + counter + vbNewLine + prodDate + vbNewLine + partNo + vbNewLine + _
+                     partDesc + vbNewLine + custPn + vbNewLine + custName + vbNewLine + spCode + vbNewLine + spName)
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -1747,9 +1808,9 @@ retry:
             Dim partNoFr As String = vbNullString
 
             If InStr(partNo, "-") > 0 Then
-                partNoFR = partNo.Substring(0, InStr(partNo, "-"))
+                partNoFr = partNo.Substring(0, InStr(partNo, "-"))
             Else
-                partNoFR = partNo
+                partNoFr = partNo
             End If
 
             Dim boxNr As Integer
@@ -1757,7 +1818,7 @@ retry:
             'daca s-a selectat reprint, numarul cutie va fi cel transmis print InputBox, altfel, se va prelua din baza de date
 
             If reprint Then
-                boxNr = PboxNo
+                boxNr = pboxNo
             Else
                 boxNr = CInt(T_orderListDataGridView.Rows(T_orderListDataGridView.SelectedCells(0).RowIndex).Cells("BoxNo").Value)
             End If
@@ -1777,16 +1838,16 @@ retry:
             Dim prodDate As String = Now.ToString("MM/dd/yyyy")
 
             'fill part datatable
-            T_partListTableAdapter1.FillByPartNo(Ru_sb_tames1.t_partList, partNoFR)
+            T_partListTableAdapter1.FillByPartNo(Ru_sb_tames1.t_partList, partNoFr)
 
             If Ru_sb_tames1.t_partList.Rows.Count > 0 Then
 
-                dgSy = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("DGSymbol")
-                packfactor = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("packfactor")
-                partDesc = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("partDesc")
-                custPN = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("custPartNo")
-                custName = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("custName")
-                partType = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("c2")
+                dgSy = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).item("DGSymbol")
+                packfactor = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).item("packfactor")
+                partDesc = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).item("partDesc")
+                custPn = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).item("custPartNo")
+                custName = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).item("custName")
+                partType = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).item("c2")
                 'spCode = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("suppliercode")
             Else
 
@@ -1824,7 +1885,7 @@ retry:
                                                 "LEITZAHL=" & order & "|" & _
                                                 "MNR=" & line & "|" & _
                                                 "TEXT:1=LADA-HW.DRU|" & _
-                                                "TEXT:11=" & custPN & "|" & _
+                                                "TEXT:11=" & custPn & "|" & _
                                                 "TEXT:12=" & spCode & "|" & _
                                                 "TEXT:13=" & custName & "|" & _
                                                 "TEXT:14=" & spName & "|" & _
@@ -1864,10 +1925,10 @@ retry:
 
                 ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Box Label: " & labelNumber
 
-                Shell(PrintCtrlApp & " " & spoolPath)
+                Shell(printCtrlApp & " " & spoolPath)
 
-                writelog("Print BoxLabel: " & labelNumber + vbNewLine + dgSy + vbNewLine + packfactor + vbNewLine + prodDate + vbNewLine + partNo + vbNewLine + _
-                         partDesc + vbNewLine + custPN + vbNewLine + custName + vbNewLine + spCode + vbNewLine + spName)
+                Writelog("Print BoxLabel: " & labelNumber + vbNewLine + dgSy + vbNewLine + packfactor + vbNewLine + prodDate + vbNewLine + partNo + vbNewLine + _
+                         partDesc + vbNewLine + custPn + vbNewLine + custName + vbNewLine + spCode + vbNewLine + spName)
 
             Else
 
@@ -1891,7 +1952,7 @@ retry:
                                                     "LEITZAHL=" & order & "|" & _
                                                     "MNR=" & line & "|" & _
                                                     "TEXT:1=LADA-HW.DRU|" & _
-                                                    "TEXT:11=" & custPN & "|" & _
+                                                    "TEXT:11=" & custPn & "|" & _
                                                     "TEXT:12=" & spCode & "|" & _
                                                     "TEXT:13=" & custName & "|" & _
                                                     "TEXT:14=" & spName & "|" & _
@@ -1931,10 +1992,10 @@ retry:
 
                     ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Box Label: " & labelNumber
 
-                    Shell(PrintCtrlApp & " " & spoolPath)
+                    Shell(printCtrlApp & " " & spoolPath)
 
-                    writelog("Print BoxLabel: " & labelNumber + vbNewLine + dgSy + vbNewLine + packfactor + vbNewLine + prodDate + vbNewLine + partNo + vbNewLine + _
-                             partDesc + vbNewLine + custPN + vbNewLine + custName + vbNewLine + spCode + vbNewLine + spName)
+                    Writelog("Print BoxLabel: " & labelNumber + vbNewLine + dgSy + vbNewLine + packfactor + vbNewLine + prodDate + vbNewLine + partNo + vbNewLine + _
+                             partDesc + vbNewLine + custPn + vbNewLine + custName + vbNewLine + spCode + vbNewLine + spName)
 
                 Next  'print lCount numbers of boxlabels
 
@@ -1960,7 +2021,7 @@ retry:
     Private Sub PrintMasterLabel()
         Try
 
-            If orderOpen = False Then
+            If OrderOpen = False Then
                 Exit Sub
             End If
 
@@ -1978,9 +2039,9 @@ retry:
             Dim partNoFr As String = vbNullString
 
             If InStr(partNo, "-") > 0 Then
-                partNoFR = partNo.Substring(0, InStr(partNo, "-"))
+                partNoFr = partNo.Substring(0, InStr(partNo, "-"))
             Else
-                partNoFR = partNo
+                partNoFr = partNo
             End If
 
             'Dim spCode As String = Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("suppliercode")
@@ -1991,8 +2052,8 @@ retry:
 
             Dim args As String = "DLG=EZE_KD|DAT=" & prodDate & _
                                  "|ZEI=" & CInt(Now.TimeOfDay.TotalSeconds) & _
-                                 "|BARCODE=" & CustBC & "000" & _
-                                 "|TEXT:1=LADA-HW.DRU|TEXT:2=" & custPN & _
+                                 "|BARCODE=" & custBc & "000" & _
+                                 "|TEXT:1=LADA-HW.DRU|TEXT:2=" & custPn & _
                                  "|TEXT:3=|TEXT:4=|TEXT:5=|"
 
             Dim spoolPath As String = Application.StartupPath & "\Log\spoolMasterLabel.txt"
@@ -2010,11 +2071,11 @@ retry:
                 Exit Sub
             End If
 
-            ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Master Label: " & CustBC & "000"
+            ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Master Label: " & custBc & "000"
 
-            Shell(PrintCtrlApp & " " & spoolPath)
+            Shell(printCtrlApp & " " & spoolPath)
 
-            writelog("Printed Scrap Label: " & args)
+            Writelog("Printed Scrap Label: " & args)
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -2045,9 +2106,9 @@ retry:
 
             ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Dummy Label: " & dummyNr
 
-            Shell(PrintCtrlApp & " " & spoolPath)
+            Shell(printCtrlApp & " " & spoolPath)
 
-            writelog("Printed Dummy Label: " & args)
+            Writelog("Printed Dummy Label: " & args)
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -2057,7 +2118,7 @@ retry:
     Private Sub PrintScrapLabel(scrapNr As String)
         Try
 
-            If orderOpen = False Then
+            If OrderOpen = False Then
                 Exit Sub
             End If
 
@@ -2085,9 +2146,9 @@ retry:
 
             ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Scrap Label: " & scrapNr
 
-            Shell(PrintCtrlApp & " " & spoolPath)
+            Shell(printCtrlApp & " " & spoolPath)
 
-            writelog("Printed Scrap Label: " & args)
+            Writelog("Printed Scrap Label: " & args)
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -2096,7 +2157,7 @@ retry:
 
     Private Sub PrintHomologationLabel()
         Try
-            If orderOpen = False Then
+            If OrderOpen = False Then
                 Exit Sub
             End If
 
@@ -2104,17 +2165,17 @@ retry:
 
             Dim hpn As String
             If Not IsDBNull(DataGridViewOrders.Rows(0).Cells("ColumnHomologationPN").Value) Then
-                HPN = DataGridViewOrders.Rows(0).Cells("ColumnHomologationPN").Value
+                hpn = DataGridViewOrders.Rows(0).Cells("ColumnHomologationPN").Value
             Else
-                writelog("No Homologation Part found for curent PartNumber")
+                Writelog("No Homologation Part found for curent PartNumber")
                 Exit Sub
             End If
 
             If Ru_sb_tames1.t_HLabel.Rows.Count > 0 Then
 
-                If Ru_sb_tames1.t_HLabel.Select("labelPN = '" & HPN & "'").Count > 0 Then
+                If Ru_sb_tames1.t_HLabel.Select("labelPN = '" & hpn & "'").Count > 0 Then
 
-                    With Ru_sb_tames1.t_HLabel.Select("labelPN = '" & HPN & "'").GetValue(0)
+                    With Ru_sb_tames1.t_HLabel.Select("labelPN = '" & hpn & "'").GetValue(0)
 
                         'get partNO
                         Dim partNo As String = DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value
@@ -2159,11 +2220,11 @@ retry:
                         Exit Sub
                     End If
 
-                    ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Homologation Label: " & HPN
+                    ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Printing Homologation Label: " & hpn
 
-                    Shell(PrintCtrlApp & " " & spoolPath)
+                    Shell(printCtrlApp & " " & spoolPath)
 
-                    writelog("Printed Homologation Label: " & args)
+                    Writelog("Printed Homologation Label: " & args)
 
                 End If
 
@@ -2192,7 +2253,7 @@ retry:
         TimerNoWorkWarning.Enabled = False
         PanelWarning.Visible = False
 
-        If orderOpen = False Then
+        If OrderOpen = False Then
             Exit Sub
         End If
 
@@ -2222,8 +2283,8 @@ retry:
         Dim stopinterval As String = _objini.GetKeyValue("WarningIntervals", "TimerStopOrder")
         If stopinterval <> vbNullString Then
             If IsNumeric(stopinterval) Then
-                stopOrderTimer = CInt(stopinterval) * 60
-                LabelWarning.Text = "No Activity" & vbNewLine & "Order closing in " & Format(Math.Floor(stopOrderTimer / 60), "00") & ":" & Format(stopOrderTimer Mod 60, "00")
+                StopOrderTimer = CInt(stopinterval) * 60
+                LabelWarning.Text = "No Activity" & vbNewLine & "Order closing in " & Format(Math.Floor(StopOrderTimer / 60), "00") & ":" & Format(StopOrderTimer Mod 60, "00")
                 PanelWarning.Visible = True
                 TimerStopOrder.Enabled = True
             End If
@@ -2232,9 +2293,9 @@ retry:
     End Sub
 
     Private Sub TimerStopOrder_Tick(sender As Object, e As EventArgs) Handles TimerStopOrder.Tick
-        stopOrderTimer -= 1
-        Console.WriteLine(stopOrderTimer)
-        If stopOrderTimer = 0 Then
+        StopOrderTimer -= 1
+        Console.WriteLine(StopOrderTimer)
+        If StopOrderTimer = 0 Then
 
             TimerStopOrder.Enabled = False
 
@@ -2243,18 +2304,18 @@ retry:
             'close the order automaticaly
             Try
 
-                If orderOpen Then
+                If OrderOpen Then
 
                     If DataGridViewOrders.Rows.Count > 0 Then
 
                         'update order status to STOPPED
                         T_orderListTableAdapter1.UpdateStatus("Stopped", CInt(DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value))
                         DataGridViewOrders.Rows.RemoveAt(0)
-                        orderOpen = False
-                        packFactor = 0
+                        OrderOpen = False
+                        PackFactor = 0
                         LabelLabelCount.Text = vbNullString
-                        logCurrentStatus(vbNullString, 0)
-                        writelog("Order Stopped by No Activity timer")
+                        LogCurrentStatus(vbNullString, 0)
+                        Writelog("Order Stopped by No Activity timer")
 
                     End If
                 End If
@@ -2265,10 +2326,10 @@ retry:
 
         Else
             If PanelWarning.Visible Then
-                LabelWarning.Text = "No Activity" & vbNewLine & "Order closing in " & Format(Math.Floor(stopOrderTimer / 60), "00") & ":" & Format(stopOrderTimer Mod 60, "00")
+                LabelWarning.Text = "No Activity" & vbNewLine & "Order closing in " & Format(Math.Floor(StopOrderTimer / 60), "00") & ":" & Format(StopOrderTimer Mod 60, "00")
             Else
                 TimerStopOrder.Enabled = False
-                stopOrderTimer = 0
+                StopOrderTimer = 0
             End If
         End If
 
@@ -2280,7 +2341,7 @@ retry:
             TimerNoWorkWarning.Enabled = False
             ButtonWarningCancel.Focus()
         Else
-            warningInterval()
+            WarningInterval()
         End If
     End Sub
 
@@ -2300,7 +2361,7 @@ retry:
             TimerHideCurentStatus.Enabled = False
 
             If Mid(ToolStripStatusLabelCurentInfo.Text, 1, 1) = "[" Then
-                writelog(Mid(ToolStripStatusLabelCurentInfo.Text, 24))
+                Writelog(Mid(ToolStripStatusLabelCurentInfo.Text, 24))
             End If
 
             TimerHideCurentStatus.Enabled = True
@@ -2959,10 +3020,10 @@ retry:
                     If reprint Then
                         For i = 1 To lcount
                             boxNo = InputBox("Enter Box Number that will be printed on label no " & i.ToString, "Print Box Labels", 1)
-                            printBoxLabelManual(boxNo, reprint)
+                            PrintBoxLabelManual(boxNo, reprint)
                         Next
                     Else
-                        printBoxLabelManual(boxNo, reprint, lcount)
+                        PrintBoxLabelManual(boxNo, reprint, lcount)
                     End If
 
                     btno_query_Click(btno_query, New EventArgs())
@@ -2980,7 +3041,7 @@ retry:
     Private Sub ButtonChangeCounter_Click(sender As Object, e As EventArgs) Handles ButtonChangeCounter.Click
         Try
 
-            If orderOpen = True Then
+            If OrderOpen = True Then
 
                 Dim counter = 0
                 Dim result As Object
@@ -2990,11 +3051,11 @@ retry:
                     Try
                         If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
 
-                            result = InputBox("Введите количество произведенных изделий", "Изменить счетчик изделий", packFactor)
+                            result = InputBox("Введите количество произведенных изделий", "Изменить счетчик изделий", PackFactor)
 
                         Else
 
-                            result = InputBox("Enter the correct number of parts produced", "Change part Counter", packFactor)
+                            result = InputBox("Enter the correct number of parts produced", "Change part Counter", PackFactor)
 
                         End If
 
@@ -3004,7 +3065,7 @@ retry:
                             'modify counter
                             _curentInfoIni.SetKeyValue("CurentInfo", "parts", counter.ToString)
                             _curentInfoIni.Save(_curentIniPath)
-                            LabelLabelCount.Text = counter.ToString & " / " & packFactor.ToString
+                            LabelLabelCount.Text = counter.ToString & " / " & PackFactor.ToString
 
                         End If
 
@@ -3286,7 +3347,7 @@ retry:
                                                   row.Cells("WhoIsLastDataGridViewTextBoxColumn").Value.ToString(),
                                                   Integer.Parse(row.Cells("InterruptsIDDataGridViewTextBoxColumn").Value.ToString()))
     End Sub
-    
+
     Private Sub btnAddInterrupt_Click(sender As Object, e As EventArgs) Handles btnAddInterrupt.Click
         T_linesInterruptsTableAdapter.InsertQuery(dtpAccidentDate.Value, tbGang.Text, tbInterruptsLineID.Text, tbEquipmentName.Text,
                                                   dtpInterruptTimestamp.Value, dtpBeginRepairTimestamp.Value, dtpEndOfInterruptTimestamp.Value,
@@ -3376,16 +3437,13 @@ retry:
         Return asciiString
     End Function
 
-    'Private Sub respawnLineStateTimers(sender As Object, e As ElapsedEventArgs)
-    '    respawnLineStateTimers()
-    'End Sub
     'набор таймеров для отслеживания состояния линии (1 перерыв - 2 таймера + 1 не перевзводку в конце суток) 
     Private ReadOnly _breakTimers As New List(Of Timer)
 
     Private Sub respawnLineStateTimers() ' перевзвести все таймеры, по которым переключается состояние линии перерыв/работа (простой учитывается отдельно)
         Dim nowMs As Long = DateTime.Now.TimeOfDay.TotalMilliseconds ' Отправная точка для взвода таймеров
         _breakTimers.Clear()
-        isLineBreaked = False
+        IsLineBreaked = False
         updateLineState()
         Dim tableOfBreaks = T_linesBreaksTableAdapter.GetDataByLine(LineName)
 
@@ -3412,15 +3470,13 @@ retry:
         _breakTimers.Add(timerAutoRepeat)
     End Sub
 
-    Dim isLineBreaked As Boolean = False
-    Dim isLineInterrupted As Boolean = False
     Private Sub beginBreakOnLine(sender As Object) ' для вывода на панель оператора информации о том, что линия в состоянии "перерыв"
-        isLineBreaked = True
+        IsLineBreaked = True
         updateLineState()
     End Sub
 
     Private Sub endBreakOnLine(sender As Object) ' для вывода на панель оператора информации о том, что линия вышла из состояния "перерыв"
-        isLineBreaked = False
+        IsLineBreaked = False
         updateLineState()
     End Sub
 
@@ -3429,12 +3485,12 @@ retry:
         If labelLineState.InvokeRequired Then
             labelLineState.Invoke(New updateTextDelegate(AddressOf updateLineState))
         Else
-            Dim currState As String
-            If Not isLineBreaked And Not isLineInterrupted Then
+            Dim currState As String = String.Empty
+            If Not IsLineBreaked And Not IsLineInterrupted Then
                 currState = "Линия " & LineName & Chr(13) & "Состояние: работает"
-            ElseIf isLineBreaked Then
+            ElseIf IsLineBreaked Then
                 currState = "Линия " & LineName & Chr(13) & "Состояние: перерыв"
-            ElseIf isLineInterrupted Then
+            ElseIf IsLineInterrupted Then
                 currState = "Линия " & LineName & Chr(13) & "Состояние: простой"
             End If
             labelLineState.Text = currState
@@ -3442,4 +3498,16 @@ retry:
     End Sub
 
 
+    Private Sub btn200_Click(sender As Object, e As EventArgs) Handles btn200.Click
+        IsLineInterrupted = True
+    End Sub
+
+    Private Sub btn201_Click(sender As Object, e As EventArgs) Handles btn201.Click
+        _beginOfRepairInterruptTime = nowTimeRoundToMinute()
+        IsLineInterrupted = True
+    End Sub
+
+    Private Sub btn202_Click(sender As Object, e As EventArgs) Handles btn202.Click
+        IsLineInterrupted = False
+    End Sub
 End Class
