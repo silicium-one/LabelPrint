@@ -93,12 +93,6 @@ Public Class Form1
     End Function
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
-        Me.T_linesInterruptsLineIDTableAdapter.Fill(Me.Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts)
-        'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
-        Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
-        'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
-        Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
 
         Try
             Text += " " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
@@ -109,6 +103,13 @@ Public Class Form1
 #ElseIf VERSION_TYPE = "b" Then
             Text += " b"
 #End If
+
+            'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
+            Me.T_linesInterruptsLineIDTableAdapter.Fill(Me.Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts)
+            'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
+            Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
+            'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
+            Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
 
             BreaksIDDataGridViewTextBoxColumn.Visible = False
             InterruptsIDDataGridViewTextBoxColumn.Visible = False ' VS Designer bugfix

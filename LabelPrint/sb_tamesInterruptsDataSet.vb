@@ -1,4 +1,15 @@
 ﻿Partial Class sb_tamesInterruptsDataSet
+    Partial Class t_linesInterruptsDataTable
+
+        Private Sub t_linesInterruptsDataTable_ColumnChanging(sender As Object, e As DataColumnChangeEventArgs) Handles Me.ColumnChanging
+            If (e.Column.ColumnName = Me.interruptNoColumn.ColumnName) Then
+                'Добавьте здесь пользовательский код
+            End If
+
+        End Sub
+
+    End Class
+
 End Class
 
 Namespace sb_tamesInterruptsDataSetTableAdapters
