@@ -3592,10 +3592,13 @@ retry:
         Else
             Dim currState As String = String.Empty
             If Not IsLineBreaked And Not IsLineInterrupted Then
+                labelLineState.ForeColor = Color.Green
                 currState = "Линия " & LineName & Chr(13) & "Состояние: работает"
             ElseIf IsLineBreaked Then
+                labelLineState.ForeColor = Color.Yellow
                 currState = "Линия " & LineName & Chr(13) & "Состояние: перерыв"
             ElseIf IsLineInterrupted Then
+                labelLineState.ForeColor = Color.Red
                 currState = "Линия " & LineName & Chr(13) & "Состояние: простой"
             End If
             labelLineState.Text = currState
