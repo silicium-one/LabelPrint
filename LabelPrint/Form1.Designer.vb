@@ -302,7 +302,6 @@ Partial Class Form1
         Me.labelInterruptCode = New System.Windows.Forms.Label()
         Me.labelInterruptsLineID = New System.Windows.Forms.Label()
         Me.dgvInterrupts = New System.Windows.Forms.DataGridView()
-        Me.InterruptsIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AccidentDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GangDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.InterruptsLineIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -2338,18 +2337,13 @@ Partial Class Form1
         '
         'dgvInterrupts
         '
+        Me.dgvInterrupts.AllowUserToAddRows = False
         Me.dgvInterrupts.AutoGenerateColumns = False
         Me.dgvInterrupts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvInterrupts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.InterruptsIDDataGridViewTextBoxColumn, Me.AccidentDateDataGridViewTextBoxColumn, Me.GangDataGridViewTextBoxColumn, Me.InterruptsLineIDDataGridViewTextBoxColumn, Me.EquipmentNameDataGridViewTextBoxColumn, Me.InterruptTimestampDataGridViewTextBoxColumn, Me.BeginRepairTimestampDataGridViewTextBoxColumn, Me.EndOfInterruptTimestampDataGridViewTextBoxColumn, Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn, Me.InterruptDurationDataGridViewTextBoxColumn, Me.InterruptCodeDataGridViewTextBoxColumn, Me.CauseOfInterruptDataGridViewTextBoxColumn, Me.CarriedOutActionsDataGridViewTextBoxColumn, Me.WhoIsLastDataGridViewTextBoxColumn})
+        Me.dgvInterrupts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AccidentDateDataGridViewTextBoxColumn, Me.GangDataGridViewTextBoxColumn, Me.InterruptsLineIDDataGridViewTextBoxColumn, Me.EquipmentNameDataGridViewTextBoxColumn, Me.InterruptTimestampDataGridViewTextBoxColumn, Me.BeginRepairTimestampDataGridViewTextBoxColumn, Me.EndOfInterruptTimestampDataGridViewTextBoxColumn, Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn, Me.InterruptDurationDataGridViewTextBoxColumn, Me.InterruptCodeDataGridViewTextBoxColumn, Me.CauseOfInterruptDataGridViewTextBoxColumn, Me.CarriedOutActionsDataGridViewTextBoxColumn, Me.WhoIsLastDataGridViewTextBoxColumn})
         Me.dgvInterrupts.DataSource = Me.T_linesInterruptsBindingSource
         resources.ApplyResources(Me.dgvInterrupts, "dgvInterrupts")
         Me.dgvInterrupts.Name = "dgvInterrupts"
-        '
-        'InterruptsIDDataGridViewTextBoxColumn
-        '
-        Me.InterruptsIDDataGridViewTextBoxColumn.DataPropertyName = "ID"
-        resources.ApplyResources(Me.InterruptsIDDataGridViewTextBoxColumn, "InterruptsIDDataGridViewTextBoxColumn")
-        Me.InterruptsIDDataGridViewTextBoxColumn.Name = "InterruptsIDDataGridViewTextBoxColumn"
         '
         'AccidentDateDataGridViewTextBoxColumn
         '
