@@ -104,15 +104,6 @@ Public Class Form1
             Text += " b"
 #End If
 
-            'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
-            Me.T_linesInterruptsLineIDTableAdapter.Fill(Me.Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts)
-            'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
-            Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
-            'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
-            Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
-
-            BreaksIDDataGridViewTextBoxColumn.Visible = False
-            InterruptsIDDataGridViewTextBoxColumn.Visible = False ' VS Designer bugfix
             Me.Enabled = False
             Refresh()
             TabControlIndex.Alignment = TabAlignment.Bottom
@@ -135,7 +126,6 @@ Public Class Form1
             End If
 
             LoadSettings()
-            respawnLineStateTimers()
 
             'load order if it is opened
             _curentInfoIni.Load(_curentIniPath)
@@ -153,9 +143,21 @@ Public Class Form1
                 sub_Start_Order(corder, False)
             End If
 
+            'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
+            Me.T_linesInterruptsLineIDTableAdapter.Fill(Me.Sb_tamesInterruptsLineIDDataSet.t_linesInterrupts)
+            'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesInterruptsDataSet.t_linesInterrupts". При необходимости она может быть перемещена или удалена.
+            Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
+            'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
+            Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
+            respawnLineStateTimers()
+
             Me.Enabled = True
+
+            BreaksIDDataGridViewTextBoxColumn.Visible = False
+            InterruptsIDDataGridViewTextBoxColumn.Visible = False ' VS Designer bugfix
             ' Refresh()
 
+        Catch ex As NullReferenceException ' VS designer bugfix too
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try

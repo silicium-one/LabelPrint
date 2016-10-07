@@ -6116,12 +6116,6 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;gbNewInterrupt.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="InterruptsIDDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="InterruptsIDDataGridViewTextBoxColumn.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="AccidentDateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>accidentDate</value>
   </data>
@@ -9909,12 +9903,6 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;Sb_tamesInterruptsLineIDDataSet.Type" xml:space="preserve">
     <value>LabelPrint.sb_tamesInterruptsLineIDDataSet, sb_tamesInterruptsLineIDDataSet.Designer.vb, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;InterruptsIDDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>InterruptsIDDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;InterruptsIDDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AccidentDateDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>AccidentDateDataGridViewTextBoxColumn</value>
