@@ -95,7 +95,8 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
-            Text += " " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
+            Dim version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
+            Text += " " + version.Major.ToString() + "." + version.Minor.ToString()
 #If VERSION_TYPE = "a" Then
             Text += " a"
             Me.TabControl1.Controls.Remove(TabPageBreaks)
