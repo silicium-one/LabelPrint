@@ -292,7 +292,7 @@
     <value>Microsoft Sans Serif, 24pt</value>
   </data>
   <data name="labelLineState.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 499</value>
+    <value>3, 415</value>
   </data>
   <data name="labelLineState.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 37</value>
@@ -1150,7 +1150,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1182, 539</value>
+    <value>1182, 455</value>
   </data>
   <data name="TabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1255,7 +1255,7 @@
     <value>3, 73</value>
   </data>
   <data name="T_orderListDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>920, 431</value>
+    <value>920, 347</value>
   </data>
   <data name="T_orderListDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1486,7 +1486,7 @@
     <value>245, 3</value>
   </data>
   <data name="GroupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>926, 507</value>
+    <value>926, 423</value>
   </data>
   <data name="GroupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1963,7 +1963,7 @@
     <value>3, 3</value>
   </data>
   <data name="GroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 507</value>
+    <value>242, 423</value>
   </data>
   <data name="GroupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1990,7 +1990,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabPageOrder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1174, 513</value>
+    <value>1174, 429</value>
   </data>
   <data name="TabPageOrder.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5105,327 +5105,6 @@ Subassy - Print Subassy BoxLabel</value>
   <data name="&gt;&gt;TabPageBreaks.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="btnInterruptsExport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnInterruptsExport.Location" type="System.Drawing.Point, System.Drawing">
-    <value>814, 6</value>
-  </data>
-  <data name="btnInterruptsExport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 63</value>
-  </data>
-  <data name="btnInterruptsExport.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="btnInterruptsExport.Text" xml:space="preserve">
-    <value>Upload to Excel</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptsExport.Name" xml:space="preserve">
-    <value>btnInterruptsExport</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptsExport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptsExport.Parent" xml:space="preserve">
-    <value>TabPageInterrupts</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptsExport.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnInterruptFilterReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnInterruptFilterReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>733, 6</value>
-  </data>
-  <data name="btnInterruptFilterReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 63</value>
-  </data>
-  <data name="btnInterruptFilterReset.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="btnInterruptFilterReset.Text" xml:space="preserve">
-    <value>Reset Filter</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptFilterReset.Name" xml:space="preserve">
-    <value>btnInterruptFilterReset</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptFilterReset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptFilterReset.Parent" xml:space="preserve">
-    <value>TabPageInterrupts</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptFilterReset.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnInterruptsFilterApply.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnInterruptsFilterApply.Location" type="System.Drawing.Point, System.Drawing">
-    <value>652, 6</value>
-  </data>
-  <data name="btnInterruptsFilterApply.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 63</value>
-  </data>
-  <data name="btnInterruptsFilterApply.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="btnInterruptsFilterApply.Text" xml:space="preserve">
-    <value>Apply Filter</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptsFilterApply.Name" xml:space="preserve">
-    <value>btnInterruptsFilterApply</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptsFilterApply.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptsFilterApply.Parent" xml:space="preserve">
-    <value>TabPageInterrupts</value>
-  </data>
-  <data name="&gt;&gt;btnInterruptsFilterApply.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="dtpInterruptsFilterTimeFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 14</value>
-  </data>
-  <data name="dtpInterruptsFilterTimeFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 20</value>
-  </data>
-  <data name="dtpInterruptsFilterTimeFrom.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.Name" xml:space="preserve">
-    <value>dtpInterruptsFilterTimeFrom</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.Parent" xml:space="preserve">
-    <value>gbInterruptsFilterTimeInterval</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="dtpInterruptsFilterTimeTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="dtpInterruptsFilterTimeTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 20</value>
-  </data>
-  <data name="dtpInterruptsFilterTimeTo.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.Name" xml:space="preserve">
-    <value>dtpInterruptsFilterTimeTo</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.Parent" xml:space="preserve">
-    <value>gbInterruptsFilterTimeInterval</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="gbInterruptsFilterTimeInterval.Location" type="System.Drawing.Point, System.Drawing">
-    <value>539, 3</value>
-  </data>
-  <data name="gbInterruptsFilterTimeInterval.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 66</value>
-  </data>
-  <data name="gbInterruptsFilterTimeInterval.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="gbInterruptsFilterTimeInterval.Text" xml:space="preserve">
-    <value>Interval</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.Name" xml:space="preserve">
-    <value>gbInterruptsFilterTimeInterval</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.Parent" xml:space="preserve">
-    <value>TabPageInterrupts</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <metadata name="T_linesInterruptsLineIDBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>265, 17</value>
-  </metadata>
-  <metadata name="Sb_tamesInterruptsLineIDDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>231, 290</value>
-  </metadata>
-  <data name="cbInterruptLineIDfilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="cbInterruptLineIDfilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 21</value>
-  </data>
-  <data name="cbInterruptLineIDfilter.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;cbInterruptLineIDfilter.Name" xml:space="preserve">
-    <value>cbInterruptLineIDfilter</value>
-  </data>
-  <data name="&gt;&gt;cbInterruptLineIDfilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbInterruptLineIDfilter.Parent" xml:space="preserve">
-    <value>gbInterruptsLineID</value>
-  </data>
-  <data name="&gt;&gt;cbInterruptLineIDfilter.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="gbInterruptsLineID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>434, 3</value>
-  </data>
-  <data name="gbInterruptsLineID.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 66</value>
-  </data>
-  <data name="gbInterruptsLineID.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="gbInterruptsLineID.Text" xml:space="preserve">
-    <value>lineID</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsLineID.Name" xml:space="preserve">
-    <value>gbInterruptsLineID</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsLineID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsLineID.Parent" xml:space="preserve">
-    <value>TabPageInterrupts</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsLineID.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="labelInterruptsFilterDateTo.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelInterruptsFilterDateTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelInterruptsFilterDateTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="labelInterruptsFilterDateTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 13</value>
-  </data>
-  <data name="labelInterruptsFilterDateTo.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="labelInterruptsFilterDateTo.Text" xml:space="preserve">
-    <value>To</value>
-  </data>
-  <data name="&gt;&gt;labelInterruptsFilterDateTo.Name" xml:space="preserve">
-    <value>labelInterruptsFilterDateTo</value>
-  </data>
-  <data name="&gt;&gt;labelInterruptsFilterDateTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelInterruptsFilterDateTo.Parent" xml:space="preserve">
-    <value>gbInterruptsDateInterval</value>
-  </data>
-  <data name="&gt;&gt;labelInterruptsFilterDateTo.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="dtpInterruptsFilterDateTo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 39</value>
-  </data>
-  <data name="dtpInterruptsFilterDateTo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 20</value>
-  </data>
-  <data name="dtpInterruptsFilterDateTo.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterDateTo.Name" xml:space="preserve">
-    <value>dtpInterruptsFilterDateTo</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterDateTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterDateTo.Parent" xml:space="preserve">
-    <value>gbInterruptsDateInterval</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterDateTo.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="dtpInterruptsFilterDateFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>36, 13</value>
-  </data>
-  <data name="dtpInterruptsFilterDateFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 20</value>
-  </data>
-  <data name="dtpInterruptsFilterDateFrom.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.Name" xml:space="preserve">
-    <value>dtpInterruptsFilterDateFrom</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.Parent" xml:space="preserve">
-    <value>gbInterruptsDateInterval</value>
-  </data>
-  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelInterruptsFilterDateFrom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelInterruptsFilterDateFrom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelInterruptsFilterDateFrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 16</value>
-  </data>
-  <data name="labelInterruptsFilterDateFrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 13</value>
-  </data>
-  <data name="labelInterruptsFilterDateFrom.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="labelInterruptsFilterDateFrom.Text" xml:space="preserve">
-    <value>From</value>
-  </data>
-  <data name="&gt;&gt;labelInterruptsFilterDateFrom.Name" xml:space="preserve">
-    <value>labelInterruptsFilterDateFrom</value>
-  </data>
-  <data name="&gt;&gt;labelInterruptsFilterDateFrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelInterruptsFilterDateFrom.Parent" xml:space="preserve">
-    <value>gbInterruptsDateInterval</value>
-  </data>
-  <data name="&gt;&gt;labelInterruptsFilterDateFrom.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="gbInterruptsDateInterval.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 3</value>
-  </data>
-  <data name="gbInterruptsDateInterval.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 66</value>
-  </data>
-  <data name="gbInterruptsDateInterval.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsDateInterval.Name" xml:space="preserve">
-    <value>gbInterruptsDateInterval</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsDateInterval.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsDateInterval.Parent" xml:space="preserve">
-    <value>TabPageInterrupts</value>
-  </data>
-  <data name="&gt;&gt;gbInterruptsDateInterval.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="btn202.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -5479,6 +5158,9 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;btn201.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="btn200.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btn200.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 319</value>
@@ -6090,16 +5772,16 @@ Subassy - Print Subassy BoxLabel</value>
     <value>22</value>
   </data>
   <data name="gbNewInterrupt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
+    <value>Right</value>
   </data>
   <data name="gbNewInterrupt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>929, 3</value>
   </data>
   <data name="gbNewInterrupt.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 507</value>
   </data>
   <data name="gbNewInterrupt.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>14</value>
   </data>
   <data name="gbNewInterrupt.Text" xml:space="preserve">
     <value>Add new Interrupt</value>
@@ -6114,7 +5796,331 @@ Subassy - Print Subassy BoxLabel</value>
     <value>TabPageInterrupts</value>
   </data>
   <data name="&gt;&gt;gbNewInterrupt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnInterruptsExport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnInterruptsExport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>569, 9</value>
+  </data>
+  <data name="btnInterruptsExport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 63</value>
+  </data>
+  <data name="btnInterruptsExport.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btnInterruptsExport.Text" xml:space="preserve">
+    <value>Upload to Excel</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsExport.Name" xml:space="preserve">
+    <value>btnInterruptsExport</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsExport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsExport.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsExport.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnInterruptFilterReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnInterruptFilterReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>488, 9</value>
+  </data>
+  <data name="btnInterruptFilterReset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 63</value>
+  </data>
+  <data name="btnInterruptFilterReset.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="btnInterruptFilterReset.Text" xml:space="preserve">
+    <value>Reset Filter</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptFilterReset.Name" xml:space="preserve">
+    <value>btnInterruptFilterReset</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptFilterReset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptFilterReset.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptFilterReset.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnInterruptsFilterApply.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnInterruptsFilterApply.Location" type="System.Drawing.Point, System.Drawing">
+    <value>407, 9</value>
+  </data>
+  <data name="btnInterruptsFilterApply.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 63</value>
+  </data>
+  <data name="btnInterruptsFilterApply.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="btnInterruptsFilterApply.Text" xml:space="preserve">
+    <value>Apply Filter</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsFilterApply.Name" xml:space="preserve">
+    <value>btnInterruptsFilterApply</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsFilterApply.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsFilterApply.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;btnInterruptsFilterApply.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 14</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 20</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.Name" xml:space="preserve">
+    <value>dtpInterruptsFilterTimeFrom</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.Parent" xml:space="preserve">
+    <value>gbInterruptsFilterTimeInterval</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeFrom.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 20</value>
+  </data>
+  <data name="dtpInterruptsFilterTimeTo.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.Name" xml:space="preserve">
+    <value>dtpInterruptsFilterTimeTo</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.Parent" xml:space="preserve">
+    <value>gbInterruptsFilterTimeInterval</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterTimeTo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gbInterruptsFilterTimeInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>294, 6</value>
+  </data>
+  <data name="gbInterruptsFilterTimeInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 66</value>
+  </data>
+  <data name="gbInterruptsFilterTimeInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="gbInterruptsFilterTimeInterval.Text" xml:space="preserve">
+    <value>Interval</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.Name" xml:space="preserve">
+    <value>gbInterruptsFilterTimeInterval</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsFilterTimeInterval.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <metadata name="T_linesInterruptsLineIDBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>265, 17</value>
+  </metadata>
+  <metadata name="Sb_tamesInterruptsLineIDDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>231, 290</value>
+  </metadata>
+  <data name="cbInterruptLineIDfilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="cbInterruptLineIDfilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 21</value>
+  </data>
+  <data name="cbInterruptLineIDfilter.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cbInterruptLineIDfilter.Name" xml:space="preserve">
+    <value>cbInterruptLineIDfilter</value>
+  </data>
+  <data name="&gt;&gt;cbInterruptLineIDfilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbInterruptLineIDfilter.Parent" xml:space="preserve">
+    <value>gbInterruptsLineID</value>
+  </data>
+  <data name="&gt;&gt;cbInterruptLineIDfilter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbInterruptsLineID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 6</value>
+  </data>
+  <data name="gbInterruptsLineID.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 66</value>
+  </data>
+  <data name="gbInterruptsLineID.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="gbInterruptsLineID.Text" xml:space="preserve">
+    <value>lineID</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsLineID.Name" xml:space="preserve">
+    <value>gbInterruptsLineID</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsLineID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsLineID.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsLineID.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 13</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelInterruptsFilterDateTo.Text" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateTo.Name" xml:space="preserve">
+    <value>labelInterruptsFilterDateTo</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateTo.Parent" xml:space="preserve">
+    <value>gbInterruptsDateInterval</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateTo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="dtpInterruptsFilterDateTo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 39</value>
+  </data>
+  <data name="dtpInterruptsFilterDateTo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 20</value>
+  </data>
+  <data name="dtpInterruptsFilterDateTo.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateTo.Name" xml:space="preserve">
+    <value>dtpInterruptsFilterDateTo</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateTo.Parent" xml:space="preserve">
+    <value>gbInterruptsDateInterval</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateTo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="dtpInterruptsFilterDateFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 13</value>
+  </data>
+  <data name="dtpInterruptsFilterDateFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 20</value>
+  </data>
+  <data name="dtpInterruptsFilterDateFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.Name" xml:space="preserve">
+    <value>dtpInterruptsFilterDateFrom</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.Parent" xml:space="preserve">
+    <value>gbInterruptsDateInterval</value>
+  </data>
+  <data name="&gt;&gt;dtpInterruptsFilterDateFrom.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 13</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelInterruptsFilterDateFrom.Text" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateFrom.Name" xml:space="preserve">
+    <value>labelInterruptsFilterDateFrom</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateFrom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateFrom.Parent" xml:space="preserve">
+    <value>gbInterruptsDateInterval</value>
+  </data>
+  <data name="&gt;&gt;labelInterruptsFilterDateFrom.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="gbInterruptsDateInterval.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="gbInterruptsDateInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 66</value>
+  </data>
+  <data name="gbInterruptsDateInterval.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsDateInterval.Name" xml:space="preserve">
+    <value>gbInterruptsDateInterval</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsDateInterval.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsDateInterval.Parent" xml:space="preserve">
+    <value>TabPageInterrupts</value>
+  </data>
+  <data name="&gt;&gt;gbInterruptsDateInterval.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="dgvInterrupts.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="AccidentDateDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>accidentDate</value>
@@ -6201,7 +6207,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>634, 251</value>
   </metadata>
   <data name="dgvInterrupts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 78</value>
+    <value>6, 78</value>
   </data>
   <data name="dgvInterrupts.Size" type="System.Drawing.Size, System.Drawing">
     <value>917, 429</value>
@@ -6603,7 +6609,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>126</value>
+    <value>43</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -9441,6 +9447,9 @@ Subassy - Print Subassy BoxLabel</value>
         fHp5/3x6ef98enn/fHp5/3x6ef98enn/AAAAAAAAAAAAAAAAAAAAAPAPAADAAwAAwAMAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAPAADwDwAA8A8AAPAPAAA=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
