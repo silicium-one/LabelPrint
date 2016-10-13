@@ -95,6 +95,13 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
+            If Not Command().ToUpper().Contains("ADD_INTERRUPT_DLG") Then
+                gbNewInterrupt.Visible = False
+                Dim sz = dgvInterrupts.Size
+                sz.Width = TabPageInterrupts.Size.Width - 12
+                dgvInterrupts.Size = sz
+            End If
+
             Dim version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
             Text += " " + version.Major.ToString() + "." + version.Minor.ToString()
 #If VERSION_TYPE = "a" Then
@@ -3456,7 +3463,7 @@ retry:
                                                   Integer.Parse(row.Cells("InterruptsIDDataGridViewTextBoxColumn").Value.ToString()))
     End Sub
 
-    Private Sub btnAddInterrupt_Click(sender As Object, e As EventArgs) Handles btnAddInterrupt.Click
+    Private Sub btnAddInterrupt_Click(sender As Object, e As EventArgs)
         T_linesInterruptsTableAdapter.InsertQuery(dtpAccidentDate.Value, tbGang.Text, tbInterruptsLineID.Text, tbEquipmentName.Text,
                                                   dtpInterruptTimestamp.Value, dtpBeginRepairTimestamp.Value, dtpEndOfInterruptTimestamp.Value,
                                                   tbInterruptCode.Text, tbCauseOfInterrupt.Text, tbCarriedOutActions.Text, tbWhoIsLast.Text)
@@ -3609,16 +3616,16 @@ retry:
     End Sub
 
 
-    Private Sub btn200_Click(sender As Object, e As EventArgs) Handles btn200.Click
+    Private Sub btn200_Click(sender As Object, e As EventArgs)
         IsLineInterrupted = True
     End Sub
 
-    Private Sub btn201_Click(sender As Object, e As EventArgs) Handles btn201.Click
+    Private Sub btn201_Click(sender As Object, e As EventArgs)
         _beginOfRepairInterruptTime = nowTimeRoundToMinute()
         IsLineInterrupted = True
     End Sub
 
-    Private Sub btn202_Click(sender As Object, e As EventArgs) Handles btn202.Click
+    Private Sub btn202_Click(sender As Object, e As EventArgs)
         IsLineInterrupted = False
     End Sub
 End Class
