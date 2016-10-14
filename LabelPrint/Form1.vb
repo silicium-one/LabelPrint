@@ -3555,7 +3555,7 @@ retry:
     'набор таймеров для отслеживания состояния линии (1 перерыв - 2 таймера + 1 не перевзводку в конце суток) 
     Private ReadOnly _breakTimers As New List(Of Timer)
 
-    Private Sub respawnLineStateTimers() ' перевзвести все таймеры, по которым переключается состояние линии перерыв/работа (простой учитывается отдельно)
+    Private Sub respawnLineStateTimers(Optional sender As Object = vbNull) ' перевзвести все таймеры, по которым переключается состояние линии перерыв/работа (простой учитывается отдельно)
         Dim nowMs As Long = DateTime.Now.TimeOfDay.TotalMilliseconds ' Отправная точка для взвода таймеров
         _breakTimers.Clear()
         IsLineBreaked = False
@@ -3581,7 +3581,8 @@ retry:
                 End If
             Next
         End With
-        Dim timerAutoRepeat As New Timer(AddressOf beginBreakOnLine, vbNull, CType((24 * 60 * 60 * 1000 - nowMs), Long), Timeout.Infinite)
+        'Dim timerAutoRepeat As New Timer(AddressOf respawnLineStateTimers, vbNull, CType((24 * 60 * 60 * 1000 - nowMs), Long), Timeout.Infinite) ' передёргиваем таймер раз в сутки
+        Dim timerAutoRepeat As New Timer(AddressOf respawnLineStateTimers, vbNull, CType(((DateTime.Now.TimeOfDay.TotalHours + 1) * 3600 * 1000 - nowMs), Long), Timeout.Infinite) ' передёргиваем таймер раз в час
         _breakTimers.Add(timerAutoRepeat)
     End Sub
 
