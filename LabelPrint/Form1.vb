@@ -2499,7 +2499,7 @@ retry:
 
             If T_orderListTableAdapter1.CountOrder(tbo_Order.Text) = 0 Then
 
-                If T_orderListTableAdapter1.InsertNewOrderNo(tbo_Order.Text, tbo_Qty.Text, cbo_partNo.Text, tbo_partDesc.Text, tbo_custPn.Text, tbo_custName.Text, "Created", 1, tbo_pLine.Text, vbNullString, vbNullString) > 0 Then
+                If T_orderListTableAdapter1.InsertNewOrderNo(tbo_Order.Text, tbo_Qty.Text, cbo_partNo.Text, tbo_partDesc.Text, tbo_custPn.Text, tbo_custName.Text, "Created", 0, tbo_pLine.Text, vbNullString, vbNullString) > 0 Then
                     MsgBox("Order added succesfully")
                 Else
                     MessageBox.Show("Error adding new order!" & vbNewLine & "Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
