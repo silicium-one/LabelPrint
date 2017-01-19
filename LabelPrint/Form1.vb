@@ -459,7 +459,7 @@ Public Class Form1
 
                         custBc = c1 & lineIdentification & curentYear & Now.DayOfYear.ToString("000")
 
-                        indata = indata.Substring(1)
+                        'indata = indata.Substring(1)
 
                         If InStr(indata, custBc, CompareMethod.Text) > 0 Then
 
