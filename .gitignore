@@ -301,3 +301,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+VBversionIncrementor/bin/Debug/VBversionIncrementor.exe
+*.exe
