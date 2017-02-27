@@ -767,25 +767,48 @@ Public Class Form1
 
                     dgvr.Height = 80
 
-                    With Ru_sb_tames1.t_orderList.Select("orderNo = '" & CInt(Mid(indata, 1, 6)) & "'").GetValue(0)
+                    If fromScanner Then
+                        With Ru_sb_tames1.t_orderList.Select("orderNo = '" & CInt(Mid(indata, 1, 6)) & "'").GetValue(0)
 
-                        dgvr.CreateCells(DataGridViewOrders, New Object() {
-                                             StrDup(6 - Len(.Item("orderNo")), "0") & .Item("orderNo").ToString,
-                                             .Item("orderQty"),
-                                             .Item("partNo"),
-                                             .Item("partDesc"),
-                                             .Item("custpartNo"),
-                                             .Item("custName"),
-                                        Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("packfactor"), _
-                                       .Item("BoxNo"),
-                                       .Item("c1"),
-                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("DGSymbol"), _
-                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("BCinfo1"), _
-                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("BCinfo2"), _
-                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("c1"), _
-                                       Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("c2")}
-                                   )
-                    End With
+                            dgvr.CreateCells(DataGridViewOrders, New Object() {
+                                                 StrDup(6 - Len(.Item("orderNo")), "0") & .Item("orderNo").ToString,
+                                                 0,
+                                                 .Item("partNo"),
+                                                 .Item("partDesc"),
+                                                 .Item("custpartNo"),
+                                                 .Item("custName"),
+                                            Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("packfactor"), _
+                                           .Item("BoxNo"),
+                                           .Item("c1"),
+                                           Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("DGSymbol"), _
+                                           Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("BCinfo1"), _
+                                           Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("BCinfo2"), _
+                                           Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("c1"), _
+                                           Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("c2")}
+                                       )
+                        End With
+                    Else
+                        With Ru_sb_tames1.t_orderList.Select("orderNo = '" & CInt(Mid(indata, 1, 6)) & "'").GetValue(0)
+
+                            dgvr.CreateCells(DataGridViewOrders, New Object() {
+                                                 StrDup(6 - Len(.Item("orderNo")), "0") & .Item("orderNo").ToString,
+                                                 .Item("orderQty"),
+                                                 .Item("partNo"),
+                                                 .Item("partDesc"),
+                                                 .Item("custpartNo"),
+                                                 .Item("custName"),
+                                            Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("packfactor"), _
+                                           .Item("BoxNo"),
+                                           .Item("c1"),
+                                           Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("DGSymbol"), _
+                                           Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("BCinfo1"), _
+                                           Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("BCinfo2"), _
+                                           Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("c1"), _
+                                           Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFr & "'").GetValue(0).Item("c2")}
+                                       )
+                        End With
+                    End If
+
 
                     DataGridViewOrders.Rows.Add(dgvr)
 
