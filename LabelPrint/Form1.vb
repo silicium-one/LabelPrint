@@ -14,6 +14,7 @@ Public Class Form1
     'flag for open order: True/False
     Public OrderOpen As Boolean = False
     Public PackFactor As Integer
+    Public totalPartsInOrder As Integer
     Public CurentCustomerLabel As String = vbNullString
     Public IsError As Boolean
 
@@ -333,7 +334,7 @@ Public Class Form1
 
     Private Delegate Sub ProcessScannersignalDelegate(spName As String, indata As String)
 
-    Private Sub ProcessScannerSignalOperatorNewOrder(spName As String, indata As String)
+    Private Sub ProcessScannerSignalOperatorBeginOrder(spName As String, indata As String)
         'orderPN -  the data scanned from AS400 order
         'indata - current scanned data
 
@@ -409,7 +410,7 @@ Public Class Form1
         'start production order
 
         If OrderOpen = False Then
-            ProcessScannerSignalOperatorNewOrder(spName, indata)
+            ProcessScannerSignalOperatorBeginOrder(spName, indata)
         End If
 
         'check for clientlabel format
@@ -667,7 +668,6 @@ Public Class Form1
 
     Private Sub UpdatePartsInBoxCounter(count As Integer) 'сюда попадаем в ходе сканирования этикетки на изделии
         Try
-
             'next signal count = 1
             If count > PackFactor Then
                 count = 1
@@ -726,7 +726,6 @@ Public Class Form1
     Private Sub sub_Start_Order(indata As String, fromScanner As Boolean)
         Try
 
-
             T_orderListTableAdapter1.FillByOrderNo(Ru_sb_tames1.t_orderList, CInt(Mid(indata, 1, 6)))
 
             If Ru_sb_tames1.t_orderList.Rows.Count > 0 Then
@@ -773,7 +772,6 @@ Public Class Form1
                     dgvr.Height = 80
 
                     With Ru_sb_tames1.t_orderList.Select("orderNo = '" & CInt(Mid(indata, 1, 6)) & "'").GetValue(0)
-
                         dgvr.CreateCells(DataGridViewOrders, New Object() {
                                              StrDup(6 - Len(.Item("orderNo")), "0") & .Item("orderNo").ToString,
                                              .Item("orderQty"),
@@ -793,6 +791,8 @@ Public Class Form1
                     End With
 
                     DataGridViewOrders.Rows.Add(dgvr)
+
+
 
                     'if Curent data was loaded from file then load number of parts
                     Dim orderNo As String = vbNullString
@@ -1325,6 +1325,7 @@ retry:
             ButtonOpenOrder.Enabled = False
             OrderOpen = True
             PackFactor = DataGridViewOrders.Rows(0).Cells("columnPackfactor").Value
+            totalPartsInOrder = 100 ' DataGridViewOrders.Rows(0).Cells("columnOrderQty").Value ' здесь надо запомнить в отдельную переменную , сколько всего изделий в заказе (или в 726 строчке??)
             LabelLabelCount.Text = 0 & " / " & PackFactor.ToString
             WarningInterval()
         Catch ex As Exception
@@ -1368,6 +1369,7 @@ retry:
                         DataGridViewOrders.Rows.RemoveAt(0)
                         OrderOpen = False
                         PackFactor = 0
+                        totalPartsInOrder = 0
                         LabelLabelCount.Text = vbNullString
                         LogCurrentStatus(vbNullString, 0)
 
@@ -2329,6 +2331,7 @@ retry:
                         DataGridViewOrders.Rows.RemoveAt(0)
                         OrderOpen = False
                         PackFactor = 0
+                        totalPartsInOrder = 0
                         LabelLabelCount.Text = vbNullString
                         LogCurrentStatus(vbNullString, 0)
                         Writelog("Order Stopped by No Activity timer")

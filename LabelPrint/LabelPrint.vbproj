@@ -126,6 +126,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="performanceClaculator.vb" />
     <Compile Include="ru_sb_tames.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
