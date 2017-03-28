@@ -328,7 +328,6 @@ Partial Class Form1
         Me.ButtonSettingsDelete = New System.Windows.Forms.Button()
         Me.ButtonSettingsAdd = New System.Windows.Forms.Button()
         Me.ButtonSettingsUpdate = New System.Windows.Forms.Button()
-        Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.TimerStartOrder = New System.Windows.Forms.Timer(Me.components)
         Me.TimerNoWorkWarning = New System.Windows.Forms.Timer(Me.components)
         Me.TimerStopOrder = New System.Windows.Forms.Timer(Me.components)
@@ -2718,7 +2717,6 @@ Partial Class Form1
     Friend WithEvents ToolStripStatusLabelLineName As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents TabControlIndex As System.Windows.Forms.TabControl
     Private WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
     Friend WithEvents Ru_sb_tames1 As LabelPrint.ru_sb_tames
     Friend WithEvents DataGridViewOrders As System.Windows.Forms.DataGridView
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox

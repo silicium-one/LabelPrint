@@ -333,300 +333,305 @@ Public Class Form1
 
     Private Delegate Sub ProcessScannersignalDelegate(spName As String, indata As String)
 
+    Private Sub ProcessScannerSignalOperatorNewOrder(spName As String, indata As String)
+        'orderPN -  the data scanned from AS400 order
+        'indata - current scanned data
+
+        If Len(indata) > 6 And PanelStartOrder.Visible = True Then
+
+            If IsNumeric(Mid(indata, 1, 6)) Then
+
+                OrderPn = TrimInfo(indata)
+                ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": Leitzahl: <" & OrderPn.Substring(0, 6) & ">    PartNo: <" & OrderPn.Substring(6) & ">")
+                ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
+                PanelScanMaster.Visible = True
+                PanelStartOrder.Visible = False
+
+                Exit Sub
+
+                'sub_Start_Order(indata, True)
+
+            End If
+
+        End If
+
+        If PanelScanMaster.Visible = True And OrderPn <> vbNullString Then
+
+            If indata.Substring(0, 1) = "L" Then
+
+                indata = indata.Substring(1)
+
+                If Len(OrderPn) > 6 Then
+
+                    If OrderPn.Substring(6) = indata Then
+
+                        sub_Start_Order(OrderPn, True)
+
+                    Else
+
+                        If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
+                            SetError("Изделие отличается от Главного Образца")
+                        Else
+                            SetError("PART DIFFERENT THEN MASTER")
+                        End If
+
+
+                    End If
+
+                End If
+            Else
+
+                If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
+
+                    SetError("Штрих-код недействителен; первая буква должна быть 'L'")
+
+                Else
+
+                    SetError("INVALID BARCODE FORMAT; FIRST LETTER MUST BE 'L'")
+
+                End If
+
+
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub ProcessScannerSignalOperator(spName As String, indata As String)
+        'reset close order warning interval
+        WarningInterval()
+
+        ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & spName & ": " & indata)
+        ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
+        ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Input Data: Scanner"
+
+        'start production order
+
+        If OrderOpen = False Then
+            ProcessScannerSignalOperatorNewOrder(spName, indata)
+        End If
+
+        'check for clientlabel format
+
+        If OrderOpen = True And IsError = False Then
+
+
+            'c1 = BCInfo1 - Indicator of position in car (Ex: 2A,  2C)
+            Dim c1 As String = DataGridViewOrders.Rows(0).Cells("ColumnBCInfo1").Value
+
+            Dim partNo As String = DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value
+            'clear revision
+            Dim partNoFr As String = vbNullString
+
+            If InStr(partNo, "-") > 0 Then
+                partNoFr = partNo.Substring(0, InStr(partNo, "-"))
+            Else
+                partNoFr = partNo
+            End If
+
+            'spCode  = Supplyer Code
+
+            Dim spCode As String = Ru_sb_tames1.t_Settings.Select("varName = 'SupplyerCode'").GetValue(0).item("varValue")  'Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("suppliercode")
+            Dim factoryNo As String = Ru_sb_tames1.t_Settings.Select("varName = 'FactoryNo'").GetValue(0).item("varValue")
+
+            Dim custBc As String = c1 & spCode
+
+            '------------------------------Check the content of barcode scanned ----------------------------------------------------------------------------------------------------------------------
+
+            'If Not IsDBNull(customerLabeltype) Then
+
+            If CustomerLabeltype = "EZE_GUT" Then
+                'Check Wite Label (Nissan) format
+
+                Dim curentYear As String = Mid(Now.ToString("yyyy"), 4, 1)
+
+                Dim prodLine As String = DataGridViewOrders.Rows(0).Cells("ColumnLine").Value
+
+                Dim factoryNumber As String = Ru_sb_tames1.t_Settings.Select("varName = 'FactoryNo'").GetValue(0).Item("varValue")
+
+                Dim lineIdentification As String = Mid(prodLine, Len(prodLine))
+
+                'Unique number for every part:   31 2 4 233 001
+
+                'Factory Number (XX) + Line Identificator (X) + Year Identificator 201(4) + Day Identificator (XXX) + Alphanumeric Serial (XXX) -> from database
+
+                custBc = c1 & lineIdentification & curentYear & Now.DayOfYear.ToString("000")
+
+                'indata = indata.Substring(1)
+
+                If InStr(indata, custBc, CompareMethod.Text) > 0 Then
+
+                    ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & indata)
+                    ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
+
+                    If T_labelsTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, indata) = 1 Then
+                        'if barcode was  found in DB with BoxNo = 0 then the box number was inserted
+                        'update count
+                        UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                    Else
+
+                        'if barcode was found in DB and the box number was already updated
+                        'then display error
+
+                        If T_labelsTableAdapter1.Countlabels(indata) > 0 Then
+
+                            'display error message
+                            If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
+                                SetError("Штрих-код уже отсканирован")
+                            Else
+                                SetError("BARCODE ALLREADY SCANNED")
+                            End If
+
+                        Else
+
+                            If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
+                                SetError("Штрих-код не найден")
+                            Else
+                                SetError("BARCODE NOT FOUND")
+                            End If
+
+
+                        End If
+
+                    End If
+                End If
+
+                Exit Sub
+            End If
+            'End If
+
+            If InStr(indata, custBc, CompareMethod.Text) = 2 Then
+
+                ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & indata)
+                ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
+
+                If Mid(indata, Len(indata) - 2) = "000" Then
+                    Exit Sub
+                End If
+
+                If T_labelsTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, indata) = 1 Then
+                    'if barcode was  found in DB then the box number was inserted
+                    'update count
+                    UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                Else
+
+                    'if barcode was found in DB and the box number was already updated
+                    'then display error
+
+                    If T_labelsTableAdapter1.Countlabels(indata) > 0 Then
+
+                        'display error message
+                        If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
+                            SetError("Штрих-код уже отсканирован")
+                        Else
+                            SetError("BARCODE ALLREADY SCANNED")
+                        End If
+
+                    Else
+
+                        If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
+                            SetError("Штрих-код не найден")
+                        Else
+                            SetError("BARCODE NOT FOUND")
+                        End If
+
+
+                    End If
+
+                End If
+
+            End If
+
+        End If
+
+        'Scanning of GAZ Sets
+
+        If OrderOpen = True And IsError = False Then
+            'if data scanned contains character _ then continue
+
+            If InStr(indata, "_") > 0 Then
+
+                'extract part number from scanned barcode
+                Dim pn As String = Mid(indata, 1, InStr(indata, "_") - 1)
+
+
+                If DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value = pn Then
+                    'if part number from current order = part number scaned then
+
+                    'insert scanned label into t_labels table 
+                    Try
+                        If T_labelsTableAdapter1.InsertNewLabel(indata, Now.ToString("dd.MM.yyyy"), Now.ToString("HH:mm:ss"),
+                                                DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value, _
+                                                DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, _
+                                                DataGridViewOrders.Rows(0).Cells("ColumnCustPN").Value, _
+                                                DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value, _
+                                                vbNullString, vbNullString, vbNullString, vbNullString) > 0 Then
+
+                            UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+
+                        End If
+                    Catch ex As Exception
+                        'if error ocure, test to see if error text contains pk_t_labels.
+
+                        If InStr(ex.ToString, "pk_t_labels") > 0 Then
+                            SetError("BARCODE ALLREADY SCANNED")
+                        Else
+                            MsgBox(ex.ToString)
+                        End If
+
+                    End Try
+
+                Else
+
+                    If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
+                        SetError("ошибочный номер детали")
+                    Else
+                        SetError("WRONG PART NUMBER")
+                    End If
+
+                End If
+
+            End If
+
+            'Homologation Label as internal Label
+
+            If DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value = indata Then
+                'Height Adjuster Label - Layout97.hlb
+                'Scanned barcode = Takata Part Number
+
+                Try
+                    If T_labelsTableAdapter1.InsertNewLabel(indata, Now.ToString("dd.MM.yyyy"), Now.ToString("HH:mm:ss"),
+                                            DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value, _
+                                            DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, _
+                                            DataGridViewOrders.Rows(0).Cells("ColumnCustPN").Value, _
+                                            DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value, _
+                                            vbNullString, vbNullString, vbNullString, vbNullString) > 0 Then
+
+                        UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+
+                    End If
+                Catch ex As Exception
+                    'if error ocure, test to see if error text contains pk_t_labels.
+
+                    If InStr(ex.ToString, "pk_t_labels") > 0 Then
+                        SetError("BARCODE ALLREADY SCANNED")
+                    Else
+                        MsgBox(ex.ToString)
+                    End If
+
+                End Try
+
+            End If
+
+        End If
+    End Sub
 
     Private Sub ProcessScannersignal(spName As String, indata As String)
         Try
 
             If TabControlIndex.SelectedTab Is TabPage1 Then
-                'reset close order warning interval
-                WarningInterval()
-
-                ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & spName & ": " & indata)
-                ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
-                ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Input Data: Scanner"
-
-                'start production order
-
-                If OrderOpen = False Then
-
-                    'orderPN -  the data scanned from AS400 order
-                    'indata - current scanned data
-
-                    If Len(indata) > 6 And PanelStartOrder.Visible = True Then
-
-                        If IsNumeric(Mid(indata, 1, 6)) Then
-
-                            OrderPn = TrimInfo(indata)
-                            ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": Leitzahl: <" & OrderPn.Substring(0, 6) & ">    PartNo: <" & OrderPn.Substring(6) & ">")
-                            ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
-                            PanelScanMaster.Visible = True
-                            PanelStartOrder.Visible = False
-
-                            Exit Sub
-
-                            'sub_Start_Order(indata, True)
-
-                        End If
-
-                    End If
-
-                    If PanelScanMaster.Visible = True And OrderPn <> vbNullString Then
-
-                        If indata.Substring(0, 1) = "L" Then
-
-                            indata = indata.Substring(1)
-
-                            If Len(OrderPn) > 6 Then
-
-                                If OrderPn.Substring(6) = indata Then
-
-                                    sub_Start_Order(OrderPn, True)
-
-                                Else
-
-                                    If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                        SetError("Изделие отличается от Главного Образца")
-                                    Else
-                                        SetError("PART DIFFERENT THEN MASTER")
-                                    End If
-
-
-                                End If
-
-                            End If
-                        Else
-
-                            If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-
-                                SetError("Штрих-код недействителен; первая буква должна быть 'L'")
-
-                            Else
-
-                                SetError("INVALID BARCODE FORMAT; FIRST LETTER MUST BE 'L'")
-
-                            End If
-
-
-                        End If
-
-                    End If
-
-                End If
-
-                'check for clientlabel format
-
-                If OrderOpen = True And IsError = False Then
-
-
-                    'c1 = BCInfo1 - Indicator of position in car (Ex: 2A,  2C)
-                    Dim c1 As String = DataGridViewOrders.Rows(0).Cells("ColumnBCInfo1").Value
-
-                    Dim partNo As String = DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value
-                    'clear revision
-                    Dim partNoFr As String = vbNullString
-
-                    If InStr(partNo, "-") > 0 Then
-                        partNoFr = partNo.Substring(0, InStr(partNo, "-"))
-                    Else
-                        partNoFr = partNo
-                    End If
-
-                    'spCode  = Supplyer Code
-
-                    Dim spCode As String = Ru_sb_tames1.t_Settings.Select("varName = 'SupplyerCode'").GetValue(0).item("varValue")  'Ru_sb_tames1.t_partList.Select("partNo = '" & partNoFR & "'").GetValue(0).item("suppliercode")
-                    Dim factoryNo As String = Ru_sb_tames1.t_Settings.Select("varName = 'FactoryNo'").GetValue(0).item("varValue")
-
-                    Dim custBc As String = c1 & spCode
-
-                    '------------------------------Check the content of barcode scanned ----------------------------------------------------------------------------------------------------------------------
-
-                    'If Not IsDBNull(customerLabeltype) Then
-
-                    If CustomerLabeltype = "EZE_GUT" Then
-                        'Check Wite Label (Nissan) format
-
-                        Dim curentYear As String = Mid(Now.ToString("yyyy"), 4, 1)
-
-                        Dim prodLine As String = DataGridViewOrders.Rows(0).Cells("ColumnLine").Value
-
-                        Dim factoryNumber As String = Ru_sb_tames1.t_Settings.Select("varName = 'FactoryNo'").GetValue(0).Item("varValue")
-
-                        Dim lineIdentification As String = Mid(prodLine, Len(prodLine))
-
-                        'Unique number for every part:   31 2 4 233 001
-
-                        'Factory Number (XX) + Line Identificator (X) + Year Identificator 201(4) + Day Identificator (XXX) + Alphanumeric Serial (XXX) -> from database
-
-                        custBc = c1 & lineIdentification & curentYear & Now.DayOfYear.ToString("000")
-
-                        'indata = indata.Substring(1)
-
-                        If InStr(indata, custBc, CompareMethod.Text) > 0 Then
-
-                            ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & indata)
-                            ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
-
-                            If T_labelsTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, indata) = 1 Then
-                                'if barcode was  found in DB with BoxNo = 0 then the box number was inserted
-                                'update counter
-                                UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
-                            Else
-
-                                'if barcode was found in DB and the box number was already updated
-                                'then display error
-
-                                If T_labelsTableAdapter1.Countlabels(indata) > 0 Then
-
-                                    'display error message
-                                    If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                        SetError("Штрих-код уже отсканирован")
-                                    Else
-                                        SetError("BARCODE ALLREADY SCANNED")
-                                    End If
-
-                                Else
-
-                                    If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                        SetError("Штрих-код не найден")
-                                    Else
-                                        SetError("BARCODE NOT FOUND")
-                                    End If
-
-
-                                End If
-
-                            End If
-                        End If
-
-                        Exit Sub
-                    End If
-                    'End If
-
-                    If InStr(indata, custBc, CompareMethod.Text) = 2 Then
-
-                        ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & indata)
-                        ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
-
-                        If Mid(indata, Len(indata) - 2) = "000" Then
-                            Exit Sub
-                        End If
-
-                        If T_labelsTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, indata) = 1 Then
-                            'if barcode was  found in DB then the box number was inserted
-                            'update counter
-                            UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
-                        Else
-
-                            'if barcode was found in DB and the box number was already updated
-                            'then display error
-
-                            If T_labelsTableAdapter1.Countlabels(indata) > 0 Then
-
-                                'display error message
-                                If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                    SetError("Штрих-код уже отсканирован")
-                                Else
-                                    SetError("BARCODE ALLREADY SCANNED")
-                                End If
-
-                            Else
-
-                                If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                    SetError("Штрих-код не найден")
-                                Else
-                                    SetError("BARCODE NOT FOUND")
-                                End If
-
-
-                            End If
-
-                        End If
-
-                    End If
-
-                End If
-
-                'Scanning of GAZ Sets
-
-                If OrderOpen = True And IsError = False Then
-                    'if data scanned contains character _ then continue
-
-                    If InStr(indata, "_") > 0 Then
-
-                        'extract part number from scanned barcode
-                        Dim pn As String = Mid(indata, 1, InStr(indata, "_") - 1)
-
-
-                        If DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value = pn Then
-                            'if part number from current order = part number scaned then
-
-                            'insert scanned label into t_labels table 
-                            Try
-                                If T_labelsTableAdapter1.InsertNewLabel(indata, Now.ToString("dd.MM.yyyy"), Now.ToString("HH:mm:ss"),
-                                                        DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value, _
-                                                        DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, _
-                                                        DataGridViewOrders.Rows(0).Cells("ColumnCustPN").Value, _
-                                                        DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value, _
-                                                        vbNullString, vbNullString, vbNullString, vbNullString) > 0 Then
-
-                                    UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
-
-                                End If
-                            Catch ex As Exception
-                                'if error ocure, test to see if error text contains pk_t_labels.
-
-                                If InStr(ex.ToString, "pk_t_labels") > 0 Then
-                                    SetError("BARCODE ALLREADY SCANNED")
-                                Else
-                                    MsgBox(ex.ToString)
-                                End If
-
-                            End Try
-
-                        Else
-
-                            If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                                SetError("ошибочный номер детали")
-                            Else
-                                SetError("WRONG PART NUMBER")
-                            End If
-
-                        End If
-
-                    End If
-
-                    'Homologation Label as internal Label
-
-                    If DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value = indata Then
-                        'Height Adjuster Label - Layout97.hlb
-                        'Scanned barcode = Takata Part Number
-
-                        Try
-                            If T_labelsTableAdapter1.InsertNewLabel(indata, Now.ToString("dd.MM.yyyy"), Now.ToString("HH:mm:ss"),
-                                                    DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value, _
-                                                    DataGridViewOrders.Rows(0).Cells("ColumnpartNo").Value, _
-                                                    DataGridViewOrders.Rows(0).Cells("ColumnCustPN").Value, _
-                                                    DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value, _
-                                                    vbNullString, vbNullString, vbNullString, vbNullString) > 0 Then
-
-                                UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
-
-                            End If
-                        Catch ex As Exception
-                            'if error ocure, test to see if error text contains pk_t_labels.
-
-                            If InStr(ex.ToString, "pk_t_labels") > 0 Then
-                                SetError("BARCODE ALLREADY SCANNED")
-                            Else
-                                MsgBox(ex.ToString)
-                            End If
-
-                        End Try
-
-                    End If
-
-                End If
-
+                ProcessScannerSignalOperator(spName, indata)
             ElseIf TabControlIndex.SelectedTab Is TabPage2 Then
                 'for admnistration
                 If Len(indata) > 6 Then
@@ -636,7 +641,6 @@ Public Class Form1
                         tbo_Order.Text = Mid(indata, 1, 6)
 
                         cbo_partNo.Text = Mid(indata, 7)
-
                     End If
 
                 End If
@@ -646,6 +650,7 @@ Public Class Form1
             MsgBox(ex.ToString)
         End Try
     End Sub
+
     Private Function TrimInfo(bData As String) As String
         Try
             'this function trims informations regarding deviations from barcode generated from AS400 order
@@ -660,16 +665,16 @@ Public Class Form1
         End Try
     End Function
 
-    Private Sub UpdateCounter(counter As Integer)
+    Private Sub UpdatePartsInBoxCounter(count As Integer) 'сюда попадаем в ходе сканирования этикетки на изделии
         Try
 
-            'next signal counter = 1
-            If counter > PackFactor Then
-                counter = 1
+            'next signal count = 1
+            If count > PackFactor Then
+                count = 1
             End If
 
-            'save counter to curentInfo.ini
-            _curentInfoIni.SetKeyValue("CurentInfo", "parts", counter.ToString)
+            'save count to curentInfo.ini
+            _curentInfoIni.SetKeyValue("CurentInfo", "parts", count.ToString)
 
             If IsNumeric(_curentInfoIni.GetKeyValue("CurentInfo", "totalParts")) Then
 
@@ -686,18 +691,18 @@ Public Class Form1
             'save info
             _curentInfoIni.Save(_curentIniPath)
 
-            'print BoxLabel when counter = packfactor
-            If counter = PackFactor Then
+            'print BoxLabel when count = packfactor
+            If count = PackFactor Then
                 If T_orderListTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value) > 0 Then
                     DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value += 1
                     ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  BoxNumber changed"
                 End If
                 PrintBoxLabel()
-                counter = 0
+                count = 0
             End If
 
-            'show counter on screen
-            LabelLabelCount.Text = counter.ToString & " / " & PackFactor.ToString
+            'show count on screen
+            LabelLabelCount.Text = count.ToString & " / " & PackFactor.ToString
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -933,7 +938,7 @@ retry:
 
                 Else
 
-                    'if label not found, register with counter 001
+                    'if label not found, register with count 001
 
                     CurentCustomerLabel = custBc & "001"
 
@@ -956,13 +961,13 @@ retry:
 
                 'if last customer label was printet at the same day as the curent label
                 If InStr(CurentCustomerLabel, custBc, CompareMethod.Text) > 0 Then
-                    'get the counter of the last printed label
+                    'get the count of the last printed label
 
                     ctr = Mid(CurentCustomerLabel, Len(CurentCustomerLabel) - 2, 3)
 
                     Dim lInserted = False  'this flag exits the next while LOOP
 
-                    'increment the curent counter and tryes to insert the label to DB. If done, set curent label to the one inserted and exits loop
+                    'increment the curent count and tryes to insert the label to DB. If done, set curent label to the one inserted and exits loop
 
                     While lInserted = False
                         Try
@@ -1142,14 +1147,14 @@ retry:
 
                         Dim partType As String = DataGridViewOrders.Rows(0).Cells("ColumnPartType").Value
 
-                        If LCase(_objini.GetKeyValue("TPRULabelPrint", "lineType")) = "final" Then   'if lineType is FINAL then print customer label, else increment counter
+                        If LCase(_objini.GetKeyValue("TPRULabelPrint", "lineType")) = "final" Then   'if lineType is FINAL then print customer label, else increment count
                             PrintCustomerLabel(indata)
                         Else
                             If partType = "final" Then          'cases when LineType is Subassy and partType is Final
                                 PrintCustomerLabel(indata)
-                                UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                                UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
                             Else
-                                UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                                UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
                             End If
                         End If
 
@@ -1246,7 +1251,7 @@ retry:
             If e.KeyValue = 71 Then
 
                 PrintCustomerLabel("1001234123412341234")
-                UpdateCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
+                UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
 
             End If
 
@@ -1570,7 +1575,7 @@ retry:
 
                 Else
 
-                    'if label not found, register with counter 001
+                    'if label not found, register with count 001
 
                     CurentCustomerLabel = custBc & "001"
 
@@ -1593,13 +1598,13 @@ retry:
 
                 'if last customer label was printet at the same day as the curent label
                 If InStr(CurentCustomerLabel, custBc, CompareMethod.Text) > 0 Then
-                    'get the counter of the last printed label
+                    'get the count of the last printed label
 
                     ctr = Mid(CurentCustomerLabel, Len(CurentCustomerLabel) - 2, 3)
 
                     Dim lInserted = False  'this flag exits the next while LOOP
 
-                    'increment the curent counter and tryes to insert the label to DB. If done, set curent label to the one inserted and exits loop
+                    'increment the curent count and tryes to insert the label to DB. If done, set curent label to the one inserted and exits loop
 
                     While lInserted = False
                         Try
@@ -1678,7 +1683,7 @@ retry:
         Try
             If MessageBox.Show("Print Box label with curent quantity?", "Print Box Label", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = DialogResult.Yes Then
 
-                'show counter on screen
+                'show count on screen
 
                 If T_orderListTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, DataGridViewOrders.Rows(0).Cells("ColumnOrderNo").Value) > 0 Then
                     DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value += 1
@@ -3066,14 +3071,14 @@ retry:
 
                         Else
 
-                            result = InputBox("Enter the correct number of parts produced", "Change part Counter", PackFactor)
+                            result = InputBox("Enter the correct number of parts produced", "Change part count", PackFactor)
 
                         End If
 
                         If IsNumeric(result) Then
                             counter = CInt(result)
 
-                            'modify counter
+                            'modify count
                             _curentInfoIni.SetKeyValue("CurentInfo", "parts", counter.ToString)
                             _curentInfoIni.Save(_curentIniPath)
                             LabelLabelCount.Text = counter.ToString & " / " & PackFactor.ToString

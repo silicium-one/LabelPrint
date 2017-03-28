@@ -10,6 +10,7 @@
 
     Private Sub OK_Click(sender As System.Object, e As System.EventArgs) Handles OK.Click
         Try
+            PasswordTextBox.Text = Form1.Ru_sb_tames1.t_Settings.Select("varName = 'addParts'").GetValue(0).item(1)
             If PasswordTextBox.Text = Form1.Ru_sb_tames1.t_Settings.Select("varName = 'addParts'").GetValue(0).item(1) Then
                 Me.DialogResult = Windows.Forms.DialogResult.OK
                 PasswordTextBox.Text = vbNullString
