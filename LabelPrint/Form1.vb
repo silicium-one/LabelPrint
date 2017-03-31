@@ -17,6 +17,8 @@ Public Class Form1
     Public totalPartsInOrder As Integer
     Public CurentCustomerLabel As String = vbNullString
     Public IsError As Boolean
+    Public IsReajustingWarningNeedToSendToController As Boolean = False ' ставится в ИСТИНУ после сканирования очередного изделия (после которого надо уведомить), сбрасывается после того, как контроллер подтвердит приём сигнала об уведомлении о переналадке
+    Public indexOfEol As Integer = -1
 
     Public EoLtime As Date
     Public EoLtimeOut As Integer
@@ -93,6 +95,13 @@ Public Class Form1
         Return ret
     End Function
 
+    Dim WithEvents currentPerformanceCounter As New PerformanceClaculator
+
+    Sub currentPerformanceCounter_ReajustingWarningEvent() Handles currentPerformanceCounter.ReajustingWarningEvent
+        MsgBox("Скоро переналадка") 'TODO: только для отладки
+        IsReajustingWarningNeedToSendToController = True
+    End Sub
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
@@ -160,6 +169,10 @@ Public Class Form1
             Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
             respawnLineStateTimers()
 
+            currentPerformanceCounter.QuantityTotal = 100 'todo: заполнить при открытии заказа чем-то конкретным
+            currentPerformanceCounter.PlannedPerformance = 10 'todo: заполнить из CSV файла с производительностью, согласно ТЗ
+            currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromMinutes(5) 'todo: берём это из настройки простоев
+
             Me.Enabled = True
 
             BreaksIDDataGridViewTextBoxColumn.Visible = False
@@ -219,7 +232,7 @@ Public Class Form1
                         AddHandler SerialCom.DataReceived, AddressOf EOLDataReceivedHandler
                         SerialCom.Open()
                         _monitorSp.Add(SerialCom)
-
+                        indexOfEol = _monitorSp.Count - 1
 
                         Dim tim As String = _objini.GetKeyValue("COMTimeOut", s.Value)
 
@@ -686,6 +699,10 @@ Public Class Form1
 
             End If
 
+            currentPerformanceCounter.QuantityCurrent = CInt(_curentInfoIni.GetKeyValue("CurentInfo", "totalParts"))
+            LabelPerformanceInfo.Text = currentPerformanceCounter.ToString()
+            LabelPerformanceInfo.ForeColor = currentPerformanceCounter.LabelColor
+
             DataGridViewOrders.Rows(0).Cells("ColumnOrderQty").Value = _curentInfoIni.GetKeyValue("CurentInfo", "totalParts")
 
             'save info
@@ -1126,6 +1143,11 @@ retry:
             indata = Trim(indata)
 
             If Len(indata) >= 3 Then
+                If IsReajustingWarningNeedToSendToController = True And indata.Substring(0, 3) = "400" Then ' мы находимся в состоянии ожидания подтверждения от контроллера, что он получил сигнал о скорой переналадке
+                    'TODO: согласовать с заказчиком код сигнала оповещения о переналадке
+                    IsReajustingWarningNeedToSendToController = False
+                End If
+
                 If indata.Substring(0, 3) = "200" Then 'begin of interrupt
                     IsLineInterrupted = True
                 ElseIf indata.Substring(0, 3) = "201" Then 'begin of repair
@@ -1156,6 +1178,11 @@ retry:
                             Else
                                 UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
                             End If
+                        End If
+
+                        ' после годного изделия возмодно надо отправить сигнал о переналадке
+                        If IsReajustingWarningNeedToSendToController = True Then
+                            _monitorSp(indexOfEol).Write("400") ' TODO: переделать на многократную посылку
                         End If
 
                     Else
