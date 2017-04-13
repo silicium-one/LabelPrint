@@ -3550,12 +3550,12 @@ retry:
         If dlg.ShowDialog() <> DialogResult.OK Then Return
 
         Dim sw = New StreamWriter(dlg.FileName, False, Encoding.GetEncoding("windows-1251"))
-        Dim str = toCSV(dgv)
+        Dim str = exportInterruptsToCSV(dgv)
         sw.Write(str)
         sw.Close()
     End Sub
 
-    Public Function toCSV(srcTable As DataGridView) As String
+    Public Function exportInterruptsToCSV(srcTable As DataGridView) As String
         Dim result = New StringBuilder
         For i = 0 To srcTable.Columns.Count - 1
             result.Append(Chr(34).ToString())
@@ -3651,17 +3651,4 @@ retry:
         End If
     End Sub
 
-
-    Private Sub btn200_Click(sender As Object, e As EventArgs)
-        IsLineInterrupted = True
-    End Sub
-
-    Private Sub btn201_Click(sender As Object, e As EventArgs)
-        _beginOfRepairInterruptTime = nowTimeRoundToMinute()
-        IsLineInterrupted = True
-    End Sub
-
-    Private Sub btn202_Click(sender As Object, e As EventArgs)
-        IsLineInterrupted = False
-    End Sub
 End Class
