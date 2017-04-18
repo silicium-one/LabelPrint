@@ -138,7 +138,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="dgvProd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1167, 390</value>
+    <value>1047, 417</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dgvProd.TabIndex" type="System.Int32, mscorlib">
@@ -181,10 +181,10 @@
     <value>1</value>
   </data>
   <data name="SplitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 390</value>
+    <value>1407, 417</value>
   </data>
   <data name="SplitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>1167</value>
+    <value>1047</value>
   </data>
   <data name="SplitContainer1.SplitterWidth" type="System.Int32, mscorlib">
     <value>11</value>
@@ -2323,7 +2323,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="T_partListDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1229, 396</value>
+    <value>1068, 423</value>
   </data>
   <data name="T_partListDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2347,7 +2347,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnp_Delete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1102, 19</value>
+    <value>941, 19</value>
   </data>
   <data name="btnp_Delete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -2422,7 +2422,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="GroupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1229, 68</value>
+    <value>1068, 68</value>
   </data>
   <data name="GroupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2452,7 +2452,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1237, 487</value>
+    <value>1076, 514</value>
   </data>
   <data name="GroupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2624,7 +2624,7 @@ EZE_GUT - Nissan White Label</value>
     <value>NoControl</value>
   </data>
   <data name="btn_AddPart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 447</value>
+    <value>4, 474</value>
   </data>
   <data name="btn_AddPart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -3348,7 +3348,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="GroupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>323, 487</value>
+    <value>323, 514</value>
   </data>
   <data name="GroupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3378,7 +3378,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="TabPagePN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 495</value>
+    <value>1407, 522</value>
   </data>
   <data name="TabPagePN.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3483,7 +3483,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="T_HLabelDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1237, 404</value>
+    <value>1076, 431</value>
   </data>
   <data name="T_HLabelDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3507,7 +3507,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>NoControl</value>
   </data>
   <data name="btnh_delete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1110, 19</value>
+    <value>949, 19</value>
   </data>
   <data name="btnh_delete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -3582,7 +3582,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="GroupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1237, 68</value>
+    <value>1076, 68</value>
   </data>
   <data name="GroupBox10.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3612,7 +3612,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="GroupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1245, 495</value>
+    <value>1084, 522</value>
   </data>
   <data name="GroupBox9.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4407,7 +4407,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="GroupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>323, 495</value>
+    <value>323, 522</value>
   </data>
   <data name="GroupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4434,7 +4434,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="TabPageHLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 495</value>
+    <value>1407, 522</value>
   </data>
   <data name="TabPageHLabel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4500,13 +4500,13 @@ Subassy - Print Subassy BoxLabel</value>
     <value>GG1 Resistance (OHM)</value>
   </data>
   <data name="DataGridViewTextBoxColumn9.Width" type="System.Int32, mscorlib">
-    <value>129</value>
+    <value>167</value>
   </data>
   <data name="DataGridViewTextBoxColumn10.HeaderText" xml:space="preserve">
     <value>Insulation Resistance (MOHM)</value>
   </data>
   <data name="DataGridViewTextBoxColumn10.Width" type="System.Int32, mscorlib">
-    <value>156</value>
+    <value>204</value>
   </data>
   <data name="DataGridViewTextBoxColumn11.HeaderText" xml:space="preserve">
     <value>Webbng Length (mm)</value>
@@ -4533,7 +4533,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="T_labelsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 442</value>
+    <value>1407, 469</value>
   </data>
   <data name="T_labelsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4653,7 +4653,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="GroupBox12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 53</value>
+    <value>1407, 53</value>
   </data>
   <data name="GroupBox12.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4677,7 +4677,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="TabPageTraceability.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 495</value>
+    <value>1407, 522</value>
   </data>
   <data name="TabPageTraceability.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4696,6 +4696,39 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;TabPageTraceability.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="ButtonLoadProductivity.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="ButtonLoadProductivity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ButtonLoadProductivity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>740, 19</value>
+  </data>
+  <data name="ButtonLoadProductivity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="ButtonLoadProductivity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 82</value>
+  </data>
+  <data name="ButtonLoadProductivity.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="ButtonLoadProductivity.Text" xml:space="preserve">
+    <value>Загрузить производительность</value>
+  </data>
+  <data name="&gt;&gt;ButtonLoadProductivity.Name" xml:space="preserve">
+    <value>ButtonLoadProductivity</value>
+  </data>
+  <data name="&gt;&gt;ButtonLoadProductivity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonLoadProductivity.Parent" xml:space="preserve">
+    <value>GroupBox13</value>
+  </data>
+  <data name="&gt;&gt;ButtonLoadProductivity.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnProdFind.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -4728,7 +4761,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>GroupBox13</value>
   </data>
   <data name="&gt;&gt;btnProdFind.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="rbGroupByOrder.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4833,7 +4866,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>GroupBox13</value>
   </data>
   <data name="&gt;&gt;GroupBox15.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="dtpEndOfTimeFilter.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 52</value>
@@ -4923,7 +4956,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>GroupBox13</value>
   </data>
   <data name="&gt;&gt;GroupBox16.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="dtpBeginOfTimeFilter.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 52</value>
@@ -5013,7 +5046,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>GroupBox13</value>
   </data>
   <data name="&gt;&gt;GroupBox14.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="Label32.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5157,7 +5190,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>GroupBox13</value>
   </data>
   <data name="&gt;&gt;GroupBox17.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="GroupBox13.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -5172,7 +5205,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="GroupBox13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 105</value>
+    <value>1407, 105</value>
   </data>
   <data name="GroupBox13.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5196,7 +5229,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="TabPageProductivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 495</value>
+    <value>1407, 522</value>
   </data>
   <data name="TabPageProductivity.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -5565,7 +5598,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="gbNewBreak.Size" type="System.Drawing.Size, System.Drawing">
-    <value>323, 495</value>
+    <value>323, 522</value>
   </data>
   <data name="gbNewBreak.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5619,7 +5652,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="dgvBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1229, 479</value>
+    <value>1068, 506</value>
   </data>
   <data name="dgvBreaks.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5643,7 +5676,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="TabPageBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 495</value>
+    <value>1407, 522</value>
   </data>
   <data name="TabPageBreaks.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -5662,6 +5695,96 @@ Subassy - Print Subassy BoxLabel</value>
   </data>
   <data name="&gt;&gt;TabPageBreaks.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="btn202.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn202.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 464</value>
+  </data>
+  <data name="btn202.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="btn202.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="btn202.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="btn202.Text" xml:space="preserve">
+    <value>202</value>
+  </data>
+  <data name="&gt;&gt;btn202.Name" xml:space="preserve">
+    <value>btn202</value>
+  </data>
+  <data name="&gt;&gt;btn202.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn202.Parent" xml:space="preserve">
+    <value>gbNewInterrupt</value>
+  </data>
+  <data name="&gt;&gt;btn202.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btn201.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn201.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 428</value>
+  </data>
+  <data name="btn201.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="btn201.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="btn201.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="btn201.Text" xml:space="preserve">
+    <value>201</value>
+  </data>
+  <data name="&gt;&gt;btn201.Name" xml:space="preserve">
+    <value>btn201</value>
+  </data>
+  <data name="&gt;&gt;btn201.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn201.Parent" xml:space="preserve">
+    <value>gbNewInterrupt</value>
+  </data>
+  <data name="&gt;&gt;btn201.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btn200.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btn200.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 393</value>
+  </data>
+  <data name="btn200.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="btn200.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 28</value>
+  </data>
+  <data name="btn200.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="btn200.Text" xml:space="preserve">
+    <value>200</value>
+  </data>
+  <data name="&gt;&gt;btn200.Name" xml:space="preserve">
+    <value>btn200</value>
+  </data>
+  <data name="&gt;&gt;btn200.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btn200.Parent" xml:space="preserve">
+    <value>gbNewInterrupt</value>
+  </data>
+  <data name="&gt;&gt;btn200.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="tbWhoIsLast.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -5697,7 +5820,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;tbWhoIsLast.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="labelWhoIsLast.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5730,7 +5853,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;labelWhoIsLast.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="tbCarriedOutActions.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -5766,7 +5889,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;tbCarriedOutActions.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="labelCarriedOutActions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5799,7 +5922,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;labelCarriedOutActions.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="tbCauseOfInterrupt.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -5835,7 +5958,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;tbCauseOfInterrupt.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="tbInterruptCode.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -5871,7 +5994,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;tbInterruptCode.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="dtpEndOfInterruptTimestamp.Location" type="System.Drawing.Point, System.Drawing">
     <value>208, 153</value>
@@ -5895,7 +6018,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;dtpEndOfInterruptTimestamp.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="tbEquipmentName.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -5931,7 +6054,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;tbEquipmentName.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="labelEqupmentName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5964,7 +6087,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;labelEqupmentName.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>11</value>
   </data>
   <data name="tbGang.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -6000,7 +6123,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;tbGang.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>12</value>
   </data>
   <data name="labelGang.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6033,7 +6156,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;labelGang.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>13</value>
   </data>
   <data name="labelInterruptDate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6066,7 +6189,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;labelInterruptDate.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>14</value>
   </data>
   <data name="dtpAccidentDate.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 17</value>
@@ -6090,7 +6213,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;dtpAccidentDate.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>15</value>
   </data>
   <data name="dtpInterruptTimestamp.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 153</value>
@@ -6114,7 +6237,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;dtpInterruptTimestamp.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>16</value>
   </data>
   <data name="dtpBeginRepairTimestamp.Location" type="System.Drawing.Point, System.Drawing">
     <value>112, 153</value>
@@ -6138,7 +6261,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;dtpBeginRepairTimestamp.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>17</value>
   </data>
   <data name="btnAddInterrupt.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -6171,7 +6294,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;btnAddInterrupt.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>18</value>
   </data>
   <data name="labelCauseOfInterrupt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6204,7 +6327,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;labelCauseOfInterrupt.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>19</value>
   </data>
   <data name="tbInterruptsLineID.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt, style=Bold</value>
@@ -6240,7 +6363,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;tbInterruptsLineID.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>20</value>
   </data>
   <data name="labelInterruptCode.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6273,7 +6396,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;labelInterruptCode.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>21</value>
   </data>
   <data name="labelInterruptsLineID.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6306,7 +6429,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>gbNewInterrupt</value>
   </data>
   <data name="&gt;&gt;labelInterruptsLineID.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="gbNewInterrupt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -6876,7 +6999,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>None</value>
   </data>
   <data name="T_SettingsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 372</value>
+    <value>1407, 399</value>
   </data>
   <data name="T_SettingsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -7047,7 +7170,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="GroupBox11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 123</value>
+    <value>1407, 123</value>
   </data>
   <data name="GroupBox11.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -7071,7 +7194,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 4, 4, 4</value>
   </data>
   <data name="TabPageSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1568, 495</value>
+    <value>1407, 522</value>
   </data>
   <data name="TabPageSettings.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>

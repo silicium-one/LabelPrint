@@ -96,6 +96,7 @@ Public Class Form1
     End Function
 
     Dim WithEvents currentPerformanceCounter As New PerformanceClaculator
+    Dim plannedProductivity As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
 
     Sub currentPerformanceCounter_ReajustingWarningEvent() Handles currentPerformanceCounter.ReajustingWarningEvent
         MsgBox("Скоро переналадка") 'TODO: только для отладки
@@ -170,7 +171,7 @@ Public Class Form1
             respawnLineStateTimers()
 
             currentPerformanceCounter.QuantityTotal = 100 'todo: заполнить при открытии заказа чем-то конкретным
-            currentPerformanceCounter.PlannedPerformance = 10 'todo: заполнить из CSV файла с производительностью, согласно ТЗ
+            'currentPerformanceCounter.PlannedPerformance = 10 'todo: заполнить из CSV файла с производительностью, согласно ТЗ. Заполнение происходит при сканировании заготовки
             currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromMinutes(5) 'todo: берём это из настройки простоев
 
             Me.Enabled = True
@@ -482,6 +483,7 @@ Public Class Form1
                     If T_labelsTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, indata) = 1 Then
                         'if barcode was  found in DB with BoxNo = 0 then the box number was inserted
                         'update count
+                        currentPerformanceCounter.PlannedPerformance = plannedProductivity(indata) 'todo: проверить на тесте, возможно нужен трим
                         UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
                     Else
 
@@ -3651,4 +3653,25 @@ retry:
         End If
     End Sub
 
+    Private Sub ButtonLoadPlannedProductivity_Click(sender As Object, e As EventArgs) Handles ButtonLoadProductivity.Click
+        Dim pp As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
+        Dim dlg = New OpenFileDialog()
+        dlg.Filter = "Файлы CSV (*.csv)|*.csv"
+        If dlg.ShowDialog() <> DialogResult.OK Then Return
+
+        Dim sr = New StreamReader(dlg.FileName, Encoding.GetEncoding("windows-1251"))
+        Dim line = sr.ReadLine()
+        While line <> Nothing
+            Dim cells = line.Split(";"c)
+            Dim productivity As Integer
+            If cells.Length >= 2 And cells(0).Length > 0 And Integer.TryParse(cells(1), productivity) Then
+                pp(cells(0)) = productivity
+            End If
+            line = sr.ReadLine()
+        End While
+        sr.Close()
+
+        Dim applyDlg = New ProductivityApplyDlg(plannedProductivity)
+        If applyDlg.ShowDialog() = DialogResult.OK Then plannedProductivity = pp
+    End Sub
 End Class
