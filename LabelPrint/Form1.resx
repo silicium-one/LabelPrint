@@ -4512,7 +4512,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>Webbng Length (mm)</value>
   </data>
   <data name="DataGridViewTextBoxColumn11.Width" type="System.Int32, mscorlib">
-    <value>104</value>
+    <value>126</value>
   </data>
   <data name="DataGridViewTextBoxColumn12.HeaderText" xml:space="preserve">
     <value>GG2 Resistance (OHM)</value>

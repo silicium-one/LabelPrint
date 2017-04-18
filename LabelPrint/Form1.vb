@@ -44,6 +44,11 @@ Public Class Form1
 
     Public OrderPn As String
 
+    Private reajustingEOL As String = "400" ' код оповещения о переналадке
+    Private ReadOnly EOLcodes As New Dictionary(Of String, String) ' коды ошибок от контроллера
+
+    Dim WithEvents currentPerformanceCounter As New PerformanceClaculator
+    Dim plannedProductivity As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
     'время на работу за вычетом времени на запланированные перерывы и простои, для каждого часа суток (до 7 утра обычно 0, потом начинает расти)
     'заполняется всякий раз, когда выполняется вычисление производительности
     Private ReadOnly workTimeInMinuts(0 To 23) As UInt32
@@ -53,7 +58,7 @@ Public Class Form1
     Private _endOfInterruptTime As Date?
 
     Private _isLineBreaked As Boolean = False
-    Private _isLineInterrupted As Boolean = False
+    Private _lineStateCode As String = "100"
 
     Protected Property IsLineBreaked As Boolean
         Get
@@ -65,25 +70,25 @@ Public Class Form1
         End Set
     End Property
 
-    Public Property IsLineInterrupted As Boolean
+    Public Property LineStateCode As String
         Get
-            Return _isLineInterrupted
+            Return _lineStateCode
         End Get
-        Set(value As Boolean)
-            If _isLineInterrupted And Not value Then 'end interrupt
+        Set(value As String)
+            If EOLcodes.ContainsKey(_lineStateCode) And value = "100" Then 'end interrupt todo: убрать хардкод на годную деталь
                 _endOfInterruptTime = nowTimeRoundToMinute()
-                _isLineInterrupted = value
                 updateLineState()
                 T_linesInterruptsTableAdapter.InsertQuery(_beginOfInterruptTime, "Заполнить!", LineName, "Заполнить!",
-                                              _beginOfInterruptTime, _beginOfRepairInterruptTime, _endOfInterruptTime,
-                                              "Заполнить!", "Заполнить!", "Заполнить!", "Заполнить!")
+                                              _beginOfInterruptTime, _beginOfRepairInterruptTime, _endOfInterruptTime, _lineStateCode,
+                                              "Заполнить!", "Заполнить!", "Заполнить!")
                 Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
                 _beginOfInterruptTime = Nothing
                 _beginOfRepairInterruptTime = Nothing
                 _endOfInterruptTime = Nothing
-            ElseIf Not _isLineInterrupted And value Then 'begin interrupt
+                _lineStateCode = value
+            ElseIf _lineStateCode = "100" And EOLcodes.ContainsKey(value) Then 'begin interrupt
                 _beginOfInterruptTime = nowTimeRoundToMinute()
-                _isLineInterrupted = value
+                _lineStateCode = value
                 updateLineState()
             End If
         End Set
@@ -94,9 +99,6 @@ Public Class Form1
         ret = New Date(ret.Year, ret.Month, ret.Day, ret.Hour, ret.Minute, 0)
         Return ret
     End Function
-
-    Dim WithEvents currentPerformanceCounter As New PerformanceClaculator
-    Dim plannedProductivity As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
 
     Sub currentPerformanceCounter_ReajustingWarningEvent() Handles currentPerformanceCounter.ReajustingWarningEvent
         MsgBox("Скоро переналадка") 'TODO: только для отладки
@@ -295,6 +297,15 @@ Public Class Form1
 
             End If
 
+            'коды ошибок от контроллера
+            EOLcodes.Clear()
+            For Each s As IniSection.IniKey In _objini.GetSection("EOLSignals").Keys
+                If s.Name.Trim() = "readjusting" Then
+                    reajustingEOL = s.Value.Trim()
+                Else
+                    EOLcodes.Add(s.Name.Trim(), s.Value.Trim())
+                End If
+            Next
 
             Application.DoEvents()
 
@@ -431,6 +442,10 @@ Public Class Form1
 
         If OrderOpen = True And IsError = False Then
 
+            ' возмодное сканирование кода сторудника при случившимся простое
+            If indata = "1111000" And EOLcodes.ContainsKey(LineStateCode) Then 'todo : брать бейджики из базы
+                _beginOfRepairInterruptTime = nowTimeRoundToMinute()
+            End If
 
             'c1 = BCInfo1 - Indicator of position in car (Ex: 2A,  2C)
             Dim c1 As String = DataGridViewOrders.Rows(0).Cells("ColumnBCInfo1").Value
@@ -1145,24 +1160,14 @@ retry:
             indata = Trim(indata)
 
             If Len(indata) >= 3 Then
-                If IsReajustingWarningNeedToSendToController = True And indata.Substring(0, 3) = "400" Then ' мы находимся в состоянии ожидания подтверждения от контроллера, что он получил сигнал о скорой переналадке
-                    'TODO: согласовать с заказчиком код сигнала оповещения о переналадке
+                If IsReajustingWarningNeedToSendToController = True And indata.Substring(0, 3) = reajustingEOL Then ' мы находимся в состоянии ожидания подтверждения от контроллера, что он получил сигнал о скорой переналадке
                     IsReajustingWarningNeedToSendToController = False
                 End If
 
-                If indata.Substring(0, 3) = "200" Then 'begin of interrupt
-                    IsLineInterrupted = True
-                ElseIf indata.Substring(0, 3) = "201" Then 'begin of repair
-                    _beginOfRepairInterruptTime = nowTimeRoundToMinute()
-                    IsLineInterrupted = True
-                ElseIf indata.Substring(0, 3) = "202" Then 'end of interrupt
-                    IsLineInterrupted = False
-                ElseIf indata.Substring(0, 3) = "203" Then 'end of interrupt, code 1
-                    IsLineInterrupted = False
-                ElseIf indata.Substring(0, 3) = "204" Then 'end of interrupt, code 2
-                    IsLineInterrupted = False
-                ElseIf indata.Substring(0, 3) = "205" Then 'end of interrupt, code 3
-                    IsLineInterrupted = False
+                If EOLcodes.ContainsKey(indata.Substring(0, 3)) Then  'begin of interrupt
+                    LineStateCode = indata.Substring(0, 3)
+                ElseIf indata.Substring(0, 3) = "100" Then 'end of interrupt, логически выделил для удобства понимания алгоритма
+                    LineStateCode = indata.Substring(0, 3)
                 End If
 
                 If indata.Substring(0, 1) = "1" Then   'Good part and Scrap 
@@ -3639,13 +3644,13 @@ retry:
             labelLineState.Invoke(New updateTextDelegate(AddressOf updateLineState))
         Else
             Dim currState As String = String.Empty
-            If Not IsLineBreaked And Not IsLineInterrupted Then
+            If Not IsLineBreaked And LineStateCode = "100" Then
                 labelLineState.ForeColor = Color.Green
                 currState = "Линия " & LineName & Chr(13) & "Состояние: работает"
             ElseIf IsLineBreaked Then
                 labelLineState.ForeColor = Color.Yellow
                 currState = "Линия " & LineName & Chr(13) & "Состояние: перерыв"
-            ElseIf IsLineInterrupted Then
+            ElseIf EOLcodes.ContainsKey(LineStateCode) Then
                 labelLineState.ForeColor = Color.Red
                 currState = "Линия " & LineName & Chr(13) & "Состояние: простой"
             End If
