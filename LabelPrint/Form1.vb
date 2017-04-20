@@ -49,7 +49,7 @@ Public Class Form1
 
     Dim WithEvents currentPerformanceCounter As New PerformanceClaculator
     Dim plannedProductivity As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
-    Dim permitBClist As New List(Of String)()
+    Dim permitBClist As New Dictionary(Of String, String) ' ключ - последние 4 цифры ШК с бейджика, значеие - Фамилия или что там будет
 
 
     'время на работу за вычетом времени на запланированные перерывы и простои, для каждого часа суток (до 7 утра обычно 0, потом начинает расти)
@@ -58,6 +58,7 @@ Public Class Form1
 
     Private _beginOfInterruptTime As Date?
     Private _beginOfRepairInterruptTime As Date?
+    Private _whoIsLast As String = String.Empty
     Private _endOfInterruptTime As Date?
 
     Private _isLineBreaked As Boolean = False
@@ -83,11 +84,12 @@ Public Class Form1
                 updateLineState()
                 T_linesInterruptsTableAdapter.InsertQuery(_beginOfInterruptTime, "Заполнить!", LineName, "Заполнить!",
                                               _beginOfInterruptTime, _beginOfRepairInterruptTime, _endOfInterruptTime, _lineStateCode,
-                                              "Заполнить!", "Заполнить!", "Заполнить!")
+                                              "Заполнить!", "Заполнить!", _whoIsLast)
                 Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
                 _beginOfInterruptTime = Nothing
                 _beginOfRepairInterruptTime = Nothing
                 _endOfInterruptTime = Nothing
+                _whoIsLast = String.Empty
                 _lineStateCode = value
             ElseIf _lineStateCode = "100" And EOLcodes.ContainsKey(value) Then 'begin interrupt
                 _beginOfInterruptTime = nowTimeRoundToMinute()
@@ -183,14 +185,15 @@ Public Class Form1
             With dataTable
                 For row = 0 To dataTable.Rows.Count - 1
                     Dim BC = .Rows(row).Item("BC").ToString()
+                    Dim Name = .Rows(row).Item("Name").ToString()
                     Try
                         BC = BC.Substring(BC.Length - 4, 4)
                     Catch ex As ArgumentOutOfRangeException
                         Debug.WriteLine("Wrong BC:" + BC + ", ignoring")
                         Continue For
                     End Try
-                    Debug.WriteLine(BC)
-                    permitBClist.Add(BC)
+                    Debug.WriteLine(BC + ":" + Name)
+                    permitBClist.Add(BC, Name)
                 Next
             End With
 
@@ -465,8 +468,9 @@ Public Class Form1
         If OrderOpen = True And IsError = False Then
 
             ' возмодное сканирование кода сторудника при случившимся простое
-            If indata.Length >= 4 And permitBClist.Contains(indata.Substring(indata.Length - 4, 4)) And EOLcodes.ContainsKey(LineStateCode) Then 'todo : брать бейджики из базы
+            If indata.Length >= 4 And permitBClist.ContainsKey(indata.Substring(indata.Length - 4, 4)) And EOLcodes.ContainsKey(LineStateCode) Then
                 _beginOfRepairInterruptTime = nowTimeRoundToMinute()
+                _whoIsLast = permitBClist(indata.Substring(indata.Length - 4, 4))
             End If
 
             'c1 = BCInfo1 - Indicator of position in car (Ex: 2A,  2C)
@@ -3700,5 +3704,15 @@ retry:
 
         Dim applyDlg = New ProductivityApplyDlg(pp)
         If applyDlg.ShowDialog() = DialogResult.OK Then plannedProductivity = pp
+    End Sub
+
+    Private Sub dgvInterrupts_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgvInterrupts.DataBindingComplete
+        For i = 0 To dgvInterrupts.Rows.Count - 1
+            Dim row = dgvInterrupts.Rows(i)
+            Dim eolCode = row.Cells.Item("InterruptCodeDataGridViewTextBoxColumn").Value
+            Dim bc = row.Cells.Item("WhoIsLastDataGridViewTextBoxColumn").Value
+            If EOLcodes.ContainsKey(eolCode) Then row.Cells.Item("InterruptCodeDataGridViewTextBoxColumn").Value = EOLcodes(eolCode)
+            If permitBClist.ContainsKey(bc) Then row.Cells.Item("WhoIsLastDataGridViewTextBoxColumn").Value = permitBClist(bc)
+        Next
     End Sub
 End Class

@@ -226,6 +226,7 @@ Partial Class Form1
         Me.Label29 = New System.Windows.Forms.Label()
         Me.TabPageProductivity = New System.Windows.Forms.TabPage()
         Me.GroupBox13 = New System.Windows.Forms.GroupBox()
+        Me.ButtonLoadProductivity = New System.Windows.Forms.Button()
         Me.btnProdFind = New System.Windows.Forms.Button()
         Me.GroupBox15 = New System.Windows.Forms.GroupBox()
         Me.rbGroupByOrder = New System.Windows.Forms.RadioButton()
@@ -352,7 +353,6 @@ Partial Class Form1
         Me.T_linesBreaksTableAdapter = New LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter()
         Me.T_linesInterruptsTableAdapter = New LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter()
         Me.T_linesInterruptsLineIDTableAdapter = New LabelPrint.sb_tamesInterruptsLineIDDataSetTableAdapters.t_linesInterruptsTableAdapter()
-        Me.ButtonLoadProductivity = New System.Windows.Forms.Button()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -1823,6 +1823,12 @@ Partial Class Form1
         Me.GroupBox13.Name = "GroupBox13"
         Me.GroupBox13.TabStop = False
         '
+        'ButtonLoadProductivity
+        '
+        resources.ApplyResources(Me.ButtonLoadProductivity, "ButtonLoadProductivity")
+        Me.ButtonLoadProductivity.Name = "ButtonLoadProductivity"
+        Me.ButtonLoadProductivity.UseVisualStyleBackColor = True
+        '
         'btnProdFind
         '
         resources.ApplyResources(Me.btnProdFind, "btnProdFind")
@@ -2346,54 +2352,64 @@ Partial Class Form1
         'dgvInterrupts
         '
         Me.dgvInterrupts.AllowUserToAddRows = False
+        Me.dgvInterrupts.AllowUserToDeleteRows = False
         resources.ApplyResources(Me.dgvInterrupts, "dgvInterrupts")
         Me.dgvInterrupts.AutoGenerateColumns = False
         Me.dgvInterrupts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvInterrupts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.AccidentDateDataGridViewTextBoxColumn, Me.GangDataGridViewTextBoxColumn, Me.InterruptsLineIDDataGridViewTextBoxColumn, Me.EquipmentNameDataGridViewTextBoxColumn, Me.InterruptTimestampDataGridViewTextBoxColumn, Me.BeginRepairTimestampDataGridViewTextBoxColumn, Me.EndOfInterruptTimestampDataGridViewTextBoxColumn, Me.MainteranceWaitingIntervalDataGridViewTextBoxColumn, Me.InterruptDurationDataGridViewTextBoxColumn, Me.InterruptCodeDataGridViewTextBoxColumn, Me.CauseOfInterruptDataGridViewTextBoxColumn, Me.CarriedOutActionsDataGridViewTextBoxColumn, Me.WhoIsLastDataGridViewTextBoxColumn})
         Me.dgvInterrupts.DataSource = Me.T_linesInterruptsBindingSource
         Me.dgvInterrupts.Name = "dgvInterrupts"
+        Me.dgvInterrupts.ReadOnly = True
+        Me.dgvInterrupts.VirtualMode = True
         '
         'AccidentDateDataGridViewTextBoxColumn
         '
         Me.AccidentDateDataGridViewTextBoxColumn.DataPropertyName = "accidentDate"
         resources.ApplyResources(Me.AccidentDateDataGridViewTextBoxColumn, "AccidentDateDataGridViewTextBoxColumn")
         Me.AccidentDateDataGridViewTextBoxColumn.Name = "AccidentDateDataGridViewTextBoxColumn"
+        Me.AccidentDateDataGridViewTextBoxColumn.ReadOnly = True
         '
         'GangDataGridViewTextBoxColumn
         '
         Me.GangDataGridViewTextBoxColumn.DataPropertyName = "gang"
         resources.ApplyResources(Me.GangDataGridViewTextBoxColumn, "GangDataGridViewTextBoxColumn")
         Me.GangDataGridViewTextBoxColumn.Name = "GangDataGridViewTextBoxColumn"
+        Me.GangDataGridViewTextBoxColumn.ReadOnly = True
         '
         'InterruptsLineIDDataGridViewTextBoxColumn
         '
         Me.InterruptsLineIDDataGridViewTextBoxColumn.DataPropertyName = "lineID"
         resources.ApplyResources(Me.InterruptsLineIDDataGridViewTextBoxColumn, "InterruptsLineIDDataGridViewTextBoxColumn")
         Me.InterruptsLineIDDataGridViewTextBoxColumn.Name = "InterruptsLineIDDataGridViewTextBoxColumn"
+        Me.InterruptsLineIDDataGridViewTextBoxColumn.ReadOnly = True
         '
         'EquipmentNameDataGridViewTextBoxColumn
         '
         Me.EquipmentNameDataGridViewTextBoxColumn.DataPropertyName = "equipmentName"
         resources.ApplyResources(Me.EquipmentNameDataGridViewTextBoxColumn, "EquipmentNameDataGridViewTextBoxColumn")
         Me.EquipmentNameDataGridViewTextBoxColumn.Name = "EquipmentNameDataGridViewTextBoxColumn"
+        Me.EquipmentNameDataGridViewTextBoxColumn.ReadOnly = True
         '
         'InterruptTimestampDataGridViewTextBoxColumn
         '
         Me.InterruptTimestampDataGridViewTextBoxColumn.DataPropertyName = "interruptTimestamp"
         resources.ApplyResources(Me.InterruptTimestampDataGridViewTextBoxColumn, "InterruptTimestampDataGridViewTextBoxColumn")
         Me.InterruptTimestampDataGridViewTextBoxColumn.Name = "InterruptTimestampDataGridViewTextBoxColumn"
+        Me.InterruptTimestampDataGridViewTextBoxColumn.ReadOnly = True
         '
         'BeginRepairTimestampDataGridViewTextBoxColumn
         '
         Me.BeginRepairTimestampDataGridViewTextBoxColumn.DataPropertyName = "beginRepairTimestamp"
         resources.ApplyResources(Me.BeginRepairTimestampDataGridViewTextBoxColumn, "BeginRepairTimestampDataGridViewTextBoxColumn")
         Me.BeginRepairTimestampDataGridViewTextBoxColumn.Name = "BeginRepairTimestampDataGridViewTextBoxColumn"
+        Me.BeginRepairTimestampDataGridViewTextBoxColumn.ReadOnly = True
         '
         'EndOfInterruptTimestampDataGridViewTextBoxColumn
         '
         Me.EndOfInterruptTimestampDataGridViewTextBoxColumn.DataPropertyName = "endOfInterruptTimestamp"
         resources.ApplyResources(Me.EndOfInterruptTimestampDataGridViewTextBoxColumn, "EndOfInterruptTimestampDataGridViewTextBoxColumn")
         Me.EndOfInterruptTimestampDataGridViewTextBoxColumn.Name = "EndOfInterruptTimestampDataGridViewTextBoxColumn"
+        Me.EndOfInterruptTimestampDataGridViewTextBoxColumn.ReadOnly = True
         '
         'MainteranceWaitingIntervalDataGridViewTextBoxColumn
         '
@@ -2414,24 +2430,28 @@ Partial Class Form1
         Me.InterruptCodeDataGridViewTextBoxColumn.DataPropertyName = "interruptCode"
         resources.ApplyResources(Me.InterruptCodeDataGridViewTextBoxColumn, "InterruptCodeDataGridViewTextBoxColumn")
         Me.InterruptCodeDataGridViewTextBoxColumn.Name = "InterruptCodeDataGridViewTextBoxColumn"
+        Me.InterruptCodeDataGridViewTextBoxColumn.ReadOnly = True
         '
         'CauseOfInterruptDataGridViewTextBoxColumn
         '
         Me.CauseOfInterruptDataGridViewTextBoxColumn.DataPropertyName = "causeOfInterrupt"
         resources.ApplyResources(Me.CauseOfInterruptDataGridViewTextBoxColumn, "CauseOfInterruptDataGridViewTextBoxColumn")
         Me.CauseOfInterruptDataGridViewTextBoxColumn.Name = "CauseOfInterruptDataGridViewTextBoxColumn"
+        Me.CauseOfInterruptDataGridViewTextBoxColumn.ReadOnly = True
         '
         'CarriedOutActionsDataGridViewTextBoxColumn
         '
         Me.CarriedOutActionsDataGridViewTextBoxColumn.DataPropertyName = "carriedOutActions"
         resources.ApplyResources(Me.CarriedOutActionsDataGridViewTextBoxColumn, "CarriedOutActionsDataGridViewTextBoxColumn")
         Me.CarriedOutActionsDataGridViewTextBoxColumn.Name = "CarriedOutActionsDataGridViewTextBoxColumn"
+        Me.CarriedOutActionsDataGridViewTextBoxColumn.ReadOnly = True
         '
         'WhoIsLastDataGridViewTextBoxColumn
         '
         Me.WhoIsLastDataGridViewTextBoxColumn.DataPropertyName = "whoIsLast"
         resources.ApplyResources(Me.WhoIsLastDataGridViewTextBoxColumn, "WhoIsLastDataGridViewTextBoxColumn")
         Me.WhoIsLastDataGridViewTextBoxColumn.Name = "WhoIsLastDataGridViewTextBoxColumn"
+        Me.WhoIsLastDataGridViewTextBoxColumn.ReadOnly = True
         '
         'T_linesInterruptsBindingSource
         '
@@ -2617,12 +2637,6 @@ Partial Class Form1
         'T_linesInterruptsLineIDTableAdapter
         '
         Me.T_linesInterruptsLineIDTableAdapter.ClearBeforeFill = True
-        '
-        'ButtonLoadProductivity
-        '
-        resources.ApplyResources(Me.ButtonLoadProductivity, "ButtonLoadProductivity")
-        Me.ButtonLoadProductivity.Name = "ButtonLoadProductivity"
-        Me.ButtonLoadProductivity.UseVisualStyleBackColor = True
         '
         'Form1
         '
