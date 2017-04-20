@@ -18,6 +18,7 @@ Public Class Form1
     Public CurentCustomerLabel As String = vbNullString
     Public IsError As Boolean
     Public IsReajustingWarningNeedToSendToController As Boolean = False ' ставится в ИСТИНУ после сканирования очередного изделия (после которого надо уведомить), сбрасывается после того, как контроллер подтвердит приём сигнала об уведомлении о переналадке
+    Public IsReajustingNeedToSendToController As Boolean = False ' ставится в ИСТИНУ после сканирования последнего изделия в заказе, сбрасывается после того, как контроллер подтвердит приём сигнала о переналадке (или может не ждём подтверждения ? )
     Public indexOfEol As Integer = -1
 
     Public EoLtime As Date
@@ -44,7 +45,8 @@ Public Class Form1
 
     Public OrderPn As String
 
-    Private reajustingEOL As String = "400" ' код оповещения о переналадке
+    Private reajustingWarningEOL As String = "400" ' код оповещения о предупреждении о скорой переналадке по умолчанию, берётся из файла ini
+    Private reajustingEOL As String = "401" ' код оповещения о переналадке по умолчанию, берётся из файла ini
     Private ReadOnly EOLcodes As New Dictionary(Of String, String) ' коды ошибок от контроллера
 
     Dim WithEvents currentPerformanceCounter As New PerformanceClaculator
@@ -108,6 +110,11 @@ Public Class Form1
     Sub currentPerformanceCounter_ReajustingWarningEvent() Handles currentPerformanceCounter.ReajustingWarningEvent
         MsgBox("Скоро переналадка") 'TODO: только для отладки
         IsReajustingWarningNeedToSendToController = True
+    End Sub
+
+    Sub currentPerformanceCounter_ReajustingEvent() Handles currentPerformanceCounter.ReajustingEvent
+        MsgBox("Переналадка началась") 'TODO: только для отладки
+        IsReajustingNeedToSendToController = True
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -325,7 +332,9 @@ Public Class Form1
             'коды ошибок от контроллера
             EOLcodes.Clear()
             For Each s As IniSection.IniKey In _objini.GetSection("EOLSignals").Keys
-                If s.Name.Trim() = "readjusting" Then
+                If s.Name.Trim() = "readjustingWarning" Then
+                    reajustingWarningEOL = s.Value.Trim()
+                ElseIf s.Name.Trim() = "readjusting" Then
                     reajustingEOL = s.Value.Trim()
                 Else
                     EOLcodes.Add(s.Name.Trim(), s.Value.Trim())
@@ -1186,12 +1195,18 @@ retry:
             indata = Trim(indata)
 
             If Len(indata) >= 3 Then
-                If IsReajustingWarningNeedToSendToController = True And indata.Substring(0, 3) = reajustingEOL Then ' мы находимся в состоянии ожидания подтверждения от контроллера, что он получил сигнал о скорой переналадке
+                If IsReajustingWarningNeedToSendToController = True And indata.Substring(0, 3) = reajustingWarningEOL Then ' мы находимся в состоянии ожидания подтверждения от контроллера, что он получил сигнал о скорой переналадке
                     IsReajustingWarningNeedToSendToController = False
+                End If
+
+                If IsReajustingNeedToSendToController = True And indata.Substring(0, 3) = reajustingEOL Then ' мы находимся в состоянии ожидания подтверждения от контроллера, что он получил сигнал о начале переналадки
+                    IsReajustingNeedToSendToController = False
                 End If
 
                 If EOLcodes.ContainsKey(indata.Substring(0, 3)) Then  'begin of interrupt
                     LineStateCode = indata.Substring(0, 3)
+                ElseIf indata.Substring(0, 3) = reajustingEOL Then ' переналадка тоже вариант простоя
+                    LineStateCode = reajustingEOL
                 ElseIf indata.Substring(0, 3) = "100" Then 'end of interrupt, логически выделил для удобства понимания алгоритма
                     LineStateCode = indata.Substring(0, 3)
                 End If
@@ -1213,9 +1228,14 @@ retry:
                             End If
                         End If
 
-                        ' после годного изделия возмодно надо отправить сигнал о переналадке
+                        ' после годного изделия возмодно надо отправить сигнал о скорой переналадке
                         If IsReajustingWarningNeedToSendToController = True Then
-                            _monitorSp(indexOfEol).Write("400") ' TODO: переделать на многократную посылку
+                            _monitorSp(indexOfEol).Write(reajustingWarningEOL) ' TODO: переделать на многократную посылку
+                        End If
+
+                        ' после годного изделия возмодно надо отправить сигнал о переналадке
+                        If IsReajustingNeedToSendToController = True Then
+                            _monitorSp(indexOfEol).Write(reajustingEOL) ' TODO: переделать на многократную посылку
                         End If
 
                     Else

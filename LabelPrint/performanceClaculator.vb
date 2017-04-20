@@ -8,6 +8,7 @@
     Private _timeSpanReajusting As TimeSpan             ' время, за которое надо предупредить о переналадке
 
     Public Event ReajustingWarningEvent()
+    Public Event ReajustingEvent()
 
 
     Public Property TimeSpanReajusting As TimeSpan
@@ -48,7 +49,7 @@
                 _reajustingWarningEventRaised = True
             End If
 
-
+            If QuantityCurrent = QuantityTotal Then RaiseEvent ReajustingEvent()
 
         End Set
     End Property
