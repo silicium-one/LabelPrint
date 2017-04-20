@@ -194,11 +194,6 @@ Public Class Form1
                 Next
             End With
 
-
-
-
-
-
             currentPerformanceCounter.QuantityTotal = 100 'todo: заполнить при открытии заказа чем-то конкретным
             'currentPerformanceCounter.PlannedPerformance = 10 'todo: заполнить из CSV файла с производительностью, согласно ТЗ. Заполнение происходит при сканировании заготовки
             currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromMinutes(5) 'todo: берём это из настройки простоев
@@ -3703,7 +3698,7 @@ retry:
         End While
         sr.Close()
 
-        Dim applyDlg = New ProductivityApplyDlg(plannedProductivity)
+        Dim applyDlg = New ProductivityApplyDlg(pp)
         If applyDlg.ShowDialog() = DialogResult.OK Then plannedProductivity = pp
     End Sub
 End Class
