@@ -5,6 +5,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LabelPrint", "LabelPrint\La
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBversionIncrementor", "VBversionIncrementor\VBversionIncrementor.csproj", "{F02F95CD-86F6-4546-9929-ECAD98903FAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "permitBCutility", "permitBCutility\permitBCutility.csproj", "{C87E08E4-3182-432E-BF75-FFAEE94AFD14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{F02F95CD-86F6-4546-9929-ECAD98903FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F02F95CD-86F6-4546-9929-ECAD98903FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F02F95CD-86F6-4546-9929-ECAD98903FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C87E08E4-3182-432E-BF75-FFAEE94AFD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C87E08E4-3182-432E-BF75-FFAEE94AFD14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C87E08E4-3182-432E-BF75-FFAEE94AFD14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C87E08E4-3182-432E-BF75-FFAEE94AFD14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
