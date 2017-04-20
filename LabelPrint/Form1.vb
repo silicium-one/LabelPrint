@@ -49,6 +49,9 @@ Public Class Form1
 
     Dim WithEvents currentPerformanceCounter As New PerformanceClaculator
     Dim plannedProductivity As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
+    Dim permitBClist As New List(Of String)()
+
+
     'время на работу за вычетом времени на запланированные перерывы и простои, для каждого часа суток (до 7 утра обычно 0, потом начинает расти)
     'заполняется всякий раз, когда выполняется вычисление производительности
     Private ReadOnly workTimeInMinuts(0 To 23) As UInt32
@@ -171,6 +174,30 @@ Public Class Form1
             'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
             Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
             respawnLineStateTimers()
+
+            'заполнение данных о бейджиках сотрудников
+            Dim t_EmployeesAdapter = New sb_tamesEmployeesDataSetTableAdapters.t_EmployeesTableAdapter()
+            t_EmployeesAdapter.Fill((New sb_tamesEmployeesDataSet).t_Employees)
+            Dim dataTable = t_EmployeesAdapter.GetData()
+            permitBClist.Clear()
+            With dataTable
+                For row = 0 To dataTable.Rows.Count - 1
+                    Dim BC = .Rows(row).Item("BC").ToString()
+                    Try
+                        BC = BC.Substring(BC.Length - 4, 4)
+                    Catch ex As ArgumentOutOfRangeException
+                        Debug.WriteLine("Wrong BC:" + BC + ", ignoring")
+                        Continue For
+                    End Try
+                    Debug.WriteLine(BC)
+                    permitBClist.Add(BC)
+                Next
+            End With
+
+
+
+
+
 
             currentPerformanceCounter.QuantityTotal = 100 'todo: заполнить при открытии заказа чем-то конкретным
             'currentPerformanceCounter.PlannedPerformance = 10 'todo: заполнить из CSV файла с производительностью, согласно ТЗ. Заполнение происходит при сканировании заготовки
@@ -443,7 +470,7 @@ Public Class Form1
         If OrderOpen = True And IsError = False Then
 
             ' возмодное сканирование кода сторудника при случившимся простое
-            If indata = "1111000" And EOLcodes.ContainsKey(LineStateCode) Then 'todo : брать бейджики из базы
+            If indata.Length >= 4 And permitBClist.Contains(indata.Substring(indata.Length - 4, 4)) And EOLcodes.ContainsKey(LineStateCode) Then 'todo : брать бейджики из базы
                 _beginOfRepairInterruptTime = nowTimeRoundToMinute()
             End If
 

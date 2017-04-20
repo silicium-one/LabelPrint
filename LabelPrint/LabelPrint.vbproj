@@ -149,6 +149,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="sb_tamesEmployeesDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sb_tamesEmployeesDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="sb_tamesInterruptsDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,6 +227,17 @@
     </None>
     <None Include="sb_tamesBreaksDataSet.xss">
       <DependentUpon>sb_tamesBreaksDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sb_tamesEmployeesDataSet.xsc">
+      <DependentUpon>sb_tamesEmployeesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="sb_tamesEmployeesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sb_tamesEmployeesDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sb_tamesEmployeesDataSet.xss">
+      <DependentUpon>sb_tamesEmployeesDataSet.xsd</DependentUpon>
     </None>
     <None Include="sb_tamesInterruptsDataSet.xsc">
       <DependentUpon>sb_tamesInterruptsDataSet.xsd</DependentUpon>
