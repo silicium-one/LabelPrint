@@ -53,6 +53,7 @@ Public Class Form1
     Dim plannedProductivity As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
     Dim permitBClist As New Dictionary(Of String, String) ' ключ - последние 4 цифры ШК с бейджика, значеие - Фамилия или что там будет
 
+    Dim controlledByScanner As New Dictionary(Of String, Control) ' Список контролов Form1, которые контролирует сканер. Грузится из ini-файла
 
     'время на работу за вычетом времени на запланированные перерывы и простои, для каждого часа суток (до 7 утра обычно 0, потом начинает расти)
     'заполняется всякий раз, когда выполняется вычисление производительности
@@ -347,6 +348,15 @@ Public Class Form1
                 End If
             Next
 
+            'формирование списка контролов, которые управляются со сканера. В настоящий момент поддерживаются только элементы управления типа Button
+            controlledByScanner.Clear()
+            Dim allButtons = findAllButtons(Me)
+            For Each s As IniSection.IniKey In _objini.GetSection("ScanerKbd").Keys
+                If allButtons.ContainsKey(s.Value.Trim()) Then
+                    controlledByScanner.Add(s.Name.Trim(), allButtons(s.Value.Trim()))
+                End If
+            Next
+
             Application.DoEvents()
 
             Me.Refresh()
@@ -355,6 +365,21 @@ Public Class Form1
         End Try
 
     End Sub
+
+    Private Function findAllButtons(var As Control) As Dictionary(Of String, Button)
+        Dim ret = New Dictionary(Of String, Button)
+        For Each control As Control In var.Controls
+            If TypeOf control Is Button Then
+                ret.Add(control.Name, control)
+            Else
+                Dim btns = findAllButtons(control)
+                For Each btn As KeyValuePair(Of String,Button) In btns
+                    ret.Add(btn.Key, btn.Value)
+                Next
+            End If
+        Next
+        Return ret
+    End Function
 
     Private Sub TestMode()
         Me.FormBorderStyle = FormBorderStyle.None
@@ -471,6 +496,12 @@ Public Class Form1
         ListBoxLog.Items.Add(Now.ToString("dd.MM.yyyy HH:mm:ss") & ": " & spName & ": " & indata)
         ListBoxLog.SelectedIndex = ListBoxLog.Items.Count - 1
         ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Input Data: Scanner"
+
+        ' возможно, отсканированный ШК - управляющая последовательность, проверяем
+        If controlledByScanner.ContainsKey(indata.Trim()) Then
+            CType(controlledByScanner(indata.Trim()), Button).PerformClick()
+            Exit Sub
+        End If
 
         'start production order
 
@@ -1438,13 +1469,12 @@ retry:
 
             If OrderOpen Then
 
-                Dim result As MsgBoxResult
-
-                If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
-                    result = MessageBox.Show("Прервать Заказ?", "Прервать Заказ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
-                Else
-                    result = MessageBox.Show("Close Order?", "Close Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
-                End If
+                Dim result As MsgBoxResult = DialogResult.Yes
+                'If CultureInfo.CurrentUICulture.ToString = "ru-RU" Then
+                '    result = MessageBox.Show("Прервать Заказ?", "Прервать Заказ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+                'Else
+                '    result = MessageBox.Show("Close Order?", "Close Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2)
+                'End If
 
                 If result = DialogResult.Yes Then
 
