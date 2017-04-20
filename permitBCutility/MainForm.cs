@@ -81,5 +81,14 @@ namespace permitBCutility
             }
             Invalidate();
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // немного наркомании, что бы таблица попала в базу
+            var a = dataGridView.DataSource as System.Windows.Forms.BindingSource;
+            var b = a.DataSource as System.Windows.Forms.BindingSource;
+            var c = b.DataSource as sb_tamesEmployeesDataSet;
+            t_EmployeesTableAdapter.Update(c);
+        }
     }
 }

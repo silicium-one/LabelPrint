@@ -139,6 +139,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "Сотрудники";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tEmployeesBindingSource)).EndInit();
