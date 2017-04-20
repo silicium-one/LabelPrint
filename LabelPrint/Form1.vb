@@ -205,8 +205,8 @@ Public Class Form1
             End With
 
             currentPerformanceCounter.QuantityTotal = 100 'todo: заполнить при открытии заказа чем-то конкретным
-            'currentPerformanceCounter.PlannedPerformance = 10 'todo: заполнить из CSV файла с производительностью, согласно ТЗ. Заполнение происходит при сканировании заготовки
-            currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromMinutes(5) 'todo: берём это из настройки простоев
+            'currentPerformanceCounter.PlannedPerformance = 10 'Заполнение происходит при сканировании заготовки
+            'currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromMinutes(5) 'берём из ini файла
 
             Me.Enabled = True
 
@@ -331,11 +331,17 @@ Public Class Form1
 
             'коды ошибок от контроллера
             EOLcodes.Clear()
+            currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromMinutes(5)
             For Each s As IniSection.IniKey In _objini.GetSection("EOLSignals").Keys
                 If s.Name.Trim() = "readjustingWarning" Then
                     reajustingWarningEOL = s.Value.Trim()
                 ElseIf s.Name.Trim() = "readjusting" Then
                     reajustingEOL = s.Value.Trim()
+                ElseIf s.Name.Trim() = "warningTime_s" Then
+                    Dim seconds As Integer
+                    If Integer.TryParse(s.Value.Trim(), seconds) Then
+                        currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromSeconds(seconds)
+                    End If
                 Else
                     EOLcodes.Add(s.Name.Trim(), s.Value.Trim())
                 End If
