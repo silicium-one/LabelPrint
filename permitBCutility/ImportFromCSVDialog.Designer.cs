@@ -71,6 +71,8 @@
             this.isHeaderFirsrCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.isHeaderFirsrCheckBox.AutoSize = true;
+            this.isHeaderFirsrCheckBox.Checked = true;
+            this.isHeaderFirsrCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.isHeaderFirsrCheckBox.Location = new System.Drawing.Point(13, 42);
             this.isHeaderFirsrCheckBox.Name = "isHeaderFirsrCheckBox";
             this.isHeaderFirsrCheckBox.Size = new System.Drawing.Size(270, 21);
@@ -93,7 +95,7 @@
             this.nameColNUD.Size = new System.Drawing.Size(51, 22);
             this.nameColNUD.TabIndex = 3;
             this.nameColNUD.Value = new decimal(new int[] {
-            1,
+            3,
             0,
             0,
             0});

@@ -77,8 +77,19 @@ namespace permitBCutility
 
             foreach (var BCandName in dlg.BCandNames)
             {
-                t_EmployeesTableAdapter.Insert(BCandName.Key, BCandName.Value);
+                try
+                {
+                    t_EmployeesTableAdapter.Insert(BCandName.Key, BCandName.Value);
+                }
+                catch (System.Data.Odbc.OdbcException ex)
+                {
+                    if (ex.Errors.Count > 0 && ex.Errors[0].SQLState == "23505")
+                        System.Diagnostics.Debug.WriteLine("Неуникальный ключ: " + BCandName.Key + ", пропускаем");
+                    else
+                        throw ex;
+                }
             }
+            this.t_EmployeesTableAdapter.Fill(this.sb_tamesEmployeesDataSet.t_Employees);
             Invalidate();
         }
 

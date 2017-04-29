@@ -39,8 +39,14 @@ namespace permitBCutility
                 while (line != null)
                 {
                     var cells = line.Split(';');
-                    BCandNames.Add(cells[(int) BCColNUD.Value].Substring(cells[(int) BCColNUD.Value].Length - 4, 4),
-                                   cells[(int) nameColNUD.Value]);
+                    try
+                    {
+                        BCandNames.Add(cells[(int)BCColNUD.Value-1].Substring(cells[(int)BCColNUD.Value].Length - 4, 4),
+                                       cells[(int)nameColNUD.Value-1]);
+                    }
+                    catch (ArgumentException)
+                    {
+                    }
 
                     line = sr.ReadLine();
                 }
