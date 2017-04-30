@@ -62,7 +62,6 @@ Partial Class Form1
         Me.ColumnHomologationPN = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ColumnPartType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.LabelPerformanceInfo = New System.Windows.Forms.Label()
         Me.ButtonChangeCounter = New System.Windows.Forms.Button()
         Me.ButtonPrintBoxLabel = New System.Windows.Forms.Button()
         Me.LabelLabelCount = New System.Windows.Forms.Label()
@@ -353,6 +352,7 @@ Partial Class Form1
         Me.T_linesBreaksTableAdapter = New LabelPrint.sb_tamesBreaksDataSetTableAdapters.t_linesBreaksTableAdapter()
         Me.T_linesInterruptsTableAdapter = New LabelPrint.sb_tamesInterruptsDataSetTableAdapters.t_linesInterruptsTableAdapter()
         Me.T_linesInterruptsLineIDTableAdapter = New LabelPrint.sb_tamesInterruptsLineIDDataSetTableAdapters.t_linesInterruptsTableAdapter()
+        Me.LabelPerformanceInfo = New System.Windows.Forms.Label()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
@@ -706,11 +706,6 @@ Partial Class Form1
         resources.ApplyResources(Me.GroupBox1, "GroupBox1")
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.TabStop = False
-        '
-        'LabelPerformanceInfo
-        '
-        resources.ApplyResources(Me.LabelPerformanceInfo, "LabelPerformanceInfo")
-        Me.LabelPerformanceInfo.Name = "LabelPerformanceInfo"
         '
         'ButtonChangeCounter
         '
@@ -2638,6 +2633,11 @@ Partial Class Form1
         '
         Me.T_linesInterruptsLineIDTableAdapter.ClearBeforeFill = True
         '
+        'LabelPerformanceInfo
+        '
+        resources.ApplyResources(Me.LabelPerformanceInfo, "LabelPerformanceInfo")
+        Me.LabelPerformanceInfo.Name = "LabelPerformanceInfo"
+        '
         'Form1
         '
         resources.ApplyResources(Me, "$this")
@@ -2739,7 +2739,9 @@ Partial Class Form1
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-
+        EOLcodesOK.Add("100") ' годная деталь, конец простоя
+        EOLcodesOK.Add("301") ' просто конец простоя
+        _lineStateCode = EOLcodesOK(0)
     End Sub
     Friend WithEvents ListBoxLog As System.Windows.Forms.ListBox
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
@@ -3078,6 +3080,6 @@ Partial Class Form1
     Friend WithEvents tbInterruptsLineID As System.Windows.Forms.TextBox
     Friend WithEvents labelInterruptCode As System.Windows.Forms.Label
     Friend WithEvents labelInterruptsLineID As System.Windows.Forms.Label
-    Friend WithEvents LabelPerformanceInfo As System.Windows.Forms.Label
     Friend WithEvents ButtonLoadProductivity As System.Windows.Forms.Button
+    Friend WithEvents LabelPerformanceInfo As System.Windows.Forms.Label
 End Class

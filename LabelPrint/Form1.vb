@@ -48,6 +48,7 @@ Public Class Form1
     Private reajustingWarningEOL As String = "400" ' код оповещения о предупреждении о скорой переналадке по умолчанию, берётся из файла ini
     Private reajustingEOL As String = "401" ' код оповещения о переналадке по умолчанию, берётся из файла ini
     Private ReadOnly EOLcodes As New Dictionary(Of String, String) ' коды ошибок от контроллера
+    Private ReadOnly EOLcodesOK As New List(Of String) ' коды завершения  простоев и переналадок от контроллера
 
     Dim WithEvents currentPerformanceCounter As New PerformanceClaculator
     Dim plannedProductivity As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
@@ -65,7 +66,7 @@ Public Class Form1
     Private _endOfInterruptTime As Date?
 
     Private _isLineBreaked As Boolean = False
-    Private _lineStateCode As String = "100"
+    Private _lineStateCode As String '= "100"
 
     Protected Property IsLineBreaked As Boolean
         Get
@@ -82,9 +83,9 @@ Public Class Form1
             Return _lineStateCode
         End Get
         Set(value As String)
-            If EOLcodes.ContainsKey(_lineStateCode) And value = "100" Then 'end interrupt todo: убрать хардкод на годную деталь
+            If EOLcodes.ContainsKey(_lineStateCode) And EOLcodesOK.Contains(value) Then 'end interrupt todo: убрать хардкод на годную деталь
                 _endOfInterruptTime = nowTimeRoundToMinute()
-                updateLineState()
+
                 T_linesInterruptsTableAdapter.InsertQuery(_beginOfInterruptTime, "Заполнить!", LineName, "Заполнить!",
                                               _beginOfInterruptTime, _beginOfRepairInterruptTime, _endOfInterruptTime, _lineStateCode,
                                               "Заполнить!", "Заполнить!", _whoIsLast)
@@ -93,8 +94,10 @@ Public Class Form1
                 _beginOfRepairInterruptTime = Nothing
                 _endOfInterruptTime = Nothing
                 _whoIsLast = String.Empty
+
                 _lineStateCode = value
-            ElseIf _lineStateCode = "100" And EOLcodes.ContainsKey(value) Then 'begin interrupt
+                updateLineState()
+            ElseIf EOLcodesOK.Contains(_lineStateCode) And EOLcodes.ContainsKey(value) Then 'begin interrupt
                 _beginOfInterruptTime = nowTimeRoundToMinute()
                 _lineStateCode = value
                 updateLineState()
@@ -109,12 +112,12 @@ Public Class Form1
     End Function
 
     Sub currentPerformanceCounter_ReajustingWarningEvent() Handles currentPerformanceCounter.ReajustingWarningEvent
-        MsgBox("Скоро переналадка") 'TODO: только для отладки
+        'MsgBox("Скоро переналадка") 'TODO: только для отладки
         IsReajustingWarningNeedToSendToController = True
     End Sub
 
     Sub currentPerformanceCounter_ReajustingEvent() Handles currentPerformanceCounter.ReajustingEvent
-        MsgBox("Переналадка началась") 'TODO: только для отладки
+        'MsgBox("Переналадка началась") 'TODO: только для отладки
         IsReajustingNeedToSendToController = True
     End Sub
 
@@ -201,12 +204,17 @@ Public Class Form1
                         Continue For
                     End Try
                     Debug.WriteLine(BC + ":" + Name)
-                    permitBClist.Add(BC, Name)
+                    Try
+                        permitBClist.Add(BC, Name)
+
+                    Catch ex As Exception
+
+                    End Try
                 Next
             End With
 
-            currentPerformanceCounter.QuantityTotal = 100 'todo: заполнить при открытии заказа чем-то конкретным
-            'currentPerformanceCounter.PlannedPerformance = 10 'Заполнение происходит при сканировании заготовки
+            currentPerformanceCounter.QuantityTotal = 50 'todo: заполнить при открытии заказа чем-то конкретным
+            currentPerformanceCounter.PlannedPerformance = 120 'Заполнение происходит при сканировании заготовки
             'currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromMinutes(5) 'берём из ini файла
 
             Me.Enabled = True
@@ -570,7 +578,7 @@ Public Class Form1
                     If T_labelsTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, indata) = 1 Then
                         'if barcode was  found in DB with BoxNo = 0 then the box number was inserted
                         'update count
-                        currentPerformanceCounter.PlannedPerformance = plannedProductivity(indata) 'todo: проверить на тесте, возможно нужен трим
+                        ' в корне неверно! currentPerformanceCounter.PlannedPerformance = plannedProductivity(indata) 'todo: проверить на тесте, возможно нужен трим
                         UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
                     Else
 
@@ -791,6 +799,14 @@ Public Class Form1
             currentPerformanceCounter.QuantityCurrent = CInt(_curentInfoIni.GetKeyValue("CurentInfo", "totalParts"))
             LabelPerformanceInfo.Text = currentPerformanceCounter.ToString()
             LabelPerformanceInfo.ForeColor = currentPerformanceCounter.LabelColor
+            ButtonOpenOrder.Text = LabelPerformanceInfo.Text
+            ButtonOpenOrder.BackColor = LabelPerformanceInfo.ForeColor
+            Debug.WriteLine("productivity: " + LabelPerformanceInfo.Text)
+
+
+
+
+
 
             DataGridViewOrders.Rows(0).Cells("ColumnOrderQty").Value = _curentInfoIni.GetKeyValue("CurentInfo", "totalParts")
 
@@ -1244,7 +1260,7 @@ retry:
                     LineStateCode = indata.Substring(0, 3)
                 ElseIf indata.Substring(0, 3) = reajustingEOL Then ' переналадка тоже вариант простоя
                     LineStateCode = reajustingEOL
-                ElseIf indata.Substring(0, 3) = "100" Then 'end of interrupt, логически выделил для удобства понимания алгоритма
+                ElseIf EOLcodesOK.Contains(indata.Substring(0, 3)) Then 'end of interrupt, логически выделил для удобства понимания алгоритма
                     LineStateCode = indata.Substring(0, 3)
                 End If
 
@@ -1265,15 +1281,18 @@ retry:
                             End If
                         End If
 
-                        ' после годного изделия возмодно надо отправить сигнал о скорой переналадке
-                        If IsReajustingWarningNeedToSendToController = True Then
-                            _monitorSp(indexOfEol).Write(reajustingWarningEOL) ' TODO: переделать на многократную посылку
-                        End If
-
                         ' после годного изделия возмодно надо отправить сигнал о переналадке
                         If IsReajustingNeedToSendToController = True Then
-                            _monitorSp(indexOfEol).Write(reajustingEOL) ' TODO: переделать на многократную посылку
+                            _monitorSp(indexOfEol).Write(Chr(2) + reajustingEOL + Chr(3)) ' TODO: переделать на многократную посылку
+                            IsReajustingWarningNeedToSendToController = False
                         End If
+
+                        ' после годного изделия возмодно надо отправить сигнал о скорой переналадке
+                        If IsReajustingWarningNeedToSendToController = True Then
+                            _monitorSp(indexOfEol).Write(Chr(2) + reajustingWarningEOL + Chr(3)) ' TODO: переделать на многократную посылку
+                            IsReajustingNeedToSendToController = False
+                        End If
+
 
                     Else
 
@@ -3726,7 +3745,7 @@ retry:
             labelLineState.Invoke(New updateTextDelegate(AddressOf updateLineState))
         Else
             Dim currState As String = String.Empty
-            If Not IsLineBreaked And LineStateCode = "100" Then
+            If Not IsLineBreaked And EOLcodesOK.Contains(LineStateCode) Then
                 labelLineState.ForeColor = Color.Green
                 currState = "Линия " & LineName & Chr(13) & "Состояние: работает"
             ElseIf IsLineBreaked Then

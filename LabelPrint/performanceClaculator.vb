@@ -40,13 +40,16 @@
 
             'тут должна быть прверка, не пора ли стрельнуть событием "предупреждение о переналадке"
             'Вычислить ожидаемое время, когда произойдёт событие
-            Dim raiseEventTime As Date = _startTime + TimeSpan.FromHours((CDbl(_quantityTotal) / CDbl(currenpPerformance()))) - _timeSpanReajusting
-            Dim part1Timespan As TimeSpan = TimeSpan.FromHours(1 / CDbl(currenpPerformance())) ' сколько надо времени на производство одной детали
+            Dim curPerf = currenpPerformance()
+            If curPerf > 0 Then
+                Dim raiseEventTime As Date = _startTime + TimeSpan.FromHours((CDbl(_quantityTotal) / CDbl(curPerf))) - _timeSpanReajusting
+                Dim part1Timespan As TimeSpan = TimeSpan.FromHours(1 / CDbl(curPerf)) ' сколько надо времени на производство одной детали
 
-            'Если разница текущего времени и времени когда произойдёт событие меньше чем надо на производство одной детали, то сгенерировать событие и поставить флаг, что событие сработало.
-            If raiseEventTime - part1Timespan < Date.Now And Not _reajustingWarningEventRaised Then
-                RaiseEvent ReajustingWarningEvent() 'стреляем событие о уведомлением о переналадке
-                _reajustingWarningEventRaised = True
+                'Если разница текущего времени и времени когда произойдёт событие меньше чем надо на производство одной детали, то сгенерировать событие и поставить флаг, что событие сработало.
+                If raiseEventTime - part1Timespan < Date.Now And Not _reajustingWarningEventRaised Then
+                    RaiseEvent ReajustingWarningEvent() 'стреляем событие о уведомлением о переналадке
+                    _reajustingWarningEventRaised = True
+                End If
             End If
 
             If QuantityCurrent = QuantityTotal Then RaiseEvent ReajustingEvent()
@@ -77,17 +80,21 @@
         Dim currentPerformance = currenpPerformance()
         If currentPerformance < _plannedPerformance - 1 Then
             _labelColor = Color.Red
-        ElseIf currentPerformance > _plannedPerformance + 1 Then
+        Else 'If currentPerformance > _plannedPerformance + 1 Then
             _labelColor = Color.Green
-        Else
-            _labelColor = Color.Yellow
+            'Else
+            '   _labelColor = Color.Yellow
         End If
         Return _plannedPerformance.ToString() + "/" + currentPerformance.ToString()
     End Function
 
     Protected Function currenpPerformance() As Integer
         Dim timeElapsed = (Date.Now - _startTime).TotalSeconds
-        Return (_quantityCurrent * 3600) / timeElapsed ' производительность фактическая, изделий в час
+        If timeElapsed Then
+            Return (_quantityCurrent * 3600) / timeElapsed ' производительность фактическая, изделий в час
+        Else
+            Return 0 ' производительность фактическая, изделий в час
+        End If
         'TODO: проблема деления на ноль
     End Function
 
