@@ -28,6 +28,9 @@ namespace permitBCutility
             // есть ли в нём достаточно строк (2 для варианта с заголовком, 1 для варианта без)
             // есть ли в нём достаточно столбцов
 
+            var oldCursor = Cursor;
+            Cursor = Cursors.WaitCursor;
+
             try
             {
                 BCandNames.Clear();
@@ -58,6 +61,8 @@ namespace permitBCutility
             {
                 OK.Enabled = false;
             }
+
+            Cursor = oldCursor;
         }
 
         private void fileSelectButton_Click(object sender, EventArgs e)

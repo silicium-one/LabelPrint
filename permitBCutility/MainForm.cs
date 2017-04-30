@@ -30,6 +30,9 @@ namespace permitBCutility
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
 
+            var oldCursor = Cursor;
+            Cursor = Cursors.WaitCursor;
+
             var BCandNames = t_EmployeesTableAdapter.GetData();
             if (dlg.IsFromFilePreffered)
             {
@@ -79,18 +82,19 @@ namespace permitBCutility
             {
                 try
                 {
-                    t_EmployeesTableAdapter.Insert(BCandName.Key, BCandName.Value);
+                    t_EmployeesTableAdapter.Insert(BCandName.Value, BCandName.Key);
                 }
                 catch (System.Data.Odbc.OdbcException ex)
                 {
                     if (ex.Errors.Count > 0 && ex.Errors[0].SQLState == "23505")
-                        System.Diagnostics.Debug.WriteLine("Неуникальный ключ: " + BCandName.Key + ", пропускаем");
+                        System.Diagnostics.Debug.WriteLine("Неуникальный табельный номер " + BCandName.Key + "для фамилии " + BCandName.Value + ", пропускаем");
                     else
                         throw ex;
                 }
             }
             this.t_EmployeesTableAdapter.Fill(this.sb_tamesEmployeesDataSet.t_Employees);
             Invalidate();
+            Cursor = oldCursor;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
