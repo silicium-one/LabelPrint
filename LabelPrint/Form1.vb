@@ -877,6 +877,9 @@ Public Class Form1
 
                 End If
 
+                Dim orderQty = Ru_sb_tames1.t_orderList.Select("orderNo = '" & CInt(Mid(indata, 1, 6)) & "'").GetValue(0).item("orderQty")
+                currentPerformanceCounter.QuantityTotal = CInt(orderQty)
+
                 If Not IsDBNull(partNo) Then
                     If InStr(partNo, "-", CompareMethod.Text) > 0 Then
                         partNoFr = Mid(partNo, 1, InStr(partNo, "-", CompareMethod.Text))
