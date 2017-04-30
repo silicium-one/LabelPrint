@@ -55,6 +55,7 @@ Public Class Form1
     Dim permitBClist As New Dictionary(Of String, String) ' ключ - последние 4 цифры ШК с бейджика, значеие - Фамилия или что там будет
 
     Dim controlledByScanner As New Dictionary(Of String, Control) ' Список контролов Form1, которые контролирует сканер. Грузится из ini-файла
+    Dim EnterKeyByScanner As String = String.Empty ' код со сканера, соответсвующий клавише Enter
 
     'время на работу за вычетом времени на запланированные перерывы и простои, для каждого часа суток (до 7 утра обычно 0, потом начинает расти)
     'заполняется всякий раз, когда выполняется вычисление производительности
@@ -359,9 +360,11 @@ Public Class Form1
             'формирование списка контролов, которые управляются со сканера. В настоящий момент поддерживаются только элементы управления типа Button
             controlledByScanner.Clear()
             Dim allButtons = findAllButtons(Me)
-            For Each s As IniSection.IniKey In _objini.GetSection("ScanerKbd").Keys
+            For Each s As IniSection.IniKey In _objini.GetSection("ScannerKbd").Keys
                 If allButtons.ContainsKey(s.Value.Trim()) Then
                     controlledByScanner.Add(s.Name.Trim(), allButtons(s.Value.Trim()))
+                ElseIf s.Value.Trim() = "{EnterKey}" Then
+                    EnterKeyByScanner = s.Name.Trim()
                 End If
             Next
 
@@ -509,6 +512,8 @@ Public Class Form1
         If controlledByScanner.ContainsKey(indata.Trim()) Then
             CType(controlledByScanner(indata.Trim()), Button).PerformClick()
             Exit Sub
+        ElseIf indata.Trim() = EnterKeyByScanner Then
+            SendKeys.Send("~") ' клваиша ENTER активному приложению
         End If
 
         'start production order
