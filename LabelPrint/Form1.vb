@@ -803,14 +803,7 @@ Public Class Form1
             currentPerformanceCounter.QuantityCurrent = CInt(_curentInfoIni.GetKeyValue("CurentInfo", "totalParts"))
             LabelPerformanceInfo.Text = currentPerformanceCounter.ToString()
             LabelPerformanceInfo.ForeColor = currentPerformanceCounter.LabelColor
-            ButtonOpenOrder.Text = LabelPerformanceInfo.Text
-            ButtonOpenOrder.BackColor = LabelPerformanceInfo.ForeColor
             Debug.WriteLine("productivity: " + LabelPerformanceInfo.Text)
-
-
-
-
-
 
             DataGridViewOrders.Rows(0).Cells("ColumnOrderQty").Value = _curentInfoIni.GetKeyValue("CurentInfo", "totalParts")
 
