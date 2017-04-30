@@ -213,8 +213,8 @@ Public Class Form1
                 Next
             End With
 
-            currentPerformanceCounter.QuantityTotal = 50 'todo: заполнить при открытии заказа чем-то конкретным
-            currentPerformanceCounter.PlannedPerformance = 120 'Заполнение происходит при сканировании заготовки
+            'currentPerformanceCounter.QuantityTotal = 50 'todo: заполнить при открытии заказа чем-то конкретным
+            'currentPerformanceCounter.PlannedPerformance = 120 'Заполнение происходит при сканировании заготовки
             'currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromMinutes(5) 'берём из ini файла
 
             Me.Enabled = True
@@ -578,7 +578,6 @@ Public Class Form1
                     If T_labelsTableAdapter1.UpdateBoxNo(DataGridViewOrders.Rows(0).Cells("ColumnBoxNo").Value + 1, indata) = 1 Then
                         'if barcode was  found in DB with BoxNo = 0 then the box number was inserted
                         'update count
-                        ' в корне неверно! currentPerformanceCounter.PlannedPerformance = plannedProductivity(indata) 'todo: проверить на тесте, возможно нужен трим
                         UpdatePartsInBoxCounter(CInt(_curentInfoIni.GetKeyValue("CurentInfo", "parts")) + 1)
                     Else
 
@@ -879,13 +878,24 @@ Public Class Form1
 
                 Dim orderQty = Ru_sb_tames1.t_orderList.Select("orderNo = '" & CInt(Mid(indata, 1, 6)) & "'").GetValue(0).item("orderQty")
                 currentPerformanceCounter.QuantityTotal = CInt(orderQty)
+                Dim partNoFrShort As String
 
                 If Not IsDBNull(partNo) Then
                     If InStr(partNo, "-", CompareMethod.Text) > 0 Then
                         partNoFr = Mid(partNo, 1, InStr(partNo, "-", CompareMethod.Text))
+                        partNoFrShort = Mid(partNo, 1, InStr(partNo, "-", CompareMethod.Text) - 1)
                     Else
                         partNoFr = partNo
+                        partNoFrShort = partNo
                     End If
+                End If
+
+                If plannedProductivity.ContainsKey(partNoFrShort) Then
+                    currentPerformanceCounter.PlannedPerformance = plannedProductivity(partNoFrShort)
+                Else
+                    MessageBox.Show("Отсутствует информация о производительности для серийного номера " & partNoFrShort & vbNewLine & "Невозможно запустить Заказ!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+
+                    Exit Sub
                 End If
 
                 T_partListTableAdapter1.FillByPartNo(Ru_sb_tames1.t_partList, partNoFr)
