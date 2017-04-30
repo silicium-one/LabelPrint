@@ -878,7 +878,7 @@ Public Class Form1
 
                 Dim orderQty = Ru_sb_tames1.t_orderList.Select("orderNo = '" & CInt(Mid(indata, 1, 6)) & "'").GetValue(0).item("orderQty")
                 currentPerformanceCounter.QuantityTotal = CInt(orderQty)
-                Dim partNoFrShort As String
+                Dim partNoFrShort As String = String.Empty
 
                 If Not IsDBNull(partNo) Then
                     If InStr(partNo, "-", CompareMethod.Text) > 0 Then
@@ -892,9 +892,11 @@ Public Class Form1
 
                 If plannedProductivity.ContainsKey(partNoFrShort) Then
                     currentPerformanceCounter.PlannedPerformance = plannedProductivity(partNoFrShort)
+                    LabelPerformanceInfo.Visible = True
+                    LabelPerformanceInfo.ForeColor = Color.Black
+                    LabelPerformanceInfo.Text = "--/--"
                 Else
                     MessageBox.Show("Отсутствует информация о производительности для серийного номера " & partNoFrShort & vbNewLine & "Невозможно запустить Заказ!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-
                     Exit Sub
                 End If
 
@@ -1509,6 +1511,7 @@ retry:
                 'End If
 
                 If result = DialogResult.Yes Then
+                    LabelPerformanceInfo.Visible = False
 
                     If DataGridViewOrders.Rows.Count > 0 Then
 
