@@ -78,12 +78,10 @@
 
     Overloads Function ToString() As String
         Dim currentPerformance = currenpPerformance()
-        If currentPerformance < _plannedPerformance - 1 Then
+        If currentPerformance < _plannedPerformance Then
             _labelColor = Color.Red
-        Else 'If currentPerformance > _plannedPerformance + 1 Then
+        Else
             _labelColor = Color.Green
-            'Else
-            '   _labelColor = Color.Yellow
         End If
         Return _plannedPerformance.ToString() + "/" + currentPerformance.ToString()
     End Function
