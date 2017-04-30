@@ -36,13 +36,14 @@
             If _quantityCurrent <= 1 Then ' или всё таки 0?
                 _startTime = Date.Now
                 _reajustingWarningEventRaised = False
+                _quantityCorrectinFactor = 0
             End If
 
             'тут должна быть прверка, не пора ли стрельнуть событием "предупреждение о переналадке"
             'Вычислить ожидаемое время, когда произойдёт событие
-            Dim curPerf = currenpPerformance()
+            Dim curPerf = currentPerformance()
             If curPerf > 0 Then
-                Dim raiseEventTime As Date = _startTime + TimeSpan.FromHours((CDbl(_quantityTotal) / CDbl(curPerf))) - _timeSpanReajusting
+                Dim raiseEventTime As Date = _startTime + TimeSpan.FromHours((CDbl(_quantityTotal - _quantityCorrectinFactor) / CDbl(curPerf))) - _timeSpanReajusting
                 Dim part1Timespan As TimeSpan = TimeSpan.FromHours(1 / CDbl(curPerf)) ' сколько надо времени на производство одной детали
 
                 'Если разница текущего времени и времени когда произойдёт событие меньше чем надо на производство одной детали, то сгенерировать событие и поставить флаг, что событие сработало.
@@ -77,23 +78,31 @@
     End Property
 
     Overloads Function ToString() As String
-        Dim currentPerformance = currenpPerformance()
-        If currentPerformance < _plannedPerformance Then
+        Dim currPerformance = currentPerformance()
+        If currPerformance < _plannedPerformance Then
             _labelColor = Color.Red
         Else
             _labelColor = Color.Green
         End If
-        Return _plannedPerformance.ToString() + "/" + currentPerformance.ToString()
+        Return _plannedPerformance.ToString() + "/" + currPerformance.ToString()
     End Function
 
-    Protected Function currenpPerformance() As Integer
+    Protected Function currentPerformance() As Integer
         Dim timeElapsed = (Date.Now - _startTime).TotalSeconds
         If timeElapsed Then
-            Return (_quantityCurrent * 3600) / timeElapsed ' производительность фактическая, изделий в час
+            Return ((_quantityCurrent - _quantityCorrectinFactor) * 3600) / timeElapsed ' производительность фактическая, изделий в час
         Else
             Return 0 ' производительность фактическая, изделий в час
         End If
         'TODO: проблема деления на ноль
     End Function
+
+    Dim _quantityCorrectinFactor As Integer = 0 ' костыль для пересчёта продуктивности
+
+    Public Sub respawnProductivity()
+        _quantityCorrectinFactor = _quantityCurrent
+        _startTime = Date.Now
+        _reajustingWarningEventRaised = False
+    End Sub
 
 End Class

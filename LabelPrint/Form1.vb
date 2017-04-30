@@ -114,12 +114,14 @@ Public Class Form1
 
     Sub currentPerformanceCounter_ReajustingWarningEvent() Handles currentPerformanceCounter.ReajustingWarningEvent
         'MsgBox("Скоро переналадка") 'TODO: только для отладки
+        IsReajustingNeedToSendToController = False
         IsReajustingWarningNeedToSendToController = True
     End Sub
 
     Sub currentPerformanceCounter_ReajustingEvent() Handles currentPerformanceCounter.ReajustingEvent
         'MsgBox("Переналадка началась") 'TODO: только для отладки
-        IsReajustingNeedToSendToController = True
+        'IsReajustingNeedToSendToController = True
+        'IsReajustingWarningNeedToSendToController = False
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -890,9 +892,16 @@ Public Class Form1
 
                 If plannedProductivity.ContainsKey(partNoFrShort) Then
                     currentPerformanceCounter.PlannedPerformance = plannedProductivity(partNoFrShort)
+
+                    'перевзводим таймер предупреждения о переналадке
+                    currentPerformanceCounter.TimeSpanReajusting = currentPerformanceCounter.TimeSpanReajusting
+                    IsReajustingNeedToSendToController = True
+                    IsReajustingWarningNeedToSendToController = False
+
                     LabelPerformanceInfo.Visible = True
+                    IsReajustingWarningNeedToSendToController = False
                     LabelPerformanceInfo.ForeColor = Color.Black
-                    LabelPerformanceInfo.Text = "--/--"
+                    LabelPerformanceInfo.Text = "---/---"
                 Else
                     MessageBox.Show("Отсутствует информация о производительности для серийного номера " & partNoFrShort & vbNewLine & "Невозможно запустить Заказ!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Sub
@@ -1294,28 +1303,25 @@ retry:
                             End If
                         End If
 
-                        ' после годного изделия возмодно надо отправить сигнал о переналадке
+                        ' после годного изделия возможно надо отправить сигнал о переналадке
                         If IsReajustingNeedToSendToController = True Then
                             _monitorSp(indexOfEol).Write(Chr(2) + reajustingEOL + Chr(3)) ' TODO: переделать на многократную посылку
-                            IsReajustingWarningNeedToSendToController = False
-                        End If
-
-                        ' после годного изделия возмодно надо отправить сигнал о скорой переналадке
-                        If IsReajustingWarningNeedToSendToController = True Then
+                            'IsReajustingWarningNeedToSendToController = False
+                        ElseIf IsReajustingWarningNeedToSendToController = True Then                            ' после годного изделия возможно надо отправить сигнал о скорой переналадке
                             _monitorSp(indexOfEol).Write(Chr(2) + reajustingWarningEOL + Chr(3)) ' TODO: переделать на многократную посылку
-                            IsReajustingNeedToSendToController = False
+                            'IsReajustingNeedToSendToController = False
                         End If
 
 
-                    Else
-
-                        If IsNumeric(indata.Substring(1, 2)) Then
-                            PrintScrapLabel(indata.Substring(1, 2))              'Scrap part 1 XX
                         Else
-                            Writelog("Scrap ID NOK: " & indata.Substring(1, 2))
-                        End If
 
-                    End If
+                            If IsNumeric(indata.Substring(1, 2)) Then
+                                PrintScrapLabel(indata.Substring(1, 2))              'Scrap part 1 XX
+                            Else
+                                Writelog("Scrap ID NOK: " & indata.Substring(1, 2))
+                            End If
+
+                        End If
 
                 End If
 
@@ -3760,6 +3766,9 @@ retry:
         Else
             Dim currState As String = String.Empty
             If Not IsLineBreaked And EOLcodesOK.Contains(LineStateCode) Then
+                If labelLineState.ForeColor <> Color.Green Then
+                    currentPerformanceCounter.respawnProductivity()
+                End If
                 labelLineState.ForeColor = Color.Green
                 currState = "Линия " & LineName & Chr(13) & "Состояние: работает"
             ElseIf IsLineBreaked Then
@@ -3769,6 +3778,7 @@ retry:
                 labelLineState.ForeColor = Color.Red
                 currState = "Линия " & LineName & Chr(13) & "Состояние: простой"
             End If
+
             labelLineState.Text = currState
         End If
     End Sub
