@@ -370,6 +370,13 @@ Public Class Form1
                 End If
             Next
 
+            'загрузка продуктивности по умолчанию
+            Try
+                plannedProductivity = ppFromCsv(_objini.GetKeyValue("Productivity", "defaultFile"))
+            Catch ex As Exception
+
+            End Try
+
             Application.DoEvents()
 
             Me.Refresh()
@@ -3784,12 +3791,19 @@ retry:
     End Sub
 
     Private Sub ButtonLoadPlannedProductivity_Click(sender As Object, e As EventArgs) Handles ButtonLoadProductivity.Click
-        Dim pp As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
         Dim dlg = New OpenFileDialog()
         dlg.Filter = "Файлы CSV (*.csv)|*.csv"
         If dlg.ShowDialog() <> DialogResult.OK Then Return
 
-        Dim sr = New StreamReader(dlg.FileName, Encoding.GetEncoding("windows-1251"))
+        Dim pp = ppFromCsv(dlg.FileName)
+        Dim applyDlg = New ProductivityApplyDlg(pp)
+        If applyDlg.ShowDialog() = DialogResult.OK Then plannedProductivity = pp
+    End Sub
+
+    Private Function ppFromCsv(fileName As String) As Dictionary(Of String, Integer)
+        Dim pp As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
+
+        Dim sr = New StreamReader(fileName, Encoding.GetEncoding("windows-1251"))
         Dim line = sr.ReadLine()
         While line <> Nothing
             Dim cells = line.Split(";"c)
@@ -3801,9 +3815,8 @@ retry:
         End While
         sr.Close()
 
-        Dim applyDlg = New ProductivityApplyDlg(pp)
-        If applyDlg.ShowDialog() = DialogResult.OK Then plannedProductivity = pp
-    End Sub
+        Return pp
+    End Function
 
     Private Sub dgvInterrupts_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgvInterrupts.DataBindingComplete
         For i = 0 To dgvInterrupts.Rows.Count - 1
