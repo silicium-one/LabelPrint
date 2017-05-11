@@ -431,9 +431,9 @@ Public Class Form1
             Dim indata As String = Trim(Replace(sp.ReadExisting(), vbCrLf, vbNullString))
 
             If Me.InvokeRequired Then
-                Me.Invoke(New ProcessScannersignalDelegate(AddressOf ProcessScannersignal), New Object() {sp.PortName, indata})
+                Me.Invoke(New ProcessScannersignalDelegate(AddressOf ProcessScannerSignal), New Object() {sp.PortName, indata})
             Else
-                Me.ProcessScannersignal(sp.PortName, indata)
+                Me.ProcessScannerSignal(sp.PortName, indata)
             End If
 
         Catch ex As Exception
@@ -535,11 +535,16 @@ Public Class Form1
 
         If OrderOpen = True And IsError = False Then
 
-            ' возмодное сканирование кода сторудника при случившимся простое
-            If indata.Length >= 4 And permitBClist.ContainsKey(indata.Substring(indata.Length - 4, 4)) And EOLcodes.ContainsKey(LineStateCode) Then
-                _beginOfRepairInterruptTime = nowTimeRoundToMinute()
-                _whoIsLast = permitBClist(indata.Substring(indata.Length - 4, 4))
-            End If
+            ' возможное сканирование кода сторудника при случившимся простое
+            Try
+                Dim permitBC = indata.Substring(indata.Length - 4, 4)
+                If permitBClist.ContainsKey(permitBC) And EOLcodes.ContainsKey(LineStateCode) Then
+                    _beginOfRepairInterruptTime = nowTimeRoundToMinute()
+                    _whoIsLast = permitBClist(permitBC)
+                End If
+            Catch ex As ArgumentOutOfRangeException
+                'на случай сканирования кодов длинной меньше 4 символов
+            End Try
 
             'c1 = BCInfo1 - Indicator of position in car (Ex: 2A,  2C)
             Dim c1 As String = DataGridViewOrders.Rows(0).Cells("ColumnBCInfo1").Value
@@ -751,7 +756,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub ProcessScannersignal(spName As String, indata As String)
+    Private Sub ProcessScannerSignal(spName As String, indata As String)
         Try
 
             If TabControlIndex.SelectedTab Is TabPage1 Then
