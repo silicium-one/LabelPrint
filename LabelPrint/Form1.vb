@@ -1823,7 +1823,7 @@ retry:
                 Dim args As String = "DLG=EZE_KD|DAT=" & prodDate & _
                                      "|ZEI=" & CInt(Now.TimeOfDay.TotalSeconds) & _
                                      "|BARCODE=" & CurentCustomerLabel & _
-                                     "|TEXT:1=LADA-HW.DRU|TEXT:2=" & custPn & _
+                                     "|TEXT:1=LADA-V2.DRU|TEXT:2=" & custPn & _
                                      "|TEXT:3=|TEXT:4=|TEXT:5=|"
 
                 File.WriteAllText(spoolPath, args)
@@ -2238,7 +2238,7 @@ retry:
             Dim args As String = "DLG=EZE_KD|DAT=" & prodDate & _
                                  "|ZEI=" & CInt(Now.TimeOfDay.TotalSeconds) & _
                                  "|BARCODE=" & custBc & "000" & _
-                                 "|TEXT:1=LADA-V2.DRU|TEXT:2=" & custPn & _
+                                 "|TEXT:1=LADA-HW.DRU|TEXT:2=" & custPn & _
                                  "|TEXT:3=|TEXT:4=|TEXT:5=|"
 
             Dim spoolPath As String = Application.StartupPath & "\Log\spoolMasterLabel.txt"
