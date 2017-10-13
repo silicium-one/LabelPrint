@@ -135,7 +135,7 @@ Public Class Form1
             End If
 
             Dim version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
-            Text += " " + version.Major.ToString() + "." + version.Minor.ToString()
+            Text += " " + version.Major.ToString() + "." + version.Minor.ToString() + "." + version.Build.ToString()
 #If VERSION_TYPE = "a" Then
             Text += " a"
             Me.TabControl1.Controls.Remove(TabPageBreaks)
