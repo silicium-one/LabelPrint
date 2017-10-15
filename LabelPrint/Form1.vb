@@ -135,7 +135,7 @@ Public Class Form1
             End If
 
             Dim version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
-            Text += " " + version.Major.ToString() + "." + version.Minor.ToString()
+            Text += " " + version.Major.ToString() + "." + version.Minor.ToString() + "." + version.Build.ToString()
 #If VERSION_TYPE = "a" Then
             Text += " a"
             Me.TabControl1.Controls.Remove(TabPageBreaks)
@@ -1823,7 +1823,7 @@ retry:
                 Dim args As String = "DLG=EZE_KD|DAT=" & prodDate & _
                                      "|ZEI=" & CInt(Now.TimeOfDay.TotalSeconds) & _
                                      "|BARCODE=" & CurentCustomerLabel & _
-                                     "|TEXT:1=LADA-HW.DRU|TEXT:2=" & custPn & _
+                                     "|TEXT:1=LADA-V2.DRU|TEXT:2=" & custPn & _
                                      "|TEXT:3=|TEXT:4=|TEXT:5=|"
 
                 File.WriteAllText(spoolPath, args)
