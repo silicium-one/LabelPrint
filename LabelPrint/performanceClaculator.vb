@@ -41,7 +41,7 @@
 
             'тут должна быть прверка, не пора ли стрельнуть событием "предупреждение о переналадке"
             'Вычислить ожидаемое время, когда произойдёт событие
-            Dim curPerf = currentPerformance()
+            Dim curPerf = CurrentPerformance()
             If curPerf > 0 Then
                 Dim raiseEventTime As Date = _startTime + TimeSpan.FromHours((CDbl(_quantityTotal - _quantityCorrectinFactor) / CDbl(curPerf))) - _timeSpanReajusting
                 Dim part1Timespan As TimeSpan = TimeSpan.FromHours(1 / CDbl(curPerf)) ' сколько надо времени на производство одной детали
