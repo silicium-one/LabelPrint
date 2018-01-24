@@ -1819,11 +1819,14 @@ retry:
                 If Not Directory.Exists(Application.StartupPath & "\Log") Then
                     Directory.CreateDirectory(Application.StartupPath & "\Log")
                 End If
-
+				
+                If IsDBNull(CustomerLabeltype) Then CustomerLabeltype = "Lada-HW"
+                If CustomerLabeltype = vbNullString Then CustomerLabeltype = "Lada-HW"
+				
                 Dim args As String = "DLG=EZE_KD|DAT=" & prodDate & _
                                      "|ZEI=" & CInt(Now.TimeOfDay.TotalSeconds) & _
                                      "|BARCODE=" & CurentCustomerLabel & _
-                                     "|TEXT:1=LADA-V2.DRU|TEXT:2=" & custPn & _
+                                     "|TEXT:1=" & CustomerLabeltype & ".DRU|TEXT:2=" & custPn & _
                                      "|TEXT:3=|TEXT:4=|TEXT:5=|"
 
                 File.WriteAllText(spoolPath, args)
