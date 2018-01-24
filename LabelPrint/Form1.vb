@@ -4,39 +4,37 @@ Imports LabelPrint.IniFile
 Imports System.IO.Ports
 Imports System.IO
 Imports System.Threading
-Imports LabelPrint.ru_sb_tamesTableAdapters
 Imports System.Text
 Imports System.Data.Odbc
+Imports System.Reflection
+Imports LabelPrint.My
+Imports LabelPrint.sb_tamesEmployeesDataSetTableAdapters
 
 
 Public Class Form1
 
+    Delegate Sub UpdateTextDelegate()
+    Private Delegate Sub ProcessScannersignalDelegate(spName As String, indata As String)
+    Private Delegate Sub ProcessEoLsignalDelegate(spName As String, indata As String)
+
     'flag for open order: True/False
     Public OrderOpen As Boolean = False
     Public PackFactor As Integer
-    Public totalPartsInOrder As Integer
+    Public TotalPartsInOrder As Integer
     Public CurentCustomerLabel As String = vbNullString
     Public IsError As Boolean
     Public IsReajustingWarningNeedToSendToController As Boolean = False ' ставится в ИСТИНУ после сканирования очередного изделия (после которого надо уведомить), сбрасывается после того, как контроллер подтвердит приём сигнала об уведомлении о переналадке
     Public IsReajustingNeedToSendToController As Boolean = False ' ставится в ИСТИНУ после сканирования последнего изделия в заказе, сбрасывается после того, как контроллер подтвердит приём сигнала о переналадке (или может не ждём подтверждения ? )
-    Public indexOfEol As Integer = -1
+    Public IndexOfEol As Integer = -1
 
     Public EoLtime As Date
     Public EoLtimeOut As Integer
 
     Public Hlbltime As Date
     Public HlbltimeOut As Integer
+    Public StopOrderTimer As Integer
 
-    'serialports asigned to the scanners
-    Public WithEvents SerialCom As SerialPort
-
-    Private ReadOnly _monitorSp As New List(Of SerialPort)
-
-    Private ReadOnly _objini As New IniFile
-    ReadOnly _iniPath As String = Application.StartupPath & "\LabelPrint.ini"
-
-    Private ReadOnly _curentInfoIni As New IniFile
-    ReadOnly _curentIniPath As String = Application.StartupPath & "\CurentInfo.ini"
+    Public CustomerLabeltype As String = vbNullString
 
     'name of the line
     Public LineName As String
@@ -45,21 +43,35 @@ Public Class Form1
 
     Public OrderPn As String
 
-    Private reajustingWarningEOL As String = "400" ' код оповещения о предупреждении о скорой переналадке по умолчанию, берётся из файла ini
-    Private reajustingEOL As String = "401" ' код оповещения о переналадке по умолчанию, берётся из файла ini
-    Private ReadOnly EOLcodes As New Dictionary(Of String, String) ' коды ошибок от контроллера
-    Private ReadOnly EOLcodesOK As New List(Of String) ' коды завершения  простоев и переналадок от контроллера
+    Public EolDataBuffer As String
 
-    Dim WithEvents currentPerformanceCounter As New PerformanceClaculator
-    Dim plannedProductivity As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
-    Dim permitBClist As New Dictionary(Of String, String) ' ключ - последние 4 цифры ШК с бейджика, значеие - Фамилия или что там будет
+    'serialports asigned to the scanners
+    Public WithEvents SerialCom As SerialPort
 
-    Dim controlledByScanner As New Dictionary(Of String, Control) ' Список контролов Form1, которые контролирует сканер. Грузится из ini-файла
-    Dim EnterKeyByScanner As String = String.Empty ' код со сканера, соответсвующий клавише Enter
+    Private ReadOnly _monitorSp As New List(Of SerialPort)
+    'набор таймеров для отслеживания состояния линии (1 перерыв - 2 таймера + 1 не перевзводку в конце суток) 
+    Private ReadOnly _breakTimers As New List(Of Timer)
 
+    Private ReadOnly _objini As New IniFile
+    Private ReadOnly _iniPath As String = Windows.Forms.Application.StartupPath & "\LabelPrint.ini"
+
+    Private ReadOnly _curentInfoIni As New IniFile
+    Private ReadOnly _curentIniPath As String = System.Windows.Forms.Application.StartupPath & "\CurentInfo.ini"
+    
+    Private ReadOnly _eoLcodes As New Dictionary(Of String, String) ' коды ошибок от контроллера
+    Private ReadOnly _eoLcodesOk As New List(Of String) ' коды завершения  простоев и переналадок от контроллера
+
+
+    Private ReadOnly _permitBClist As New Dictionary(Of String, String) ' ключ - последние 4 цифры ШК с бейджика, значеие - Фамилия или что там будет
+
+    Private ReadOnly _controlledByScanner As New Dictionary(Of String, Control) ' Список контролов Form1, которые контролирует сканер. Грузится из ini-файла
+    
     'время на работу за вычетом времени на запланированные перерывы и простои, для каждого часа суток (до 7 утра обычно 0, потом начинает расти)
     'заполняется всякий раз, когда выполняется вычисление производительности
-    Private ReadOnly workTimeInMinuts(0 To 23) As UInt32
+    Private ReadOnly _workTimeInMinuts(0 To 23) As UInt32
+
+    Private _reajustingWarningEol As String = "400" ' код оповещения о предупреждении о скорой переналадке по умолчанию, берётся из файла ini
+    Private _reajustingEol As String = "401" ' код оповещения о переналадке по умолчанию, берётся из файла ini
 
     Private _beginOfInterruptTime As Date?
     Private _beginOfRepairInterruptTime As Date?
@@ -69,13 +81,17 @@ Public Class Form1
     Private _isLineBreaked As Boolean = False
     Private _lineStateCode As String '= "100"
 
+    Dim WithEvents _currentPerformanceCounter As New PerformanceClaculator
+    Dim _plannedProductivity As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
+    Dim _enterKeyByScanner As String = String.Empty ' код со сканера, соответсвующий клавише Enter
+
     Protected Property IsLineBreaked As Boolean
         Get
             Return _isLineBreaked
         End Get
         Set(value As Boolean)
             _isLineBreaked = value
-            updateLineState()
+            UpdateLineState()
         End Set
     End Property
 
@@ -84,8 +100,8 @@ Public Class Form1
             Return _lineStateCode
         End Get
         Set(value As String)
-            If EOLcodes.ContainsKey(_lineStateCode) And EOLcodesOK.Contains(value) Then 'end interrupt todo: убрать хардкод на годную деталь
-                _endOfInterruptTime = nowTimeRoundToMinute()
+            If _eoLcodes.ContainsKey(_lineStateCode) And _eoLcodesOk.Contains(value) Then 'end interrupt todo: убрать хардкод на годную деталь
+                _endOfInterruptTime = NowTimeRoundToMinute()
 
                 T_linesInterruptsTableAdapter.InsertQuery(_beginOfInterruptTime, "Заполнить!", LineName, "Заполнить!",
                                               _beginOfInterruptTime, _beginOfRepairInterruptTime, _endOfInterruptTime, _lineStateCode,
@@ -97,28 +113,54 @@ Public Class Form1
                 _whoIsLast = String.Empty
 
                 _lineStateCode = value
-                updateLineState()
-            ElseIf EOLcodesOK.Contains(_lineStateCode) And EOLcodes.ContainsKey(value) Then 'begin interrupt
-                _beginOfInterruptTime = nowTimeRoundToMinute()
+                UpdateLineState()
+            ElseIf _eoLcodesOk.Contains(_lineStateCode) And _eoLcodes.ContainsKey(value) Then 'begin interrupt
+                _beginOfInterruptTime = NowTimeRoundToMinute()
                 _lineStateCode = value
-                updateLineState()
+                UpdateLineState()
             End If
         End Set
     End Property
 
-    Private Function nowTimeRoundToMinute() As Date?
-        Dim ret = Date.Now
-        ret = New Date(ret.Year, ret.Month, ret.Day, ret.Hour, ret.Minute, 0)
-        Return ret
-    End Function
+    Public Function ExportInterruptsToCsv(srcTable As DataGridView) As String
+        Dim result = New StringBuilder
+        For i = 0 To srcTable.Columns.Count - 1
+            result.Append(Chr(34).ToString())
+            result.Append(srcTable.Columns(i).HeaderText)
+            result.Append(Chr(34).ToString())
+            result.Append(";")
+        Next
+        result.Remove(result.Length - 1, 1)
+        result.AppendLine()
 
-    Sub currentPerformanceCounter_ReajustingWarningEvent() Handles currentPerformanceCounter.ReajustingWarningEvent
+        For Each row As DataGridViewRow In srcTable.Rows
+            For i = 0 To srcTable.Columns.Count - 1
+                result.Append(Chr(34).ToString())
+                result.Append(row.Cells(i).Value)
+                result.Append(Chr(34).ToString())
+                result.Append(";")
+            Next
+            result.Remove(result.Length - 1, 1)
+            result.AppendLine()
+        Next
+        'Return result.ToString()
+        Dim ascii = Encoding.GetEncoding("windows-1251")
+        Dim unicode As Encoding = Encoding.UTF8
+        Dim unicodeBytes = unicode.GetBytes(result.ToString())
+        Dim asciiBytes = Encoding.Convert(unicode, ascii, unicodeBytes)
+        Dim asciiChars(ascii.GetCharCount(asciiBytes, 0, asciiBytes.Length)) As Char ' todo: optimize
+        ascii.GetChars(asciiBytes, 0, asciiBytes.Length, asciiChars, 0)
+        Dim asciiString = New String(asciiChars)
+        Return asciiString
+    End Function
+    
+    Private Sub currentPerformanceCounter_ReajustingWarningEvent() Handles _currentPerformanceCounter.ReajustingWarningEvent
         'MsgBox("Скоро переналадка") 'TODO: только для отладки
         IsReajustingNeedToSendToController = False
         IsReajustingWarningNeedToSendToController = True
     End Sub
 
-    Sub currentPerformanceCounter_ReajustingEvent() Handles currentPerformanceCounter.ReajustingEvent
+    Private Sub currentPerformanceCounter_ReajustingEvent() Handles _currentPerformanceCounter.ReajustingEvent
         'MsgBox("Переналадка началась") 'TODO: только для отладки
         'IsReajustingNeedToSendToController = True
         'IsReajustingWarningNeedToSendToController = False
@@ -134,7 +176,7 @@ Public Class Form1
                 dgvInterrupts.Size = sz
             End If
 
-            Dim version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version
+            Dim version = Assembly.GetExecutingAssembly().GetName().Version
             Text += " " + version.Major.ToString() + "." + version.Minor.ToString() + "." + version.Build.ToString()
 #If VERSION_TYPE = "a" Then
             Text += " a"
@@ -189,26 +231,26 @@ Public Class Form1
             Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
             'TODO: данная строка кода позволяет загрузить данные в таблицу "Sb_tamesBreaksDataSet.t_linesBreaks". При необходимости она может быть перемещена или удалена.
             Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
-            respawnLineStateTimers()
+            RespawnLineStateTimers()
 
             'заполнение данных о бейджиках сотрудников
-            Dim t_EmployeesAdapter = New sb_tamesEmployeesDataSetTableAdapters.t_EmployeesTableAdapter()
-            t_EmployeesAdapter.Fill((New sb_tamesEmployeesDataSet).t_Employees)
-            Dim dataTable = t_EmployeesAdapter.GetData()
-            permitBClist.Clear()
+            Dim tEmployeesAdapter = New t_EmployeesTableAdapter()
+            tEmployeesAdapter.Fill((New sb_tamesEmployeesDataSet).t_Employees)
+            Dim dataTable = tEmployeesAdapter.GetData()
+            _permitBClist.Clear()
             With dataTable
                 For row = 0 To dataTable.Rows.Count - 1
-                    Dim BC = .Rows(row).Item("BC").ToString()
-                    Dim Name = .Rows(row).Item("Name").ToString()
+                    Dim bc = .Rows(row).Item("BC").ToString()
+                    Dim name = .Rows(row).Item("Name").ToString()
                     Try
-                        BC = BC.Substring(BC.Length - 4, 4)
+                        bc = bc.Substring(bc.Length - 4, 4)
                     Catch ex As ArgumentOutOfRangeException
-                        Debug.WriteLine("Wrong BC:" + BC + ", ignoring")
+                        Debug.WriteLine("Wrong BC:" + bc + ", ignoring")
                         Continue For
                     End Try
-                    Debug.WriteLine(BC + ":" + Name)
+                    Debug.WriteLine(bc + ":" + name)
                     Try
-                        permitBClist.Add(BC, Name)
+                        _permitBClist.Add(bc, name)
 
                     Catch ex As Exception
 
@@ -242,10 +284,10 @@ Public Class Form1
             Dim uConnStr As String = _objini.GetKeyValue("TPRULabelPrint", "connString")
 
             If uConnStr <> vbNullString Then
-                Writelog("Changing ConnStr: " & My.Settings.Item("ru_sb_tames"))
-                My.Settings.Item("ru_sb_tames") = uConnStr
-                My.Settings.Save()
-                Writelog("New ConnStr: " & My.Settings.Item("ru_sb_tames"))
+                Writelog("Changing ConnStr: " & Settings.Item("ru_sb_tames"))
+                Settings.Item("ru_sb_tames") = uConnStr
+                Settings.Save()
+                Writelog("New ConnStr: " & Settings.Item("ru_sb_tames"))
             End If
 
             'loop trough com ports -----------------------------------------------------------------------------------------------------------
@@ -279,7 +321,7 @@ Public Class Form1
                         AddHandler SerialCom.DataReceived, AddressOf EOLDataReceivedHandler
                         SerialCom.Open()
                         _monitorSp.Add(SerialCom)
-                        indexOfEol = _monitorSp.Count - 1
+                        IndexOfEol = _monitorSp.Count - 1
 
                         Dim tim As String = _objini.GetKeyValue("COMTimeOut", s.Value)
 
@@ -342,58 +384,58 @@ Public Class Form1
             End If
 
             'коды ошибок от контроллера
-            EOLcodes.Clear()
-            currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromMinutes(5)
+            _eoLcodes.Clear()
+            _currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromMinutes(5)
             For Each s As IniSection.IniKey In _objini.GetSection("EOLSignals").Keys
                 If s.Name.Trim() = "readjustingWarning" Then
-                    reajustingWarningEOL = s.Value.Trim()
+                    _reajustingWarningEol = s.Value.Trim()
                 ElseIf s.Name.Trim() = "readjusting" Then
-                    reajustingEOL = s.Value.Trim()
+                    _reajustingEol = s.Value.Trim()
                 ElseIf s.Name.Trim() = "warningTime_s" Then
                     Dim seconds As Integer
                     If Integer.TryParse(s.Value.Trim(), seconds) Then
-                        currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromSeconds(seconds)
+                        _currentPerformanceCounter.TimeSpanReajusting = TimeSpan.FromSeconds(seconds)
                     End If
                 Else
-                    EOLcodes.Add(s.Name.Trim(), s.Value.Trim())
+                    _eoLcodes.Add(s.Name.Trim(), s.Value.Trim())
                 End If
             Next
 
             'формирование списка контролов, которые управляются со сканера. В настоящий момент поддерживаются только элементы управления типа Button
-            controlledByScanner.Clear()
-            Dim allButtons = findAllButtons(Me)
+            _controlledByScanner.Clear()
+            Dim allButtons = FindAllButtons(Me)
             For Each s As IniSection.IniKey In _objini.GetSection("ScannerKbd").Keys
                 If allButtons.ContainsKey(s.Value.Trim()) Then
-                    controlledByScanner.Add(s.Name.Trim(), allButtons(s.Value.Trim()))
+                    _controlledByScanner.Add(s.Name.Trim(), allButtons(s.Value.Trim()))
                 ElseIf s.Value.Trim() = "{EnterKey}" Then
-                    EnterKeyByScanner = s.Name.Trim()
+                    _enterKeyByScanner = s.Name.Trim()
                 End If
             Next
 
             'загрузка продуктивности по умолчанию
             Try
-                plannedProductivity = ppFromCsv(_objini.GetKeyValue("Productivity", "defaultFile"))
+                _plannedProductivity = PpFromCsv(_objini.GetKeyValue("Productivity", "defaultFile"))
             Catch ex As Exception
 
             End Try
 
-            Application.DoEvents()
+            Windows.Forms.Application.DoEvents()
 
-            Me.Refresh()
+            Refresh()
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
 
     End Sub
 
-    Private Function findAllButtons(var As Control) As Dictionary(Of String, Button)
+    Private Shared Function FindAllButtons(var As Control) As Dictionary(Of String, Button)
         Dim ret = New Dictionary(Of String, Button)
         For Each control As Control In var.Controls
             If TypeOf control Is Button Then
                 ret.Add(control.Name, control)
             Else
-                Dim btns = findAllButtons(control)
-                For Each btn As KeyValuePair(Of String,Button) In btns
+                Dim btns = FindAllButtons(control)
+                For Each btn As KeyValuePair(Of String, Button) In btns
                     ret.Add(btn.Key, btn.Value)
                 Next
             End If
@@ -440,10 +482,7 @@ Public Class Form1
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-
-    Private Delegate Sub ProcessScannersignalDelegate(spName As String, indata As String)
-
+    
     Private Sub ProcessScannerSignalOperatorBeginOrder(spName As String, indata As String)
         'orderPN -  the data scanned from AS400 order
         'indata - current scanned data
@@ -518,10 +557,10 @@ Public Class Form1
         ToolStripStatusLabelCurentInfo.Text = "[" & Now & "]  Input Data: Scanner"
 
         ' возможно, отсканированный ШК - управляющая последовательность, проверяем
-        If controlledByScanner.ContainsKey(indata.Trim()) Then
-            CType(controlledByScanner(indata.Trim()), Button).PerformClick()
+        If _controlledByScanner.ContainsKey(indata.Trim()) Then
+            CType(_controlledByScanner(indata.Trim()), Button).PerformClick()
             Exit Sub
-        ElseIf indata.Trim() = EnterKeyByScanner Then
+        ElseIf indata.Trim() = _enterKeyByScanner Then
             SendKeys.Send("~") ' клваиша ENTER активному приложению
         End If
 
@@ -537,10 +576,10 @@ Public Class Form1
 
             ' возможное сканирование кода сторудника при случившимся простое
             Try
-                Dim permitBC = indata.Substring(indata.Length - 4, 4)
-                If permitBClist.ContainsKey(permitBC) And EOLcodes.ContainsKey(LineStateCode) Then
-                    _beginOfRepairInterruptTime = nowTimeRoundToMinute()
-                    _whoIsLast = permitBClist(permitBC)
+                Dim permitBc = indata.Substring(indata.Length - 4, 4)
+                If _permitBClist.ContainsKey(permitBc) And _eoLcodes.ContainsKey(LineStateCode) Then
+                    _beginOfRepairInterruptTime = NowTimeRoundToMinute()
+                    _whoIsLast = _permitBClist(permitBc)
                 End If
             Catch ex As ArgumentOutOfRangeException
                 'на случай сканирования кодов длинной меньше 4 символов
@@ -779,21 +818,7 @@ Public Class Form1
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-    Private Function TrimInfo(bData As String) As String
-        Try
-            'this function trims informations regarding deviations from barcode generated from AS400 order
-            If InStr(bData, "-") > 0 Then
-                bData = bData.Substring(0, InStr(bData, "-") + 2)
-            End If
-
-            Return bData
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-            Return vbNullString
-        End Try
-    End Function
-
+    
     Private Sub UpdatePartsInBoxCounter(count As Integer) 'сюда попадаем в ходе сканирования этикетки на изделии
         Try
             'next signal count = 1
@@ -814,9 +839,9 @@ Public Class Form1
 
             End If
 
-            currentPerformanceCounter.QuantityCurrent = CInt(_curentInfoIni.GetKeyValue("CurentInfo", "totalParts"))
-            LabelPerformanceInfo.Text = currentPerformanceCounter.ToString()
-            LabelPerformanceInfo.ForeColor = currentPerformanceCounter.LabelColor
+            _currentPerformanceCounter.QuantityCurrent = CInt(_curentInfoIni.GetKeyValue("CurentInfo", "totalParts"))
+            LabelPerformanceInfo.Text = _currentPerformanceCounter.ToString()
+            LabelPerformanceInfo.ForeColor = _currentPerformanceCounter.LabelColor
             Debug.WriteLine("productivity: " + LabelPerformanceInfo.Text)
 
             DataGridViewOrders.Rows(0).Cells("ColumnOrderQty").Value = _curentInfoIni.GetKeyValue("CurentInfo", "totalParts")
@@ -841,6 +866,7 @@ Public Class Form1
             MsgBox(ex.ToString)
         End Try
     End Sub
+
     Private Sub SetError(errMessage As String)
         Try
             IsError = True
@@ -853,8 +879,6 @@ Public Class Form1
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-    Public CustomerLabeltype As String = vbNullString
 
     Private Sub sub_Start_Order(indata As String, fromScanner As Boolean)
         Try
@@ -889,7 +913,7 @@ Public Class Form1
                 End If
 
                 Dim orderQty = Ru_sb_tames1.t_orderList.Select("orderNo = '" & CInt(Mid(indata, 1, 6)) & "'").GetValue(0).item("orderQty")
-                currentPerformanceCounter.QuantityTotal = CInt(orderQty)
+                _currentPerformanceCounter.QuantityTotal = CInt(orderQty)
                 Dim partNoFrShort As String = String.Empty
 
                 If Not IsDBNull(partNo) Then
@@ -902,11 +926,11 @@ Public Class Form1
                     End If
                 End If
 
-                If plannedProductivity.ContainsKey(partNoFrShort) Then
-                    currentPerformanceCounter.PlannedPerformance = plannedProductivity(partNoFrShort)
+                If _plannedProductivity.ContainsKey(partNoFrShort) Then
+                    _currentPerformanceCounter.PlannedPerformance = _plannedProductivity(partNoFrShort)
 
                     'перевзводим таймер предупреждения о переналадке
-                    currentPerformanceCounter.TimeSpanReajusting = currentPerformanceCounter.TimeSpanReajusting
+                    _currentPerformanceCounter.TimeSpanReajusting = _currentPerformanceCounter.TimeSpanReajusting
                     IsReajustingNeedToSendToController = True
                     IsReajustingWarningNeedToSendToController = False
 
@@ -1160,12 +1184,12 @@ retry:
                 Dim prodDate As String = Now.ToString("MM/dd/yyyy")
 
                 'PrintCtrl exe location
-                Dim spoolPath As String = Application.StartupPath & "\Log\spoolWhiteLabel.txt"
+                Dim spoolPath As String = System.Windows.Forms.Application.StartupPath & "\Log\spoolWhiteLabel.txt"
 
                 Dim printCtrlApp As String = _objini.GetKeyValue("PrintCtrl", "path")
 
-                If Not Directory.Exists(Application.StartupPath & "\Log") Then
-                    Directory.CreateDirectory(Application.StartupPath & "\Log")
+                If Not Directory.Exists(System.Windows.Forms.Application.StartupPath & "\Log") Then
+                    Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath & "\Log")
                 End If
 
                 Dim args As String = "DLG=EZE_GUT|DAT=" & prodDate &
@@ -1232,11 +1256,7 @@ retry:
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-    Private Delegate Sub ProcessEoLsignalDelegate(spName As String, indata As String)
-
-    Public EolDataBuffer As String
-
+    
     Private Sub ProcessEoLsignal(spName As String, indata As String)
         Try
             'disable close order warning interval
@@ -1282,19 +1302,19 @@ retry:
             indata = Trim(indata)
 
             If Len(indata) >= 3 Then
-                If IsReajustingWarningNeedToSendToController = True And indata.Substring(0, 3) = reajustingWarningEOL Then ' мы находимся в состоянии ожидания подтверждения от контроллера, что он получил сигнал о скорой переналадке
+                If IsReajustingWarningNeedToSendToController = True And indata.Substring(0, 3) = _reajustingWarningEol Then ' мы находимся в состоянии ожидания подтверждения от контроллера, что он получил сигнал о скорой переналадке
                     IsReajustingWarningNeedToSendToController = False
                 End If
 
-                If IsReajustingNeedToSendToController = True And indata.Substring(0, 3) = reajustingEOL Then ' мы находимся в состоянии ожидания подтверждения от контроллера, что он получил сигнал о начале переналадки
+                If IsReajustingNeedToSendToController = True And indata.Substring(0, 3) = _reajustingEol Then ' мы находимся в состоянии ожидания подтверждения от контроллера, что он получил сигнал о начале переналадки
                     IsReajustingNeedToSendToController = False
                 End If
 
-                If EOLcodes.ContainsKey(indata.Substring(0, 3)) Then  'begin of interrupt
+                If _eoLcodes.ContainsKey(indata.Substring(0, 3)) Then  'begin of interrupt
                     LineStateCode = indata.Substring(0, 3)
-                ElseIf indata.Substring(0, 3) = reajustingEOL Then ' переналадка тоже вариант простоя
-                    LineStateCode = reajustingEOL
-                ElseIf EOLcodesOK.Contains(indata.Substring(0, 3)) Then 'end of interrupt, логически выделил для удобства понимания алгоритма
+                ElseIf indata.Substring(0, 3) = _reajustingEol Then ' переналадка тоже вариант простоя
+                    LineStateCode = _reajustingEol
+                ElseIf _eoLcodesOk.Contains(indata.Substring(0, 3)) Then 'end of interrupt, логически выделил для удобства понимания алгоритма
                     LineStateCode = indata.Substring(0, 3)
                 End If
 
@@ -1317,23 +1337,23 @@ retry:
 
                         ' после годного изделия возможно надо отправить сигнал о переналадке
                         If IsReajustingNeedToSendToController = True Then
-                            _monitorSp(indexOfEol).Write(Chr(2) + reajustingEOL + Chr(3)) ' TODO: переделать на многократную посылку
+                            _monitorSp(IndexOfEol).Write(Chr(2) + _reajustingEol + Chr(3)) ' TODO: переделать на многократную посылку
                             'IsReajustingWarningNeedToSendToController = False
                         ElseIf IsReajustingWarningNeedToSendToController = True Then                            ' после годного изделия возможно надо отправить сигнал о скорой переналадке
-                            _monitorSp(indexOfEol).Write(Chr(2) + reajustingWarningEOL + Chr(3)) ' TODO: переделать на многократную посылку
+                            _monitorSp(IndexOfEol).Write(Chr(2) + _reajustingWarningEol + Chr(3)) ' TODO: переделать на многократную посылку
                             'IsReajustingNeedToSendToController = False
                         End If
 
 
+                    Else
+
+                        If IsNumeric(indata.Substring(1, 2)) Then
+                            PrintScrapLabel(indata.Substring(1, 2))              'Scrap part 1 XX
                         Else
-
-                            If IsNumeric(indata.Substring(1, 2)) Then
-                                PrintScrapLabel(indata.Substring(1, 2))              'Scrap part 1 XX
-                            Else
-                                Writelog("Scrap ID NOK: " & indata.Substring(1, 2))
-                            End If
-
+                            Writelog("Scrap ID NOK: " & indata.Substring(1, 2))
                         End If
+
+                    End If
 
                 End If
 
@@ -1359,8 +1379,7 @@ retry:
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-
+    
     Private Sub HLabelSgnDataReceivedHandler(sender As Object, e As SerialDataReceivedEventArgs)
         Try
             Dim sp = CType(sender, SerialPort)
@@ -1492,7 +1511,7 @@ retry:
             ButtonOpenOrder.Enabled = False
             OrderOpen = True
             PackFactor = DataGridViewOrders.Rows(0).Cells("columnPackfactor").Value
-            totalPartsInOrder = 100 ' DataGridViewOrders.Rows(0).Cells("columnOrderQty").Value ' здесь надо запомнить в отдельную переменную , сколько всего изделий в заказе (или в 726 строчке??)
+            TotalPartsInOrder = 100 ' DataGridViewOrders.Rows(0).Cells("columnOrderQty").Value ' здесь надо запомнить в отдельную переменную , сколько всего изделий в заказе (или в 726 строчке??)
             LabelLabelCount.Text = 0 & " / " & PackFactor.ToString
             WarningInterval()
         Catch ex As Exception
@@ -1536,7 +1555,7 @@ retry:
                         DataGridViewOrders.Rows.RemoveAt(0)
                         OrderOpen = False
                         PackFactor = 0
-                        totalPartsInOrder = 0
+                        TotalPartsInOrder = 0
                         LabelLabelCount.Text = vbNullString
                         LogCurrentStatus(vbNullString, 0)
 
@@ -1573,6 +1592,7 @@ retry:
             ButtonPrintBoxLabel.Visible = False
         End If
     End Sub
+
     Private Sub LogCurrentStatus(order As String, partsProduced As Integer, Optional ByVal fromScanner As Boolean = True)
 
         Try
@@ -1591,72 +1611,7 @@ retry:
             MsgBox(ex.ToString)
         End Try
     End Sub
-    Private Function CustCounter(value As String) As String
-
-        'value must bee 3 characters long
-
-        Dim c1 As Integer = Asc(Mid(value, 1, 1))
-        Dim c2 As Integer = Asc(Mid(value, 2, 1))
-        Dim c3 As Integer = Asc(Mid(value, 3, 1))
-
-        c3 += 1
-
-        If c3 = 58 Then   'from 9 to A
-            c3 = 65
-        End If
-
-        If c3 = 73 Then   ' if c3 = I then c3 = J
-            c3 = 74
-        End If
-
-        If c3 = 79 Then   ' if c3 = O then c3 = P
-            c3 = 80
-        End If
-
-        If c3 = 91 Then  'from A to increment next digit
-            c3 = 48   'set last digit to 0
-            c2 += 1     'increment next digit
-        End If
-
-        If c2 = 73 Then   ' if c2 = I then c2 = J
-            c2 = 74
-        End If
-
-        If c2 = 79 Then   ' if c2 = O then c2 = P
-            c2 = 80
-        End If
-
-        If c2 = 58 Then   'from 9 to A
-            c2 = 65
-        End If
-
-        If c2 = 91 Then 'from A to increment next digit
-            c2 = 48     'set second digit to 0
-            c1 += 1     'increment next digit
-        End If
-
-        If c1 = 58 Then   'from 9 to A
-            c1 = 65
-        End If
-
-        If c1 = 73 Then   ' if c1 = I then c1 = J
-            c1 = 74
-        End If
-
-        If c1 = 79 Then   ' if c1 = O then c1 = P
-            c1 = 80
-        End If
-
-        If c1 = 91 Then 'from A to increment next digit
-            c1 = 48      'set second digit to 0
-            c2 = 48
-            c3 = 48
-        End If
-
-        Return Chr(c1) & Chr(c2) & Chr(c3)
-
-    End Function
-
+    
     Private Sub PrintCustomerLabel(indata As String)
 
         Try
@@ -1812,17 +1767,17 @@ retry:
                 Dim prodDate As String = Now.ToString("MM/dd/yyyy")
 
                 'PrintCtrl exe location
-                Dim spoolPath As String = Application.StartupPath & "\Log\spoolCustomerLabel.txt"
+                Dim spoolPath As String = System.Windows.Forms.Application.StartupPath & "\Log\spoolCustomerLabel.txt"
 
                 Dim printCtrlApp As String = _objini.GetKeyValue("PrintCtrl", "path")
 
-                If Not Directory.Exists(Application.StartupPath & "\Log") Then
-                    Directory.CreateDirectory(Application.StartupPath & "\Log")
+                If Not Directory.Exists(System.Windows.Forms.Application.StartupPath & "\Log") Then
+                    Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath & "\Log")
                 End If
-				
+
                 If IsDBNull(CustomerLabeltype) Then CustomerLabeltype = "Lada-HW"
                 If CustomerLabeltype = vbNullString Then CustomerLabeltype = "Lada-HW"
-				
+
                 Dim args As String = "DLG=EZE_KD|DAT=" & prodDate & _
                                      "|ZEI=" & CInt(Now.TimeOfDay.TotalSeconds) & _
                                      "|BARCODE=" & CurentCustomerLabel & _
@@ -1952,11 +1907,11 @@ retry:
             End If
 
 
-            Dim spoolPath As String = Application.StartupPath & "\Log\spoolBoxLabel.txt"
+            Dim spoolPath As String = System.Windows.Forms.Application.StartupPath & "\Log\spoolBoxLabel.txt"
             Dim printCtrlApp As String = _objini.GetKeyValue("PrintCtrl", "path")
 
-            If Not Directory.Exists(Application.StartupPath & "\Log") Then
-                Directory.CreateDirectory(Application.StartupPath & "\Log")
+            If Not Directory.Exists(System.Windows.Forms.Application.StartupPath & "\Log") Then
+                Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath & "\Log")
             End If
 
             File.WriteAllText(spoolPath, args)
@@ -2098,11 +2053,11 @@ retry:
                 End If
 
 
-                Dim spoolPath As String = Application.StartupPath & "\Log\spoolBoxLabel.txt"
+                Dim spoolPath As String = System.Windows.Forms.Application.StartupPath & "\Log\spoolBoxLabel.txt"
                 Dim printCtrlApp As String = _objini.GetKeyValue("PrintCtrl", "path")
 
-                If Not Directory.Exists(Application.StartupPath & "\Log") Then
-                    Directory.CreateDirectory(Application.StartupPath & "\Log")
+                If Not Directory.Exists(System.Windows.Forms.Application.StartupPath & "\Log") Then
+                    Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath & "\Log")
                 End If
 
                 File.WriteAllText(spoolPath, args)
@@ -2165,11 +2120,11 @@ retry:
                     End If
 
 
-                    Dim spoolPath As String = Application.StartupPath & "\Log\spoolBoxLabel.txt"
+                    Dim spoolPath As String = System.Windows.Forms.Application.StartupPath & "\Log\spoolBoxLabel.txt"
                     Dim printCtrlApp As String = _objini.GetKeyValue("PrintCtrl", "path")
 
-                    If Not Directory.Exists(Application.StartupPath & "\Log") Then
-                        Directory.CreateDirectory(Application.StartupPath & "\Log")
+                    If Not Directory.Exists(System.Windows.Forms.Application.StartupPath & "\Log") Then
+                        Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath & "\Log")
                     End If
 
                     File.WriteAllText(spoolPath, args)
@@ -2244,11 +2199,11 @@ retry:
                                  "|TEXT:1=LADA-HW.DRU|TEXT:2=" & custPn & _
                                  "|TEXT:3=|TEXT:4=|TEXT:5=|"
 
-            Dim spoolPath As String = Application.StartupPath & "\Log\spoolMasterLabel.txt"
+            Dim spoolPath As String = System.Windows.Forms.Application.StartupPath & "\Log\spoolMasterLabel.txt"
             Dim printCtrlApp As String = _objini.GetKeyValue("PrintCtrl", "path")
 
-            If Not Directory.Exists(Application.StartupPath & "\Log") Then
-                Directory.CreateDirectory(Application.StartupPath & "\Log")
+            If Not Directory.Exists(System.Windows.Forms.Application.StartupPath & "\Log") Then
+                Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath & "\Log")
             End If
 
             File.WriteAllText(spoolPath, args)
@@ -2269,19 +2224,18 @@ retry:
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-
+    
     Private Sub PrintDummyLabel(dummyNr As String)
         Try
             Dim prodDate As String = Now.ToString("MM/dd/yyyy")
 
             Dim args As String = "DLG=EZE_DMY|DAT=" & prodDate & "|ZEI=" & CInt(Now.TimeOfDay.TotalSeconds) & "|BEZ=" & dummyNr & "|"
 
-            Dim spoolPath As String = Application.StartupPath & "\Log\spoolDummyLabel.txt"
+            Dim spoolPath As String = System.Windows.Forms.Application.StartupPath & "\Log\spoolDummyLabel.txt"
             Dim printCtrlApp As String = _objini.GetKeyValue("PrintCtrl", "path")
 
-            If Not Directory.Exists(Application.StartupPath & "\Log") Then
-                Directory.CreateDirectory(Application.StartupPath & "\Log")
+            If Not Directory.Exists(System.Windows.Forms.Application.StartupPath & "\Log") Then
+                Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath & "\Log")
             End If
 
             File.WriteAllText(spoolPath, args)
@@ -2317,11 +2271,11 @@ retry:
 
             Dim args As String = "DLG=EZE_AUS|DAT=" & prodDate & "|ZEI=" & CInt(Now.TimeOfDay.TotalSeconds) & "|AUNR=" & order & "|ATK=" & partNo & "|CNR=|BEZ=" & scrapNr & "|"
 
-            Dim spoolPath As String = Application.StartupPath & "\Log\spoolScrapLabel.txt"
+            Dim spoolPath As String = System.Windows.Forms.Application.StartupPath & "\Log\spoolScrapLabel.txt"
             Dim printCtrlApp As String = _objini.GetKeyValue("PrintCtrl", "path")
 
-            If Not Directory.Exists(Application.StartupPath & "\Log") Then
-                Directory.CreateDirectory(Application.StartupPath & "\Log")
+            If Not Directory.Exists(System.Windows.Forms.Application.StartupPath & "\Log") Then
+                Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath & "\Log")
             End If
 
             File.WriteAllText(spoolPath, args)
@@ -2395,11 +2349,11 @@ retry:
 
                     End With
 
-                    Dim spoolPath As String = Application.StartupPath & "\Log\spoolHomogationLabel.txt"
+                    Dim spoolPath As String = System.Windows.Forms.Application.StartupPath & "\Log\spoolHomogationLabel.txt"
                     Dim printCtrlApp As String = _objini.GetKeyValue("PrintCtrl", "path")
 
-                    If Not Directory.Exists(Application.StartupPath & "\Log") Then
-                        Directory.CreateDirectory(Application.StartupPath & "\Log")
+                    If Not Directory.Exists(System.Windows.Forms.Application.StartupPath & "\Log") Then
+                        Directory.CreateDirectory(System.Windows.Forms.Application.StartupPath & "\Log")
                     End If
 
                     File.WriteAllText(spoolPath, args)
@@ -2463,9 +2417,7 @@ retry:
         End If
 
     End Sub
-
-    Public StopOrderTimer As Integer
-
+    
     Private Sub TimerNoWorkWarning_Tick(sender As Object, e As EventArgs) Handles TimerNoWorkWarning.Tick
 
         Dim stopinterval As String = _objini.GetKeyValue("WarningIntervals", "TimerStopOrder")
@@ -2501,7 +2453,7 @@ retry:
                         DataGridViewOrders.Rows.RemoveAt(0)
                         OrderOpen = False
                         PackFactor = 0
-                        totalPartsInOrder = 0
+                        TotalPartsInOrder = 0
                         LabelLabelCount.Text = vbNullString
                         LogCurrentStatus(vbNullString, 0)
                         Writelog("Order Stopped by No Activity timer")
@@ -2637,14 +2589,7 @@ retry:
         End Try
 
     End Sub
-
-    Private Sub tbo_Qty_KeyDown(sender As Object, e As KeyEventArgs) Handles tbo_Qty.KeyDown
-        If (e.KeyCode >= 48 And e.KeyCode <= 59) Or (e.KeyCode >= 96 And e.KeyCode <= 105) Or e.KeyCode = 8 Or e.KeyCode = 46 Or e.KeyCode = 37 Or e.KeyCode = 39 Then
-        Else
-            e.SuppressKeyPress = True
-        End If
-    End Sub
-
+    
     Private Sub btno_addOrder_Click(sender As Object, e As EventArgs) Handles btno_addOrder.Click
         Try
             If Not IsNumeric(tbo_Order.Text) Then
@@ -2776,27 +2721,14 @@ retry:
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-    Private Sub tbp_packfactor_KeyDown(sender As Object, e As KeyEventArgs) Handles tbp_packfactor.KeyDown
-        If (e.KeyCode >= 48 And e.KeyCode <= 59) Or (e.KeyCode >= 96 And e.KeyCode <= 105) Or e.KeyCode = 8 Or e.KeyCode = 46 Or e.KeyCode = 37 Or e.KeyCode = 39 Then
-        Else
-            e.SuppressKeyPress = True
-        End If
-    End Sub
-
-    Private Sub tbp_partCounter_KeyDown(sender As Object, e As KeyEventArgs) Handles tbp_partCounter.KeyDown
-        If (e.KeyCode >= 48 And e.KeyCode <= 59) Or (e.KeyCode >= 96 And e.KeyCode <= 105) Or e.KeyCode = 8 Or e.KeyCode = 46 Or e.KeyCode = 37 Or e.KeyCode = 39 Then
-        Else
-            e.SuppressKeyPress = True
-        End If
-    End Sub
-
+    
     Private Sub btnp_query_Click(sender As Object, e As EventArgs) Handles btnp_query.Click
         btnp_query.Enabled = False
         ToolStripProgressBar1.Visible = True
         T_partListDataGridView.DataSource = Nothing
         BackgroundWorkerLoadPartTabel.RunWorkerAsync()
     End Sub
+
     Private Sub BackgroundWorkerLoadPartTabel_DoWork(sender As Object, e As DoWorkEventArgs) Handles BackgroundWorkerLoadPartTabel.DoWork
         Try
             T_partListTableAdapter1.Fill(Ru_sb_tames1.t_partList)
@@ -2810,11 +2742,7 @@ retry:
         btnp_query.Enabled = True
         ToolStripProgressBar1.Visible = False
     End Sub
-
-    Private Sub cbp_custName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbp_custName.KeyPress
-        e.KeyChar = UCase(e.KeyChar)
-    End Sub
-
+    
     Private Sub btn_AddPart_Click(sender As Object, e As EventArgs) Handles btn_AddPart.Click
         Try
             If Not IsNumeric(tbp_packfactor.Text) Then
@@ -2867,18 +2795,7 @@ retry:
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-    Private Sub cbp_HPN_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbp_HPN.KeyPress
-        e.KeyChar = UCase(e.KeyChar)
-    End Sub
-
-    Private Sub tbh_layout_KeyDown(sender As Object, e As KeyEventArgs) Handles tbh_layout.KeyDown
-        If (e.KeyCode >= 48 And e.KeyCode <= 59) Or (e.KeyCode >= 96 And e.KeyCode <= 105) Or e.KeyCode = 8 Or e.KeyCode = 46 Or e.KeyCode = 37 Or e.KeyCode = 39 Then
-        Else
-            e.SuppressKeyPress = True
-        End If
-    End Sub
-
+    
     Private Sub btnh_query_Click(sender As Object, e As EventArgs) Handles btnh_query.Click
         Try
             btnh_query.Enabled = False
@@ -2990,15 +2907,7 @@ retry:
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-    Private Sub ButtonSettingsDelete_Click(sender As Object, e As EventArgs) Handles ButtonSettingsDelete.Click
-        Try
-
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
-    End Sub
-
+    
     Private Sub T_orderListDataGridView_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles T_orderListDataGridView.CellDoubleClick
         Try
             With T_orderListDataGridView.Rows(e.RowIndex)
@@ -3083,9 +2992,7 @@ retry:
                             dr.Delete()
                         End If
                     End With
-
                     'btnp_query_Click(btnp_query, New System.EventArgs())
-
                 End If
 
             End With
@@ -3276,7 +3183,7 @@ retry:
     Private Sub btnProdFind_Click(sender As Object, e As EventArgs) Handles btnProdFind.Click
         Try
             dgvProd.DataSource = Nothing
-            Application.DoEvents()
+            System.Windows.Forms.Application.DoEvents()
             'BindingSourceProductivity.DataMember = vbNullString
             'BindingSourceProductivity.DataSource = Nothing
             If Len(tbProdLine.Text) = 3 Then
@@ -3309,25 +3216,25 @@ retry:
 
             ' задача: заполнить для каждого часа из интервала, заданного через фильтр, сколкько же реально работала линия
             ' заполнить с агрегацией, так же, как и продуктивность
-            For i = 0 To workTimeInMinuts.Length - 1
-                workTimeInMinuts(i) = 0 ' избавляемся от старых данных
+            For i = 0 To _workTimeInMinuts.Length - 1
+                _workTimeInMinuts(i) = 0 ' избавляемся от старых данных
             Next
 
             If CType(param(3), Date).Hour = CType(param(4), Date).Hour Then 'интервал фильтрации час или меньше
                 Dim hour = CType(param(3), Date).Hour
-                workTimeInMinuts(hour) = 60 - sumOfBreaksInMinuts(param(2).ToString(), CType(param(3), Date).ToString("HH:mm"), CType(param(4), Date).ToString("HH:mm"))
+                _workTimeInMinuts(hour) = 60 - SumOfBreaksInMinuts(param(2).ToString(), CType(param(3), Date).ToString("HH:mm"), CType(param(4), Date).ToString("HH:mm"))
             Else
                 For i = CType(param(3), Date).Hour To CType(param(4), Date).Hour ' перерывы для каждого часа
                     If i = CType(param(3), Date).Hour Then ' час От
-                        workTimeInMinuts(i) = 60 - CType(param(3), Date).Minute - sumOfBreaksInMinuts(param(2).ToString(), CType(param(3), Date).ToString("HH:mm"), TimeSpan.FromHours(i + 1).ToString("hh\:mm"))
+                        _workTimeInMinuts(i) = 60 - CType(param(3), Date).Minute - SumOfBreaksInMinuts(param(2).ToString(), CType(param(3), Date).ToString("HH:mm"), TimeSpan.FromHours(i + 1).ToString("hh\:mm"))
                     ElseIf i = CType(param(4), Date).Hour Then ' час До
-                        workTimeInMinuts(i) = CType(param(4), Date).Minute - sumOfBreaksInMinuts(param(2).ToString(), TimeSpan.FromHours(i).ToString("hh\:mm"), CType(param(4), Date).ToString("HH:mm"))
+                        _workTimeInMinuts(i) = CType(param(4), Date).Minute - SumOfBreaksInMinuts(param(2).ToString(), TimeSpan.FromHours(i).ToString("hh\:mm"), CType(param(4), Date).ToString("HH:mm"))
                     Else ' интервал
-                        workTimeInMinuts(i) = 60 - sumOfBreaksInMinuts(param(2).ToString(), TimeSpan.FromHours(i).ToString("hh\:mm"), TimeSpan.FromHours(i + 1).ToString("hh\:mm"))
+                        _workTimeInMinuts(i) = 60 - SumOfBreaksInMinuts(param(2).ToString(), TimeSpan.FromHours(i).ToString("hh\:mm"), TimeSpan.FromHours(i + 1).ToString("hh\:mm"))
                     End If
                 Next
                 For i = CType(param(3), Date).Hour + 1 To CType(param(4), Date).Hour ' агрегация
-                    workTimeInMinuts(i) += workTimeInMinuts(i - 1)
+                    _workTimeInMinuts(i) += _workTimeInMinuts(i - 1)
                 Next
             End If
 
@@ -3367,15 +3274,15 @@ retry:
                                                                                      LineName)
                     Dim beginIntervalStr As String = timeFromStr
                     Dim endIntervalStr As String = timeFromStr
-                    Dim sumOfInterruptsMin As Integer = 0
-                    Dim sumOfBreaksMin = sumOfBreaksInMinuts(LineName, timeFromStr, timeToStr)
+                    Dim sumOfInterruptsMin = 0
+                    Dim sumOfBreaksMin = SumOfBreaksInMinuts(LineName, timeFromStr, timeToStr)
                     Dim accidentDate = DirectCast(.Rows(r).Item(3), Date) ' дата из таблицы продуктивностей, которую заполняем
 
                     For r2 = 0 To tableOfBreaks.Rows.Count - 1
                         Debug.WriteLine(tableOfBreaks.Rows(r2).Item("timeFrom").ToString() & " - " & tableOfBreaks.Rows(r2).Item("timeTo").ToString())
 
                         endIntervalStr = tableOfBreaks.Rows(r2).Item("timeFrom").ToString()
-                        sumOfInterruptsMin += sumOfInterruptsInMinuts(LineName,
+                        sumOfInterruptsMin += SumOfInterruptsInMinuts(LineName,
                                                                       beginIntervalStr,
                                                                       endIntervalStr,
                                                                       accidentDate)
@@ -3383,7 +3290,7 @@ retry:
                     Next
 
                     endIntervalStr = timeToStr
-                    sumOfInterruptsMin += sumOfInterruptsInMinuts(LineName,
+                    sumOfInterruptsMin += SumOfInterruptsInMinuts(LineName,
                                                                   beginIntervalStr,
                                                                   endIntervalStr,
                                                                   accidentDate)
@@ -3396,88 +3303,7 @@ retry:
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-    Private Function sumOfBreaksInMinuts(lineID As String, timeFrom As String, timeTo As String) As UInt32
-        Dim odbcConnector As New Global.System.Data.Odbc.OdbcCommand()
-        odbcConnector.Connection = New Global.System.Data.Odbc.OdbcConnection(Global.LabelPrint.My.MySettings.Default.ru_sb_tames)
-        odbcConnector.CommandText = "SELECT sum(least(to_timestamp(""endBreakTime""::varchar,'HH24:MI:SS'),to_timestamp(" & _
-               "'" & timeTo & "', 'HH24:MI'))-greatest(to_timestamp(""beginBreakTime""::varchar,'HH24:MI:SS" & _
-               "'),to_timestamp('" & timeFrom & "', 'HH24:MI'))) FROM ""t_linesBreaks"" where to_timestamp(""e" & _
-               "ndBreakTime""::varchar,'HH24:MI:SS')>=to_timestamp('" & timeFrom & "', 'HH24:MI') and to_tim" & _
-               "estamp(""beginBreakTime""::varchar,'HH24:MI:SS')<=to_timestamp('" & timeTo & "', 'HH24:MI')" & _
-               " and ""lineID"" = '" & lineID & "';"
-        odbcConnector.CommandType = Global.System.Data.CommandType.Text
-
-        Dim previousConnectionState As Global.System.Data.ConnectionState = odbcConnector.Connection.State
-        If ((odbcConnector.Connection.State And Global.System.Data.ConnectionState.Open) _
-                    <> Global.System.Data.ConnectionState.Open) Then
-            odbcConnector.Connection.Open()
-        End If
-
-        Dim queryReturnValue As Object
-
-        Try
-            queryReturnValue = odbcConnector.ExecuteScalar
-        Finally
-            If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                odbcConnector.Connection.Close()
-            End If
-        End Try
-
-        If ((queryReturnValue Is Nothing) _
-                    OrElse (queryReturnValue.GetType Is GetType(Global.System.DBNull))) Then Return 0
-
-        Dim sumTimeOfBreaks As Date
-        If Not DateTime.TryParse(CType(queryReturnValue, String), sumTimeOfBreaks) Then Return 0
-
-        Return sumTimeOfBreaks.TimeOfDay.TotalMinutes
-
-    End Function
-
-    Private Function sumOfInterruptsInMinuts(lineID As String, timeFrom As String, timeTo As String, accidentDate As Date?) As UInt32
-        Dim odbcConnector As New Global.System.Data.Odbc.OdbcCommand()
-        odbcConnector.Connection = New Global.System.Data.Odbc.OdbcConnection(Global.LabelPrint.My.MySettings.Default.ru_sb_tames)
-        odbcConnector.CommandText = "SELECT sum(least(to_timestamp(""endOfInterruptTimestamp""::varchar,'HH24:MI:SS'),to_timestamp(" & _
-               "'" & timeTo & "', 'HH24:MI'))-greatest(to_timestamp(""interruptTimestamp""::varchar,'HH24:MI:SS" & _
-               "'),to_timestamp('" & timeFrom & "', 'HH24:MI'))) FROM ""t_linesInterrupts"" where to_timestamp(""" & _
-               "endOfInterruptTimestamp""::varchar,'HH24:MI:SS')>=to_timestamp('" & timeFrom & "', 'HH24:MI') and to_tim" & _
-               "estamp(""interruptTimestamp""::varchar,'HH24:MI:SS')<=to_timestamp('" & timeTo & "', 'HH24:MI')" & _
-               " and ""accidentDate"" =? and ""lineID"" = '" & lineID & "';"
-        odbcConnector.CommandType = Global.System.Data.CommandType.Text
-        odbcConnector.Parameters.Add(New OdbcParameter("accidentDate", OdbcType.Date))
-
-        If (accidentDate.HasValue = True) Then
-            odbcConnector.Parameters(0).Value = CType(accidentDate.Value, Date)
-        Else
-            odbcConnector.Parameters(0).Value = Global.System.DBNull.Value
-        End If
-
-        Dim previousConnectionState As Global.System.Data.ConnectionState = odbcConnector.Connection.State
-        If ((odbcConnector.Connection.State And Global.System.Data.ConnectionState.Open) _
-                    <> Global.System.Data.ConnectionState.Open) Then
-            odbcConnector.Connection.Open()
-        End If
-
-        Dim queryReturnValue As Object
-
-        Try
-            queryReturnValue = odbcConnector.ExecuteScalar
-        Finally
-            If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                odbcConnector.Connection.Close()
-            End If
-        End Try
-
-        If ((queryReturnValue Is Nothing) _
-                    OrElse (queryReturnValue.GetType Is GetType(Global.System.DBNull))) Then Return 0
-
-        Dim sumTimeOfInterrupts As Date
-        If Not DateTime.TryParse(CType(queryReturnValue, String), sumTimeOfInterrupts) Then Return 0
-
-        Return sumTimeOfInterrupts.TimeOfDay.TotalMinutes
-
-    End Function
-
+    
     Private Sub BackgroundWorkerProductivity1_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BackgroundWorkerProductivity1.RunWorkerCompleted
         Try
             'add column pcs/day or pcs/order 
@@ -3506,7 +3332,7 @@ retry:
                     End If
 
                     Dim hours = Integer.Parse(.Rows(r).Item("ora").ToString().Substring(0, 2))
-                    Dim workedMinuts = workTimeInMinuts(hours)
+                    Dim workedMinuts = _workTimeInMinuts(hours)
                     If (workedMinuts > 0) Then
                         .Rows(r).Item("productivity_check") = Math.Round(.Rows(r).Item("pcs_total") * 60 / workedMinuts)
                     Else
@@ -3550,13 +3376,7 @@ retry:
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-    Private Sub tbProdLine_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbProdLine.KeyPress
-        If Char.IsLower(e.KeyChar) Then
-            e.KeyChar = Char.ToUpper(e.KeyChar)
-        End If
-    End Sub
-
+    
     Private Sub ToolStripStatusLabelLineName_TextChanged(sender As Object, e As EventArgs) Handles ToolStripStatusLabelLineName.TextChanged
         tbProdLine.Text = ToolStripStatusLabelLineName.Text
     End Sub
@@ -3585,7 +3405,7 @@ retry:
                     End If
 
                     Dim hours = Integer.Parse(.Rows(r).Item("ora").ToString().Substring(0, 2))
-                    Dim workedMinuts = workTimeInMinuts(hours)
+                    Dim workedMinuts = _workTimeInMinuts(hours)
                     If (workedMinuts > 0) Then
                         .Rows(r).Item("productivity") = Math.Round(.Rows(r).Item("pcs_total") * 60 / workedMinuts)
                     Else
@@ -3599,7 +3419,7 @@ retry:
     End Sub
 
     Private Sub dgvBreaks_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvBreaks.UserDeletedRow
-        T_linesBreaksTableAdapter.Update(CType(dgvBreaks.DataSource, System.Windows.Forms.BindingSource).DataSource)
+        T_linesBreaksTableAdapter.Update(CType(dgvBreaks.DataSource, BindingSource).DataSource)
         respawnLineStateTimers()
     End Sub
 
@@ -3616,12 +3436,12 @@ retry:
 
     Private Sub btnAddBreak_Click(sender As Object, e As EventArgs) Handles btnAddBreak.Click
         T_linesBreaksTableAdapter.InsertQuery(tbBreaksLineID.Text, dtpBeginBreak.Value, dtpEndBreak.Value, tbComment.Text)
-        Me.T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
+        T_linesBreaksTableAdapter.Fill(Me.Sb_tamesBreaksDataSet.t_linesBreaks)
         respawnLineStateTimers()
     End Sub
 
     Private Sub dgvInterrupts_UserDeletedRow(sender As Object, e As DataGridViewRowEventArgs) Handles dgvInterrupts.UserDeletedRow
-        T_linesInterruptsTableAdapter.Update(CType(dgvInterrupts.DataSource, System.Windows.Forms.BindingSource).DataSource)
+        T_linesInterruptsTableAdapter.Update(CType(dgvInterrupts.DataSource, BindingSource).DataSource)
     End Sub
 
     Private Sub dgvInterrupts_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvInterrupts.CellEndEdit
@@ -3640,37 +3460,7 @@ retry:
                                                   row.Cells("WhoIsLastDataGridViewTextBoxColumn").Value.ToString(),
                                                   Integer.Parse(row.Cells("InterruptsIDDataGridViewTextBoxColumn").Value.ToString()))
     End Sub
-
-    Private Sub btnAddInterrupt_Click(sender As Object, e As EventArgs)
-        T_linesInterruptsTableAdapter.InsertQuery(dtpAccidentDate.Value, tbGang.Text, tbInterruptsLineID.Text, tbEquipmentName.Text,
-                                                  dtpInterruptTimestamp.Value, dtpBeginRepairTimestamp.Value, dtpEndOfInterruptTimestamp.Value,
-                                                  tbInterruptCode.Text, tbCauseOfInterrupt.Text, tbCarriedOutActions.Text, tbWhoIsLast.Text)
-        Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
-    End Sub
-
-    Private Sub dgvInterrupts_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgvInterrupts.CellValueChanged
-        If e.RowIndex < 0 Or e.ColumnIndex < 0 Then Exit Sub
-        Dim dgv = DirectCast(sender, DataGridView)
-        Dim col = dgv.Columns.Item(e.ColumnIndex)
-        Dim row = dgv.Rows.Item(e.RowIndex)
-        If col.Name = "InterruptTimestampDataGridViewTextBoxColumn" Then 'calculate mainteranceWaitingInterval and interruptDuration
-            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
-            Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
-            Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
-            row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value = (beginRepairTimestamp - interruptTimestamp).ToString()
-            row.Cells("InterruptDurationDataGridViewTextBoxColumn").Value = (endOfInterruptTimestamp - interruptTimestamp).ToString()
-        ElseIf col.Name = "BeginRepairTimestampDataGridViewTextBoxColumn" Then 'calcaulae mainteranceWaitingInterval
-            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
-            Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
-            row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value = (beginRepairTimestamp - interruptTimestamp).ToString()
-        ElseIf col.Name = "EndOfInterruptTimestampDataGridViewTextBoxColumn" Then 'calcaulae interruptDuration
-            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
-            Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
-            row.Cells("InterruptDurationDataGridViewTextBoxColumn").Value = (endOfInterruptTimestamp - interruptTimestamp).ToString()
-        End If
-    End Sub
-
-
+    
     Private Sub btnInterruptsFilterApply_Click(sender As Object, e As EventArgs) Handles btnInterruptsFilterApply.Click
         T_linesInterruptsTableAdapter.FillAndCalculateBy(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts,
                                                          dtpInterruptsFilterDateFrom.Value,
@@ -3698,42 +3488,7 @@ retry:
         sw.Close()
     End Sub
 
-    Public Function exportInterruptsToCSV(srcTable As DataGridView) As String
-        Dim result = New StringBuilder
-        For i = 0 To srcTable.Columns.Count - 1
-            result.Append(Chr(34).ToString())
-            result.Append(srcTable.Columns(i).HeaderText)
-            result.Append(Chr(34).ToString())
-            result.Append(";")
-        Next
-        result.Remove(result.Length - 1, 1)
-        result.AppendLine()
-
-        For Each row As DataGridViewRow In srcTable.Rows
-            For i = 0 To srcTable.Columns.Count - 1
-                result.Append(Chr(34).ToString())
-                result.Append(row.Cells(i).Value)
-                result.Append(Chr(34).ToString())
-                result.Append(";")
-            Next
-            result.Remove(result.Length - 1, 1)
-            result.AppendLine()
-        Next
-        'Return result.ToString()
-        Dim ascii = Encoding.GetEncoding("windows-1251")
-        Dim unicode As Encoding = Encoding.UTF8
-        Dim unicodeBytes = unicode.GetBytes(result.ToString())
-        Dim asciiBytes = Encoding.Convert(unicode, ascii, unicodeBytes)
-        Dim asciiChars(ascii.GetCharCount(asciiBytes, 0, asciiBytes.Length)) As Char ' todo: optimize
-        ascii.GetChars(asciiBytes, 0, asciiBytes.Length, asciiChars, 0)
-        Dim asciiString = New String(asciiChars)
-        Return asciiString
-    End Function
-
-    'набор таймеров для отслеживания состояния линии (1 перерыв - 2 таймера + 1 не перевзводку в конце суток) 
-    Private ReadOnly _breakTimers As New List(Of Timer)
-
-    Private Sub respawnLineStateTimers(Optional sender As Object = vbNull) ' перевзвести все таймеры, по которым переключается состояние линии перерыв/работа (простой учитывается отдельно)
+    Private Sub RespawnLineStateTimers(Optional sender As Object = vbNull) ' перевзвести все таймеры, по которым переключается состояние линии перерыв/работа (простой учитывается отдельно)
         Dim nowMs As Long = DateTime.Now.TimeOfDay.TotalMilliseconds ' Отправная точка для взвода таймеров
         _breakTimers.Clear()
         IsLineBreaked = False
@@ -3764,32 +3519,31 @@ retry:
         _breakTimers.Add(timerAutoRepeat)
     End Sub
 
-    Private Sub beginBreakOnLine(sender As Object) ' для вывода на панель оператора информации о том, что линия в состоянии "перерыв"
+    Private Sub BeginBreakOnLine(sender As Object) ' для вывода на панель оператора информации о том, что линия в состоянии "перерыв"
         IsLineBreaked = True
         updateLineState()
     End Sub
 
-    Private Sub endBreakOnLine(sender As Object) ' для вывода на панель оператора информации о том, что линия вышла из состояния "перерыв"
+    Private Sub EndBreakOnLine(sender As Object) ' для вывода на панель оператора информации о том, что линия вышла из состояния "перерыв"
         IsLineBreaked = False
         updateLineState()
     End Sub
 
-    Delegate Sub updateTextDelegate()
-    Private Sub updateLineState()
+    Private Sub UpdateLineState()
         If labelLineState.InvokeRequired Then
             labelLineState.Invoke(New updateTextDelegate(AddressOf updateLineState))
         Else
             Dim currState As String = String.Empty
-            If Not IsLineBreaked And EOLcodesOK.Contains(LineStateCode) Then
+            If Not IsLineBreaked And _eoLcodesOk.Contains(LineStateCode) Then
                 If labelLineState.ForeColor <> Color.Green Then
-                    currentPerformanceCounter.respawnProductivity()
+                    _currentPerformanceCounter.RespawnProductivity()
                 End If
                 labelLineState.ForeColor = Color.Green
                 currState = "Линия " & LineName & Chr(13) & "Состояние: работает"
             ElseIf IsLineBreaked Then
                 labelLineState.ForeColor = Color.Yellow
                 currState = "Линия " & LineName & Chr(13) & "Состояние: перерыв"
-            ElseIf EOLcodes.ContainsKey(LineStateCode) Then
+            ElseIf _eoLcodes.ContainsKey(LineStateCode) Then
                 labelLineState.ForeColor = Color.Red
                 currState = "Линия " & LineName & Chr(13) & "Состояние: простой"
             End If
@@ -3803,12 +3557,261 @@ retry:
         dlg.Filter = "Файлы CSV (*.csv)|*.csv"
         If dlg.ShowDialog() <> DialogResult.OK Then Return
 
-        Dim pp = ppFromCsv(dlg.FileName)
+        Dim pp = PpFromCsv(dlg.FileName)
         Dim applyDlg = New ProductivityApplyDlg(pp)
-        If applyDlg.ShowDialog() = DialogResult.OK Then plannedProductivity = pp
+        If applyDlg.ShowDialog() = DialogResult.OK Then _plannedProductivity = pp
+    End Sub
+    
+    Private Sub dgvInterrupts_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgvInterrupts.DataBindingComplete
+        For i = 0 To dgvInterrupts.Rows.Count - 1
+            Dim row = dgvInterrupts.Rows(i)
+            Dim eolCode = row.Cells.Item("InterruptCodeDataGridViewTextBoxColumn").Value
+            Dim bc = row.Cells.Item("WhoIsLastDataGridViewTextBoxColumn").Value
+            If _eoLcodes.ContainsKey(eolCode) Then row.Cells.Item("InterruptCodeDataGridViewTextBoxColumn").Value = _eoLcodes(eolCode)
+            If _permitBClist.ContainsKey(bc) Then row.Cells.Item("WhoIsLastDataGridViewTextBoxColumn").Value = _permitBClist(bc)
+        Next
     End Sub
 
-    Private Function ppFromCsv(fileName As String) As Dictionary(Of String, Integer)
+    Private Shared Function TrimInfo(bData As String) As String
+        Try
+            'this function trims informations regarding deviations from barcode generated from AS400 order
+            If InStr(bData, "-") > 0 Then
+                bData = bData.Substring(0, InStr(bData, "-") + 2)
+            End If
+
+            Return bData
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+            Return vbNullString
+        End Try
+    End Function
+
+    Private Shared Sub tbo_Qty_KeyDown(sender As Object, e As KeyEventArgs) Handles tbo_Qty.KeyDown
+        If (e.KeyCode >= 48 And e.KeyCode <= 59) Or (e.KeyCode >= 96 And e.KeyCode <= 105) Or e.KeyCode = 8 Or e.KeyCode = 46 Or e.KeyCode = 37 Or e.KeyCode = 39 Then
+        Else
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
+    Private Shared Function NowTimeRoundToMinute() As Date?
+        Dim ret = Date.Now
+        ret = New Date(ret.Year, ret.Month, ret.Day, ret.Hour, ret.Minute, 0)
+        Return ret
+    End Function
+
+    Private Shared Sub ButtonSettingsDelete_Click(sender As Object, e As EventArgs) Handles ButtonSettingsDelete.Click
+        Try
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Private Shared Function CustCounter(value As String) As String
+
+        'value must bee 3 characters long
+
+        Dim c1 As Integer = Asc(Mid(value, 1, 1))
+        Dim c2 As Integer = Asc(Mid(value, 2, 1))
+        Dim c3 As Integer = Asc(Mid(value, 3, 1))
+
+        c3 += 1
+
+        If c3 = 58 Then   'from 9 to A
+            c3 = 65
+        End If
+
+        If c3 = 73 Then   ' if c3 = I then c3 = J
+            c3 = 74
+        End If
+
+        If c3 = 79 Then   ' if c3 = O then c3 = P
+            c3 = 80
+        End If
+
+        If c3 = 91 Then  'from A to increment next digit
+            c3 = 48   'set last digit to 0
+            c2 += 1     'increment next digit
+        End If
+
+        If c2 = 73 Then   ' if c2 = I then c2 = J
+            c2 = 74
+        End If
+
+        If c2 = 79 Then   ' if c2 = O then c2 = P
+            c2 = 80
+        End If
+
+        If c2 = 58 Then   'from 9 to A
+            c2 = 65
+        End If
+
+        If c2 = 91 Then 'from A to increment next digit
+            c2 = 48     'set second digit to 0
+            c1 += 1     'increment next digit
+        End If
+
+        If c1 = 58 Then   'from 9 to A
+            c1 = 65
+        End If
+
+        If c1 = 73 Then   ' if c1 = I then c1 = J
+            c1 = 74
+        End If
+
+        If c1 = 79 Then   ' if c1 = O then c1 = P
+            c1 = 80
+        End If
+
+        If c1 = 91 Then 'from A to increment next digit
+            c1 = 48      'set second digit to 0
+            c2 = 48
+            c3 = 48
+        End If
+
+        Return Chr(c1) & Chr(c2) & Chr(c3)
+
+    End Function
+
+    Private Shared Sub tbp_packfactor_KeyDown(sender As Object, e As KeyEventArgs) Handles tbp_packfactor.KeyDown
+        If (e.KeyCode >= 48 And e.KeyCode <= 59) Or (e.KeyCode >= 96 And e.KeyCode <= 105) Or e.KeyCode = 8 Or e.KeyCode = 46 Or e.KeyCode = 37 Or e.KeyCode = 39 Then
+        Else
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
+    Private Shared Sub tbp_partCounter_KeyDown(sender As Object, e As KeyEventArgs) Handles tbp_partCounter.KeyDown
+        If (e.KeyCode >= 48 And e.KeyCode <= 59) Or (e.KeyCode >= 96 And e.KeyCode <= 105) Or e.KeyCode = 8 Or e.KeyCode = 46 Or e.KeyCode = 37 Or e.KeyCode = 39 Then
+        Else
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
+    Private Shared Sub cbp_custName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbp_custName.KeyPress
+        e.KeyChar = UCase(e.KeyChar)
+    End Sub
+
+    Private Shared Sub cbp_HPN_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cbp_HPN.KeyPress
+        e.KeyChar = UCase(e.KeyChar)
+    End Sub
+
+    Private Shared Sub tbh_layout_KeyDown(sender As Object, e As KeyEventArgs) Handles tbh_layout.KeyDown
+        If (e.KeyCode >= 48 And e.KeyCode <= 59) Or (e.KeyCode >= 96 And e.KeyCode <= 105) Or e.KeyCode = 8 Or e.KeyCode = 46 Or e.KeyCode = 37 Or e.KeyCode = 39 Then
+        Else
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
+    Private Shared Sub dgvInterrupts_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dgvInterrupts.CellValueChanged
+        If e.RowIndex < 0 Or e.ColumnIndex < 0 Then Exit Sub
+        Dim dgv = DirectCast(sender, DataGridView)
+        Dim col = dgv.Columns.Item(e.ColumnIndex)
+        Dim row = dgv.Rows.Item(e.RowIndex)
+        If col.Name = "InterruptTimestampDataGridViewTextBoxColumn" Then 'calculate mainteranceWaitingInterval and interruptDuration
+            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
+            Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value = (beginRepairTimestamp - interruptTimestamp).ToString()
+            row.Cells("InterruptDurationDataGridViewTextBoxColumn").Value = (endOfInterruptTimestamp - interruptTimestamp).ToString()
+        ElseIf col.Name = "BeginRepairTimestampDataGridViewTextBoxColumn" Then 'calcaulae mainteranceWaitingInterval
+            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
+            row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value = (beginRepairTimestamp - interruptTimestamp).ToString()
+        ElseIf col.Name = "EndOfInterruptTimestampDataGridViewTextBoxColumn" Then 'calcaulae interruptDuration
+            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            row.Cells("InterruptDurationDataGridViewTextBoxColumn").Value = (endOfInterruptTimestamp - interruptTimestamp).ToString()
+        End If
+    End Sub
+
+    Private Shared Function SumOfBreaksInMinuts(lineId As String, timeFrom As String, timeTo As String) As UInt32
+        Dim odbcConnector As New OdbcCommand()
+        odbcConnector.Connection = New OdbcConnection(MySettings.Default.ru_sb_tames)
+        odbcConnector.CommandText = "SELECT sum(least(to_timestamp(""endBreakTime""::varchar,'HH24:MI:SS'),to_timestamp(" & _
+                                    "'" & timeTo & "', 'HH24:MI'))-greatest(to_timestamp(""beginBreakTime""::varchar,'HH24:MI:SS" & _
+                                    "'),to_timestamp('" & timeFrom & "', 'HH24:MI'))) FROM ""t_linesBreaks"" where to_timestamp(""e" & _
+                                    "ndBreakTime""::varchar,'HH24:MI:SS')>=to_timestamp('" & timeFrom & "', 'HH24:MI') and to_tim" & _
+                                    "estamp(""beginBreakTime""::varchar,'HH24:MI:SS')<=to_timestamp('" & timeTo & "', 'HH24:MI')" & _
+                                    " and ""lineID"" = '" & lineId & "';"
+        odbcConnector.CommandType = CommandType.Text
+
+        Dim previousConnectionState As ConnectionState = odbcConnector.Connection.State
+        If ((odbcConnector.Connection.State And ConnectionState.Open) _
+            <> ConnectionState.Open) Then
+            odbcConnector.Connection.Open()
+        End If
+
+        Dim queryReturnValue As Object
+
+        Try
+            queryReturnValue = odbcConnector.ExecuteScalar
+        Finally
+            If (previousConnectionState = ConnectionState.Closed) Then
+                odbcConnector.Connection.Close()
+            End If
+        End Try
+
+        If ((queryReturnValue Is Nothing) _
+            OrElse (queryReturnValue.GetType Is GetType(DBNull))) Then Return 0
+
+        Dim sumTimeOfBreaks As Date
+        If Not DateTime.TryParse(CType(queryReturnValue, String), sumTimeOfBreaks) Then Return 0
+
+        Return sumTimeOfBreaks.TimeOfDay.TotalMinutes
+
+    End Function
+
+    Private Shared Function SumOfInterruptsInMinuts(lineId As String, timeFrom As String, timeTo As String, accidentDate As Date?) As UInt32
+        Dim odbcConnector As New OdbcCommand()
+        odbcConnector.Connection = New OdbcConnection(MySettings.Default.ru_sb_tames)
+        odbcConnector.CommandText = "SELECT sum(least(to_timestamp(""endOfInterruptTimestamp""::varchar,'HH24:MI:SS'),to_timestamp(" & _
+               "'" & timeTo & "', 'HH24:MI'))-greatest(to_timestamp(""interruptTimestamp""::varchar,'HH24:MI:SS" & _
+               "'),to_timestamp('" & timeFrom & "', 'HH24:MI'))) FROM ""t_linesInterrupts"" where to_timestamp(""" & _
+               "endOfInterruptTimestamp""::varchar,'HH24:MI:SS')>=to_timestamp('" & timeFrom & "', 'HH24:MI') and to_tim" & _
+               "estamp(""interruptTimestamp""::varchar,'HH24:MI:SS')<=to_timestamp('" & timeTo & "', 'HH24:MI')" & _
+               " and ""accidentDate"" =? and ""lineID"" = '" & lineId & "';"
+        odbcConnector.CommandType = CommandType.Text
+        odbcConnector.Parameters.Add(New OdbcParameter("accidentDate", OdbcType.Date))
+
+        If (accidentDate.HasValue = True) Then
+            odbcConnector.Parameters(0).Value = CType(accidentDate.Value, Date)
+        Else
+            odbcConnector.Parameters(0).Value = DBNull.Value
+        End If
+
+        Dim previousConnectionState As ConnectionState = odbcConnector.Connection.State
+        If ((odbcConnector.Connection.State And ConnectionState.Open) _
+                    <> ConnectionState.Open) Then
+            odbcConnector.Connection.Open()
+        End If
+
+        Dim queryReturnValue As Object
+
+        Try
+            queryReturnValue = odbcConnector.ExecuteScalar
+        Finally
+            If (previousConnectionState = ConnectionState.Closed) Then
+                odbcConnector.Connection.Close()
+            End If
+        End Try
+
+        If ((queryReturnValue Is Nothing) _
+                    OrElse (queryReturnValue.GetType Is GetType(DBNull))) Then Return 0
+
+        Dim sumTimeOfInterrupts As Date
+        If Not DateTime.TryParse(CType(queryReturnValue, String), sumTimeOfInterrupts) Then Return 0
+
+        Return sumTimeOfInterrupts.TimeOfDay.TotalMinutes
+
+    End Function
+
+    Private Shared Sub tbProdLine_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbProdLine.KeyPress
+        If Char.IsLower(e.KeyChar) Then
+            e.KeyChar = Char.ToUpper(e.KeyChar)
+        End If
+    End Sub
+
+    Private Shared Function PpFromCsv(fileName As String) As Dictionary(Of String, Integer)
         Dim pp As New Dictionary(Of String, Integer) ' ключ - деталь, значение  количество заггтовок в час
 
         Dim sr = New StreamReader(fileName, Encoding.GetEncoding("windows-1251"))
@@ -3826,13 +3829,4 @@ retry:
         Return pp
     End Function
 
-    Private Sub dgvInterrupts_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs) Handles dgvInterrupts.DataBindingComplete
-        For i = 0 To dgvInterrupts.Rows.Count - 1
-            Dim row = dgvInterrupts.Rows(i)
-            Dim eolCode = row.Cells.Item("InterruptCodeDataGridViewTextBoxColumn").Value
-            Dim bc = row.Cells.Item("WhoIsLastDataGridViewTextBoxColumn").Value
-            If EOLcodes.ContainsKey(eolCode) Then row.Cells.Item("InterruptCodeDataGridViewTextBoxColumn").Value = EOLcodes(eolCode)
-            If permitBClist.ContainsKey(bc) Then row.Cells.Item("WhoIsLastDataGridViewTextBoxColumn").Value = permitBClist(bc)
-        Next
-    End Sub
 End Class

@@ -132,7 +132,7 @@
     <value>0, 0</value>
   </data>
   <data name="dgvProd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>692, 377</value>
+    <value>688, 376</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dgvProd.TabIndex" type="System.Int32, mscorlib">
@@ -175,10 +175,10 @@
     <value>1</value>
   </data>
   <data name="SplitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 377</value>
+    <value>928, 376</value>
   </data>
   <data name="SplitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>692</value>
+    <value>688</value>
   </data>
   <data name="SplitContainer1.SplitterWidth" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1258,7 +1258,7 @@
     <value>3, 73</value>
   </data>
   <data name="T_orderListDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>674, 379</value>
+    <value>674, 378</value>
   </data>
   <data name="T_orderListDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1489,7 +1489,7 @@
     <value>245, 3</value>
   </data>
   <data name="GroupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>680, 455</value>
+    <value>680, 454</value>
   </data>
   <data name="GroupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1966,7 +1966,7 @@
     <value>3, 3</value>
   </data>
   <data name="GroupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 455</value>
+    <value>242, 454</value>
   </data>
   <data name="GroupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1993,7 +1993,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabPageOrder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>928, 461</value>
+    <value>928, 460</value>
   </data>
   <data name="TabPageOrder.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2104,7 +2104,7 @@
     <value>3, 71</value>
   </data>
   <data name="T_partListDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>679, 382</value>
+    <value>674, 381</value>
   </data>
   <data name="T_partListDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2128,7 +2128,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnp_Delete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>584, 16</value>
+    <value>579, 16</value>
   </data>
   <data name="btnp_Delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 36</value>
@@ -2191,7 +2191,7 @@
     <value>3, 16</value>
   </data>
   <data name="GroupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>679, 55</value>
+    <value>674, 55</value>
   </data>
   <data name="GroupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2215,7 +2215,7 @@
     <value>245, 3</value>
   </data>
   <data name="GroupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>685, 456</value>
+    <value>680, 455</value>
   </data>
   <data name="GroupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2375,7 +2375,7 @@ EZE_GUT - Nissan White Label</value>
     <value>NoControl</value>
   </data>
   <data name="btn_AddPart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 424</value>
+    <value>3, 423</value>
   </data>
   <data name="btn_AddPart.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 29</value>
@@ -3027,7 +3027,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>3, 3</value>
   </data>
   <data name="GroupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 456</value>
+    <value>242, 455</value>
   </data>
   <data name="GroupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3054,7 +3054,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabPagePN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 462</value>
+    <value>928, 461</value>
   </data>
   <data name="TabPagePN.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3156,7 +3156,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>3, 71</value>
   </data>
   <data name="T_HLabelDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>685, 388</value>
+    <value>680, 387</value>
   </data>
   <data name="T_HLabelDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3180,7 +3180,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>NoControl</value>
   </data>
   <data name="btnh_delete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>590, 16</value>
+    <value>585, 16</value>
   </data>
   <data name="btnh_delete.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 36</value>
@@ -3243,7 +3243,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>3, 16</value>
   </data>
   <data name="GroupBox10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>685, 55</value>
+    <value>680, 55</value>
   </data>
   <data name="GroupBox10.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3267,7 +3267,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>242, 0</value>
   </data>
   <data name="GroupBox9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>691, 462</value>
+    <value>686, 461</value>
   </data>
   <data name="GroupBox9.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3987,7 +3987,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="GroupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 462</value>
+    <value>242, 461</value>
   </data>
   <data name="GroupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4011,7 +4011,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 22</value>
   </data>
   <data name="TabPageHLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 462</value>
+    <value>928, 461</value>
   </data>
   <data name="TabPageHLabel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4107,7 +4107,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 43</value>
   </data>
   <data name="T_labelsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 419</value>
+    <value>928, 418</value>
   </data>
   <data name="T_labelsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4212,7 +4212,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="GroupBox12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 43</value>
+    <value>928, 43</value>
   </data>
   <data name="GroupBox12.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4233,7 +4233,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 22</value>
   </data>
   <data name="TabPageTraceability.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 462</value>
+    <value>928, 461</value>
   </data>
   <data name="TabPageTraceability.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -4695,7 +4695,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="GroupBox13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 85</value>
+    <value>928, 85</value>
   </data>
   <data name="GroupBox13.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4716,7 +4716,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 22</value>
   </data>
   <data name="TabPageProductivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 462</value>
+    <value>928, 461</value>
   </data>
   <data name="TabPageProductivity.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -5046,7 +5046,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="gbNewBreak.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 462</value>
+    <value>242, 461</value>
   </data>
   <data name="gbNewBreak.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5097,7 +5097,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>248, 5</value>
   </data>
   <data name="dgvBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>681, 453</value>
+    <value>676, 452</value>
   </data>
   <data name="dgvBreaks.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5118,7 +5118,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 22</value>
   </data>
   <data name="TabPageBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 462</value>
+    <value>928, 461</value>
   </data>
   <data name="TabPageBreaks.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -5808,10 +5808,10 @@ Subassy - Print Subassy BoxLabel</value>
     <value>Right</value>
   </data>
   <data name="gbNewInterrupt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>688, 3</value>
+    <value>683, 3</value>
   </data>
   <data name="gbNewInterrupt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 456</value>
+    <value>242, 455</value>
   </data>
   <data name="gbNewInterrupt.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -6243,7 +6243,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>6, 78</value>
   </data>
   <data name="dgvInterrupts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>676, 376</value>
+    <value>671, 375</value>
   </data>
   <data name="dgvInterrupts.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -6267,7 +6267,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="TabPageInterrupts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 462</value>
+    <value>928, 461</value>
   </data>
   <data name="TabPageInterrupts.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -6309,7 +6309,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>None</value>
   </data>
   <data name="T_SettingsDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 362</value>
+    <value>928, 361</value>
   </data>
   <data name="T_SettingsDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6459,7 +6459,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="GroupBox11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 100</value>
+    <value>928, 100</value>
   </data>
   <data name="GroupBox11.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -6480,7 +6480,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>4, 22</value>
   </data>
   <data name="TabPageSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>933, 462</value>
+    <value>928, 461</value>
   </data>
   <data name="TabPageSettings.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -6507,7 +6507,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>0, 0</value>
   </data>
   <data name="TabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>936, 487</value>
+    <value>936, 486</value>
   </data>
   <data name="TabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6528,7 +6528,7 @@ Subassy - Print Subassy BoxLabel</value>
     <value>23, 4</value>
   </data>
   <data name="TabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>936, 487</value>
+    <value>936, 486</value>
   </data>
   <data name="TabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
