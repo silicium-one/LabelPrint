@@ -41,7 +41,7 @@
 
             'тут должна быть прверка, не пора ли стрельнуть событием "предупреждение о переналадке"
             'Вычислить ожидаемое время, когда произойдёт событие
-            Dim curPerf = currentPerformance()
+            Dim curPerf = CurrentPerformance()
             If curPerf > 0 Then
                 Dim raiseEventTime As Date = _startTime + TimeSpan.FromHours((CDbl(_quantityTotal - _quantityCorrectinFactor) / CDbl(curPerf))) - _timeSpanReajusting
                 Dim part1Timespan As TimeSpan = TimeSpan.FromHours(1 / CDbl(curPerf)) ' сколько надо времени на производство одной детали
@@ -87,7 +87,7 @@
         Return _plannedPerformance.ToString() + "/" + currPerformance.ToString()
     End Function
 
-    Protected Function currentPerformance() As Integer
+    Protected Function CurrentPerformance() As Integer
         Dim timeElapsed = (Date.Now - _startTime).TotalSeconds
         If timeElapsed Then
             Return ((_quantityCurrent - _quantityCorrectinFactor) * 3600) / timeElapsed ' производительность фактическая, изделий в час
@@ -99,7 +99,7 @@
 
     Dim _quantityCorrectinFactor As Integer = 0 ' костыль для пересчёта продуктивности
 
-    Public Sub respawnProductivity()
+    Public Sub RespawnProductivity()
         _quantityCorrectinFactor = _quantityCurrent
         _startTime = Date.Now
         _reajustingWarningEventRaised = False

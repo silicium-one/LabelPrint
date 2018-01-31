@@ -2731,9 +2731,9 @@ Partial Class Form1
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        EOLcodesOK.Add("100") ' годная деталь, конец простоя
-        EOLcodesOK.Add("301") ' просто конец простоя
-        _lineStateCode = EOLcodesOK(0)
+        _eoLcodesOk.Add("100") ' годная деталь, конец простоя
+        _eoLcodesOk.Add("301") ' просто конец простоя
+        _lineStateCode = _eoLcodesOk(0)
     End Sub
     Friend WithEvents ListBoxLog As System.Windows.Forms.ListBox
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
