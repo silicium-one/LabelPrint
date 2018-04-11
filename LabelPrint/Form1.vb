@@ -95,6 +95,11 @@ Public Class Form1
         End Set
     End Property
 
+    Private _lastGang = "Заполнить!"
+    Private _lastEquipmentName = "Заполнить!"
+    Private _lastCauseOfInterrupt = "Заполнить!"
+    Private _lastCarriedOutActions = "Заполнить!"
+
     Public Property LineStateCode As String
         Get
             Return _lineStateCode
@@ -103,9 +108,17 @@ Public Class Form1
             If _eoLcodes.ContainsKey(_lineStateCode) And _eoLcodesOk.Contains(value) Then 'end interrupt todo: убрать хардкод на годную деталь
                 _endOfInterruptTime = NowTimeRoundToMinute()
 
-                T_linesInterruptsTableAdapter.InsertQuery(_beginOfInterruptTime, "Заполнить!", LineName, "Заполнить!",
+                Dim dlg = New InterruptDataForm(_lastGang, _lastEquipmentName, _lastCauseOfInterrupt, _lastCarriedOutActions)
+                dlg.ShowDialog()
+
+                _lastGang = dlg.Gang
+                _lastEquipmentName = dlg.EquipmentName
+                _lastCauseOfInterrupt = dlg.CauseOfInterrupt
+                _lastCarriedOutActions = dlg.CarriedOutActions
+
+                T_linesInterruptsTableAdapter.InsertQuery(_beginOfInterruptTime, _lastGang, LineName, _lastEquipmentName,
                                               _beginOfInterruptTime, _beginOfRepairInterruptTime, _endOfInterruptTime, _lineStateCode,
-                                              "Заполнить!", "Заполнить!", _whoIsLast)
+                                              _lastCauseOfInterrupt, _lastCarriedOutActions, _whoIsLast)
                 Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
                 _beginOfInterruptTime = Nothing
                 _beginOfRepairInterruptTime = Nothing
