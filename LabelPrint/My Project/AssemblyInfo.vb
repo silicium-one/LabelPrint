@@ -11,8 +11,8 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("LabelPrint")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("Takata-Petri")> 
-<Assembly: AssemblyProduct("LabelPrint")> 
-<Assembly: AssemblyCopyright("Copyright © Takata-Petri 2012")> 
+<Assembly: AssemblyProduct("LabelPrint")>
+<Assembly: AssemblyCopyright("Copyright © Takata-Petri 2018")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("3.4")>
+<Assembly: AssemblyVersion("3.3")>
 

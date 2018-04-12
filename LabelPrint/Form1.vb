@@ -116,9 +116,9 @@ Public Class Form1
                 _lastCauseOfInterrupt = dlg.CauseOfInterrupt
                 _lastCarriedOutActions = dlg.CarriedOutActions
 
-                T_linesInterruptsTableAdapter.InsertQuery(_beginOfInterruptTime, _lastGang, LineName, _lastEquipmentName,
+                T_linesInterruptsTableAdapter.InsertQuery(_beginOfInterruptTime, "Заполнить!", LineName, "Заполнить!",
                                               _beginOfInterruptTime, _beginOfRepairInterruptTime, _endOfInterruptTime, _lineStateCode,
-                                              _lastCauseOfInterrupt, _lastCarriedOutActions, _whoIsLast)
+                                              "Заполнить!", "Заполнить!", _whoIsLast)
                 Me.T_linesInterruptsTableAdapter.FillAndCalculate(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts)
                 _beginOfInterruptTime = Nothing
                 _beginOfRepairInterruptTime = Nothing
@@ -182,13 +182,6 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
-            If Not Command().ToUpper().Contains("ADD_INTERRUPT_DLG") Then
-                gbNewInterrupt.Visible = False
-                Dim sz = dgvInterrupts.Size
-                sz.Width = TabPageInterrupts.Size.Width - 12
-                dgvInterrupts.Size = sz
-            End If
-
             Dim version = Assembly.GetExecutingAssembly().GetName().Version
             Text += " " + version.Major.ToString() + "." + version.Minor.ToString() + "." + version.Build.ToString()
 #If VERSION_TYPE = "a" Then
@@ -279,6 +272,7 @@ Public Class Form1
 
             BreaksIDDataGridViewTextBoxColumn.Visible = False
             InterruptsIDDataGridViewTextBoxColumn.Visible = False ' VS Designer bugfix
+            InterruptsNoDataGridViewTextBoxColumn.Visible = False
             ' Refresh()
 
         Catch ex As NullReferenceException ' VS designer bugfix too
@@ -3458,22 +3452,30 @@ retry:
     End Sub
 
     Private Sub dgvInterrupts_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvInterrupts.CellEndEdit
-        Dim dgv = DirectCast(sender, DataGridView)
-        Dim row = dgv.Rows.Item(e.RowIndex)
-        T_linesInterruptsTableAdapter.UpdateQuery(Date.Parse(row.Cells("AccidentDateDataGridViewTextBoxColumn").Value.ToString()),
-                                                  row.Cells("GangDataGridViewTextBoxColumn").Value.ToString(),
-                                                  row.Cells("InterruptsLineIDDataGridViewTextBoxColumn").Value.ToString(),
-                                                  row.Cells("EquipmentNameDataGridViewTextBoxColumn").Value.ToString(),
-                                                  Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString()),
-                                                  Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString()),
-                                                  Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString()),
-                                                  row.Cells("InterruptCodeDataGridViewTextBoxColumn").Value.ToString(),
-                                                  row.Cells("CauseOfInterruptDataGridViewTextBoxColumn").Value.ToString(),
-                                                  row.Cells("CarriedOutActionsDataGridViewTextBoxColumn").Value.ToString(),
-                                                  row.Cells("WhoIsLastDataGridViewTextBoxColumn").Value.ToString(),
-                                                  Integer.Parse(row.Cells("InterruptsIDDataGridViewTextBoxColumn").Value.ToString()))
+        Try
+            Dim dgv = DirectCast(sender, DataGridView)
+            Dim row = dgv.Rows.Item(e.RowIndex)
+            Dim accidentDate = Date.Parse(row.Cells("AccidentDateDataGridViewTextBoxColumn").Value.ToString())
+            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
+            Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+            T_linesInterruptsTableAdapter.UpdateQuery(accidentDate,
+                                                      row.Cells("GangDataGridViewTextBoxColumn").Value.ToString(),
+                                                      row.Cells("InterruptsLineIDDataGridViewTextBoxColumn").Value.ToString(),
+                                                      row.Cells("EquipmentNameDataGridViewTextBoxColumn").Value.ToString(),
+                                                      interruptTimestamp,
+                                                      beginRepairTimestamp,
+                                                      endOfInterruptTimestamp,
+                                                      row.Cells("InterruptCodeDataGridViewTextBoxColumn").Value.ToString(),
+                                                      row.Cells("CauseOfInterruptDataGridViewTextBoxColumn").Value.ToString(),
+                                                      row.Cells("CarriedOutActionsDataGridViewTextBoxColumn").Value.ToString(),
+                                                      row.Cells("WhoIsLastDataGridViewTextBoxColumn").Value.ToString(),
+                                                      Integer.Parse(row.Cells("InterruptsNoDataGridViewTextBoxColumn").Value.ToString()))
+        Catch ex As FormatException
+            MessageBox.Show("Проверьте правильность введённых данных", "Ошибка ввода даты и времени", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
-    
+
     Private Sub btnInterruptsFilterApply_Click(sender As Object, e As EventArgs) Handles btnInterruptsFilterApply.Click
         T_linesInterruptsTableAdapter.FillAndCalculateBy(Me.Sb_tamesInterruptsDataSet.t_linesInterrupts,
                                                          dtpInterruptsFilterDateFrom.Value,
@@ -3720,21 +3722,25 @@ retry:
         Dim dgv = DirectCast(sender, DataGridView)
         Dim col = dgv.Columns.Item(e.ColumnIndex)
         Dim row = dgv.Rows.Item(e.RowIndex)
-        If col.Name = "InterruptTimestampDataGridViewTextBoxColumn" Then 'calculate mainteranceWaitingInterval and interruptDuration
-            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
-            Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
-            Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
-            row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value = (beginRepairTimestamp - interruptTimestamp).ToString()
-            row.Cells("InterruptDurationDataGridViewTextBoxColumn").Value = (endOfInterruptTimestamp - interruptTimestamp).ToString()
-        ElseIf col.Name = "BeginRepairTimestampDataGridViewTextBoxColumn" Then 'calcaulae mainteranceWaitingInterval
-            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
-            Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
-            row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value = (beginRepairTimestamp - interruptTimestamp).ToString()
-        ElseIf col.Name = "EndOfInterruptTimestampDataGridViewTextBoxColumn" Then 'calcaulae interruptDuration
-            Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
-            Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
-            row.Cells("InterruptDurationDataGridViewTextBoxColumn").Value = (endOfInterruptTimestamp - interruptTimestamp).ToString()
-        End If
+        Try
+            If col.Name = "InterruptTimestampDataGridViewTextBoxColumn" Then 'calculate mainteranceWaitingInterval and interruptDuration
+                Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+                Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
+                Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+                row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value = (beginRepairTimestamp - interruptTimestamp).ToString()
+                row.Cells("InterruptDurationDataGridViewTextBoxColumn").Value = (endOfInterruptTimestamp - interruptTimestamp).ToString()
+            ElseIf col.Name = "BeginRepairTimestampDataGridViewTextBoxColumn" Then 'calcaulae mainteranceWaitingInterval
+                Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+                Dim beginRepairTimestamp = Date.Parse(row.Cells("BeginRepairTimestampDataGridViewTextBoxColumn").Value.ToString())
+                row.Cells("MainteranceWaitingIntervalDataGridViewTextBoxColumn").Value = (beginRepairTimestamp - interruptTimestamp).ToString()
+            ElseIf col.Name = "EndOfInterruptTimestampDataGridViewTextBoxColumn" Then 'calcaulae interruptDuration
+                Dim interruptTimestamp = Date.Parse(row.Cells("InterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+                Dim endOfInterruptTimestamp = Date.Parse(row.Cells("EndOfInterruptTimestampDataGridViewTextBoxColumn").Value.ToString())
+                row.Cells("InterruptDurationDataGridViewTextBoxColumn").Value = (endOfInterruptTimestamp - interruptTimestamp).ToString()
+            End If
+        Catch ex As FormatException
+            MessageBox.Show("Проверьте правильность введённого времени", "Время не распознано", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Shared Function SumOfBreaksInMinuts(lineId As String, timeFrom As String, timeTo As String) As UInt32
