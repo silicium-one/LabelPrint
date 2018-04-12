@@ -89,12 +89,11 @@
 
     Protected Function CurrentPerformance() As Integer
         Dim timeElapsed = (Date.Now - _startTime).TotalSeconds
-        If timeElapsed Then
+        If timeElapsed > 180 Then ' чтобы не пугать оператора бешенными цифрами вычисление проводим только по прошествии достаточного времени
             Return ((_quantityCurrent - _quantityCorrectinFactor) * 3600) / timeElapsed ' производительность фактическая, изделий в час
         Else
             Return 0 ' производительность фактическая, изделий в час
         End If
-        'TODO: проблема деления на ноль
     End Function
 
     Dim _quantityCorrectinFactor As Integer = 0 ' костыль для пересчёта продуктивности
